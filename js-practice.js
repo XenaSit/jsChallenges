@@ -1,5 +1,7 @@
 // 💻 Challenges
+console.log("=================================")
 console.log("CHALLENG NUMER 1")
+console.log("=================================")
 // Write the code that will log the output of 34 added to 71.
 console.log(34 + 71)
 // Write the code that will log the output of 67 subtracted from 123.
@@ -65,7 +67,9 @@ console.log(theQuestion.lastIndexOf(""))
 // ================================================================================
 
 // 💻 Challenges
+console.log("=================================")
 console.log("CHALLENG NUMER 2")
+console.log("=================================")
 // Write the code that will log true or false for the following:
 // Is 34 divided by 3 greater than 67 divided by 2?
 console.log(34/3 > 67/2)
@@ -195,51 +199,107 @@ if (theSecretPassWord.length >= 12 && theSecretPassWord.includes("!")){
 // ================================================================================
 
 // 💻 Challenges
-// console.log("CHALLENG NUMER 3")
+console.log("=================================")
+console.log("CHALLENG NUMER 3")
+console.log("=================================")
 // Copy the challenges into your JavaScript file. Comment out the instructions and code the solution to each problem beneath the prompt.
 
 // Consider the variable:
 
-// var groceryList = ["chips", "dip", "cookies"]
+var groceryList = ["chips", "dip", "cookies"]
 // Write the code that will add "soda" to the end of the original array.
+console.log(groceryList.push("soda"))
+console.log(groceryList)
 // Write the code that will add "granola" to the end of the array without altering the original array.
+console.log(groceryList.pop("soda"))
+console.log(groceryList)
+console.log(groceryList.concat("granola"))
+console.log(groceryList)
 // Write the code that will return a subset of the array containing only "chips" and "dip".
+console.log(groceryList.slice(0, 2))
+console.log(groceryList.pop("cookies"))
+console.log(groceryList)
 // Write the code that will add "beans" to the "chips" and "dip" array.
+console.log(groceryList.push("beans"))
+console.log(groceryList)
+
 // Consider the variable:
 
-// var numbers = [2, 4, 6, 8, 10]
+var numbers = [2, 4, 6, 8, 10]
 // Write the code that will add the number 0 to the beginning of the array.
+console.log(numbers.unshift(0))
+console.log(numbers)
 // Write the code that will add the number 12 to the end of the array.
+console.log(numbers.push(12))
+console.log(numbers)
 // Write the code that will remove the first number from the array.
+console.log(numbers.shift(0))
+console.log(numbers)
 // Write the code that will add the number 0 to the beginning of the array without altering the original array. HINT: it's not .unshift You'll have to get creative! ;)
+console.log(numbers.splice(0, 0, 0))
+console.log(numbers)
+
+
 // Consider the variable:
 
-// var numSet = [2, 13, 6, 8, 4, 2]
+var numSet = [2, 13, 6, 8, 4, 2]
 // Write the code that finds the index of the first appearance of the number 2.
+console.log(numSet.indexOf(2))
 // Write the code that finds the index of the last appearance of the number 2.
+console.log(numSet.lastIndexOf(2))
 // Write the code that returns the number at the third index.
+console.log(numSet.slice(3, 4))
 // Consider the variable:
 
-// var characters = ["y", "a", "r", "r", "a"]
+var characters = ["y", "a", "r", "r", "a"]
 // Write the code that brings all the letters in the characters array together into a string.
+console.log(characters.join())
+console.log(characters.join(""))
+console.log(characters)
 // Write the code that reverses the order of the letters in the characters array and saves it into a variable called charsReversed.
+var charsReversed = characters.reverse()
+console.log(charsReversed)
 // Write the code that brings all the letters in the charsReversed array together into a string with an asterisk between each letter.
+console.log(charsReversed.join("*"))
 // Write the code that brings all the letters in the charsReversed array together into a string without separators.
+console.log(charsReversed.join(""))
 // Create two arrays consisting of three first names of your cohort members in each array.
 
+var theCoolFox = ["Tori", "Roniel", "Dre", "Josh", "Adrian", "Mal"]
+var theChillFox = ["Xena", "Shaun", "Anabella", "Ilene", "Alejandra", "Louis"]
+console.log(theCoolFox, theChillFox)
 // Write the code that sorts the names in alphabetical order.
+console.log(theCoolFox.sort().concat(theChillFox.sort()))
+console.log(theCoolFox, theChillFox)
 // Write the code that sorts the names in reverse alphabetical order.
+console.log(theCoolFox.reverse().concat(theChillFox.reverse()))
+console.log(theCoolFox, theChillFox)
 // Write the code that sorts all the names in alphabetical order in a single array.
+console.log(theCoolFox.concat(theChillFox).sort())
 // Consider the variables:
 
-// var numbers = [42, 221, 71, 7, 18, 87]
-// var oddIndexes = []
+var numbers = [42, 221, 71, 7, 18, 87]
+var oddIndexes = []
+// console.log(numbers)
 // Write the code that logs the values from the numbers array that are at odd indexes.
+numbers.forEach((num) => {
+if (num % 2 === 1){
+    oddIndexes.push(num);
+    }
+});
+console.log(oddIndexes)
 // Write the code that adds the values from odd indexes into the oddIndexes array.
-
+console.log(numbers)
+var oddTodd = numbers.filter((num) => num % 2 === 1);
+console.log(oddTodd)
+console.log(oddIndexes.concat(oddTodd))
+console.log(oddIndexes)
 // ================================================================================
 
 // 💻 Challenges
+console.log("=================================")
+console.log("CHALLENG NUMER 4")
+console.log("=================================")
 // Create a for loop that logs each number from 1 - 20.
 // Create a for loop that logs every other number from 1 - 20.
 // Create a for loop that logs the result of each number from 1 - 20 tripled.
@@ -267,6 +327,9 @@ if (theSecretPassWord.length >= 12 && theSecretPassWord.includes("!")){
 // ================================================================================
 
 // 💻 Challenges
+// console.log("=================================")
+// console.log("CHALLENG NUMER 5")
+// console.log("=================================")
 // Copy the challenges into your JavaScript file. Comment out the instructions and code the solution to each problem beneath the prompt. Each solution requires pseudocode. Test your functions with multiple function calls.
 
 // Write a function named marco that returns "polo".
