@@ -158,10 +158,39 @@ if (imSaidNumber5 % 2 === 0) {
 // Write a conditional statement for the following prompts.
 
 // Write a statement that takes a variable of a grade percentage and logs the letter grade for that percentage, if the grade is 100% log "perfect score", if the grade is zero log "no grade available."
-
+const myGradeIsWhatIsCalledPerfect = "B"
+if (myGradeIsWhatIsCalledPerfect === "A") {
+    // return "Perfect Score"
+    console.log("Perfect Score")
+}else if (myGradeIsWhatIsCalledPerfect === "B") {
+    // return "Why no B? did you not try? -dad"
+    console.log("Why 'B'? did you not try? -dad")
+}else {
+    // return "is this even possible!"
+    console.log("is this even possible!")
+}
 // Write a statement that takes a variable of a boolean, number, or string data type and logs the data type of the variable. HINT: Check out the JavaScript typeof operator.
-
-// Create a password checker using a single conditional statement. If a user inputs a password with 12 or more characters AND the password includes !, then log "That is a mighty strong password!" If the user’s password is 8 or more characters OR includes !, then log "That password is strong enough." Log "That is not a valid password." for every other input.
+var smoothOperatorN = 4
+var smoothOperatorB = true
+var smoothOperatorS = "Smoooooth operaaaator"
+    console.log(typeof smoothOperatorS)
+    console.log(typeof smoothOperatorB)
+    console.log(typeof smoothOperatorN)
+// Create a password checker using a single conditional statement. 
+// If a user inputs a password with 12 or more characters AND the password includes !, then log 
+// "That is a mighty strong password!" 
+// If the user’s password is 8 or more characters OR includes !, then log 
+// "That password is strong enough." 
+// Log "That is not a valid password." for every other input.
+var theSecretPassWord = "hg!rere"
+console.log(theSecretPassWord.length)
+if (theSecretPassWord.length >= 12 && theSecretPassWord.includes("!")){
+    console.log("That is a mighty strong password!")
+}else if (theSecretPassWord.length > 8 || theSecretPassWord.includes("!")){
+    console.log("That password is strong enough.")
+}else{
+    console.log ("That is not a valid password.")
+}
 
 // ================================================================================
 
