@@ -355,13 +355,13 @@ console.log(Math.max(...nums))
 
 console.log("==================MATH.MAX() + FRUIT LOOP==============")
 // CREATED an INFINTE LOOP OF NUMS ARRAY!!!!!!!!!!!!!! just use = 
-for (let i = 0; i < nums.length; i++){
-    if (Math.max(...nums)) {
-        console.log(i)
-    }else {
-        console.log("ODD")
-        }
-}
+// for (let i = 0; i < nums.length; i++){
+//     if (Math.max(...nums)) {
+//         console.log(nums[""])
+//     }else {
+//         console.log("ODD")
+//         }
+// }
 
 // Create the code that will log the smallest number from the array.
 // Create the code that will log the remainder of each number when divided by 2.
