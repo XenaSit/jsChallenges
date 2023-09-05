@@ -280,34 +280,70 @@ console.log(theCoolFox.concat(theChillFox).sort())
 
 var numbers = [42, 221, 71, 7, 18, 87]
 var oddIndexes = []
+var oddIndexes1 = []
+var oddIndexes2 = []
 // console.log(numbers)
 // Write the code that logs the values from the numbers array that are at odd indexes.
+console.log("============FOR=EACH============================")
 numbers.forEach((num) => {
 if (num % 2 === 1){
     oddIndexes.push(num);
     }
 });
 console.log(oddIndexes)
+
 // Write the code that adds the values from odd indexes into the oddIndexes array.
-console.log(numbers)
+// console.log(numbers)
+
+console.log("============.FILTER=============================")
 var oddTodd = numbers.filter((num) => num % 2 === 1);
-console.log(oddTodd)
-console.log(oddIndexes.concat(oddTodd))
-console.log(oddIndexes)
+console.log(oddIndexes1.concat(oddTodd))
+
+console.log("=============.Filter=with=Function==============")
+var oddTodd1 =numbers.filter(oddTheTodd);
+function oddTheTodd(num){
+    return num % 2 === 1
+}
+console.log(oddTodd1)
 // ================================================================================
 
 // 💻 Challenges
 console.log("=================================")
-console.log("CHALLENG NUMER 4")
+console.log("CHALLENG NUMER 4                =")
 console.log("=================================")
+console.log("=============simple fruit loop==============")
 // Create a for loop that logs each number from 1 - 20.
+for (let i = 1; i <= 20; i++){
+    console.log(i)
+}
 // Create a for loop that logs every other number from 1 - 20.
+console.log("=============log every other #==============")
+for (let i = 1; i <= 20; i++){
+    if (i % 2 === 1) {
+        console.log(i)
+    }
+}
 // Create a for loop that logs the result of each number from 1 - 20 tripled.
+console.log("=============log tripled nums==============")
+for (let i = 1; i <= 20; i++){
+        console.log(i*3)
+}
 // Create a for loop that logs each even number from 1-20, and in the place of every odd number, returns the word "ODD".
+console.log("==========ODD or just a num return========")
+for (let i = 1; i <= 20; i++){
+    if (i % 2 === 0) {
+        console.log(i)
+    }else {
+        console.log("ODD")
+    }
+}
+
 // Expected output: ODD, 2, ODD, 4, ODD, 6 ...etc
+
 // Consider this variable:
 
-// const nums = [3, 57, -9, 20, 67]
+const nums = [3, 57, -9, 20, 67]
+
 // Create the code that will log the largest number from the array.
 // Create the code that will log the smallest number from the array.
 // Create the code that will log the remainder of each number when divided by 2.
