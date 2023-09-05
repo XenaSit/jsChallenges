@@ -281,7 +281,12 @@ console.log(theCoolFox.concat(theChillFox).sort())
 var numbers = [42, 221, 71, 7, 18, 87]
 var oddIndexes = []
 var oddIndexes1 = []
-var oddIndexes2 = []
+// console.log("============FOR=LOOOP============================")
+// let oddIndexes2 = [] 
+// for (let i=0; i < numbers.length; i++) {
+//     oddIndexes2.push(oddIndexes[i] % == 0)
+// }
+// console.log(oddIndexes2)
 // console.log(numbers)
 // Write the code that logs the values from the numbers array that are at odd indexes.
 console.log("============FOR=EACH============================")
@@ -345,6 +350,19 @@ for (let i = 1; i <= 20; i++){
 const nums = [3, 57, -9, 20, 67]
 
 // Create the code that will log the largest number from the array.
+console.log("==the strangest thing i have ever seen using Math.max==")
+console.log(Math.max(...nums))
+
+console.log("==================MATH.MAX() + FRUIT LOOP==============")
+// CREATED an INFINTE LOOP OF NUMS ARRAY!!!!!!!!!!!!!! just use = 
+for (let i = 0; i < nums.length; i++){
+    if (Math.max(...nums)) {
+        console.log(i)
+    }else {
+        console.log("ODD")
+        }
+}
+
 // Create the code that will log the smallest number from the array.
 // Create the code that will log the remainder of each number when divided by 2.
 // Expected output: 1, 1, -1, 0, 1
