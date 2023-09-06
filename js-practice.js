@@ -362,7 +362,10 @@ console.log("==================MATH.MAX() + FRUIT LOOP==============")
 //         console.log("ODD")
 //         }
 // }
-
+const largestNumber = (array) => {
+    return Math.max(...array)
+}
+console.log(largestNumber(nums));
 // Create the code that will log the smallest number from the array.
 // Create the code that will log the remainder of each number when divided by 2.
 // Expected output: 1, 1, -1, 0, 1
