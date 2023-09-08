@@ -405,7 +405,17 @@ const numberOfTimes = (string) => {
     }
 }
 console.log(numberOfTimes(myString));
+
 // Create the code that will log every other character in the string.
+const everyOtherChar = (string) => {
+    for (let i = 0; i < string.length; i++) {
+        if (i % 2 === 1)  {
+        console.log(string[i]);
+    }
+    }
+}
+console.log(everyOtherChar(myString));
+
 // 🏔 Stretch Goals
 // Create the code that iterates from 5 to 15. For each iteration log if the current number is odd or even.
 // Expected output: "5 is odd" "6 is even" "7 is odd" ...etc
