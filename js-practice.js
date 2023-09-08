@@ -364,18 +364,47 @@ console.log("==================MATH.MAX() + FRUIT LOOP==============")
 // }
 const largestNumber = (array) => {
     return Math.max(...array) //this still works but i dont want to use it because i am complicated
-    
 }
 console.log(largestNumber(nums));
 
 
 // Create the code that will log the smallest number from the array.
+const smallesNumber = (array) => {
+    return Math.min(...array)
+}
+console.log(smallesNumber(nums));
+
 // Create the code that will log the remainder of each number when divided by 2.
+const remainderNumber = (array) => {
+    for (let i = 0; i < array.length; i++) {
+        console.log(array[i] % 2);
+    }
+}
+console.log(remainderNumber(nums));
+
+// and the .map method
+const remainderNumberInMapStyle =(array) => {
+    let caseArr = []
+    return array.map((value) => {
+        return value % 2
+    })
+}
+console.log(remainderNumberInMapStyle(nums));
 // Expected output: 1, 1, -1, 0, 1
+
 // Consider this variable:
 
-// const myString = "learn student"
+const myString = "learn student"
 // Create the code that will log the number of times the letter "e" occurs in the string.
+const numberOfTimes = (string) => {
+    let countTimesCounter = 0;
+    for (let i = 0; i < string.length; i++) {
+        if (string[i] == "e" && countTimesCounter++)  {
+        console.log(countTimesCounter)
+    }
+    }
+}
+console.log(numberOfTimes(myString));
 // Create the code that will log every other character in the string.
 // 🏔 Stretch Goals
 // Create the code that iterates from 5 to 15. For each iteration log if the current number is odd or even.
