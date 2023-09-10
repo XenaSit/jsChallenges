@@ -436,7 +436,7 @@ for (let i = 1; i <= 100; i++){
     }else if (i % 5 === 0) {
         console.log("buzz")
     }else {
-        console.log("wrong fizz or buzz");
+        console.log(i);
     }
 }
 console.log(15);
@@ -446,16 +446,46 @@ console.log(15);
 // ================================================================================
 
 // 💻 Challenges
-// console.log("=================================")
-// console.log("CHALLENG NUMER 5")
-// console.log("=================================")
-// Copy the challenges into your JavaScript file. Comment out the instructions and code the solution to each problem beneath the prompt. Each solution requires pseudocode. Test your functions with multiple function calls.
+console.log("=================================")
+console.log("CHALLENG NUMER 5")
+console.log("=================================")
 
 // Write a function named marco that returns "polo".
 
+const marco = () => {
+    return "polo"
+}
+console.log(marco());
+
 // Write a function named greeting that takes a name as an argument and returns "Welcome, <person's name here>!"
 
+const greeting = (name) => {
+    return `Welcom, ${name}!`
+}
+console.log(greeting("Xena"));
+
 // Write a function named oddOrEven that takes a number as an argument and returns whether the number is odd or even.
+const numArr = [1, 234, 45, 54]
+const wordArr = ["pretty", "birdy"]
+
+// const areYouOddOrEven = (array) => {
+//     return array.map(array) % 2 === 0 ? "EvEn Stieven"
+//     : array.map() % 2 === 1 ? "Odd Todd"
+//     : "What is ThAt!!!!!???!?!?! Rethink your choices in life"
+// }
+
+// TERNARY OPERATOR Dind't work! THINK about it! Why?
+
+const areYouOddOrEven = (array) => {
+    return array.map((number) => { 
+        if (number % 2 === 0) {return "EvEn Stieven"}
+        else if (number % 2 === 1) {return "Odd Todd"}
+        else {return "What is ThAt!!!!!???!?!?! Rethink your choices in life"}
+    })
+}
+
+console.log(areYouOddOrEven(numArr))
+console.log(areYouOddOrEven(wordArr))
 
 // Write a function named triple that takes a number as an argument and returns the result of that number multiplied by 3.
 
@@ -502,6 +532,7 @@ console.log(15);
 // Create a function that takes in an array of numbers and determines if the number is odd or even.
 
 // ================================================================================
+
 
 
 
