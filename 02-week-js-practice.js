@@ -32,16 +32,15 @@ const comboArr = [ 7, "n", true, "i", "c", 10, "e", -388, "w", 3, "o", 0, "r", f
 // // output: "nicework"
 
 const thatIsNiceWork = (arrayType) => {
-    return arrayType.map ((wordsIspeak) => {
-        const newArr = []
-        if (typeof wordsIspeak == 'string') {
-            return newArr.push('')}
-            
-        else { return " no "}
-
-    }) // NICEWROK IS NOT NICING ME
+    return arrayType.filter ((wordsIspeak) => {
+        if (typeof wordsIspeak ==='string') {
+            return arrayType.join("") // this does absolutly nothing, it can return arrayType, wordsIspeak showing array with all the string and for some reason i can not manipulate it in this return, it doesnt join the .join('') which is like wtf? Work on it... return to me...
+        } 
+    })
 }
-console.log(thatIsNiceWork(comboArr));
+console.log(thatIsNiceWork(comboArr).join(''))
+// console.log(thatIsNiceWork(comboArr).join(''))
+// console.log(comboArr);
 
 //4 Create a function that takes in an array of numbers and returns the sum.
 // const addThese1 = [1, 2, 3, 4]
