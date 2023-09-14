@@ -61,7 +61,7 @@ const addThese2 = []
 // } 
 // console.log(newSumUpTry01);
 
-// // Apparently ForEach works better than i though it would. no .map instead .forEach
+// // Apparently ForEach works better than i though it would. Not .map instead use .forEach 
 const sumThatThingUp = (newSumUpArray) => {
     let newSumUpTry = 0;
     newSumUpArray.forEach(value => {
@@ -77,11 +77,27 @@ console.log(sumThatThingUp(addThese2));
 const indexHighestNumber = [1, 4, 2, 3]
 // output: 1
 
+const largestOfThemAll = (array) => {
+    return Math.max.apply(Math, array);
+}
+console.log(largestOfThemAll(indexHighestNumber)); //4
+console.log(largestOfThemAll(testArr2)); //13
+
+
 // 🏔 Stretch Goals
+
 //6 Create a function that takes in two arrays and returns one array with no duplicate values.
-// const arr1 = [3, 7, 10, 5, 4, 3, 3]
-// const arr2 = [7, 8, 2, 3, 1, 5, 4]
-// // output: [3, 7, 10, 5, 4, 8, 2, 1]
+
+var arr1 = [3, 7, 10, 5, 4, 3, 3]
+var arr2 = [7, 8, 2, 3, 1, 5, 4]
+// output: [3, 7, 10, 5, 4, 8, 2, 1]
+// const duplicatesIncluded = arr1 + arr2
+// console.log(duplicatesIncluded());
+const takeOutTheDuplex = (array1, array2) => {
+    console.log(takeOutTheDuplex);
+    return array1.concat(array2)
+} 
+// console.log(takeOutTheDuplex());
 // 7 Create a function that takes in two numbers as arguments and returns an array the length of the first number filled with the second number.
 // const arrayLength = 6
 // const arrayValue = 0
