@@ -32,35 +32,50 @@ const comboArr = [ 7, "n", true, "i", "c", 10, "e", -388, "w", 3, "o", 0, "r", f
 // // output: "nicework"
 
 const thatIsNiceWork = (arrayType) => {
-    return arrayType.filter ((wordsIspeak) => {
-        if (typeof wordsIspeak ==='string') {
-            return arrayType.join("") // this does absolutly nothing, it can return arrayType, wordsIspeak showing array with all the string and for some reason i can not manipulate it in this return, it doesnt join the .join('') which is like wtf? Work on it... return to me...
-        } 
+    return arrayType.filter((wordsIspeak) => {
+        return typeof wordsIspeak === 'string' 
+        // this does absolutly nothing, it can return arrayType, wordsIspeak showing array with all the string and for some reason i can not manipulate it in this return, it doesnt join the .join('') which is like wtf? Work on it... return to me...
     })
 }
-console.log(thatIsNiceWork(comboArr).join(''))
+let wordsIdontSpeak = thatIsNiceWork(comboArr).join('')
 // console.log(thatIsNiceWork(comboArr))
+console.log(wordsIdontSpeak);
+// console.log(thatIsNiceWork(comboArr).join(''))
 // console.log(comboArr);
 
 //4 Create a function that takes in an array of numbers and returns the sum.
 
 const addThese1 = [1, 2, 3, 4]
-// // // output: 10
-
-const sumThatThingUp = (arrayOfNumbers) => {
-    var total = 0; 
-    for (var i in arrayOfNumbers) {
-        total += arrayOfNumbers[i];
-      }
-}
-
+// // output: 10
 const addThese2 = []
 // // output: 0
+
+// // THE EVIL WAY
+// sum = eval(addThese1.join("+"));
+// console.log(sum);
+
+
+// // HAD TO USE FOR LOOP TO SEE WHAT I AM DOING WRONG, cause i knw i had to itirate through all index values, and i couldnt figure out how to do it with map
+// for (let i =0; i < addThese1.length; ++i) {
+//     newSumUp += addThese1[i]
+// } 
+// console.log(newSumUpTry01);
+
+// // Apparently ForEach works better than i though it would. no .map instead .forEach
+const sumThatThingUp = (newSumUpArray) => {
+    let newSumUpTry = 0;
+    newSumUpArray.forEach(value => {
+        newSumUpTry += value;
+    })
+    return newSumUpTry;
+}
 console.log(sumThatThingUp(addThese1));
 console.log(sumThatThingUp(addThese2));
-//5 Create a function that takes in an array of numbers and returns the index of the largest number.
-// const indexHighestNumber = [1, 4, 2, 3]
-// // output: 1
+
+
+// 5 Create a function that takes in an array of numbers and returns the index of the largest number.
+const indexHighestNumber = [1, 4, 2, 3]
+// output: 1
 
 // 🏔 Stretch Goals
 //6 Create a function that takes in two arrays and returns one array with no duplicate values.

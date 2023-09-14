@@ -258,8 +258,8 @@ console.log("=================================")
 console.log("CHALLENG NUMER 6")
 console.log("=================================")
 
-💡 Challenge: Light Bulb
-As a developer, you are tasked with creating a light switch application. The application will display an image of a lightbulb and corresponding switch. When the user clicks the switch the images will toggle between a light switch and bulb that are "off" and a light switch and bulb that are "on".
+// 💡 Challenge: Light Bulb
+// As a developer, you are tasked with creating a light switch application. The application will display an image of a lightbulb and corresponding switch. When the user clicks the switch the images will toggle between a light switch and bulb that are "off" and a light switch and bulb that are "on".
 
 // 📚 User Stories
 // As a user, I can see a square box on the screen with a black border and a white background.
@@ -283,8 +283,3 @@ As a developer, you are tasked with creating a light switch application. The app
 // Switch Off
 // Light On
 // Light Off
-
-
-console.log("=================================")
-console.log("CHALLENG NUMER 6")
-console.log("=================================")
