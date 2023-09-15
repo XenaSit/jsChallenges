@@ -88,24 +88,36 @@ console.log(largestOfThemAll(testArr2)); //13
 
 //6 Create a function that takes in two arrays and returns one array with no duplicate values.
 
-var arr1 = [3, 7, 10, 5, 4, 3, 3]
-var arr2 = [7, 8, 2, 3, 1, 5, 4]
+var arrTask61 = [3, 7, 10, 5, 4, 3, 3]
+var arrTask62 = [7, 8, 2, 3, 1, 5, 4]
 // output: [3, 7, 10, 5, 4, 8, 2, 1]
-// const duplicatesIncluded = arr1 + arr2
+const duplicatesIncluded = arrTask61.concat(arrTask62)
 // console.log(duplicatesIncluded());
-const takeOutTheDuplex = (array1, array2) => {
-    console.log(takeOutTheDuplex);
-    return array1.concat(array2)
+const takeOutTheDuplex = (duplex) => {
+    return duplex.filter((value, index) => {
+        return duplex.indexOf(value) == index
+    })
 } 
-// console.log(takeOutTheDuplex());
-// 7 Create a function that takes in two numbers as arguments and returns an array the length of the first number filled with the second number.
-// const arrayLength = 6
-// const arrayValue = 0
-// // output: [0, 0, 0, 0, 0, 0]
+console.log(takeOutTheDuplex(duplicatesIncluded));
 
+
+
+// 7 Create a function that takes in two numbers as arguments and returns an array the length of the first number filled with the second number.
+
+const arrayLength = 6
+const arrayValue = 0
+// // output: [0, 0, 0, 0, 0, 0]
 // const arrayLength = 4
 // const arrayValue = 11
 // // output: [11, 11, 11, 11]
+
+let arrayValueLeangthBreakMyMind = (mylength, value) => {
+    if mylength = number  {
+        return array.leangth}
+}
+
+console.log(arrayValueLeangthBreakMyMind(arrayLength, arrayValue));
+
 // 8 Create a function that takes a number as an argument. Add up all the numbers from 1 to the number you passed to the function.
 // const addUp1 = 4
 // // 1 + 2 + 3 + 4 = 10
@@ -138,7 +150,7 @@ console.log("=================================")
 // 💻 Challenges
 
 // 13 Create a function that takes in an array of numbers and returns an array with all numbers multiplied by 10.
-const arr1 = [3, 9, 15, 4, 10]
+// const arr1 = [3, 9, 15, 4, 10]
 // // output: [30, 90, 150, 40, 100]
 
 // 14 Create a function that takes in an array of numbers and returns an array with all numbers divided by two.
