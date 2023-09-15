@@ -111,11 +111,29 @@ const arrayValue = 0
 // const arrayValue = 11
 // // output: [11, 11, 11, 11]
 
-let arrayValueLeangthBreakMyMind = (mylength, myvalue, storageBox) => {
-        return storageBox.forEach(mylength, myvalue)
-}
+// making a function that takes in 2 parameters and passes it into a new array
+// lets make a function that akes in 2 parameters
+// let arrayValueLeangthBreakMyMind = (mylength, myvalue) => {
+//         // return a new array where when it loops through each value in the given array it returns god knows what, nothing, it returns absolutly nothing. Not true . TypeError: Cannot read properties of undefined (reading 'forEach'). Naturally!how would it reach the properties if it doesn't even know wtf i am saying. 
+//         // return storageBox.forEach(mylength, myvalue); // no work}
+//         // #########################################################
+//         // take 2 arrays pass parameters for length and value
+//         // naturally, we take an empty array, becuase we need something what we will alter and return
+//         // here is the logic:
+var newArr = [] // storage array
+console.log(newArr.length); //0
+//         let mylength = arrayLength; // give value of a length
+//         let myvalue = arrayValue; // give value to the elements
+//         let newArr(arrayLength) // give new array new length
+//         let newArr[arrayValue] // give new array new value to each index
+//         return newArr // return the array "so fresh and so clean"
+        
 
-console.log(arrayValueLeangthBreakMyMind(arrayLength, arrayValue));
+// }
+// let newArr.length = arrayLength
+let arrayLength = newArr.length
+console.log(newArr)
+// console.log(arrayValueLeangthBreakMyMind(arrayLength, arrayValue));
 
 // 8 Create a function that takes a number as an argument. Add up all the numbers from 1 to the number you passed to the function.
 // const addUp1 = 4
