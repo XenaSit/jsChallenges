@@ -104,15 +104,45 @@ console.log(takeOutTheDuplex(duplicatesIncluded));
 
 // 7 Create a function that takes in two numbers as arguments and returns an array the length of the first number filled with the second number.
 
-const arrayLength = 6
-const arrayValue = 0
+const arrayLength1 = 6
+const arrayValue1 = 0
 // // output: [0, 0, 0, 0, 0, 0]
-// const arrayLength = 4
-// const arrayValue = 11
+const arrayLength2 = 4
+const arrayValue2 = 11
 // // output: [11, 11, 11, 11]
 
-// making a function that takes in 2 parameters and passes it into a new array
-// lets make a function that akes in 2 parameters
+
+// // function name playArray 
+// // input: 2 numbers 
+// // output: array the length of the first number filled with the second number
+// // process: for loop for iteration to create a number of values and push into array
+// // create an empty array where we push the values
+
+// // function that Charlean helped me build:
+const playArray = (length, value) => {
+    let storageArr = []
+    for (i = 0; i < length; i++) {
+        storageArr.push(value)
+    }
+    return storageArr
+}
+
+// const playArray = (lengthOne, valueTwo) => {
+//     console.log(lengthOne, valueTwo);
+//         var newArr = [] // storage array
+//         return newArr.push(valueTwo)
+// }
+// OUTPUT:
+// 6 0
+// this is the array length: 1
+// 4 11
+// this is the array length: 1
+
+console.log("this is the array length:", playArray(arrayLength1, arrayValue1));
+console.log("this is the array length:", playArray(arrayLength2, arrayValue2));
+// // ####### What i was doing with the problem #7##################################
+// // making a function that takes in 2 parameters and passes it into a new array
+// // lets make a function that takes in 2 parameters
 // let arrayValueLeangthBreakMyMind = (mylength, myvalue) => {
 //         // return a new array where when it loops through each value in the given array it returns god knows what, nothing, it returns absolutly nothing. Not true . TypeError: Cannot read properties of undefined (reading 'forEach'). Naturally!how would it reach the properties if it doesn't even know wtf i am saying. 
 //         // return storageBox.forEach(mylength, myvalue); // no work}
@@ -120,32 +150,41 @@ const arrayValue = 0
 //         // take 2 arrays pass parameters for length and value
 //         // naturally, we take an empty array, becuase we need something what we will alter and return
 //         // here is the logic:
-var newArr = [] // storage array
-console.log(newArr.length); //0
+// var newArr = [] // storage array
+// console.log(newArr.length); //0
 //         let mylength = arrayLength; // give value of a length
 //         let myvalue = arrayValue; // give value to the elements
 //         let newArr(arrayLength) // give new array new length
 //         let newArr[arrayValue] // give new array new value to each index
 //         return newArr // return the array "so fresh and so clean"
-        
-
 // }
-// let newArr.length = arrayLength
-let arrayLength = newArr.length
-console.log(newArr)
+// // let newArr.length = arrayLength
+// // let arrayLength = newArr.length
+// console.log(newArr)
 // console.log(arrayValueLeangthBreakMyMind(arrayLength, arrayValue));
 
+
+
+
+
 // 8 Create a function that takes a number as an argument. Add up all the numbers from 1 to the number you passed to the function.
-// const addUp1 = 4
-// // 1 + 2 + 3 + 4 = 10
-// // output: 10
+const addUp1 = 4
+// 1 + 2 + 3 + 4 = 10
+// output: 10
 
-// const addUp2 = 10
-// // 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 = 55
-// // output: 55
 
-// const addUp3 = 600
-// // output: 180300
+
+const addUp2 = 10
+// 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 = 55
+// output: 55
+
+const addUp3 = 600
+// output: 180300
+
+
+
+
+
 // 🏔 Epic Goals
 // 9 Create a function called highLow that takes in a number and returns whether the number is higher or lower than the "answer".
 // 10 Create an HTML page and link your JavaScript file. More info here.
