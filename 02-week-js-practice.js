@@ -111,9 +111,8 @@ const arrayValue = 0
 // const arrayValue = 11
 // // output: [11, 11, 11, 11]
 
-let arrayValueLeangthBreakMyMind = (mylength, value) => {
-    if mylength = number  {
-        return array.leangth}
+let arrayValueLeangthBreakMyMind = (mylength, myvalue, storageBox) => {
+        return storageBox.forEach(mylength, myvalue)
 }
 
 console.log(arrayValueLeangthBreakMyMind(arrayLength, arrayValue));
