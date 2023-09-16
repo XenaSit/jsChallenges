@@ -171,20 +171,34 @@ console.log("this is the array length:", playArray(arrayLength2, arrayValue2));
 const addUp1 = 4
 // 1 + 2 + 3 + 4 = 10
 // output: 10
-
-
-
 const addUp2 = 10
 // 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 = 55
 // output: 55
-
 const addUp3 = 600
 // output: 180300
+// ##################used an example of adding each number in the array not one number
+// const addUpArrayOfNumberes = (array) => {
+//   // console.log("that's new:", numArr, length);
+//   let storageArr = 0
+//   array.forEach(value => {
+//       storageArr += value;
+//   }) 
+//   return storageArr
+// }
+
+const addUpArrayOfNumberes = (length, numArr) => {
+    // console.log("that's new:", numArr, length);
+    let storageArr = []
+    for (let i=0; i<length; i++) {
+        storageArr.push(numArr) 
+    }
+    return storageArr
+}
 
 
-
-
-
+console.log(addUpArrayOfNumberes(addUp1));
+console.log(addUpArrayOfNumberes(addUp2));
+console.log(addUpArrayOfNumberes(addUp3));
 // 🏔 Epic Goals
 // 9 Create a function called highLow that takes in a number and returns whether the number is higher or lower than the "answer".
 // 10 Create an HTML page and link your JavaScript file. More info here.
