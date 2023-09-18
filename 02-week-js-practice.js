@@ -118,14 +118,16 @@ const arrayValue2 = 11
 // // process: for loop for iteration to create a number of values and push into array
 // // create an empty array where we push the values
 
-// // function that Charlean helped me build:
+// function that Charlean helped me build:
 const playArray = (length, value) => {
     let storageArr = []
     for (i = 0; i < length; i++) {
         storageArr.push(value)
+        // console.log(storageArr);
     }
     return storageArr
 }
+
 
 // const playArray = (lengthOne, valueTwo) => {
 //     console.log(lengthOne, valueTwo);
@@ -190,11 +192,24 @@ const addUpArrayOfNumberes = (length, numArr) => {
     // console.log("that's new:", numArr, length);
     let storageArr = []
     for (let i=0; i<length; i++) {
-        storageArr.push(numArr) 
+        storageArr.push(length-i) 
+        // this gives array with all numbers - one // q is how to add them
+        // storageArr.forEach(value => {
+            // storageArr +=  (i+1)
+        // })
     }
-    return storageArr
+    console.log(storageArr);
+    return storageArr[i] + storageArr [i+1]
 }
 
+
+// const addUpArrayOfNumberes = (newArr) => {
+//     let storageArr = 0;
+//     newArr.forEach(value => {
+//         storageArr += value;
+//     })
+//     return storageArr;
+// }
 
 console.log(addUpArrayOfNumberes(addUp1));
 console.log(addUpArrayOfNumberes(addUp2));
