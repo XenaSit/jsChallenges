@@ -192,14 +192,14 @@ const addUpArrayOfNumberes = (length, numArr) => {
     // console.log("that's new:", numArr, length);
     let storageArr = []
     for (let i=0; i<length; i++) {
-        storageArr.push(length-i) 
+        storageArr.push(length-i)
         // this gives array with all numbers - one // q is how to add them
         // storageArr.forEach(value => {
             // storageArr +=  (i+1)
         // })
     }
     console.log(storageArr);
-    return storageArr[i] + storageArr [i+1]
+    return storageArr[i] += storageArr [i+1]
 }
 
 
@@ -215,7 +215,9 @@ console.log(addUpArrayOfNumberes(addUp1));
 console.log(addUpArrayOfNumberes(addUp2));
 console.log(addUpArrayOfNumberes(addUp3));
 // 🏔 Epic Goals
+
 // 9 Create a function called highLow that takes in a number and returns whether the number is higher or lower than the "answer".
+
 // 10 Create an HTML page and link your JavaScript file. More info here.
 
 // 11 As a user, I see a prompt or input where I can guess a number between 1 and 100 (both inclusive).
