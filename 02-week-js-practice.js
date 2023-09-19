@@ -140,8 +140,8 @@ const playArray = (length, value) => {
 // 4 11
 // this is the array length: 1
 
-console.log("this is the array length:", playArray(arrayLength1, arrayValue1));
-console.log("this is the array length:", playArray(arrayLength2, arrayValue2));
+console.log(playArray(arrayLength1, arrayValue1));
+console.log(playArray(arrayLength2, arrayValue2));
 // // ####### What i was doing with the problem #7##################################
 // // making a function that takes in 2 parameters and passes it into a new array
 // // lets make a function that takes in 2 parameters
@@ -188,18 +188,20 @@ const addUp3 = 600
 //   return storageArr
 // }
 
-const addUpArrayOfNumberes = (length, numArr) => {
+const addUpArrayOfNumberes = (length) => {
     // console.log("that's new:", numArr, length);
     let storageArr = []
+    let count = 0
     for (let i=0; i<length; i++) {
         storageArr.push(length-i)
         // this gives array with all numbers - one // q is how to add them
         // storageArr.forEach(value => {
             // storageArr +=  (i+1)
         // })
+        count += storageArr[i]
     }
-    console.log(storageArr);
-    return storageArr[i] += storageArr [i+1]
+    return count
+    // console.log(storageArr);
 }
 
 
