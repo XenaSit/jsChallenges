@@ -1,0 +1,38 @@
+document.getElementById("idHere").value
+document.getElementById("idHere").innerHTML
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+
+// Create an HTML page
+// Create the boilerplate DOCTYPE
+// Add a form
+// Add a button
+// Add a place for the output to display
+// Create a JavaScript file
+// Create a function called greeter
+// Linking the JS to HTML
+// Getting the HTML property (getElementBy....Id, Class, TagName, etc)
+// DOM events - onclick, onmouseup, onmousedown, many more
+// Add the script tag to HTML body to import the JS file
+
+  <body>
+    <h1>My greeter page</h1>
+
+const greeter = () => {
+    let userName = document.getElementById("user-input").value
+    document.getElementById("output").innerHTML = `Welcome, ${userName}!`
+  }
+    
+    <input type="text" id="user-input">
+    <button type="button" name="button" onclick="greeter()">Click me!</button>
+    <h3 id="output"></h3>
+    <script type="text/javascript" src="greeter.js"></script>
+  </body>
+
+</html>
+
