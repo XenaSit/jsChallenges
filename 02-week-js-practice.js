@@ -242,8 +242,13 @@ console.log("=================================")
 // 💻 Challenges
 
 // 13 Create a function that takes in an array of numbers and returns an array with all numbers multiplied by 10.
-// const arr1 = [3, 9, 15, 4, 10]
-// // output: [30, 90, 150, 40, 100]
+const arr1 = [3, 9, 15, 4, 10]
+// output: [30, 90, 150, 40, 100]
+
+const mutipleByTen = (arr) => {
+    return arr * 10
+}
+console.log(mutipleByTen(arr1));
 
 // 14 Create a function that takes in an array of numbers and returns an array with all numbers divided by two.
 // const arr1 = [3, 9, 15, 4, 10]
