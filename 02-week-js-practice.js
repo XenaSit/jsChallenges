@@ -246,17 +246,37 @@ const arr1 = [3, 9, 15, 4, 10]
 // output: [30, 90, 150, 40, 100]
 
 const mutipleByTen = (arr) => {
-    return arr * 10
+    return arr.map((value) => {
+        return value * 100
+    })
 }
 console.log(mutipleByTen(arr1));
 
 // 14 Create a function that takes in an array of numbers and returns an array with all numbers divided by two.
-// const arr1 = [3, 9, 15, 4, 10]
-// // output: [1.5, 4.5, 7.5, 2, 5]
+const arr2 = [3, 9, 15, 4, 10]
+// output: [1.5, 4.5, 7.5, 2, 5]
+
+const devideByTwo = (arr) => {
+    return arr.map((value) => {
+        return value / 2
+    })
+}
+console.log(devideByTwo(arr2));
 
 // 15 Create a function that takes in an array of numbers and returns an array with only odd numbers.
-// const arr2 = [2, 7, 3, 5, 8, 10, 13, -9]
+const arr3 = [2, 7, 3, 5, 8, 10, 13, -9]
 // // output: [7, 3, 5, 13, -9]
+
+const beOddAsTodd = (arr) => {
+    return arr.forEach((value) => {
+        storageCase = []
+        if (value % 2 === 1) {
+            return storageCase.push(value)
+            // return storageCase
+        } else { "don't" }
+    })
+}
+console.log(beOddAsTodd(arr3));
 
 // 16 Create a function that takes in a string of multiple words and returns an array with only the words that have an odd number of characters.
 // const pumbaa =
