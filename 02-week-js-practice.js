@@ -281,17 +281,47 @@ const beOddAsTodd = (arr) => {
 console.log("15:", beOddAsTodd(arr3));
 
 // 16 Create a function that takes in a string of multiple words and returns an array with only the words that have an odd number of characters.
-// const pumbaa =
-//   "Hakuna Matata what a wonderful phrase Hakuna Matata ain't no passing craze"
-// // output: ["a", "wonderful", "ain't", "passing", "craze"]
 
+const pumbaa = "Hakuna Matata what a wonderful phrase Hakuna Matata ain't no passing craze"
+// output: ["a", "wonderful", "ain't", "passing", "craze"]
+
+const hakunaNotMatata = (string) => {
+    // return string.length // 74 
+    let pumbaaRocks =  string.split(' ') //12
+    return pumbaaRocks.filter((value, i) => {
+        // console.log("total:", value, i);
+        if (value.length % 2 === 1) {
+            return i
+        }
+    })
+
+}
+// console.log(pumbaa.split(' ').length);
+
+console.log("16:", hakunaNotMatata(pumbaa));
 
 
 
 
 // 17 Create a function that takes in an array of numbers and letters and returns a string with only the letters. HINT: Use the typeof operator.
-// const comboArr = [7, "n", "i", "c", 10, "e", false, "w", 3, "o", "r", "k"]
+const comboArrArr = [7, "n", "i", "c", 10, "e", false, "w", 3, "o", "r", "k"]
 // // output: "nicework"
+
+const typeOfNiceWork = (array) => {
+    if (typeof array === 'string') {
+        return array
+    }
+}
+
+console.log("17:", typeOfNiceWork(comboArrArr));
+
+// const thatIsNiceWork1 = (arrayType) => {
+//     return arrayType.filter((wordsIspeak) => {
+//         return typeof wordsIspeak === 'string'
+//     })
+// }
+// let wordsIdontSpeak1 = thatIsNiceWork1(comboArr).join('')
+// console.log(wordsIdontSpeak1)
 
 // 18 Create a function that takes in an array and returns an array without any false, null, 0, or blank values.
 // const filterArrayValues = [58, "", "abcd", true, null, false, 0]
