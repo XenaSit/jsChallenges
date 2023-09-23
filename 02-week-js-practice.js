@@ -250,7 +250,7 @@ const mutipleByTen = (arr) => {
         return value * 100
     })
 }
-console.log(mutipleByTen(arr1));
+console.log("13:", mutipleByTen(arr1));
 
 // 14 Create a function that takes in an array of numbers and returns an array with all numbers divided by two.
 const arr2 = [3, 9, 15, 4, 10]
@@ -261,27 +261,33 @@ const devideByTwo = (arr) => {
         return value / 2
     })
 }
-console.log(devideByTwo(arr2));
+console.log("14:", devideByTwo(arr2));
 
 // 15 Create a function that takes in an array of numbers and returns an array with only odd numbers.
 const arr3 = [2, 7, 3, 5, 8, 10, 13, -9]
 // // output: [7, 3, 5, 13, -9]
 
 const beOddAsTodd = (arr) => {
-    return arr.forEach((value) => {
-        storageCase = []
-        if (value % 2 === 1) {
-            return storageCase.push(value)
-            // return storageCase
-        } else { "don't" }
+    return arr.filter((value) => {
+        // storageCase = []
+        // return value % 2 === 1
+        if (value % 2 === 1 || value % 2 === -1) {
+            return value
+        }
+        //  else { return value.reduce }
+        // return arr
     })
 }
-console.log(beOddAsTodd(arr3));
+console.log("15:", beOddAsTodd(arr3));
 
 // 16 Create a function that takes in a string of multiple words and returns an array with only the words that have an odd number of characters.
 // const pumbaa =
 //   "Hakuna Matata what a wonderful phrase Hakuna Matata ain't no passing craze"
 // // output: ["a", "wonderful", "ain't", "passing", "craze"]
+
+
+
+
 
 // 17 Create a function that takes in an array of numbers and letters and returns a string with only the letters. HINT: Use the typeof operator.
 // const comboArr = [7, "n", "i", "c", 10, "e", false, "w", 3, "o", "r", "k"]
