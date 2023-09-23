@@ -308,13 +308,16 @@ const comboArrArr = [7, "n", "i", "c", 10, "e", false, "w", 3, "o", "r", "k"]
 // // output: "nicework"
 
 const typeOfNiceWork = (array) => {
-    if (typeof array === 'string') {
-        return array
-    }
+    return array.filter((value) => {
+        if (typeof value === 'string') {
+            return value
+        }
+        // return value.join('')
+    })
 }
 
 console.log("17:", typeOfNiceWork(comboArrArr));
-
+// console.log(comboArrArr.join(''));
 // const thatIsNiceWork1 = (arrayType) => {
 //     return arrayType.filter((wordsIspeak) => {
 //         return typeof wordsIspeak === 'string'
