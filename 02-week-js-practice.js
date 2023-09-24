@@ -308,11 +308,11 @@ const comboArrArr = [7, "n", "i", "c", 10, "e", false, "w", 3, "o", "r", "k"]
 // // output: "nicework"
 
 const typeOfNiceWork = (array) => {
-    return array.filter((value) => {
+    return array.filter((value, index) => {
         if (typeof value === 'string') {
-            return value
+            return array.join('')
         }
-        array.join(' ')
+        // return array
     })
 }
 
