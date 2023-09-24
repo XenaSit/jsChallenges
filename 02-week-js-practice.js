@@ -310,13 +310,12 @@ const comboArrArr = [7, "n", "i", "c", 10, "e", false, "w", 3, "o", "r", "k"]
 const typeOfNiceWork = (array) => {
     return array.filter((value, index) => {
         if (typeof value === 'string') {
-            return array.join('')
+            return array.join('+')
         }
         // return array
     })
 }
-
-console.log("17:", typeOfNiceWork(comboArrArr));
+console.log("17:", typeOfNiceWork(comboArrArr).join(''))
 // console.log(comboArrArr.join(''));
 // const thatIsNiceWork1 = (arrayType) => {
 //     return arrayType.filter((wordsIspeak) => {
@@ -327,13 +326,33 @@ console.log("17:", typeOfNiceWork(comboArrArr));
 // console.log(wordsIdontSpeak1)
 
 // 18 Create a function that takes in an array and returns an array without any false, null, 0, or blank values.
-// const filterArrayValues = [58, "", "abcd", true, null, false, 0]
+const filterArrayValues = [58, "", "abcd", true, null, false, 0]
 // // output: [58, "abcd", true]
+const returnGood = (value) => {
+    return value.filter((notEqual) => {
+        return notEqual !== false && notEqual !== null && notEqual !== 0 && notEqual !== ""    
+    })
+}
+console.log("18:", returnGood(filterArrayValues));
 
 // 19 Create a function that takes in an array of strings and returns an array of strings with every other letter capitalized.
-// const makesWackyWords = ["simba", "nala", "zazu", "rafiki"]
+const makesWackyWords = ["simba", "nala", "zazu", "rafiki"]
 // // output: ["sImBa", "nAlA", "zAzU", "rAfIkI"]
 
+const everyOtherCap = (letters) => {
+    // newArr = []
+    // for (var i = 0; i < letters.length; i++) {
+    //     if (letters % 2 !== 1) {
+    //       return letters[i].toUpperCase();
+    //     //   return newArr.push(letters);
+    //     }
+    return letters.indexOf((element) => {
+        if (element.forEach(element.length) % 2 === 1) {
+            return element.toUpperCase()
+        }     
+    })
+}
+console.log("19:", everyOtherCap(makesWackyWords));
 // 20 Create a function that takes in a string and returns a new string with all the vowels removed.
 // const str = "javascript is awesome"
 // // output: "jvscrpt s wsm"
