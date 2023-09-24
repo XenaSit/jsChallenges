@@ -1,6 +1,6 @@
 // 💻 Challenge: React Components
 console.log("=================================")
-console.log("CHALLENG NUMER 6")
+console.log("CHALLENG NUMER 1")
 console.log("=================================")
 
 // The goal of the following challenge is for us to practice nesting components and getting familiar with the component syntax.
@@ -42,7 +42,7 @@ console.log("=================================")
 // As a user, I can see a Footer component with your name.
 
 console.log("=================================")
-console.log("CHALLENG NUMER 6")
+console.log("CHALLENG NUMER 2")
 console.log("=================================")
 
 // ⭐️ Challenge: Favorites
@@ -57,7 +57,7 @@ console.log("=================================")
 // As a user, I can see a browser tab with a customized name and favicon.
 
 console.log("=================================")
-console.log("CHALLENG NUMER 6")
+console.log("CHALLENG NUMER 3")
 console.log("=================================")
 
 // 🟧 Challenge: Color Box
@@ -79,7 +79,7 @@ console.log("=================================")
 
 
 console.log("=================================")
-console.log("CHALLENG NUMER 6")
+console.log("CHALLENG NUMER 4")
 console.log("=================================")
 
 // 🐽 Pig Latin Challenge
@@ -139,7 +139,7 @@ console.log("=================================")
 // Third team member (if applicable): How did you manage the workflow in a group of three?
 
 console.log("=================================")
-console.log("CHALLENG NUMER 6")
+console.log("CHALLENG NUMER 5")
 console.log("=================================")
 
 // 🎲 Challenge: Dice Roller
@@ -185,7 +185,7 @@ console.log("=================================")
 // As a user, I can see an image of my food selection on the menu.
 
 console.log("=================================")
-console.log("CHALLENG NUMER 6")
+console.log("CHALLENG NUMER 7")
 console.log("=================================")
 
 // 📚 User Stories
@@ -206,7 +206,7 @@ console.log("=================================")
 // As a developer, I have my application deployed as a live website.
 
 console.log("=================================")
-console.log("CHALLENG NUMER 6")
+console.log("CHALLENG NUMER 8")
 console.log("=================================")
 
 // 📚 User Stories
@@ -231,7 +231,7 @@ console.log("=================================")
 
 
 console.log("=================================")
-console.log("CHALLENG NUMER 6")
+console.log("CHALLENG NUMER 9")
 console.log("=================================")
 
 // 📚 User Stories
@@ -255,7 +255,7 @@ console.log("=================================")
 // As a developer, I have my application deployed as a live website.
 
 console.log("=================================")
-console.log("CHALLENG NUMER 6")
+console.log("CHALLENG NUMER 10")
 console.log("=================================")
 
 // 💡 Challenge: Light Bulb

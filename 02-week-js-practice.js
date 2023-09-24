@@ -339,20 +339,26 @@ console.log("18:", returnGood(filterArrayValues));
 const makesWackyWords = ["simba", "nala", "zazu", "rafiki"]
 // // output: ["sImBa", "nAlA", "zAzU", "rAfIkI"]
 
-const everyOtherCap = (letters) => {
-    // newArr = []
+function everyOtherCap(letters) {
+    // console.log("letters", letters, "length:", letters.length); // letters [ 'simba', 'nala', 'zazu', 'rafiki' ] length: 4
     // for (var i = 0; i < letters.length; i++) {
-    //     if (letters % 2 !== 1) {
-    //       return letters[i].toUpperCase();
+    //     // letters.split('')
+    //     if (letters.length % 2 === 1) {
+    //       return letters.forEach(i).toUpperCase();
     //     //   return newArr.push(letters);
     //     }
-    return letters.indexOf((element) => {
-        if (element.forEach(element.length) % 2 === 1) {
+    // }
+    return letters.map((element, index) => {
+        // console.log("element:", element, element.length, "index:", index);
+        if (element.length % 2 === 1){
             return element.toUpperCase()
-        }     
+        } // 19: [ 'SIMBA', undefined, undefined, undefined ]
     })
 }
+
 console.log("19:", everyOtherCap(makesWackyWords));
+
+
 // 20 Create a function that takes in a string and returns a new string with all the vowels removed.
 // const str = "javascript is awesome"
 // // output: "jvscrpt s wsm"
