@@ -312,7 +312,7 @@ const typeOfNiceWork = (array) => {
         if (typeof value === 'string') {
             return value
         }
-        // return value.join('')
+        array.join(' ')
     })
 }
 
