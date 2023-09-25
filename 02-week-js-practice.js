@@ -348,12 +348,13 @@ function everyOtherCap(letters) {
     //     //   return newArr.push(letters);
     //     }
     // }
-    return letters.map((element, index) => {
-        // console.log("element:", element, element.length, "index:", index);
-        if (element.length % 2 === 1){
-            return element.toUpperCase()
+    return letters.forEach((element, index) => {
+
+        console.log("element:", element.split(''), element.length, "index:", index);
+        // let newString = 
+        return element.toUpperCase(element.split('') % 2 === 0)
         } // 19: [ 'SIMBA', undefined, undefined, undefined ]
-    })
+    )
 }
 
 console.log("19:", everyOtherCap(makesWackyWords));
