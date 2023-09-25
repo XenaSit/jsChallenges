@@ -348,11 +348,11 @@ function everyOtherCap(letters) {
     //     //   return newArr.push(letters);
     //     }
     // }
-    return letters.forEach((element, index) => {
+    return letters.filter((element, index) => {
 
         console.log("element:", element.split(''), element.length, "index:", index);
-        // let newString = 
-        return element.toUpperCase(element.split('') % 2 === 0)
+        let newString = element.split('') % 2 === 0
+        return element.toUpperCase(newString)
         } // 19: [ 'SIMBA', undefined, undefined, undefined ]
     )
 }
