@@ -364,9 +364,10 @@ console.log("19:", everyOtherCap(makesWackyWords));
 const str = "javascript is awesome"
 // // output: "jvscrpt s wsm"
 
-const removeVowels = (stringIn) => {
-    return stringIn.map((value, index, array) => {
-        return value.replace("a", " ")
+const removeVowels = (string) => {
+    return string.replace((value, index, array) => {
+        if (value == "a" || value =="e")
+        return value
     })
 }
 console.log(removeVowels(str));
