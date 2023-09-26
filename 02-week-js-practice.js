@@ -367,7 +367,7 @@ const removeVowels = (string) => {
     // return string.valueOf((value, index) => {
     //     console.log(value, index);
         // if (value == "a" || value =="e")
-        return string[i] !== "a" || string !== "e"
+        return string.replace('a', '') 
     // })
 }
 console.log(removeVowels(str));
