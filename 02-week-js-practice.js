@@ -364,11 +364,11 @@ const str = "javascript is awesome"
 
 const removeVowels = (string) => {
     console.log(string);
-    // return string.valueOf((value, index) => {
+    return string.replace((value, index) => {
     //     console.log(value, index);
         // if (value == "a" || value =="e")
-        return string.replace('a', '') 
-    // })
+        return value.valueOf('a') 
+    })
 }
 console.log(removeVowels(str));
 // 21 Create a function that takes in a string containing numbers and returns an array with each number at its own index and converted to the data type of number.
