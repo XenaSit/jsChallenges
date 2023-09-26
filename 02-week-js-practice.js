@@ -349,14 +349,12 @@ function everyOtherCap(letters) {
     //     }
     // }
     return letters.filter((element, index) => {
-
         console.log("element:", element.split(''), element.length, "index:", index);
         let newString = element.split('') % 2 === 0
         return element.toUpperCase(newString)
         } // 19: [ 'SIMBA', undefined, undefined, undefined ]
     )
 }
-
 console.log("19:", everyOtherCap(makesWackyWords));
 
 
@@ -365,10 +363,12 @@ const str = "javascript is awesome"
 // // output: "jvscrpt s wsm"
 
 const removeVowels = (string) => {
-    return string.replace((value, index, array) => {
-        if (value == "a" || value =="e")
-        return value
-    })
+    console.log(string);
+    // return string.valueOf((value, index) => {
+    //     console.log(value, index);
+        // if (value == "a" || value =="e")
+        return string[i] !== "a" || string !== "e"
+    // })
 }
 console.log(removeVowels(str));
 // 21 Create a function that takes in a string containing numbers and returns an array with each number at its own index and converted to the data type of number.
