@@ -216,24 +216,7 @@ const addUpArrayOfNumberes = (length) => {
 console.log(addUpArrayOfNumberes(addUp1));
 console.log(addUpArrayOfNumberes(addUp2));
 console.log(addUpArrayOfNumberes(addUp3));
-// 🏔 Epic Goals
 
-// 9 Create a function called highLow that takes in a number and returns whether the number is higher or lower than the "answer".
-
-
-// 10 Create an HTML page and link your JavaScript file. More info here.
-
-
-
-// 11 As a user, I see a prompt or input where I can guess a number between 1 and 100 (both inclusive).
-
-// 11 As a user, I can see if my guess is too high or too low.
-
-// 11 As a user, if I guess the "answer" correctly I am notified that I won.
-
-// 11 As a user, I can continue to guess the "answer" until I am correct.
-
-// 12 STRETCH: As a user, if I have not guessed the correct number in seven tries I see a losing message.
 
 console.log("=================================")
 console.log("CHALLENG NUMER 2")
