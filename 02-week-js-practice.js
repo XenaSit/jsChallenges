@@ -331,13 +331,38 @@ function everyOtherCap(letters) {
     //     //   return newArr.push(letters);
     //     }
     // }
-    return letters.filter((element, index) => {
-        console.log("element:", element.split(''), element.length, "index:", index);
-        let newString = element.split('') % 2 === 0
-        return element.toUpperCase(newString)
-        } // 19: [ 'SIMBA', undefined, undefined, undefined ]
-    )
-}
+//     return letters.filter((element, index) => {
+//         // console.log("element:", element.split(''), element.length, "index:", index);
+//         let newString = element.split('') % 2 === 0
+//         return element.toUpperCase(newString)
+//         } // 19: [ 'SIMBA', undefined, undefined, undefined ]
+//     )
+// // }
+//         var caseStorage = []
+//         return letters.map((element, index) => {
+//             let newString = element.split('')
+//             if (newString.indexOf(newString[index] % 2 === 0)){
+//                 return newString[i] = newString[i].toUpperCase()
+//             }
+//             return caseStorage.push(newString.join(''))
+//         }) // Cannot read properties of undefined (reading 'toUpperCase')
+
+    //     var splitStr = letters.split("")
+    //     console.log(letters.split(""));
+    //     var caseStorage = []
+    //     for (let i=0; i<splitStr.length; i++){
+    //         if (newString.indexOf(newString[index] % 2 === 0)){
+    //             return newString[i] = newString[i].toUpperCase()
+    //         }
+    //     }
+    //     return caseStorage.push(newString.join(''))
+    // } //letters.split is not a function
+    
+        return letters.toString().split('').map((value,index) => 
+        // console.log(value, index)
+            index % 2 !== 1 ? value.toLowerCase(): value.toUpperCase()).join('');
+      } //sImBa,nAlA,ZaZu,rAfIkI
+
 console.log("19:", everyOtherCap(makesWackyWords));
 
 
@@ -346,14 +371,14 @@ const str = "javascript is awesome"
 // // output: "jvscrpt s wsm"
 
 const removeVowels = (string) => {
-    console.log(string);
-    return string.replace((value, index) => {
-    //     console.log(value, index);
-        // if (value == "a" || value =="e")
-        return value.valueOf('a') 
-    })
-}
-console.log(removeVowels(str));
+    // console.log(string);
+    return string.toString().split('').map((value) => {
+        // console.log(value);
+            return value.replace('a', '') && value.replace('e', '')
+        })
+        // return string.join('')
+    }
+console.log("20:", removeVowels(str).join(''));
 // 21 Create a function that takes in a string containing numbers and returns an array with each number at its own index and converted to the data type of number.
 // const stringOfNumbers = "4574328"
 // // output: [4, 5, 7, 4, 3, 2, 8]
