@@ -375,14 +375,19 @@ const removeVowels = (string) => {
     return string.toString().split('').map((value) => {
         // console.log(value);
             return value.replace('a', '') && value.replace('e', '')
-        })
+        }).join('')
         // return string.join('')
     }
-console.log("20:", removeVowels(str).join(''));
-// 21 Create a function that takes in a string containing numbers and returns an array with each number at its own index and converted to the data type of number.
-// const stringOfNumbers = "4574328"
-// // output: [4, 5, 7, 4, 3, 2, 8]
+console.log("20:", removeVowels(str));
 
+// 21 Create a function that takes in a string containing numbers and returns an array with each number at its own index and converted to the data type of number.
+const stringOfNumbers = "4574328"
+// // output: [4, 5, 7, 4, 3, 2, 8]
+const coercionConversion = (string) => {
+    return string.split('').map(Number)
+    // .map(i => Number(i)) // also works
+}
+console.log(coercionConversion(stringOfNumbers));
 // 🏔 Stretch Goals
 
 // 22 Create a function that takes in two arrays as arguments returns one array with no duplicate values.
