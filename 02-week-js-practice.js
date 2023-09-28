@@ -391,10 +391,19 @@ console.log(coercionConversion(stringOfNumbers));
 // 🏔 Stretch Goals
 
 // 22 Create a function that takes in two arrays as arguments returns one array with no duplicate values.
-// const arr1 = [3, 7, 10, 5, 4, 3]
-// const arr2 = [7, 8, 2, 1, 5, 4]
+const arr11 = [3, 7, 10, 5, 4, 3]
+const arr22 = [7, 8, 2, 1, 5, 4]
 // // output: [3, 7, 10, 5, 4, 8, 2, 1]
 
+const duplexOfNumbers = (array1, array2) => {
+    // console.log(array1, array2);
+    let combinedArr = [...array1, ...array2]
+    return combinedArr.filter((value, index) => {
+        // console.log(value, index);
+        return combinedArr.indexOf(value) == index
+    })
+}
+console.log(duplexOfNumbers(arr11, arr22));
 // 23 Create a function that takes in an array of mixed data types and returns the first value that is a string. HINT: look into the JavaScript .find() method.
 // const allTheData = [7, null, true, 2, "yo!", false, 4, "hello!"]
 // // output: "yo!"
