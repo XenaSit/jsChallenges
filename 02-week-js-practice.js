@@ -387,7 +387,7 @@ const coercionConversion = (string) => {
     return string.split('').map(Number)
     // .map(i => Number(i)) // also works
 }
-console.log(coercionConversion(stringOfNumbers));
+console.log("21:", coercionConversion(stringOfNumbers));
 // 🏔 Stretch Goals
 
 // 22 Create a function that takes in two arrays as arguments returns one array with no duplicate values.
@@ -403,10 +403,23 @@ const duplexOfNumbers = (array1, array2) => {
         return combinedArr.indexOf(value) == index
     })
 }
-console.log(duplexOfNumbers(arr11, arr22));
-// 23 Create a function that takes in an array of mixed data types and returns the first value that is a string. HINT: look into the JavaScript .find() method.
-// const allTheData = [7, null, true, 2, "yo!", false, 4, "hello!"]
+console.log("22:", duplexOfNumbers(arr11, arr22));
+
+
+// 23 Create a function that takes in an array of mixed data types and returns the first value that is a string. 
+// HINT: look into the JavaScript .find() method.
+
+
+const allTheData = [7, null, true, 2, "yo!", false, 4, "hello!"]
 // // output: "yo!"
+
+const findTheFisrtValue = (array) => {
+    return array.map((value, index) => {
+        return value.indexOf(index)
+    })
+} 
+console.log(findTheFisrtValue(allTheData));
+
 
 console.log("=================================")
 console.log("CHALLENG NUMER 3")
