@@ -414,8 +414,11 @@ const allTheData = [7, null, true, 2, "yo!", false, 4, "hello!"]
 // // output: "yo!"
 
 const findTheFisrtValue = (array) => {
-    console.log(array);
-    return array.match(String)
+    // console.log(array);
+    return array.map((value, index) => {
+        // console.log(value, index);
+        return value == ''
+    })
     // ((value, index) => {
     //     console.log("sdsdsd:", value, index);
     //     return value.filter('')
