@@ -415,16 +415,15 @@ const allTheData = [7, null, true, 2, "yo!", false, 4, "hello!"]
 
 const findTheFisrtValue = (array) => {
     // console.log(array);
-    return array.map((value, index) => {
-        // console.log(value, index);
-        return value == ''
+    return array.filter((value, index, array) => {
+        // newArr = []
+        if (typeof value == 'string' && value.length < 4) {
+            // console.log("length:", value, index, array);
+            return value
+        }
     })
-    // ((value, index) => {
-    //     console.log("sdsdsd:", value, index);
-    //     return value.filter('')
-    // })
 } 
-console.log(findTheFisrtValue(allTheData));
+console.log("23:", findTheFisrtValue(allTheData));
 
 
 console.log("=================================")
