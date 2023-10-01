@@ -430,16 +430,18 @@ console.log("=================================")
 const person = {
   firstName: "Arthur",
   lastName: "Dent"
+  
 }
 
 
 
 // 37 Write the code that accesses the first name of the person object.
-
+console.log(person.firstName);
 // 38 Write the code that accesses the last name of the person object.
-
+console.log(person.lastName);
 // 39 Write the code that gives the person object a property of homePlanet and set it to 'Earth'.
-
+person.homePlanet = "Earth"
+console.log(person.homePlanet);
 // 40 Update the person object with a method that logs "Arthur Dent is from planet Earth".
 
 // Consider this variable:
