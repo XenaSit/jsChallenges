@@ -476,7 +476,10 @@ const lunch = {
   ingredients: ["bread", "peanut butter", "banana"],
   sayItWithHeart: function() {
     return `The ingredients for a ${this.name} ${this.type} are ${this.ingredients}`
-  }
+    },
+  sayItWithHeartAagin: function() {
+    return `The ingredients for a ${this.name} ${this.type} are ${this.ingredients[0]}, ${this.ingredients[1]}, and ${this.ingredients[2]}`
+    }
 }
 
 // 43 Write the code that accesses the ingredients property.
@@ -486,15 +489,15 @@ console.log(lunch.ingredients[2]);
 // 45 Write a function that takes the lunch object as an argument and returns "The ingredients for a PB and Banana sandwich are bread, peanut butter, and banana."
 console.log(lunch.sayItWithHeart());
 // 46 Update the lunch object with method that returns "The ingredients for a PB and Banana sandwich are bread, peanut butter, and banana."
-
+console.log(lunch.sayItWithHeartAagin());
 // Consider this variable:
 
-// const animals = [
-//   { name: "Waffles", type: "dog", age: 7 },
-//   { name: "Fluffy", type: "cat", age: 14 },
-//   { name: "Spelunky", type: "dog", age: 4 },
-//   { name: "Hank", type: "cat", age: 11 }
-// ]
+const animals = [
+  { name: "Waffles", type: "dog", age: 7 },
+  { name: "Fluffy", type: "cat", age: 14 },
+  { name: "Spelunky", type: "dog", age: 4 },
+  { name: "Hank", type: "cat", age: 11 }
+]
 
 // 47 Create a function that takes in an array of animal objects and returns a new array with only the objects that are cats.
 
