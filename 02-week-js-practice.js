@@ -448,15 +448,25 @@ console.log(person.homePlanet);
 console.log(person.sayItLikeYouMeanIt());
 // Consider this variable:
 
-// const product = {
-//   name: "chair",
-//   price: 24.99
-// }
-
+const product = {
+  name: "chair",
+  price: 24.99,
+  describeProduct: function() {
+    return `The product is a ${this.name}. It costs $ ${this.price}`
+  },
+  totalWithTax: function() {
+    return (this.price * 0.07 + this.price).toFixed(2)
+  },
+  describeProductWithTax: function() {
+    return `The product is a ${this.name}. It costs $ ${this.totalWithTax()}`
+  },
+}
+console.log(product.price);
 // 41 Write a function called describeProduct that takes the product object as an argument and logs "The product is a chair. It costs $24.99".
-
+console.log(product.describeProduct());
 // 42 Write a function called totalWithTax that takes the product object as an argument and returns the total price of the chair that includes a 7% sales tax rounded to two decimals.
-
+console.log(product.totalWithTax());
+console.log(product.describeProductWithTax());
 // Consider this variable:
 
 // const lunch = {
