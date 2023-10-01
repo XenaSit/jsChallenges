@@ -429,8 +429,10 @@ console.log("=================================")
 
 const person = {
   firstName: "Arthur",
-  lastName: "Dent"
-  
+  lastName: "Dent",
+  sayItLikeYouMeanIt: function () {
+    return `${this.firstName} ${this.lastName} is from planet ${this.homePlanet}`
+  }
 }
 
 
@@ -443,7 +445,7 @@ console.log(person.lastName);
 person.homePlanet = "Earth"
 console.log(person.homePlanet);
 // 40 Update the person object with a method that logs "Arthur Dent is from planet Earth".
-
+console.log(person.sayItLikeYouMeanIt());
 // Consider this variable:
 
 // const product = {
