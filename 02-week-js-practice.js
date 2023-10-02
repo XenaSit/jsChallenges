@@ -500,6 +500,21 @@ const animals = [
 ]
 
 // 47 Create a function that takes in an array of animal objects and returns a new array with only the objects that are cats.
+// const onlyCats = (object, key, value) => {
+//     console.log(object, key, value);
+//     if (key.value == "cat"){
+//         return object
+//     }
+// }
+
+// for (const [name, type, age] of Object.entries(animals)) {
+//     if (type === "cat") {
+//       console.log(animals.Object);
+//     }
+//   }
+
+// console.log(Object.values(animals));
+console.log(animals['cat']);
 
 // 48 Create a function that takes in an array of animal objects and returns a new array with only the names of the animals.
 
