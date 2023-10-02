@@ -514,7 +514,14 @@ const animals = [
 //   }
 
 // console.log(Object.values(animals));
-console.log(animals['cat']);
+// console.log(animals['cat']);
+
+var nameArray = animals.map(function (el) { 
+    if (el.type == 'cat') {
+        return el
+    }; 
+}).filter(Boolean)
+console.log(nameArray);
 
 // 48 Create a function that takes in an array of animal objects and returns a new array with only the names of the animals.
 
