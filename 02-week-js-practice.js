@@ -532,6 +532,13 @@ console.log(nameValues);
 
 // 49 Create a function that takes in an array of animal objects and returns a new array of the names of the animals that are more than 10 years old.
 
+var ageArray = animals.map(function (el) { 
+    if (el.age > 10) {
+        return el.name
+    }; 
+}).filter(Boolean)
+console.log(ageArray);
+
 // 50 Create a function that takes in an array of animal objects and returns a new array with a sentence about each animal.
 
 // Consider this variable:
