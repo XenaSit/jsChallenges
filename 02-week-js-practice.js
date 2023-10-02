@@ -525,6 +525,11 @@ console.log(nameArray);
 
 // 48 Create a function that takes in an array of animal objects and returns a new array with only the names of the animals.
 
+const nameValues = animals.map(function (value) {
+    return value.name
+})
+console.log(nameValues);
+
 // 49 Create a function that takes in an array of animal objects and returns a new array of the names of the animals that are more than 10 years old.
 
 // 50 Create a function that takes in an array of animal objects and returns a new array with a sentence about each animal.
