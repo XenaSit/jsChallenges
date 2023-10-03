@@ -541,12 +541,17 @@ console.log(ageArray);
 
 // 50 Create a function that takes in an array of animal objects and returns a new array with a sentence about each animal.
 
+const sayWhatYouSay = animals.map(function (value) {
+    return `the ${value.name} is a ${value.type} that is ${value.age} years old`
+});
+
+console.log(sayWhatYouSay);
 // Consider this variable:
 
-// const author = {
-//   name: "H. G. Wells",
-//   genre: "science fiction"
-// }
+const author = {
+  name: "H. G. Wells",
+  genre: "science fiction"
+}
 
 // 51 Write the code that destructures the author object so that the following code snippet will run successfully:
 
