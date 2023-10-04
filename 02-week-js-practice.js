@@ -572,16 +572,19 @@ const pokeTwo = {
   pokemon_type: "Water"
 }
 
+const {species, pokemon_type} = pokeOne
+
 // 52 Create a function called describePokemon that take an object like the ones above and uses destructuring to return a description of the Pokemon so that the following code snippet will run successfully:
 
-const describePokemon = pokeOne.map(function (value) {
-    return `${value.species} is a ${value.pokemon_type} `
-});
+const describePokemon = (obj) => {
+    return `${obj.species} is a ${obj.pokemon_type} `
+}
+
 
 console.log(describePokemon(pokeOne))
 // // output: "Charmandar is a Fire pokemon"
 
-// console.log(describePokemon(pokeTwo))
+console.log(describePokemon(pokeTwo))
 // // output: "Magikarp is a Water pokemon"
 
 // Consider this variable:
