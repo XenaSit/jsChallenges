@@ -604,18 +604,21 @@ console.log(triangleDimensions.base * triangleDimensions.height * 1/2);
 triangleDimensions['base'] = 6; 
 
 console.log(triangleDimensions.base * triangleDimensions.height * 1/2);
-
 // 🏔 Stretch Goals
 // Consider this variable:
-
-// const learn = {
-//   cohorts: {
-//     2022: ["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel"],
-//     2023: ["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliet"]
-//   }
-// }
-
+const learn = {
+  cohorts: {
+    2022: ["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel"],
+    2023: ["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliet"]
+  }
+}
 // 55 Write the code that logs the name of your cohort.
+console.log(learn.cohorts[2023][5]);
+//  learn.find(cohorts.items, function(item) {
+//     return item.id === 1;
+//   });
+//   console.log(learn);
+  // Object {id: 2, name: "bar"}
 
 // 55 Write the code that uses destructuring to log the name of your cohort.
 
