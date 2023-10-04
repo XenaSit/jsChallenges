@@ -579,8 +579,6 @@ const {species, pokemon_type} = pokeOne
 const describePokemon = (obj) => {
     return `${obj.species} is a ${obj.pokemon_type} `
 }
-
-
 console.log(describePokemon(pokeOne))
 // // output: "Charmandar is a Fire pokemon"
 
@@ -589,14 +587,23 @@ console.log(describePokemon(pokeTwo))
 
 // Consider this variable:
 
-// const triangleDimensions = {
-//   base: 2,
-//   height: 5
-// }
+const triangleDimensions = {
+  base: 2,
+  height: 5
+}
 
 // 53 Modify the triangleDimensions object to have a method that returns the area of the triangle.
 
+// const {base, height} = triangleDimensions
+
+
+console.log(triangleDimensions.base * triangleDimensions.height * 1/2);
+
 // 54 Write the code that will update the base to be the value of 6.
+
+triangleDimensions['base'] = 6; 
+
+console.log(triangleDimensions.base * triangleDimensions.height * 1/2);
 
 // 🏔 Stretch Goals
 // Consider this variable:
