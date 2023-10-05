@@ -621,15 +621,15 @@ const {cohorts} = learn
 console.log(cohorts[2023][5]);
 
 // 56 Create a function that takes an object like the one above and returns an array with a string of every cohort name and year.
-const getKeyValue = learn.map(function (el){
-    return `${Object.keys(cohorts)} and ${el}`
+const getKeyValue = cohorts.forEach(function (el) {
+    return `${Object.entries(el)} ${Object.keys(el)}`
 })
-console.log(getKeyValue(cohorts));
+console.log(getKeyValue());
 // Object.keys(learn).forEach(([key, value]) => console.log(Object.keys()+" "+(Object.values(key))))
 
     // console.log(Object.keys(cohorts));
     // console.log(Object.values(cohorts));
-    // console.log(Object.entries(cohorts));
+    console.log(Object.entries(cohorts));
 
 // // output: ["2022 Alpha", "2022 Bravo", "2022 Charlie", "2022 Delta", "2022 Echo", "2022 Foxtrot", "2022 Golf", "2022 Hotel", "2023 Alpha", "2023 Bravo", "2023 Charlie", "2023 Delta", "2023 Echo", "2023 Foxtrot", "2023 Golf", "2023 Hotel", "2023 India", "2023 Juliet"]
 
