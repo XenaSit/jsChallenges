@@ -613,27 +613,31 @@ const learn = {
   }
 }
 // 55 Write the code that logs the name of your cohort.
-console.log("55:", learn.cohorts[2023][5]);
+console.log("55a:", learn.cohorts[2023][5]);
 
 // 55 Write the code that uses destructuring to log the name of your cohort.
 
 const {cohorts} = learn
-console.log("55:", cohorts[2023][5]);
+console.log("55b:", cohorts[2023][5]);
 
 // 56 Create a function that takes an object like the one above and returns an array with a string of every cohort name and year.
 
-const getKeyValue = Object.entries(cohorts).forEach( (key, value) => {
-    // return key + value
-    console.log(key + value);
-})
-
-
+// Object.entries(cohorts).map( (key, value) => {
+//     // return key + value
+//     // for (let i = 0; i < value.length; i++){
+        
+//         return value + key[i]
+//     // }
+// })
+console.log(Object.values(Object.keys([1]) + Object.values(cohorts[2023])).join(''));
+// console.log(getKeyValue(cohorts[2023]));
 
 // Object.entries(cohorts).forEach(([key, value]) => 
-    // console.log("key:", key, "value:", value)
-    // console.log((Object.values(cohorts[2023])))
-    //  console.log(key + value)
-    // )
+//     // console.log("key:", key, "value:", value)
+//     // console.log((Object.values(cohorts[2023])))
+    
+//      console.log(key + value)
+//     )
 
     // Object.keys(cohorts[2023])
     // console.log("39k:", Object.keys(cohorts));  // [ '2022', '2023' ]
