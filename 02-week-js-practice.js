@@ -622,33 +622,38 @@ console.log("55b:", cohorts[2023][5]);
 
 // 56 Create a function that takes an object like the one above and returns an array with a string of every cohort name and year.
 
-// Object.entries(cohorts).map( (key, value) => {
+Object.entries(cohorts).map( (key, value) => {
 //     // return key + value
-    for (let i = 0; i < learn.length; i++){
-        
-        console.log(Object.keys(cohorts)[1] +' '+ Object.values(cohorts[2023]));
+    for (let i = 0; i < value.length; i++){
+        return Object.keys(cohorts)[1] +' '+ Object.values(cohorts[2023])
+        // console.log(Object.keys(cohorts)[1] +' '+ Object.values(cohorts[2023]));
 //         return value + key[i]
     }
-// })
-// console.log(Object.keys(cohorts)[1]);
-// console.log(Object.values(cohorts[2023]));
+})
+console.log("keys:", Object.keys(cohorts)[1]);
+console.log("values:", Object.values(cohorts[2023]));
 // console.log(getKeyValue(cohorts[2023]));
-
 // Object.entries(cohorts).forEach(([key, value]) => 
 //     // console.log("key:", key, "value:", value)
 //     // console.log((Object.values(cohorts[2023])))
-    
 //      console.log(key + value)
 //     )
-
     // Object.keys(cohorts[2023])
-    // console.log("39k:", Object.keys(cohorts));  // [ '2022', '2023' ]
-    // console.log("39v:", Object.values(cohorts[2023])); // [['Alpha','Bravo','Charlie','Delta','Echo','Foxtrot','Golf','Hotel'],['Alpha','Bravo','Charlie','Delta','Echo','Foxtrot','Golf','Hotel','India','Juliet']]
-    // console.log("39e:", Object.entries(cohorts)); // [['2022',['Alpha','Bravo','Charlie','Delta','Echo','Foxtrot','Golf','Hotel']],['2023',['Alpha','Bravo','Charlie','Delta','Echo','Foxtrot','Golf','Hotel','India','Juliet']]]
+    // console.log("39k:", Object.keys(cohorts));  
+    // [ '2022', '2023' ]
 
-// const itirateThrough = (object) => object.forEach((value, index, array) => {
-//     console.log("5eeeee5:", value, index, array);
+    // console.log("39v:", Object.values(cohorts[2023])); 
+    // [['Alpha','Bravo','Charlie','Delta','Echo','Foxtrot','Golf','Hotel'],
+    //  ['Alpha','Bravo','Charlie','Delta','Echo','Foxtrot','Golf','Hotel','India','Juliet']]
+    
+    // console.log("39e:", Object.entries(cohorts)); 
+    // [['2022',['Alpha','Bravo','Charlie','Delta','Echo','Foxtrot','Golf','Hotel']],
+    //  ['2023',['Alpha','Bravo','Charlie','Delta','Echo','Foxtrot','Golf','Hotel','India','Juliet']]]
+// const itirateThrough = () => Object.entries((value, index, array) => {
+//     let obj = value + Object.values(cohorts[2023])
+//     console.log(obj);
 // })
+// console.log(itirateThrough(cohorts)); // []
 
 // // output: ["2022 Alpha", "2022 Bravo", "2022 Charlie", "2022 Delta", "2022 Echo", "2022 Foxtrot", "2022 Golf", "2022 Hotel", "2023 Alpha", "2023 Bravo", "2023 Charlie", "2023 Delta", "2023 Echo", "2023 Foxtrot", "2023 Golf", "2023 Hotel", "2023 India", "2023 Juliet"]
 
