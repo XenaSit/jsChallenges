@@ -624,12 +624,14 @@ console.log("55b:", cohorts[2023][5]);
 
 // Object.entries(cohorts).map( (key, value) => {
 //     // return key + value
-//     // for (let i = 0; i < value.length; i++){
+    for (let i = 0; i < learn.length; i++){
         
+        console.log(Object.keys(cohorts)[1] +' '+ Object.values(cohorts[2023]));
 //         return value + key[i]
-//     // }
+    }
 // })
-console.log(Object.values(Object.keys([1]) + Object.values(cohorts[2023])).join(''));
+// console.log(Object.keys(cohorts)[1]);
+// console.log(Object.values(cohorts[2023]));
 // console.log(getKeyValue(cohorts[2023]));
 
 // Object.entries(cohorts).forEach(([key, value]) => 
