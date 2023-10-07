@@ -438,14 +438,14 @@ const person = {
 
 
 // 37 Write the code that accesses the first name of the person object.
-console.log(person.firstName);
+console.log("37:", person.firstName);
 // 38 Write the code that accesses the last name of the person object.
-console.log(person.lastName);
+console.log("38:", person.lastName);
 // 39 Write the code that gives the person object a property of homePlanet and set it to 'Earth'.
 person.homePlanet = "Earth"
-console.log(person.homePlanet);
+console.log("39:", person.homePlanet);
 // 40 Update the person object with a method that logs "Arthur Dent is from planet Earth".
-console.log(person.sayItLikeYouMeanIt());
+console.log("40:", person.sayItLikeYouMeanIt());
 // Consider this variable:
 
 const product = {
@@ -461,12 +461,12 @@ const product = {
     return `The product is a ${this.name}. It costs $ ${this.totalWithTax()}`
   },
 }
-console.log(product.price);
+console.log("41:", product.price);
 // 41 Write a function called describeProduct that takes the product object as an argument and logs "The product is a chair. It costs $24.99".
-console.log(product.describeProduct());
+console.log("41:", product.describeProduct());
 // 42 Write a function called totalWithTax that takes the product object as an argument and returns the total price of the chair that includes a 7% sales tax rounded to two decimals.
-console.log(product.totalWithTax());
-console.log(product.describeProductWithTax());
+console.log("42:", product.totalWithTax());
+console.log("42:", product.describeProductWithTax());
 
 
 // Consider this variable:
@@ -483,13 +483,13 @@ const lunch = {
 }
 
 // 43 Write the code that accesses the ingredients property.
-console.log(lunch.name, lunch.type, lunch.ingredients);
+console.log("43:", lunch.name, lunch.type, lunch.ingredients);
 // 44 Write the code that access the third ingredient of the lunch object.
-console.log(lunch.ingredients[2]);
+console.log("44:", lunch.ingredients[2]);
 // 45 Write a function that takes the lunch object as an argument and returns "The ingredients for a PB and Banana sandwich are bread, peanut butter, and banana."
-console.log(lunch.sayItWithHeart());
+console.log("45:", lunch.sayItWithHeart());
 // 46 Update the lunch object with method that returns "The ingredients for a PB and Banana sandwich are bread, peanut butter, and banana."
-console.log(lunch.sayItWithHeartAagin());
+console.log("46:", lunch.sayItWithHeartAagin());
 // Consider this variable:
 
 const animals = [
@@ -521,14 +521,14 @@ var nameArray = animals.map(function (el) {
         return el
     }; 
 }).filter(Boolean)
-console.log(nameArray);
+console.log("47:", nameArray);
 
 // 48 Create a function that takes in an array of animal objects and returns a new array with only the names of the animals.
 
 const nameValues = animals.map(function (value) {
     return value.name
 })
-console.log(nameValues);
+console.log("48:", nameValues);
 
 // 49 Create a function that takes in an array of animal objects and returns a new array of the names of the animals that are more than 10 years old.
 
@@ -537,7 +537,7 @@ var ageArray = animals.map(function (el) {
         return el.name
     }; 
 }).filter(Boolean)
-console.log(ageArray);
+console.log("49:", ageArray);
 
 // 50 Create a function that takes in an array of animal objects and returns a new array with a sentence about each animal.
 
@@ -545,7 +545,7 @@ const sayWhatYouSay = animals.map(function (value) {
     return `the ${value.name} is a ${value.type} that is ${value.age} years old`
 });
 
-console.log(sayWhatYouSay);
+console.log("50:", sayWhatYouSay);
 // Consider this variable:
 
 const author = {
@@ -557,7 +557,7 @@ const author = {
 let name = author.name
 let genre = author.genre
 
-console.log(`${name} is a ${genre} author`)
+console.log("51:", `${name} is a ${genre} author`)
 // // output: "H. G. Wells is a science fiction author"
 
 // Consider this variable:
@@ -579,10 +579,10 @@ const {species, pokemon_type} = pokeOne
 const describePokemon = (obj) => {
     return `${obj.species} is a ${obj.pokemon_type} `
 }
-console.log(describePokemon(pokeOne))
+console.log("52:", describePokemon(pokeOne))
 // // output: "Charmandar is a Fire pokemon"
 
-console.log(describePokemon(pokeTwo))
+console.log("52:", describePokemon(pokeTwo))
 // // output: "Magikarp is a Water pokemon"
 
 // Consider this variable:
@@ -597,13 +597,13 @@ const triangleDimensions = {
 // const {base, height} = triangleDimensions
 
 
-console.log(triangleDimensions.base * triangleDimensions.height * 1/2);
+console.log("53:", triangleDimensions.base * triangleDimensions.height * 1/2);
 
 // 54 Write the code that will update the base to be the value of 6.
 
 triangleDimensions['base'] = 6; 
 
-console.log(triangleDimensions.base * triangleDimensions.height * 1/2);
+console.log("54:", triangleDimensions.base * triangleDimensions.height * 1/2);
 // 🏔 Stretch Goals
 // Consider this variable:
 const learn = {
@@ -613,23 +613,40 @@ const learn = {
   }
 }
 // 55 Write the code that logs the name of your cohort.
-console.log(learn.cohorts[2023][5]);
+console.log("55a:", learn.cohorts[2023][5]);
 
 // 55 Write the code that uses destructuring to log the name of your cohort.
 
 const {cohorts} = learn
-console.log(cohorts[2023][5]);
+console.log("55b:", cohorts[2023][5]);
 
 // 56 Create a function that takes an object like the one above and returns an array with a string of every cohort name and year.
-const getKeyValue = cohorts.forEach(function (el) {
-    return `${Object.entries(el)} ${Object.keys(el)}`
-})
-console.log(getKeyValue());
-// Object.keys(learn).forEach(([key, value]) => console.log(Object.keys()+" "+(Object.values(key))))
 
-    // console.log(Object.keys(cohorts));
-    // console.log(Object.values(cohorts));
-    console.log(Object.entries(cohorts));
+// Object.entries(cohorts).map( (key, value) => {
+//     // return key + value
+//     // for (let i = 0; i < value.length; i++){
+        
+//         return value + key[i]
+//     // }
+// })
+console.log(Object.values(Object.keys([1]) + Object.values(cohorts[2023])).join(''));
+// console.log(getKeyValue(cohorts[2023]));
+
+// Object.entries(cohorts).forEach(([key, value]) => 
+//     // console.log("key:", key, "value:", value)
+//     // console.log((Object.values(cohorts[2023])))
+    
+//      console.log(key + value)
+//     )
+
+    // Object.keys(cohorts[2023])
+    // console.log("39k:", Object.keys(cohorts));  // [ '2022', '2023' ]
+    // console.log("39v:", Object.values(cohorts[2023])); // [['Alpha','Bravo','Charlie','Delta','Echo','Foxtrot','Golf','Hotel'],['Alpha','Bravo','Charlie','Delta','Echo','Foxtrot','Golf','Hotel','India','Juliet']]
+    // console.log("39e:", Object.entries(cohorts)); // [['2022',['Alpha','Bravo','Charlie','Delta','Echo','Foxtrot','Golf','Hotel']],['2023',['Alpha','Bravo','Charlie','Delta','Echo','Foxtrot','Golf','Hotel','India','Juliet']]]
+
+// const itirateThrough = (object) => object.forEach((value, index, array) => {
+//     console.log("5eeeee5:", value, index, array);
+// })
 
 // // output: ["2022 Alpha", "2022 Bravo", "2022 Charlie", "2022 Delta", "2022 Echo", "2022 Foxtrot", "2022 Golf", "2022 Hotel", "2023 Alpha", "2023 Bravo", "2023 Charlie", "2023 Delta", "2023 Echo", "2023 Foxtrot", "2023 Golf", "2023 Hotel", "2023 India", "2023 Juliet"]
 
