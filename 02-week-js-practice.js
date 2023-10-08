@@ -666,32 +666,30 @@ console.log("=================================")
 // 61 Write the code that outputs the 1 cream and 2 sugars coffee profile
 
 class Coffee {
-  constructor(type, cream, sugar) {
-    this.type = type.toLowerCase()
-    this.cream = cream
-    this.sugar = sugar
-  }
-
-  coffeeProfile() {
-    return `A ${this.type} coffee with ${this.creams()}, ${this.sugars()}`
-  }
-
-  creams() {
-    if (this.cream > 1) {
-      return `${this.cream} creams`
-    } else {
-      return `${this.cream} cream`
+    constructor(type, cream, sugar) {
+        this.type = type.toLowerCase()
+        this.cream = cream
+        this.sugar = sugar
+    } 
+    coffeeProfile() {
+        return `A ${this.type} coffee with ${this.creams()}, ${this.sugars()}`
     }
-  }
-
-  sugars() {
-    if (this.sugar > 1) {
-      return `${this.sugar} sugars`
-    } else {
-      return `${this.sugar} sugar`
+    creams() {
+        if (this.cream > 1) {
+            return `${this.cream} creams`
+        } else {
+            return `${this.cream} cream`
+        }
     }
-  }
+    sugars() {
+        if (this.sugar > 1) {
+            return `${this.sugar} sugars`
+        } else {
+            return `${this.sugar} sugar`
+        }
+    }
 }
+console.log(Coffee.coffeeProfile["black", 1, 1]);
 
 // 62 Latte Maker: create a class for Latte
 // 63 Write a Latte class that takes a flavor, a milk type, and a number of shots
