@@ -632,12 +632,22 @@ console.log("55b:", cohorts[2023][5]);
 // }
 // console.log(obj1);
 
-for (const x in cohorts){
-    for(const y of cohorts[x]) {
-         console.log(`${x}: ${y}`)
-        // console.log(Object.entries(cohorts[2023])); //no work
+// for (const x in cohorts){
+//     for(const y of cohorts[x]) {
+//          console.log(`${x}: ${y}`)
+//         // console.log(Object.entries(cohorts[2023])); //no work
+//     }
+// }
+
+const things = (object) => {
+    for (const x in object){
+    for(const y of object[x]) {
+         return`${x}: ${y}`
+        }
     }
 }
+// console.log(things(Object.keys(cohorts)))
+console.log(things(cohorts));
     // Object.keys(cohorts[2023])
     // console.log("39k:", Object.keys(cohorts));  
     // [ '2022', '2023' ]
