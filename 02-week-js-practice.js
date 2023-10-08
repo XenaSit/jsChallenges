@@ -621,33 +621,17 @@ const {cohorts} = learn
 console.log("55b:", cohorts[2023][5]);
 
 // 56 Create a function that takes an object like the one above and returns an array with a string of every cohort name and year.
-// const obj1 = {
-//     for (const x in cohorts){
-//         for(const y of cohorts[x]) {
-//             let NewArr = []
-//         return NewArr.push(`${x}: ${y}!`)
-//         console.log(Object.values(`${x}: ${y}!`));
-//         }
-//     }
-// }
-// console.log(obj1);
-
-// for (const x in cohorts){
-//     for(const y of cohorts[x]) {
-//          console.log(`${x}: ${y}`)
-//         // console.log(Object.entries(cohorts[2023])); //no work
-//     }
-// }
 
 const things = (object) => {
     for (const x in object){
     for(const y of object[x]) {
-         return`${x}: ${y}`
+        theLog = `${x}: ${y}`
+        return theLog
+         
         }
     }
 }
-// console.log(things(Object.keys(cohorts)))
-console.log(things(cohorts));
+console.log("thing", things(cohorts));
     // Object.keys(cohorts[2023])
     // console.log("39k:", Object.keys(cohorts));  
     // [ '2022', '2023' ]
@@ -675,38 +659,39 @@ console.log("=================================")
 // 💻 Challenges
 
 // 57 Coffee Maker: copy the given Coffee class into a text editor
+
 // 58 Write the code that makes a black coffee object
 // 59 Write the code that outputs the black coffee's profile
 // 60 Write the code that makes a coffee object with 1 cream and 2 sugars
 // 61 Write the code that outputs the 1 cream and 2 sugars coffee profile
 
-// class Coffee {
-//   constructor(type, cream, sugar) {
-//     this.type = type.toLowerCase()
-//     this.cream = cream
-//     this.sugar = sugar
-//   }
+class Coffee {
+  constructor(type, cream, sugar) {
+    this.type = type.toLowerCase()
+    this.cream = cream
+    this.sugar = sugar
+  }
 
-//   coffeeProfile() {
-//     return `A ${this.type} coffee with ${this.creams()}, ${this.sugars()}`
-//   }
+  coffeeProfile() {
+    return `A ${this.type} coffee with ${this.creams()}, ${this.sugars()}`
+  }
 
-//   creams() {
-//     if (this.cream > 1) {
-//       return `${this.cream} creams`
-//     } else {
-//       return `${this.cream} cream`
-//     }
-//   }
+  creams() {
+    if (this.cream > 1) {
+      return `${this.cream} creams`
+    } else {
+      return `${this.cream} cream`
+    }
+  }
 
-//   sugars() {
-//     if (this.sugar > 1) {
-//       return `${this.sugar} sugars`
-//     } else {
-//       return `${this.sugar} sugar`
-//     }
-//   }
-// }
+  sugars() {
+    if (this.sugar > 1) {
+      return `${this.sugar} sugars`
+    } else {
+      return `${this.sugar} sugar`
+    }
+  }
+}
 
 // 62 Latte Maker: create a class for Latte
 // 63 Write a Latte class that takes a flavor, a milk type, and a number of shots
