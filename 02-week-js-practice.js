@@ -660,11 +660,6 @@ console.log("=================================")
 
 // 57 Coffee Maker: copy the given Coffee class into a text editor
 
-// 58 Write the code that makes a black coffee object
-// 59 Write the code that outputs the black coffee's profile
-// 60 Write the code that makes a coffee object with 1 cream and 2 sugars
-// 61 Write the code that outputs the 1 cream and 2 sugars coffee profile
-
 class Coffee {
     constructor(type, cream, sugar) {
         this.type = type.toLowerCase()
@@ -689,8 +684,14 @@ class Coffee {
         }
     }
 }
-console.log(Coffee.coffeeProfile["black", 1, 1]);
-
+// 58 Write the code that makes a black coffee object
+const blackCoffee = new Coffee('Black', 0, 0)
+// 59 Write the code that outputs the black coffee's profile
+console.log("59 Black Coffee:", blackCoffee.coffeeProfile());
+// 60 Write the code that makes a coffee object with 1 cream and 2 sugars
+const coffeeProfile = new Coffee('Black', 1, 2)
+// 61 Write the code that outputs the 1 cream and 2 sugars coffee profile
+console.log("61 Coffee Profile:", coffeeProfile.coffeeProfile());
 // 62 Latte Maker: create a class for Latte
 // 63 Write a Latte class that takes a flavor, a milk type, and a number of shots
 // 64 Write a method for your Latte class that outputs the latte's profile
