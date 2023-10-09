@@ -721,7 +721,9 @@ const iLoveNoLatte = new Latte('regular', 'no', 1)
 // 66 Log the regular, single shot latte's profile
 console.log("66 Latte Profile:", iLoveNoLatte.latteProfile());
 // 67 Write the code that makes a double shot, hazelnut latte with almond milk.
+const iLoveDouble = new Latte('hazelnut', 'almond', 2)
 // 68 Log the double shot, hazelnut latte with almond milk's profile.
+console.log("67 Double Shot :", iLoveDouble.latteProfile());
 // 69 Volume of a Cylinder: create a class for Cylinder
 // 70 Write a class that calculates the volume of a Cylinder: v = πr^2h (r is the radius and h is the height of the cylinder)
 // 71 Write the code that rounds the volume of the cylinder to four decimal places
