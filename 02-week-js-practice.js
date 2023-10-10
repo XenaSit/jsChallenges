@@ -725,6 +725,8 @@ const iLoveDouble = new Latte('hazelnut', 'almond', 2)
 // 68 Log the double shot, hazelnut latte with almond milk's profile.
 console.log("67 Double Shot :", iLoveDouble.latteProfile());
 // 69 Volume of a Cylinder: create a class for Cylinder
+
+
 // 70 Write a class that calculates the volume of a Cylinder: v = πr^2h (r is the radius and h is the height of the cylinder)
 // 71 Write the code that rounds the volume of the cylinder to four decimal places
 // 72 Write the code that creates three unique cylinder objects
@@ -738,13 +740,15 @@ console.log("=================================")
 
 // Consider this function:
 
-// const combineArrays = (arrOne, arrTwo) => {
-//   return arrOne.concat(arrTwo)
-// }
+const combineArrays = (arrOne, arrTwo) => {
+  return (arrOne, ... arrTwo)
+}
 
-// console.log(combineArrays([2, 4, 2], [4, 6, 11]))
+console.log(combineArrays([2, 4, 2], [4, 6, 11]))
 
 // 73 Refactor this function to use the spread operator to combine the arrays.
+// console.log(combineArrays(...[2, 4, 2], ...[4, 6, 11]))
+
 
 // Consider this function:
 
