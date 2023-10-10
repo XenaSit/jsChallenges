@@ -740,8 +740,8 @@ console.log("=================================")
 
 // Consider this function:
 
-const combineArrays = (arrOne, arrTwo) => {
-  return (arrOne, ... arrTwo)
+const combineArrays = (...arr) => {
+  return arr
 }
 
 console.log(combineArrays([2, 4, 2], [4, 6, 11]))
