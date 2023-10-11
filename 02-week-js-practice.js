@@ -750,7 +750,8 @@ console.log(combineArrays1([2, 4, 2], [4, 6, 11]))
 // 73 Refactor this function to use the spread operator to combine the arrays.
 
 const combineArrays2 = (...arr) => {
-    return [arr +"."]
+    console.log("arr:", arr);
+    return arr.flat()
 }
 console.log(combineArrays2([2, 4, 2], [4, 6, 11]))
 
