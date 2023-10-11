@@ -6,6 +6,12 @@ console.log("=================================")
 
 // 9 Create a function called highLow that takes in a number and returns whether the number is higher or lower than the "answer".
 
+const highLow = (num) => {
+    
+}
+
+
+console.log(highLow);
 // 10 Create an HTML page and link your JavaScript file. More info here.
 
 // 11 As a user, I see a prompt or input where I can guess a number between 1 and 100 (both inclusive).
