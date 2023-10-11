@@ -745,7 +745,7 @@ const combineArrays1 = (arrOne, arrTwo) => {
 }
 
 
-console.log(combineArrays1([2, 4, 2], [4, 6, 11]))
+console.log("73a:",combineArrays1([2, 4, 2], [4, 6, 11]))
 
 // 73 Refactor this function to use the spread operator to combine the arrays.
 
@@ -753,24 +753,38 @@ const combineArrays2 = (...arr) => {
     console.log("arr:", arr);
     return arr.flat()
 }
-console.log(combineArrays2([2, 4, 2], [4, 6, 11]))
-
-
-
+console.log("73b:",combineArrays2([2, 4, 2], [4, 6, 11]))
 
 // Consider this function:
 
-// const combineAndFilterOdd = (arrOne, arrTwo, arrThree) => {
-//   return arrOne
-//     .concat(arrTwo)
-//     .concat(arrThree)
-//     .filter((num) => num % 2 !== 0)
-// }
+const combineAndFilterOdd = (arrOne, arrTwo, arrThree) => {
+  return arrOne
+    .concat(arrTwo)
+    .concat(arrThree)
+    .filter((num) => num % 2 !== 0)
+}
 
-// console.log(combineAndFilterOdd([3, 2, 5], [5, 8, 7], [4, 5, 6]))
+console.log("74a:",combineAndFilterOdd([3, 2, 5], [5, 8, 7], [4, 5, 6]))
 
 // 74 Refactor this function to use the spread operator to combine the array arguments.
+
+const combineAndFilterOdd1 = (...arr) => {
+    return arr
+        .flat()
+        .filter((num) => num % 2 !== 0)
+  }
+  
+  console.log("74b:",combineAndFilterOdd1([3, 2, 5], [5, 8, 7], [4, 5, 6]))
 
 // 🏔 Stretch Goals
 
 // 75 Recall the combineAndFilterOdd() function from the previous exercise. Refactor the function to take any number of arguments.
+
+const arr01 = [1,2,3]
+const arr02 = [4,5,6]
+const arr03 = [7,8,9]
+const arr04 = [10,11,12]
+const arr05 = [13,14,15]
+
+
+console.log("75:",combineAndFilterOdd1(arr01, arr02, arr03, arr04, arr05))
