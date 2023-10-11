@@ -4,6 +4,9 @@ console.log("=================================")
 
 // 💻 Challenges
 
+const keepItComing = () => {
+    
+} 
 // 24 Write the test for a function that returns "drink coffee" if you are tired and "keep working" if you are not tired.
 // Create the function that will make the test pass.
 
