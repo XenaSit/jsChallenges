@@ -6,10 +6,17 @@ console.log("=================================")
 
 // 24 Write the test for a function that returns "drink coffee" if you are tired and "keep working" if you are not tired.
 
+describe('keepItComing', () => {
+    it ('chacks if you are tired or not', () => {
+        expect(keepItComing("tired")).toEqual("keep drinking coffee")
+        expect(keepItComing()).toEqual("keep working")
+    })
+})
+
 // Create the function that will make the test pass.
 const keepItComing = (mood) => {
     if (mood === "tired"){
-        return "keep drinking coffe"
+        return "keep drinking coffee"
     } else { return "keep working"}
 } 
 console.log("24a:", keepItComing('tired'));
