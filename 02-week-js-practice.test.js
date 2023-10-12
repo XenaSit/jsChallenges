@@ -2,25 +2,70 @@ console.log("=================================")
 console.log("CHALLENG NUMER 3")
 console.log("=================================")
 
+
+// describe('makeItCool', () => {
+//     it ('check the maksimum equal number', () => {
+//         Test.assertEquals(diff(['23-32','32-23','2-6','98-98','100-101']), '23-32');
+//         Test.assertEquals(diff(['22-22','56-56']), false);
+//         Test.assertEquals(diff(['52542-522','0-1000000']),'0-1000000');
+//     })
+// })
+
+const a = ['23-32','32-23','2-6','98-98','100-101']
+const b = ['22-22','56-56']
+const c = ['52542-522','0-1000000']
+
+const makeItCool = (str) => {
+    // console.log("str:", str);
+    let newArr = []
+    str.map((value, index, array) => {
+        // let newValue = value.spit('-')
+        // console.log("v:", value, "i:",  index, "a:",  array);
+        let newValue = Math.max(value)
+        if (newValue > newValue){
+            // console.log(value);
+            return newArr.push(newValue)
+        } else {
+            return false
+        }
+    })
+    return newArr
+}
+
+console.log("a:", makeItCool(a));
+console.log("b:", makeItCool(b));
+console.log("c:", makeItCool(c));
+
+// Task: Find the number couple with the greatest difference from a list of number-couples.
+// Input: A list of number-couples, where each couple is represented as a string containing two positive integers separated by a hyphen ("-").
+// Output: The number couple with the greatest difference, or False if there is no difference among any of the couples or in case of an empty list.
+// Additional Information:
+// All number couples will be given as strings.
+// All numbers in the couples are positive integers.
+// If multiple couples have the same greatest difference, return the first one encountered in the input list.
+// If there is no difference (both numbers in a couple are equal), return False.
+
+
+
 // 💻 Challenges
 
 // 24 Write the test for a function that returns "drink coffee" if you are tired and "keep working" if you are not tired.
 
-describe('keepItComing', () => {
-    it ('chacks if you are tired or not', () => {
-        expect(keepItComing("tired")).toEqual("keep drinking coffee")
-        expect(keepItComing()).toEqual("keep working")
-    })
-})
+// describe('keepItComing', () => {
+//     it ('chacks if you are tired or not', () => {
+//         expect(keepItComing("tired")).toEqual("keep drinking coffee")
+//         expect(keepItComing()).toEqual("keep working")
+//     })
+// })
 
-// Create the function that will make the test pass.
-const keepItComing = (mood) => {
-    if (mood === "tired"){
-        return "keep drinking coffee"
-    } else { return "keep working"}
-} 
-console.log("24a:", keepItComing('tired'));
-console.log("24b:", keepItComing('bo bo ga ga'));
+// // Create the function that will make the test pass.
+// const keepItComing = (mood) => {
+//     if (mood === "tired"){
+//         return "keep drinking coffee"
+//     } else { return "keep working"}
+// } 
+// console.log("24a:", keepItComing('tired'));
+// console.log("24b:", keepItComing('bo bo ga ga'));
 
 // 25 Write the test for a function that returns "relax" if you are stressed and "keep going" if you are not stressed.
 // Create the function that will make the test pass.
