@@ -4,11 +4,16 @@ console.log("=================================")
 
 // 💻 Challenges
 
-const keepItComing = () => {
-    
-} 
 // 24 Write the test for a function that returns "drink coffee" if you are tired and "keep working" if you are not tired.
+
 // Create the function that will make the test pass.
+const keepItComing = (mood) => {
+    if (mood === "tired"){
+        return "keep drinking coffe"
+    } else { return "keep working"}
+} 
+console.log("24a:", keepItComing('tired'));
+console.log("24b:", keepItComing('bo bo ga ga'));
 
 // 25 Write the test for a function that returns "relax" if you are stressed and "keep going" if you are not stressed.
 // Create the function that will make the test pass.
