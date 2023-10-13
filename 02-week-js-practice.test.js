@@ -76,7 +76,7 @@ function makeItCool(str){
 // 24 Write the test for a function that returns "drink coffee" if you are tired and "keep working" if you are not tired.
 
 describe('keepItComing', () => {
-    it ('chacks if you are tired or not', () => {
+    it ('checks if you are tired or not', () => {
         expect(keepItComing("tired")).toEqual("keep drinking coffee")
         expect(keepItComing()).toEqual("keep working")
     })
@@ -92,22 +92,36 @@ console.log("24a:", keepItComing('tired'));
 console.log("24b:", keepItComing('bo bo ga ga'));
 
 // 25 Write the test for a function that returns "relax" if you are stressed and "keep going" if you are not stressed.
-describe('keepCallAnd', () => {
-    it ('chacks if you are tired or not', () => {
-        expect(keepCallAnd("stressed")).toEqual("relax")
-        expect(keepCallAnd()).toEqual("keep going")
+describe('keepCalmAnd', () => {
+    it ('checks if you are stressed or not', () => {
+        expect(keepCalmAnd("stressed")).toEqual("relax")
+        expect(keepCalmAnd()).toEqual("keep going")
     })
 })
 // Create the function that will make the test pass.
-const keepCallAnd = (mood) => {
+const keepCalmAnd = (mood) => {
     if (mood === "stressed"){
         return "relax"
     } else { return "keep going"}
 } 
-console.log("24a:", keepCallAnd('stressed'));
-console.log("24b:", keepCallAnd('bo bo ga ga'));
+console.log("25a:", keepCalmAnd('stressed'));
+console.log("25b:", keepCalmAnd('bo bo ga ga'));
+
 // 26 Write the test for a function that returns "in budget" if a price is lower than $300.
+describe('priceIsRight', (money) => {
+    it ('checks if the price is in budget', () => {
+        expect(priceIsRight(money < 300)).toEqual("in budget")
+        expect(priceIsRight(money)).toEqual("not in budget")
+    })
+})
 // Create the function that will make the test pass.
+const priceIsRight = (money) => {
+    if (money < 300){
+        return "in budget"
+    } else { return "not in budget"}
+} 
+// console.log("26a:", priceIsRight(250));
+// console.log("26b:", priceIsRight(350));
 
 // 27 Write the test for a function that takes in two numbers and returns the smaller number.
 // Create the function that will make the test pass.
