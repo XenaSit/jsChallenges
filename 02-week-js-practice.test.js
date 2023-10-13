@@ -21,10 +21,13 @@ const makeItCool = (str) => {
     str.map((value, index, array) => {
         // let newValue = value.spit('-')
         // console.log("v:", value, "i:",  index, "a:",  array);
-        let newValue = Math.max(value)
-        if (newValue > newValue){
+        let newValue = value.split('-')
+        let difference = newValue[0] - newValue[1]
+        // console.log("difference", difference);
+        // console.log("newValue:", newValue);
+        if (difference > 0){
             // console.log(value);
-            return newArr.push(newValue)
+            return newArr.push(value)
         } else {
             return false
         }
@@ -32,6 +35,27 @@ const makeItCool = (str) => {
     return newArr
 }
 
+
+// function makeItCool(str){
+//     let greatestDiff = 0;
+//     let diffValues = '';
+//     str.map(string => {
+//       const splitString = string.split('-');
+//       const absoluteDifference = Math.abs(splitString[0] - splitString[1]);
+//       if (absoluteDifference > greatestDiff) {
+//         diffValues = splitString.join('-');
+//         greatestDiff = absoluteDifference;
+//         }
+//     })
+//         if (greatestDiff === 0) {
+//         return false
+//         } else {
+//         return diffValues;
+//         }
+//   }
+
+
+  
 console.log("a:", makeItCool(a));
 console.log("b:", makeItCool(b));
 console.log("c:", makeItCool(c));
