@@ -274,17 +274,19 @@ const divisibleBy = (num1, num2) => {
 
 // 36 Write the test for a function called fizzbuzz. If a number is a multiple of 3, replace it with the word "fizz". If a number is a multiple of five, replace it with the word "buzz". If a number is a multiple of both 3 and 5, replace it with "fizzbuzz".
 
-// describe('fizzbuzz', () => {
-//     it ('is a multiple of 3, replace it with the word "fizz". If a number is a multiple of five, replace it with the word "buzz". If a number is a multiple of both 3 and 5, replace it with "fizzbuzz".', () => {
-//         expect(fizzbuzz()).toEqual()
-//     })
-// })
-// // Create the function that will make the test pass.
-// const fizzbuzz = (value) => {
-//     if (value === ){
-//         return 
-//     } else { 
-//         return 
-//     }
-// } 
+describe('fizzbuzz', () => {
+    it ('is a multiple of 3, replace it with the word "fizz". If a number is a multiple of five, replace it with the word "buzz". If a number is a multiple of both 3 and 5, replace it with "fizzbuzz".', () => {
+        expect(fizzbuzz(5)).toEqual("buzz")
+        expect(fizzbuzz(3)).toEqual("fizz")
+        expect(fizzbuzz(15)).toEqual("fizzbuz")
+    })
+})
+// Create the function that will make the test pass.
+const fizzbuzz = (value) => {
+    if (value % 15 === 0){
+        return "fizzbuz"
+    } else if (value % 5 === 0) { 
+        return "buzz"
+    } else { return "fizz"}
+} 
 
