@@ -124,7 +124,19 @@ const priceIsRight = (money) => {
 // console.log("26b:", priceIsRight(350));
 
 // 27 Write the test for a function that takes in two numbers and returns the smaller number.
+
+describe('takeInNum', (num1, num2) => {
+    it ('check the smallest number', () => {
+        expect(takeInNum(num1 < num2)).toEqual(num1)
+        expect(takeInNum(num1 > num2)).toEqual(num2)
+    })
+})
 // Create the function that will make the test pass.
+const takeInNum = (num1, num2) => {
+    if (num1 < num2){
+        return num1
+    } else { return num2}
+} 
 
 // 28 Write the test for a function that takes in one numbers and returns whether the number is odd.
 // Create the function that will make the test pass.
