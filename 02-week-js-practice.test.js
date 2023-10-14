@@ -174,10 +174,23 @@ const fruitColor = (value) => {
 } 
 
 // 30 Write the test for a function called rick that returns "Morty".
+
+describe('rickAndMorty', () => {
+    it ('called rick that returns "Morty"', () => {
+        expect(rickAndMorty('Rick')).toEqual("Morty")
+        expect(rickAndMorty('Morty')).toEqual("Rick")
+    })
+})
 // Create the function that will make the test pass.
+const rickAndMorty = (value) => {
+    if (value === 'Rick'){
+        return "Morty"
+    } else { return "Rick"}
+} 
+
 
 // 31 Write the test for a function called greeter that takes a name as an argument and returns a greeting with that name to the screen.
-// Create the function that will make the test pass.
+
 
 // 32 Write the test for a function called oddOrEven that takes a number as an argument and logs whether the number is odd or even.
 // Create the function that will make the test pass.
