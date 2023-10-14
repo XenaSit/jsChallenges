@@ -191,19 +191,19 @@ const rickAndMorty = (value) => {
 
 // 31 Write the test for a function called greeter that takes a name as an argument and returns a greeting with that name to the screen.
 
-// describe('takes a name as an argument and returns a greeting with that name to the screen.', () => {
-//     it ('greeter', () => {
-//         expect(greeter()).toEqual()
-//     })
-// })
-// // Create the function that will make the test pass.
-// const greeter = (value) => {
-//     if (value ===  ){
-//         return 
-//     } else { 
-//         return 
-//     }
-// } 
+describe('takes a name as an argument and returns a greeting with that name to the screen.', () => {
+    it ('greeter', (name) => {
+        expect(greeter('Xena')).toEqual(`Ahoy there ${name}`)
+    })
+})
+// Create the function that will make the test pass.
+const greeter = (name) => {
+    if (name === `${name}`){
+        return `Ahoy there ${name}`
+    } else { 
+        return "nope"
+    }
+} 
 
 // 32 Write the test for a function called oddOrEven that takes a number as an argument and logs whether the number is odd or even.
 

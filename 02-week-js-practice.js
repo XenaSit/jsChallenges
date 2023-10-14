@@ -788,3 +788,15 @@ const arr05 = [13,14,15]
 
 
 console.log("75:",combineAndFilterOdd1(arr01, arr02, arr03, arr04, arr05))
+
+
+
+const greeter = (name) => {
+    if (name === `${name}`){
+        return `Ahoy there ${name}`
+    } else { 
+        return "nope"
+    }
+} 
+
+console.log("76:", greeter('Xena'))
