@@ -140,7 +140,7 @@ const takeInNum = (num1, num2) => {
 
 // 28 Write the test for a function that takes in one numbers and returns whether the number is odd.
 describe('oddTodd', () => {
-    it ('check the smallest number', () => {
+    it ('check if the number is odd as Todd', () => {
         expect(oddTodd(3)).toEqual("well, that's odd")
         expect(oddTodd(2)).toEqual("that ain't odd")
     })
@@ -153,7 +153,25 @@ const oddTodd = (num) => {
 } 
 
 // 29 Write the test for a function that takes in a fruit and returns "yellow" if the argument is banana, "red" if apple and "purple" if grape.
+
+describe('fruitColor', () => {
+    it ('returns "yellow" if the argument is banana, "red" if apple and "purple" if grape.', () => {
+        expect(fruitColor('banana')).toEqual("yellow")
+        expect(fruitColor('apple')).toEqual("red")
+        expect(fruitColor('grape')).toEqual("purple")
+        expect(fruitColor("uyuy")).toEqual("what?")
+    })
+})
 // Create the function that will make the test pass.
+const fruitColor = (value) => {
+    if (value === 'banana'){
+        return "yellow"
+    } else if (value === 'apple') { 
+        return "red"
+    } else if (value === 'grape') {
+        return "purple"
+    } else {return "what?"}
+} 
 
 // 30 Write the test for a function called rick that returns "Morty".
 // Create the function that will make the test pass.
