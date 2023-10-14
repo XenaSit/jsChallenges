@@ -193,7 +193,8 @@ const rickAndMorty = (value) => {
 
 describe('takes a name as an argument and returns a greeting with that name to the screen.', () => {
     it ('greeter', (name) => {
-        expect(greeter('Xena')).toEqual(`Ahoy there ${name}`)
+        expect(greeter("Xena")).toEqual(`Ahoy there ${name}`)
+        expect(greeter()).toEqual("nope")
     })
 })
 // Create the function that will make the test pass.
