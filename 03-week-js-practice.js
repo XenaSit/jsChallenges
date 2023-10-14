@@ -11,7 +11,9 @@ const highLow = (num) => {
         return "this is high"
     }else {return "this is low"}
 }
-console.log("9:", highLow(16));
+console.log("9a:", highLow(16));
+console.log("9b:", highLow(7));
+
 // 10 Create an HTML page and link your JavaScript file. More info here.
 
 // 11 As a user, I see a prompt or input where I can guess a number between 1 and 100 (both inclusive).
@@ -70,9 +72,9 @@ console.log("=================================")
 // As a user, I can see a Content component that contains an unordered list of all your classmates.
 // As a user, I can see a Footer component with your name.
 
-console.log("=================================")
-console.log("CHALLENG NUMER 2")
-console.log("=================================")
+// console.log("=================================")
+// console.log("CHALLENG NUMER 2")
+// console.log("=================================")
 
 // ⭐️ Challenge: Favorites
 // As a developer, you are tasked with creating an application to share your favorite things. Decide which favorite things you would like to showcase. When creating a project, it is important to think about organization of your code. It is best practice to separate and compartmentalize all the actions in your code into individual components.
@@ -85,9 +87,9 @@ console.log("=================================")
 // 🏔 Stretch Goals
 // As a user, I can see a browser tab with a customized name and favicon.
 
-console.log("=================================")
-console.log("CHALLENG NUMER 3")
-console.log("=================================")
+// console.log("=================================")
+// console.log("CHALLENG NUMER 3")
+// console.log("=================================")
 
 // 🟧 Challenge: Color Box
 // As a developer, you are tasked with creating a color box application. The application will allow the user to click a box and see a different color with every click.
@@ -107,9 +109,9 @@ console.log("=================================")
 // As a user, every time I click the remove button, I can remove the last box in the series.
 
 
-console.log("=================================")
-console.log("CHALLENG NUMER 4")
-console.log("=================================")
+// console.log("=================================")
+// console.log("CHALLENG NUMER 4")
+// console.log("=================================")
 
 // 🐽 Pig Latin Challenge
 // Story 1: In order to see English words converted to Pig Latin, as the user of the application, I need to see words beginning with a vowel translated to add "way" to the end.
@@ -167,9 +169,9 @@ console.log("=================================")
 // Second team member: What was the hardest thing about this project? What is your biggest takeaway?
 // Third team member (if applicable): How did you manage the workflow in a group of three?
 
-console.log("=================================")
-console.log("CHALLENG NUMER 5")
-console.log("=================================")
+// console.log("=================================")
+// console.log("CHALLENG NUMER 5")
+// console.log("=================================")
 
 // 🎲 Challenge: Dice Roller
 // As a developer, you are tasked with creating a dice application. The application will allow the user to role a standard six-sided dice and see the result of each roll. As the user rolls the dice, each roll gets logged which creates a list of all the previous rolls.
@@ -193,9 +195,9 @@ console.log("=================================")
 // Dice Five
 // Dice Six
 
-console.log("=================================")
-console.log("CHALLENG NUMER 6")
-console.log("=================================")
+// console.log("=================================")
+// console.log("CHALLENG NUMER 6")
+// console.log("=================================")
 
 // 🌮 Challenge: Food Ordering App
 // As a developer, you are tasked with creating a food ordering application in React. This is the first iteration of an application that is going to be much larger in the future so it is important to create a solid foundation from which the code base can grow.
@@ -213,9 +215,9 @@ console.log("=================================")
 // As a user, I can see the total that includes sales tax rounded to two decimals.
 // As a user, I can see an image of my food selection on the menu.
 
-console.log("=================================")
-console.log("CHALLENG NUMER 7")
-console.log("=================================")
+// console.log("=================================")
+// console.log("CHALLENG NUMER 7")
+// console.log("=================================")
 
 // 📚 User Stories
 // As a user, I can see a landing page with heading and a text input.
@@ -234,9 +236,9 @@ console.log("=================================")
 // As a developer, I have refactored and efficient code.
 // As a developer, I have my application deployed as a live website.
 
-console.log("=================================")
-console.log("CHALLENG NUMER 8")
-console.log("=================================")
+// console.log("=================================")
+// console.log("CHALLENG NUMER 8")
+// console.log("=================================")
 
 // 📚 User Stories
 // As a user, I can see a page with a three by three grid board game with a question mark in each square.
@@ -259,9 +261,9 @@ console.log("=================================")
 // As a developer, I have my application deployed as a live website.
 
 
-console.log("=================================")
-console.log("CHALLENG NUMER 9")
-console.log("=================================")
+// console.log("=================================")
+// console.log("CHALLENG NUMER 9")
+// console.log("=================================")
 
 // 📚 User Stories
 // As a user, I can see a three by three grid game board on the page.
@@ -283,9 +285,9 @@ console.log("=================================")
 // As a developer, I have refactored and efficient code.
 // As a developer, I have my application deployed as a live website.
 
-console.log("=================================")
-console.log("CHALLENG NUMER 10")
-console.log("=================================")
+// console.log("=================================")
+// console.log("CHALLENG NUMER 10")
+// console.log("=================================")
 
 // 💡 Challenge: Light Bulb
 // As a developer, you are tasked with creating a light switch application. The application will display an image of a lightbulb and corresponding switch. When the user clicks the switch the images will toggle between a light switch and bulb that are "off" and a light switch and bulb that are "on".
