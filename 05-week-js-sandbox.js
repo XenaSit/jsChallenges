@@ -5,14 +5,14 @@ const L = [1, 4, 5, 3, 5 ]
 const flip=(d, a)=>{
     console.log ("the d:", d,"the a:", a)
     const array =[]
-    if (d === "R") {
-        return array.push(a.sort())
-    } else if (d === "L") {
-        return array.push(a.reverse())
+    if (d > 0) {
+        return a.push(d.sort())
+    } else if (d <0) {
+        return a.push(d.reverse())
     } else {
-        return "you wrong" 
+        // return "you wrong" 
+        return(d, a)
     }
-    return(d, a)
 } 
 
 
