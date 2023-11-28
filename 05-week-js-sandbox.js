@@ -4,14 +4,15 @@ const array = []
 
 const flip=(d, a)=>{
     // console.log ("the d:", d,"the a:", a)
-    if (d !== 0) {
+    if (d === "R") {
         array.push(d.sort())
         return a
-    } else if (d <0) {
-        return array.push(d.reverse())
+    } else if (d !== 0) {
+        array.push(d.reverse())
+        return a
     } else {
-        // return "you wrong" 
-        return(d, a)
+        return "you wrong" 
+        // return(d, a)
     }
 } 
 
