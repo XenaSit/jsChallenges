@@ -70,14 +70,14 @@ console.log("==========================================");
 console.log("==========================================");
 
 function digitalRoot(n) {
-    // console.log(n.length);
+    console.log(n.length);
     let newArr = []
-    for (let i=0; i<n.length; i++) {
-        if (i>0) {
-            return newArr.push(i++)
-        }
+    let count = 0
+    for (let i=0; i<n; i++) {
+        newArr.push(n-1)
+        count += newArr[i]
     }
-    return newArr
+    return count
 }
 
 console.log(digitalRoot(16));
