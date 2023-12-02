@@ -74,9 +74,10 @@ function digitalRoot(n) {
     let newArr = []
     for (let i=0; i<n.length; i++) {
         if (i>0) {
-            return newArr.push(i+i)
+            return newArr.push(i++)
         }
     }
+    return newArr
 }
 
 console.log(digitalRoot(16));
