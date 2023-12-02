@@ -69,18 +69,41 @@ console.log("==========================================");
 // Given n, take the sum of the digits of n. If that value has more than one digit, continue reducing in this way until a single-digit number is produced. The input will be a non-negative integer.
 console.log("==========================================");
 
+// function digitalRoot(n) {
+//     // console.log(n.length);
+//     let newArr = []
+//     let count = 0
+//     let str = n.toString()
+//     for (let i=0; i<str.length; i++) {
+//         // console.log(n.length);
+//         // console.log(str.length);
+//         // console.log(newArr);
+//         newArr.push(str.length - 1)
+//         count += str[i]++
+//         if ( str.length > 2) {
+//             return count += str[i]
+//         } else {
+//             return count += str[i]
+//         }
+//     }
+//     return count
+// }
+
 function digitalRoot(n) {
-    console.log(n.length);
-    let newArr = []
-    let count = 0
-    for (let i=0; i<n; i++) {
-        newArr.push(n-1)
-        count += newArr[i]
-    }
-    return count
+    const newArr = []
+    const count = 0
+    return n.map((v, i, a) => {
+        if (i > 2) {
+            let str = n.toString()
+            newArr.push(str.length - 1)
+            return count += str[i]++
+        }
+    })
 }
 
 console.log(digitalRoot(16));
-console.log(digitalRoot(456));
+console.log(digitalRoot(4561));
+console.log(digitalRoot(300535));
+
 
 console.log("==========================================");
