@@ -48,13 +48,14 @@ const flip=(d, a)=>{
 // Note: for this kata y isn't considered a vowel.
 
 function disemvowel(str) {
-    str.filter((v, i, a) => {
-        let newStr = str.spliit()
-        if (v === "a")
-        return newStr
-    })
-    return str;
-  }
+    let newStrArray = str.split('')
+    return newStrArray.filter((v) => {
+        let l = v.toLowerCase()
+        if (l !== "a" && l !== "o" && l !== "i" && l !== "u" && l !== "e") {
+            return newStrArray
+        }
+    }).join('');
+}
 
 
 
@@ -62,4 +63,4 @@ console.log(disemvowel("This website is for losers LOL!"));
 console.log(disemvowel("No offense but,\nYour writing is among the worst I've ever read"));
 console.log(disemvowel("What are you, a communist?"));
 
-
+// 
