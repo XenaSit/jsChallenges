@@ -16,8 +16,8 @@ const flip=(d, a)=>{
     }
 } 
 
-console.log(flip(R, array));
-console.log(flip(L, array));
+// console.log(flip(R, array));
+// console.log(flip(L, array));
 console.log("==========================================");
 
 
@@ -36,10 +36,10 @@ console.log("==========================================");
     }
   } 
 
-  console.log(isLeapYear(2020));
-  console.log(isLeapYear(2000));
-  console.log(isLeapYear(2015));
-  console.log(isLeapYear(2100));
+//   console.log(isLeapYear(2020));
+//   console.log(isLeapYear(2000));
+//   console.log(isLeapYear(2015));
+//   console.log(isLeapYear(2100));
 
 
   console.log("==========================================");
@@ -61,32 +61,35 @@ function disemvowel(str) {
         }
     }).join('');
 }
-console.log(disemvowel("This website is for losers LOL!"));
-console.log(disemvowel("No offense but,\nYour writing is among the worst I've ever read"));
-console.log(disemvowel("What are you, a communist?"));
+// console.log(disemvowel("This website is for losers LOL!"));
+// console.log(disemvowel("No offense but,\nYour writing is among the worst I've ever read"));
+// console.log(disemvowel("What are you, a communist?"));
 
 console.log("==========================================");
 // Given n, take the sum of the digits of n. If that value has more than one digit, continue reducing in this way until a single-digit number is produced. The input will be a non-negative integer.
 console.log("==========================================");
 
-function digitalRoot(n) {
-    let count = 0;
-    let str = n.toString().split('');
-    for (let i=0; i<str.length; i++) {
-        str.forEach((value) => {
-            return count += Number(value)
-        })
-        if (count.toString().split('') > 1); {
-            return count += Number(value) 
-        }
+// function digitalRoot(n) {
+//     let count = 0;
+//     let str = n.toString().split('');
+//     for (let i=0; i<str.length; i++) {
+//         str.forEach((value, index) => {
+//             count += Number(value)
+//         })
+//         return count
+//     }
+// }
 
-        // return count;
+function digitalRoot(n) {
+    while (n >= 10) {
+        let count = 0
+        let str = n.toString();
+        for (let i=0; i<str.length; i++) {
+            count += parseInt(str[i])
+        }
+        n = count
     }
-    // str.forEach((value, i, a) => {
-        // if (count.toString().split('') > 2) {
-        //     return count += Number(value)
-        // }
-    // }
+    return n
 }
 
 console.log(digitalRoot(16));
@@ -94,4 +97,4 @@ console.log(digitalRoot(4561));
 console.log(digitalRoot(300535));
 
 
-// console.log("==========================================")
+console.log("==========================================")
