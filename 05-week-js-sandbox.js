@@ -36,10 +36,10 @@ console.log("==========================================");
     }
   } 
 
-//   console.log(isLeapYear(2020));
-//   console.log(isLeapYear(2000));
-//   console.log(isLeapYear(2015));
-//   console.log(isLeapYear(2100));
+  console.log(isLeapYear(2020));
+  console.log(isLeapYear(2000));
+  console.log(isLeapYear(2015));
+  console.log(isLeapYear(2100));
 
 
   console.log("==========================================");
@@ -61,9 +61,9 @@ function disemvowel(str) {
         }
     }).join('');
 }
-// console.log(disemvowel("This website is for losers LOL!"));
-// console.log(disemvowel("No offense but,\nYour writing is among the worst I've ever read"));
-// console.log(disemvowel("What are you, a communist?"));
+console.log(disemvowel("This website is for losers LOL!"));
+console.log(disemvowel("No offense but,\nYour writing is among the worst I've ever read"));
+console.log(disemvowel("What are you, a communist?"));
 
 console.log("==========================================");
 // Given n, take the sum of the digits of n. If that value has more than one digit, continue reducing in this way until a single-digit number is produced. The input will be a non-negative integer.
@@ -97,4 +97,30 @@ console.log(digitalRoot(4561));
 console.log(digitalRoot(300535));
 
 
+console.log("==========================================")
+
+// Return the century of the input year. The input will always be a 4 digit string, so there is no need for validation.
+
+function whatCentury(year){
+
+    let century = Math.floor(year / 100 + 1)
+    let centuryIndex = century.toString().charAt(1)
+    // console.log("centuryIndex", centuryIndex);
+    if ( centuryIndex == 1 && century !== 11){
+        return century+"st"
+    } else if (centuryIndex == 2 && century !== 12){
+        return century+"nd"
+    } else if (centuryIndex == 3 && century !== 13){
+        return century+"rd"
+    }  else {
+        return century+"th"
+    }
+}
+
+console.log(whatCentury("1999"));
+console.log(whatCentury("2011"));
+console.log(whatCentury("1124"));
+console.log(whatCentury("1111"));
+console.log(whatCentury("2222"));
+console.log(whatCentury("3333"));
 console.log("==========================================")
