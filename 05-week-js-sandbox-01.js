@@ -172,7 +172,10 @@ const fs = require('fs'); // Node.js, fs stands for "File System," and it's a bu
 
 function repeats(array) {
     return array.map(word => {
-        let uniqueChars = [...new Set(word)];
+        if (typeof word !== 'string') {
+            return []; // Return an empty array for non-string elements
+        }
+        let uniqueChars = [...new Set(word.toString())];
         return word.split('').filter(char => uniqueChars.includes(char));
     });
 }
@@ -186,12 +189,6 @@ fs.readFile('./05-week-js-sandbox-02-file.txt', 'utf8', (err, data) => {
     const result = repeats(wordsList);
     console.log(result);
 });
-
-
-
-
-
-// console.log(repeats(wordsList))
 
 
 // console.log("==========================================")
