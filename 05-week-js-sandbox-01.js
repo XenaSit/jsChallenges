@@ -167,16 +167,31 @@ console.log(repeats([5, 10, 19, 13, 10, 13]))
 
 console.log("==========================================Colabora📺 ")
 
-
-function repeats(array){
-    let arr = array.toString().split('')
-    return filterOutNum = arr.filter((value, i, a) => { return a.indexOf(value) === a.lastIndexOf(value)})
-    // const sumItUp = 
-};
+const fs = require('fs'); // Node.js, fs stands for "File System," and it's a built-in module that allows interaction with the file system on your computer.
 
 
+function repeats(array) {
+    return array.map(word => {
+        let uniqueChars = [...new Set(word)];
+        return word.split('').filter(char => uniqueChars.includes(char));
+    });
+}
 
-console.log(repeats(["9sixsevenz3"]))
+fs.readFile('./05-week-js-sandbox-02-file.txt', 'utf8', (err, data) => {
+    if (err) {
+        console.error('Error reading the file:', err);
+        return;
+    }
+    const wordsList = data.split('\n').map(word => word.trim());
+    const result = repeats(wordsList);
+    console.log(result);
+});
 
 
-console.log("==========================================")
+
+
+
+// console.log(repeats(wordsList))
+
+
+// console.log("==========================================")
