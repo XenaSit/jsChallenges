@@ -152,8 +152,9 @@ console.log("==========================================")
 // For example, repeats([4,5,7,5,4,8]) = 15 because only the numbers 7 and 8 occur once, and their sum is 15. Every other number occurs twice.
 
 function repeats(arr){
-    return filterOutNum = arr.filter((value, i, a) => { return a.indexOf(value) === a.lastIndexOf(value)})
-    // const sumItUp = 
+    let filteredArr = arr.filter((value, i, a) => a.indexOf(value) === a.lastIndexOf(value));
+    let sum = filteredArr.reduce((a, b) => a + b);
+    return sum;
 };
 
 
@@ -167,28 +168,28 @@ console.log(repeats([5, 10, 19, 13, 10, 13]))
 
 console.log("==========================================Colabora📺 ")
 
-const fs = require('fs'); // Node.js, fs stands for "File System," and it's a built-in module that allows interaction with the file system on your computer.
+// const fs = require('fs'); // Node.js, fs stands for "File System," and it's a built-in module that allows interaction with the file system on your computer.
 
 
-function repeats(array) {
-    return array.map(word => {
-        if (typeof word !== 'string') {
-            return []; // Return an empty array for non-string elements
-        }
-        let uniqueChars = [...new Set(word.toString())];
-        return word.split('').filter(char => uniqueChars.includes(char));
-    });
-}
+// function repeats(array) {
+//     return array.map(word => {
+//         if (typeof word !== 'string') {
+//             return []; // Return an empty array for non-string elements
+//         }
+//         let uniqueChars = [...new Set(word.toString())];
+//         return word.split('').filter(char => uniqueChars.includes(char));
+//     });
+// }
 
-fs.readFile('./05-week-js-sandbox-02-file.txt', 'utf8', (err, data) => {
-    if (err) {
-        console.error('Error reading the file:', err);
-        return;
-    }
-    const wordsList = data.split('\n').map(word => word.trim());
-    const result = repeats(wordsList);
-    console.log(result);
-});
+// fs.readFile('./05-week-js-sandbox-02-file.txt', 'utf8', (err, data) => {
+//     if (err) {
+//         console.error('Error reading the file:', err);
+//         return;
+//     }
+//     const wordsList = data.split('\n').map(word => word.trim());
+//     const result = repeats(wordsList);
+//     console.log(result);
+// });
 
 
 // console.log("==========================================")
