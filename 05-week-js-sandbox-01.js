@@ -166,30 +166,4 @@ console.log(repeats([16, 0, 11, 4, 8, 16, 0, 11]))
 console.log(repeats([5, 17, 18, 11, 13, 18, 11, 13]))
 console.log(repeats([5, 10, 19, 13, 10, 13]))
 
-console.log("==========================================Colabora📺 ")
 
-// const fs = require('fs'); // Node.js, fs stands for "File System," and it's a built-in module that allows interaction with the file system on your computer.
-
-
-// function repeats(array) {
-//     return array.map(word => {
-//         if (typeof word !== 'string') {
-//             return []; // Return an empty array for non-string elements
-//         }
-//         let uniqueChars = [...new Set(word.toString())];
-//         return word.split('').filter(char => uniqueChars.includes(char));
-//     });
-// }
-
-// fs.readFile('./05-week-js-sandbox-02-file.txt', 'utf8', (err, data) => {
-//     if (err) {
-//         console.error('Error reading the file:', err);
-//         return;
-//     }
-//     const wordsList = data.split('\n').map(word => word.trim());
-//     const result = repeats(wordsList);
-//     console.log(result);
-// });
-
-
-// console.log("==========================================")
