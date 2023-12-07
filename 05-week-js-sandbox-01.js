@@ -166,4 +166,16 @@ console.log(repeats([16, 0, 11, 4, 8, 16, 0, 11]))
 console.log(repeats([5, 17, 18, 11, 13, 18, 11, 13]))
 console.log(repeats([5, 10, 19, 13, 10, 13]))
 
+console.log("==========================================")
+// The rgb function is incomplete. Complete it so that passing in RGB decimal values will result in a hexadecimal representation being returned. Valid decimal values for RGB are 0 - 255. Any values that fall out of that range must be rounded to the closest valid value.
+// Note: Your answer should always be 6 characters long, the shorthand with 3 will not work here.
 
+function rgb(r, g, b) {
+    return "FFFFFF";
+}
+
+
+console.log(rgb([0, 0, 0])); // '000000'
+console.log(rgb([0, 0, -20])); // '000000'
+console.log(rgb([300, 255, 255])); // 'FFFFFF'
+console.log(rgb([173, 255,  47])); // 'ADFF2F'
