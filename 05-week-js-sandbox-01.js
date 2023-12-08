@@ -171,8 +171,12 @@ console.log("==========================================")
 // Note: Your answer should always be 6 characters long, the shorthand with 3 will not work here.
 
 function rgb(r, g, b) {
-    const message = `for r = ${r} g = ${g} b = ${b}`;
-    return actual = rgb(r, g, b);
+    console.log(r, g, b);
+    if (r = 0, g = 0, b = 0) {
+        return '000000'
+    }
+    // const message = `for r = ${r} g = ${g} b = ${b}`;
+    // return actual = rgb(r, g, b);
 }
 
 
