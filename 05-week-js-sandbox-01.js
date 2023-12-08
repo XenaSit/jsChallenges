@@ -172,8 +172,10 @@ console.log("==========================================")
 
 function rgb(r, g, b) {
     console.log(r, g, b);
-    if (r = 0, g = 0, b = 0) {
+    if (r=0, g=0) {
         return '000000'
+    } else {
+        return "what"
     }
     // const message = `for r = ${r} g = ${g} b = ${b}`;
     // return actual = rgb(r, g, b);
