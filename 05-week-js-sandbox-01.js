@@ -177,7 +177,7 @@ function rgb(r, g, b) {
     } else {
         return "what"
     }
-    // const message = `for r = ${r} g = ${g} b = ${b}`;
+    // const message = `for r = ${r} g = ${g} b = ${b}`; we will need this
     // return actual = rgb(r, g, b);
 }
 
