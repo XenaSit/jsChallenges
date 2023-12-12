@@ -172,17 +172,11 @@ console.log("==========================================")
 
 function rgb(r, g, b) {
     // console.log("rgb", r, g, b);
-    if (r===0, g===0, b===0) {
-        return xolor.hex()
-    } else {
-        return "what"
-    }
-    // const message = `for r = ${r} g = ${g} b = ${b}`; we will need this
-    // return actual = rgb(r, g, b);
+    return ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 }
 
 
-console.log(rgb([0, 0, 0])); // '000000'
-console.log(rgb([0, 0, -20])); // '000000'
-console.log(rgb([300, 255, 255])); // 'FFFFFF'
-console.log(rgb([173, 255,  47])); // 'ADFF2F'
+console.log(rgb(0, 0, 0)); // '000000'
+console.log(rgb(0, 0, -20)); // '000000'
+console.log(rgb(300, 255, 255)); // 'FFFFFF'
+console.log(rgb(173, 255,  47)); // 'ADFF2F'
