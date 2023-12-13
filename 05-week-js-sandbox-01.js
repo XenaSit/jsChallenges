@@ -193,12 +193,11 @@ console.log("==========================================")
 // M_ = [[-20, 7, 8], [-4, 4, 10], [-1, 1, 12]]
 
 function upDownColSort(matrix) {
+    console.log(matrix);
     // your code here
     return [[]];
 }
 
-console.log(upDownColSort([[-20, 7, 8], [-4, 4, 10], [-1, 1, 12]]));
-console.log(upDownColSort([[-20, 1, 1, 12], [-4, 0, 4, 10], [-3, -1, 7, 8]]));
-console.log(upDownColSort([[-20, 4, 5, 12], [-4, 1, 6, 10], [-3, 1, 6, 8], [-1, 0, 7, 8]]));
+console.log(upDownColSort([[-20, -4, -1], [  1,  4,  7], [  8, 10, 12]]));
 
 console.log("==========================================")
