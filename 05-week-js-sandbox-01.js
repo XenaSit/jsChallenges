@@ -178,12 +178,27 @@ function rgb(r, g, b) {
     return rgb.toString(16).padStart(6, 0).toUpperCase()
 }
 
-
 console.log(rgb(0, 0, 0)); // '000000'
 console.log(rgb(0, 0, -20)); // '000000'
 console.log(rgb(300, 255, 255)); // 'FFFFFF'
 console.log(rgb(173, 255,  47)); // 'ADFF2F'
 
 
-console.log("==========================================")
 
+
+console.log("==========================================")
+// You are given a matrix M, of positive and negative integers. It should be sorted in an up and down column way, starting always with the lowest element placed at the top left position finishing with the highest depending on n value: at the bottom right position if the number of columns,n, is odd, or placed at the top right, if n is even.
+
+// M = [[-20, -4, -1], [  1,  4,  7], [  8, 10, 12]]
+// M_ = [[-20, 7, 8], [-4, 4, 10], [-1, 1, 12]]
+
+function upDownColSort(matrix) {
+    // your code here
+    return [[]];
+}
+
+console.log(upDownColSort([[-20, 7, 8], [-4, 4, 10], [-1, 1, 12]]));
+console.log(upDownColSort([[-20, 1, 1, 12], [-4, 0, 4, 10], [-3, -1, 7, 8]]));
+console.log(upDownColSort([[-20, 4, 5, 12], [-4, 1, 6, 10], [-3, 1, 6, 8], [-1, 0, 7, 8]]));
+
+console.log("==========================================")
