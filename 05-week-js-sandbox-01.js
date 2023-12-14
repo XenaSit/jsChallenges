@@ -194,8 +194,8 @@ console.log("==========================================")
 
 function upDownColSort(matrix) {
     let oldArray = []
-    matrix.map((v, i, a) => {
-            // console.log("v:", v,"i:", i,"a:", a)
+    matrix.forEach((v, i) => {
+            // console.log("v:", v)
             if (i % 2 === 1) {
                 let oddIndex = v.reverse()
                 return oldArray.push(oddIndex)
@@ -205,12 +205,17 @@ function upDownColSort(matrix) {
                 }))
                 return oldArray.push(evenIndex)
                 // return "poop"
-            }
-        })
-        let newArray = []
-        return newArray.push(oldArray)
-    
-        // return [oldArray];
+            }    
+        });
+        
+        const newArray = [];
+        matrix[0].forEach((v, i) => {
+          const columnArray = [];
+          matrix.forEach(row => columnArray.push(row[i]));
+          newArray.push(columnArray);
+        });
+      
+        return newArray;
 }
 
 console.log(upDownColSort([[-20, -4, -1], [  1,  4,  7], [  8, 10, 12]]));
