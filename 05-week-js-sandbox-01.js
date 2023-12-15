@@ -218,6 +218,13 @@ function upDownColSort(matrix) {
         return newArray;
 }
 
-console.log(upDownColSort([[-20, -4, -1], [  1,  4,  7], [  8, 10, 12]]));
+var m1 = [[-20, -4, -1], [1, 4, 7], [8, 10, 12]];
+var m2 = [[1,-1,4, 1], [7,-20,12,0], [8,10,-4,-3]];
+var m3 = [[1,-1,4, 1], [7,-20,12,0], [8,10,-4,-3], [5,6,6,8]];
 
+
+
+console.log(upDownColSort(m1));
+console.log(upDownColSort(m2));
+console.log(upDownColSort(m3));
 console.log("==========================================")
