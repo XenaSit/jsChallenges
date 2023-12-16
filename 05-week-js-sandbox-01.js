@@ -193,9 +193,8 @@ console.log("==========================================")
 // M_ = [[-20, 7, 8], [-4, 4, 10], [-1, 1, 12]]
 
 function upDownColSort(matrix) {
-    let oldArray = []
-    matrix.forEach((v, i) => {
-            // console.log("v:", v)
+    matrix.map((v, i) => {
+        let oldArray = []
             if (i % 2 === 1) {
                 let oddIndex = v.reverse()
                 return oldArray.push(oddIndex)
@@ -204,23 +203,26 @@ function upDownColSort(matrix) {
                     return a - b
                 }))
                 return oldArray.push(evenIndex)
-                // return "poop"
             }    
         });
         
         const newArray = [];
-        matrix[0].forEach((v, i) => {
+        matrix[0].map((_, index) => {
           const columnArray = [];
-          matrix.forEach(row => columnArray.push(row[i]));
+          matrix.map(row => columnArray.push(row[index]));
           newArray.push(columnArray);
         });
       
         return newArray;
 }
 
+
 var m1 = [[-20, -4, -1], [1, 4, 7], [8, 10, 12]];
+// output: [[-20, 7, 8], [-4, 4, 10], [-1, 1, 12]]
 var m2 = [[1,-1,4, 1], [7,-20,12,0], [8,10,-4,-3]];
+// output : [[-20, 1, 1, 12], [-4, 0, 4, 10], [-3, -1, 7, 8]]
 var m3 = [[1,-1,4, 1], [7,-20,12,0], [8,10,-4,-3], [5,6,6,8]];
+// output: [[-20, 4, 5, 12], [-4, 1, 6, 10], [-3, 1, 6, 8], [-1, 0, 7, 8]]
 
 
 
