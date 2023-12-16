@@ -192,28 +192,60 @@ console.log("==========================================")
 // M = [[-20, -4, -1], [  1,  4,  7], [  8, 10, 12]]
 // M_ = [[-20, 7, 8], [-4, 4, 10], [-1, 1, 12]]
 
-function upDownColSort(matrix) {
-    matrix.map((v, i) => {
-        let oldArray = []
-            if (i % 2 === 1) {
-                let oddIndex = v.reverse()
-                return oldArray.push(oddIndex)
-            } else {
-                let evenIndex = v.sort((function(a, b){
-                    return a - b
-                }))
-                return oldArray.push(evenIndex)
-            }    
-        });
+// function upDownColSort(matrix) {
+//     matrix.map((v, i) => {
+//         let oldArray = []
+//             if (i % 2 === 1) {
+//                 let oddIndex = v.reverse()
+//                 return oldArray.push(oddIndex)
+//             } else {
+//                 let evenIndex = v.sort((function(a, b){
+//                     return a - b
+//                 }))
+//                 return oldArray.push(evenIndex)
+//             }    
+//         });
         
-        const newArray = [];
-        matrix[0].map((_, index) => {
-          const columnArray = [];
-          matrix.map(row => columnArray.push(row[index]));
-          newArray.push(columnArray);
-        });
+//         const newArray = [];
+//         matrix[0].map((_, index) => {
+//           const columnArray = [];
+//           matrix.map(row => columnArray.push(row[index]));
+//           newArray.push(columnArray);
+//         });
       
-        return newArray;
+//         return newArray;
+// }
+
+function upDownColSort(matrix) {
+    
+    const flatten = matrix.reduce((acc, val) => acc.concat(val), []);
+    flatten.sort((a, b) => a - b);
+    console.log("flatte:", flatten);
+
+    const numRows = matrix.length;
+    console.log("numRows:", numRows);
+
+    const numCols = matrix[0].length;
+    console.log("numCols:", numCols);
+
+    const result = Array.from({ length: numRows }, () => Array(numCols).fill(0));
+    console.log("result:", result);
+
+    let index = 0;
+
+    for (let i = 0; i < numCols; i++) {
+        if (i % 2 === 0) {
+            for (let j = 0; j < numRows; j++) {
+                result[j][i] = flatten[index++];
+            }
+        } else {
+            for (let j = numRows - 1; j >= 0; j--) {
+                result[j][i] = flatten[index++];
+            }
+        }
+    }
+
+    return result;
 }
 
 
