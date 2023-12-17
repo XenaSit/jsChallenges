@@ -261,4 +261,27 @@ var m3 = [[1,-1,4, 1], [7,-20,12,0], [8,10,-4,-3], [5,6,6,8]];
 console.log(upDownColSort(m1));
 console.log(upDownColSort(m2));
 console.log(upDownColSort(m3));
+
+
 console.log("==========================================")
+
+// Polly is 8 years old. She is eagerly awaiting Christmas as she has a bone to pick with Santa Claus. Last year she asked for a horse, and he brought her a dolls house. Understandably she is livid.
+
+// The days seem to drag and drag so Polly asks her friend to help her keep count of how long it is until Christmas, in days. She will start counting from the first of December.
+
+// Your function should take 1 argument (a Date object) which will be the day of the year it is currently. The function should then work out how many days it is until Christmas.
+
+// Watch out for leap years!
+
+function daysUntilChristmas(days) {
+    console.log(days);
+    let newDay = 
+    }
+
+    
+console.log(daysUntilChristmas(2016,11,8)); //17
+console.log(daysUntilChristmas(1996,11,7)); //18
+console.log(daysUntilChristmas(2015,1,23)); //305
+console.log(daysUntilChristmas(2001,6,11)); //167
+console.log(daysUntilChristmas(2000,11,9)); // 16
+console.log(daysUntilChristmas(1978,2,18)); //282
