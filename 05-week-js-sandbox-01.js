@@ -280,10 +280,11 @@ function daysUntilChristmas(days) {
     const currentDay = new Date().getDate();
     let todayIs = [currentYear, currentMonth, currentDay]
     // console.log("todayIs", todayIs);
-    let previouseDay = [days[0], days[1], days[2]];
+    let previouseDay = [days[0],days[1],days[2]];
+    let christmasDay = [currentYear,12,25]
     // const [year, month, day] = todayIs
     // const [year, month, day] = previouseDay
-    return onWhichDayOfCristmasSantaWillPayThePiper = todayIs - previouseDay;
+    return onWhichDayOfCristmasSantaWillPayThePiper = christmasDay - previouseDay;
     // let newDay = days.map((v, i, a) => {
     //     console.log(v, i, a);
         // let oldYear = v[0];
