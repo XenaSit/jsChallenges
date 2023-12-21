@@ -7,3 +7,11 @@
 - .length (checks the leangth of the array)
 - .size (checks ActiveRecord size (db and length))
 - .count (checks the db itself)
+
+### MAP render
+- JQuery
+- Select2
+- yarn install
+- bootstrap
+- yarn add select2-bootstrap
+- install NVM (version control to change because of dependancies)
