@@ -276,28 +276,22 @@ console.log("==========================================")
 function daysUntilChristmas(days) {
     // console.log(days);
     const currentYear = new Date().getFullYear();
-    const currentMonth = new Date().getMonth() + 1; 
-    const currentDay = new Date().getDate();
-    let todayIs = [currentYear, currentMonth, currentDay]
-    // console.log("todayIs", todayIs);
-    let previouseDay = [days[0],days[1],days[2]];
-    let christmasDay = [currentYear,12,25]
-    // const [year, month, day] = todayIs
-    // const [year, month, day] = previouseDay
-    return onWhichDayOfCristmasSantaWillPayThePiper = christmasDay - previouseDay;
-    // let newDay = days.map((v, i, a) => {
-    //     console.log(v, i, a);
-        // let oldYear = v[0];
-        // let oldMonth = v[1];
-        // let oldDay = v[2];
-        // let createPreviouseDay = previouseDay.push(oldYear, oldMonth, oldDay)
-        // return previouseDay
-        // console.log("previouseDay", previouseDay);
-    // })
+    const currentDate = new Date(currentYear, new Date().getMonth(), new Date().getDate());
+    const givenDate = new Date(days[0], days[1] - 1, days[2]);
+    const christmasDay = new Date(currentYear, 11, 25);
+
+    if (christmasDay < currentDate) {
+        christmasDay.setFullYear(currentYear + 1);
+    }
+
+    const differenceInMs = christmasDay.getTime() - givenDate.getTime();
+    const onWhichDayOfCristmasSantaWillPayThePiper = Math.ceil(differenceInMs / (1000 * 60 * 60 * 24))
+
+    return onWhichDayOfCristmasSantaWillPayThePiper;
 }
 
     
-console.log(daysUntilChristmas([2016,11,8])); //17
+console.log(daysUntilChristmas(2016,11,8)); //17
 // console.log(daysUntilChristmas(1996,11,7)); //18
 // console.log(daysUntilChristmas(2015,1,23)); //305
 // console.log(daysUntilChristmas(2001,6,11)); //167
