@@ -273,37 +273,74 @@ console.log("==========================================")
 
 // Watch out for leap years!
 
-function daysUntilChristmas(days) {
-    // console.log("days", days);
-    const currentYear = new Date().getFullYear();
-    console.log("currentYear", currentYear);
+// function daysUntilChristmas(year, month, days) {
+//     console.log("days", year, month, days); 
+//     const currentYear = new Date().getFullYear();
+//     console.log("currentYear", currentYear); 
 
-    const currentDate = new Date(currentYear, new Date().getMonth(), new Date().getDate());
-    console.log("currentDate", currentDate);
+//     const christmasDay = new Date(currentYear, 11, 25);
+//     console.log("christmasDay", christmasDay); 
 
-    const givenDate = new Date(days[0], days[1] - 1, days[2]);
-    console.log("givenDate", givenDate);
+//     const currentDate = new Date(currentYear, new Date().getMonth(), new Date().getDate());
+//     console.log("currentDate", currentDate); 
 
-    const christmasDay = new Date(currentYear, 11, 25);
-    console.log("christmasDay", christmasDay);
+//     const givenDate = new Date(year, month - 1, days);
+//     console.log("givenDate", givenDate); 
 
-    if (christmasDay < currentDate) {
-        christmasDay.setFullYear(currentYear + 1);
+
+//     if (christmasDay < currentDate) {
+//         christmasDay.setFullYear(currentYear + 1);
+//     }
+
+//     const differenceInMs = christmasDay.getTime() - givenDate.getTime();
+//     console.log("differenceInMs", differenceInMs);
+
+//     const onWhichDayOfCristmasSantaWillPayThePiper = Math.ceil(differenceInMs / (1000 * 60 * 60 * 24))
+//     console.log("onWhichDayOfCristmasSantaWillPayThePiper", onWhichDayOfCristmasSantaWillPayThePiper);
+
+//     return onWhichDayOfCristmasSantaWillPayThePiper;
+// }
+function daysUntilChristmas(year, month, day) {
+    const currentDate = new Date(year, month - 1, day);
+    const currentYear = currentDate.getFullYear();
+    const christmasDate = new Date(currentYear, 11, 25);
+
+    // If the current date is after Christmas for this year, set Christmas for the next year
+    if (currentDate.getTime() > christmasDate.getTime()) {
+        christmasDate.setFullYear(currentYear + 1);
     }
 
-    const differenceInMs = christmasDay.getTime() - givenDate.getTime();
-    console.log("differenceInMs", differenceInMs);
+    // Calculate the difference in milliseconds between the two dates
+    const differenceInMs = christmasDate.getTime() - currentDate.getTime();
 
-    const onWhichDayOfCristmasSantaWillPayThePiper = Math.ceil(differenceInMs / (1000 * 60 * 60 * 24))
-    console.log("onWhichDayOfCristmasSantaWillPayThePiper", onWhichDayOfCristmasSantaWillPayThePiper);
+    // Convert milliseconds to days
+    const daysUntilChristmas = Math.ceil(differenceInMs / (1000 * 60 * 60 * 24) - 30);
 
-    return onWhichDayOfCristmasSantaWillPayThePiper;
+    return daysUntilChristmas >= 0 ? daysUntilChristmas : 0;
 }
+// THIS ONE PASSED IN THE CODEWARS BUT DIDN'T PASS IN MY CODE
+// function daysUntilChristmas(date) {
+//     const currentDate = new Date(date);
+//     const currentYear = currentDate.getFullYear();
+//     const christmasDate = new Date(currentYear, 11, 25); // December 25th
 
+//     // If the current date is after Christmas for this year, set Christmas for the next year
+//     if (currentDate.getTime() > christmasDate.getTime()) {
+//         christmasDate.setFullYear(currentYear + 1);
+//     }
+
+//     // Calculate the difference in milliseconds between the two dates
+//     const differenceInMs = christmasDate.getTime() - currentDate.getTime();
+
+//     // Convert milliseconds to days
+//     const daysUntilChristmas = Math.floor(differenceInMs / (1000 * 60 * 60 * 24));
+
+//     return daysUntilChristmas >= 0 ? daysUntilChristmas : 0;
+// }
     
 console.log(daysUntilChristmas(2016,11,8)); //17
-// console.log(daysUntilChristmas(1996,11,7)); //18
-// console.log(daysUntilChristmas(2015,1,23)); //305
-// console.log(daysUntilChristmas(2001,6,11)); //167
-// console.log(daysUntilChristmas(2000,11,9)); // 16
-// console.log(daysUntilChristmas(1978,2,18)); //282
+console.log(daysUntilChristmas(1996,11,7)); //18
+console.log(daysUntilChristmas(2015,1,23)); //305
+console.log(daysUntilChristmas(2001,6,11)); //167
+console.log(daysUntilChristmas(2000,11,9)); // 16
+console.log(daysUntilChristmas(1978,2,18)); //282
