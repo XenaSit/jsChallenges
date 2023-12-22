@@ -274,18 +274,28 @@ console.log("==========================================")
 // Watch out for leap years!
 
 function daysUntilChristmas(days) {
-    // console.log(days);
+    // console.log("days", days);
     const currentYear = new Date().getFullYear();
+    console.log("currentYear", currentYear);
+
     const currentDate = new Date(currentYear, new Date().getMonth(), new Date().getDate());
+    console.log("currentDate", currentDate);
+
     const givenDate = new Date(days[0], days[1] - 1, days[2]);
+    console.log("givenDate", givenDate);
+
     const christmasDay = new Date(currentYear, 11, 25);
+    console.log("christmasDay", christmasDay);
 
     if (christmasDay < currentDate) {
         christmasDay.setFullYear(currentYear + 1);
     }
 
     const differenceInMs = christmasDay.getTime() - givenDate.getTime();
+    console.log("differenceInMs", differenceInMs);
+
     const onWhichDayOfCristmasSantaWillPayThePiper = Math.ceil(differenceInMs / (1000 * 60 * 60 * 24))
+    console.log("onWhichDayOfCristmasSantaWillPayThePiper", onWhichDayOfCristmasSantaWillPayThePiper);
 
     return onWhichDayOfCristmasSantaWillPayThePiper;
 }
