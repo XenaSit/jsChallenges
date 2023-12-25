@@ -353,11 +353,13 @@ console.log("==========================================")
 // Output string must be two numbers separated by a single space, and highest number is first.
 
 function highAndLow(numbers){
-    console.log("numbers", numbers);
-    const inToArray = numbers.split(' ').map(Number)
-    console.log("inToArray", inToArray);
-
-  }
+    // console.log("numbers", numbers);
+    const inToArray = numbers.split(' ').map(Number);
+    // console.log("inToArray", inToArray);
+    const smallestNumber = Math.min(...inToArray);
+    const largestNumber = Math.max(...inToArray);
+    return [largestNumber, smallestNumber].join(' ')
+}
 
 console.log(highAndLow("1 2 3 4 5")); //return "5 1"
 console.log(highAndLow("1 2 -3 4 5")); //return "5 -3"
