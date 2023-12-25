@@ -270,7 +270,6 @@ console.log("==========================================")
 // The days seem to drag and drag so Polly asks her friend to help her keep count of how long it is until Christmas, in days. She will start counting from the first of December.
 
 // Your function should take 1 argument (a Date object) which will be the day of the year it is currently. The function should then work out how many days it is until Christmas.
-
 // Watch out for leap years!
 
 // function daysUntilChristmas(year, month, days) {
@@ -344,3 +343,18 @@ console.log(daysUntilChristmas(2015,1,23)); //305
 console.log(daysUntilChristmas(2001,6,11)); //167
 console.log(daysUntilChristmas(2000,11,9)); // 16
 console.log(daysUntilChristmas(1978,2,18)); //282
+
+
+console.log("==========================================")
+// In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.
+// All numbers are valid Int32, no need to validate them.
+// There will always be at least one number in the input string.
+// Output string must be two numbers separated by a single space, and highest number is first.
+
+function highAndLow(numbers){
+    // ...
+  }
+
+console.log(highAndLow("1 2 3 4 5")); //return "5 1"
+console.log(highAndLow("1 2 -3 4 5")); //return "5 -3"
+console.log(highAndLow("1 9 3 4 -5")); //return "9 -5"
