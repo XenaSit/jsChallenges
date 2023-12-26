@@ -380,15 +380,21 @@ console.log("==========================================")
 // Input:  A non negative integer.
 // Output: / The number of times you found an integer that was evenly divisible with N.
 
+const num = 877692;
 
-// 8 does not evenly divide with 877692. 877692/8 = 109711 with 4 remainder.
-// 7 does not evenly divide with 877692. 877692/7 = 125384 with 4 remainder.
-// 7 does not evenly divide with 877692. 877692/7 = 125384 with 4 remainder.
-// 6 evenly divides with 877692. 877692/6 = 146282 with 0 remainder.
-// 9 does not evenly divide with 877692. 877692/9 = 97521 with 3 remainder.
-// 2 evenly divides with 877692. 877692/2 = 438846 with 0 remainder.
-// We aren't going to stop there though. We need to check ALL of the substrings inside of 877692.
-// 87 does not evenly divide with 877692. 877692/87 = 10088 with 36 remainder.
-// 77 does not evenly divide with 877692. 877692/77 = 11398 with 46 remainder.
-// 76 does not evenly divide with 877692. 877692/76 = 11548 with 44 remainder.
-// 69 does not evenly divide with 877692. 877692/69 = 12720 with 12 remainder.
+function getCount(n)
+{
+  //n is an integer.
+  //Code goes here! 
+}
+
+console.log(getCount(8)); // 4 remainder.
+console.log(getCount(7)); // 4 remainder.
+console.log(getCount(6)); // 0 remainder
+console.log(getCount(9)); // 3 remainder.
+console.log(getCount(2)); // 4 remainder.
+console.log(getCount(8)); // 0 remainder
+console.log(getCount(87)); // 36 remainder.
+console.log(getCount(77)); // 46 remainder.
+console.log(getCount(76)); // 44 remainder.
+console.log(getCount(69)); // 12 remainder
