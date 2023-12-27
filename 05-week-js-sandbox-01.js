@@ -380,25 +380,27 @@ console.log("==========================================")
 // Input:  A non negative integer.
 // Output: / The number of times you found an integer that was evenly divisible with N.
 
-function getCount(n)
-{
-    if (n % 1 === 1) {
-        return n%1
-    } else if (n % 2 === 1) {
-        return n%2
-    } else {
-        return 0
-    }
+// function getCount(n)
+// {
+//     return n % 1 || n % 2 || n % 3 || n % 4 || n % 5 || n % 6 || n % 7 || n % 8 || n % 9 || n % 10 || n % 11 || n % 12 || n%n || n%0
     
-}
+// }
+function getCount(n) {
+    const str = n.toString(); // Convert the number to a string
+    let count = 0;
+  
+    for (let i = 0; i < str.length; i++) {
+      for (let j = i + 1; j <= str.length; j++) {
+        const subStr = str.slice(i, j); // Get a substring from the number
+        const subNum = parseInt(subStr, 10); // Convert substring back to a number
+  
+        if (subNum !== 0 && n % subNum === 0 && subNum !== n) {
+          count++;
+        }
+      }
+    }
+  
+    return count;
+  }
 
-console.log(getCount(877692)); // 4 remainder.
-// console.log(getCount(7)); // 4 remainder.
-// console.log(getCount(6)); // 0 remainder
-// console.log(getCount(9)); // 3 remainder.
-// console.log(getCount(2)); // 4 remainder.
-// console.log(getCount(8)); // 0 remainder
-// console.log(getCount(87)); // 36 remainder.
-// console.log(getCount(77)); // 46 remainder.
-// console.log(getCount(76)); // 44 remainder.
-// console.log(getCount(69)); // 12 remainder
+console.log(getCount(877692));
