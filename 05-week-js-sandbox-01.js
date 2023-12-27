@@ -380,21 +380,25 @@ console.log("==========================================")
 // Input:  A non negative integer.
 // Output: / The number of times you found an integer that was evenly divisible with N.
 
-const num = 877692;
-
 function getCount(n)
 {
-  //n is an integer.
-  //Code goes here! 
+    if (n % 1 === 1) {
+        return n%1
+    } else if (n % 2 === 1) {
+        return n%2
+    } else {
+        return 0
+    }
+    
 }
 
-console.log(getCount(8)); // 4 remainder.
-console.log(getCount(7)); // 4 remainder.
-console.log(getCount(6)); // 0 remainder
-console.log(getCount(9)); // 3 remainder.
-console.log(getCount(2)); // 4 remainder.
-console.log(getCount(8)); // 0 remainder
-console.log(getCount(87)); // 36 remainder.
-console.log(getCount(77)); // 46 remainder.
-console.log(getCount(76)); // 44 remainder.
-console.log(getCount(69)); // 12 remainder
+console.log(getCount(877692)); // 4 remainder.
+// console.log(getCount(7)); // 4 remainder.
+// console.log(getCount(6)); // 0 remainder
+// console.log(getCount(9)); // 3 remainder.
+// console.log(getCount(2)); // 4 remainder.
+// console.log(getCount(8)); // 0 remainder
+// console.log(getCount(87)); // 36 remainder.
+// console.log(getCount(77)); // 46 remainder.
+// console.log(getCount(76)); // 44 remainder.
+// console.log(getCount(69)); // 12 remainder
