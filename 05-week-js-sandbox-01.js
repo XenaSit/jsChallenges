@@ -404,3 +404,21 @@ function getCount(n) {
   }
 
 console.log(getCount(877692));
+
+console.log("==========================================")
+// Task
+// Write the processArray function, which takes an array and a callback function as parameters. 
+// The callback function can be, for example, a mathematical function that will be applied on each element of this array. 
+// Optionally, also write tests similar to the examples below.
+// Examples: 
+var myArray1 = [4, 8, 2, 7, 5];
+myArray1 = processArray(myArray1,function (a) {return a * 2;});  
+
+var myArray2 = [7, 8, 9, 1, 2];
+myArray2 = processArray(myArray2, function (a) {return a + 5;});  
+
+function processArray(arr, callback) {
+    console.log(arr, callback);
+}
+console.log(processArray(myArray1)); // will be [ 8, 16, 4, 14, 10 ].
+console.log(processArray(myArray2)); // will be [ 12, 13, 14, 6, 7 ].
