@@ -418,7 +418,7 @@ var myArray2 = [7, 8, 9, 1, 2];
 myArray2 = processArray(myArray2, function (a) {return a + 5;});  
 
 function processArray(arr, callback) {
-    console.log(arr, callback);
+    return arr.map(callback);
 }
-console.log(processArray(myArray1)); // will be [ 8, 16, 4, 14, 10 ].
-console.log(processArray(myArray2)); // will be [ 12, 13, 14, 6, 7 ].
+console.log(processArray()); // will be [ 8, 16, 4, 14, 10 ].
+console.log(processArray()); // will be [ 12, 13, 14, 6, 7 ].
