@@ -418,7 +418,7 @@ var myArray2 = [7, 8, 9, 1, 2];
 myArray2 = processArray(myArray2, function (a) {return a + 5;});  
 
 function processArray(arr, callback) {
-    return arr.map(callback);
+    // return arr.map(callback);
 }
 console.log(processArray()); // will be [ 8, 16, 4, 14, 10 ].
 console.log(processArray()); // will be [ 12, 13, 14, 6, 7 ].
@@ -427,13 +427,23 @@ console.log("==========================================")
 // Create a function add(n)/Add(n) which returns a function that always adds n to any number
 // Note for Java: the return type and methods have not been provided to make it a bit more challenging.
 var addOne = add(1);
-// addOne(3); // 4
+addOne(1); // 4
 
 var addThree = add(3);
-// addThree(3); // 6
+addThree(3); // 6
 
 function add(n) {
-  
+    return function(num) {
+        return num + n;
+    };
 }
+
+function combineAddFunctions(func1, func2) {
+    return function(num) {
+      return func2(func1(num));
+    };
+  }
+  
+  console.log(combineAddFunctions(addOne, addThree)(5))
 
 console.log("==========================================")
