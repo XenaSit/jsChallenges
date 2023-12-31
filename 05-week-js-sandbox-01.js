@@ -454,7 +454,9 @@ console.log("==========================================")
 // If you complete this kata and there are no issues, please remember to give it a ready vote and a difficulty rating. :)
 
 function volume(r,h) {
-    //your code here!
+    return Math.floor(Math.PI*r**2)*(h/3)
     }
-
+console.log(volume(7,3)); //153
+console.log(volume(56,30)); //98520
+console.log(volume(0, 10)); //0
 console.log("==========================================")
