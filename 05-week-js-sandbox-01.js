@@ -505,17 +505,22 @@ console.log("==========================================")
 // Examples:
 
 // Input -> Output
-// 1,2,2 -> true
-// 4,2,3 -> true
-// 2,2,2 -> true
-// 1,2,3 -> false
-// -5,1,3 -> false
-// 0,2,3 -> false
-// 1,2,9 -> false 
+//  -> 
+//  -> true
+//  -> true
+//  -> false
+//  -> false
+//  -> false
+// 1,2,9 ->  
 
-function isTriangle(a,b,c)
-{
+function isTriangle(a,b,c){
+    
    return false;
 }
-
+console.log(isTriangle(1,2,2)); // true
+console.log(isTriangle(4,2,3)); // true
+console.log(isTriangle(2,2,2)); // true
+console.log(isTriangle(1,2,3)); // false
+console.log(isTriangle(-5,1,3)); // false
+console.log(isTriangle(0,2,3)); // false
 console.log("==========================================")
