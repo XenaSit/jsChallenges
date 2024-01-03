@@ -502,20 +502,13 @@ console.log("==========================================")
 // The function should return true if a triangle can be built with the sides of given length and false in any other case.
 // (In this case, all triangles must have surface greater than 0 to be accepted).
 
-// Examples:
-
-// Input -> Output
-//  -> 
-//  -> true
-//  -> true
-//  -> false
-//  -> false
-//  -> false
-// 1,2,9 ->  
 
 function isTriangle(a,b,c){
-    
-   return false;
+    if (a <= 0 || b <= 0 || c <= 0) {
+        return false;
+    } else {
+        return true
+    }
 }
 console.log(isTriangle(1,2,2)); // true
 console.log(isTriangle(4,2,3)); // true
