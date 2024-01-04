@@ -555,11 +555,17 @@ var two = "e e e e DDD ddd DdD: ddd ddd aa aA Aa, bb cc cC e e e"
 var three = "  //wont won't won't"
 
 function topThreeWords(text) {
-    return [];
+    let newArr = []
+    for  (let i =0; i<text.length; i++){
+        if (text === text){
+            return newArr.push(text[i])
+
+        }
+    }
 }
 
-console.log(topThreeWords(one)); // true
-console.log(topThreeWords(two)); // true
-console.log(topThreeWords(three)); // true
+console.log(topThreeWords(one)); // ["a", "of", "on"]
+console.log(topThreeWords(two)); // ["e", "ddd", "aa"]
+console.log(topThreeWords(three)); // ["won't", "wont"]
 
 console.log("==========================================")
