@@ -556,12 +556,12 @@ var three = "  //wont won't won't"
 
 function topThreeWords(text) {
     // console.log("text:", text);
-    let superNew = []
+    let count = {}
     let newArr = text.split(' ').map(word => word.toLowerCase());
-    return newArr.filter((v, i, a)=> {
-        // console.log("v:", v, "i:", i, "a:", a);
+    return newArr.filter((v, i)=> {
+        // console.log("v:", v, "i:", i);
         if (v === v) {
-            return v
+            return i
         }
         
     })
