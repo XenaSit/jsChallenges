@@ -555,10 +555,11 @@ var two = "e e e e DDD ddd DdD: ddd ddd aa aA Aa, bb cc cC e e e"
 var three = "  //wont won't won't"
 
 function topThreeWords(text) {
+    // console.log("text:", text);
     let newArr = []
     for  (let i =0; i<text.length; i++){
-        if (text === text){
-            return newArr.push(text[i])
+        if (text[i] === text[i]){
+            return text
 
         }
     }
