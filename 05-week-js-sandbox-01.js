@@ -556,13 +556,15 @@ var three = "  //wont won't won't"
 
 function topThreeWords(text) {
     // console.log("text:", text);
-    let newArr = []
-    for  (let i =0; i<text.length; i++){
-        if (text[i] === text[i]){
-            return text
-
+    let superNew = []
+    let newArr = text.split(' ')
+    return newArr.filter((v, i, a)=> {
+        // console.log("v:", v, "i:", i, "a:", a);
+        if (v === v) {
+            return newArr
         }
-    }
+        
+    })
 }
 
 console.log(topThreeWords(one)); // ["a", "of", "on"]
