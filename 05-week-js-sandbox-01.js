@@ -557,9 +557,10 @@ var three = "  //wont won't won't"
 function topThreeWords(text) {
     // console.log("text:", text);
     let count = {}
-    let newArr = text.split(' ').map(word => word.toLowerCase());
-    newArr.forEach((v, i)=> {count[v] = (count[v] || 0) + 1})
+    let newArr = text.toLowerCase().match(/\b[a-z']+\b/g) || [];;
+    newArr.forEach((v, i) => {count[v] = (count[v] || 0) + 1})
     let sortedWords = Object.keys(count).sort((a, b) => count[b] - count[a]);
+
     return sortedWords.slice(0, 3);
 }
 
