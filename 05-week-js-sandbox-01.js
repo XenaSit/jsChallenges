@@ -558,16 +558,9 @@ function topThreeWords(text) {
     // console.log("text:", text);
     let count = {}
     let newArr = text.split(' ').map(word => word.toLowerCase());
-    newArr.forEach((v, i)=> {
-        count[v] = (count[v] || 0) + 1
-        // console.log("v:", v, "i:", i);
-        // let newCount = {count} + 1
-        // if (count > 1) {
-        //     return v
-        // }
-        
-    })
-    return count
+    newArr.forEach((v, i)=> {count[v] = (count[v] || 0) + 1})
+    let sortedWords = Object.keys(count).sort((a, b) => count[b] - count[a]);
+    return sortedWords.slice(0, 3);
 }
 
 console.log(topThreeWords(one)); // ["a", "of", "on"]
