@@ -560,9 +560,11 @@ function topThreeWords(text) {
     let newArr = text.split(' ').map(word => word.toLowerCase());
     return newArr.filter((v, i)=> {
         // console.log("v:", v, "i:", i);
+        let newCount = {count} + 1
         if (v === v) {
-            return i
+            return newCount
         }
+        // return newCount
         
     })
 }
