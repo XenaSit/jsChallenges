@@ -583,10 +583,17 @@ const set = [[0, 0, 1], [0, 1, 2], [2, 1, 0]]
 // You may assume that the board passed in is valid in the context of a game of Tic-Tac-Toe.
 
 function isSolved(board) {
-    let loss = -1
+    console.log(board);
+    let empty = 0
     let X = 1
     let O = 2
-
+    let checkBoard = board.map((v, i, a) => {
+        // console.log("v:", v, "i:", i, "a:", a);
+        if (v === 0) {
+            return -1 
+        }
+    })
+    return checkBoard
   }
 
 console.log(isSolved(set));
