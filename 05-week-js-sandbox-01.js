@@ -586,18 +586,18 @@ const set = [
 // You may assume that the board passed in is valid in the context of a game of Tic-Tac-Toe.
 
 function isSolved(board) {
-    console.log(board);
-    let empty = 0
-    let X = 1
-    let O = 2
-    let checkBoard = board.map((v, i, a) => {
-        // console.log("v:", v, "i:", i, "a:", a);
-        if (v === 0) {
-            return -1 
+    for (let i = 0; i < 3; i++) {
+        if (board[i][0] !== 0 && board[i][0] === board[i][1] && board[i][1] === board[i][2]) {
+            return board[i][0];
+        } else {
+            return 0
         }
-    })
-    return checkBoard
-  }
+    }
+
+    
+    return -1; 
+}
+
 
 console.log(isSolved(set));
 console.log("==========================================")
