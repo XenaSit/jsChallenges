@@ -574,7 +574,10 @@ console.log("==========================================")
 // Our goal is to create a function that will check that for us!
 
 // Assume that the board comes in the form of a 3x3 array, where the value is 0 if a spot is empty, 1 if it is an "X", or 2 if it is an "O", like so:
-const set = [[0, 0, 1], [0, 1, 2], [2, 1, 0]]
+const set = [
+    [0, 0, 1], 
+    [0, 1, 2], 
+    [2, 1, 0]]
 // We want our function to return:
 // -1 if the board is not yet finished AND no one has won yet (there are empty spots),
 // 1 if "X" won,
