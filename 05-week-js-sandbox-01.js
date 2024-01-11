@@ -587,22 +587,29 @@ const set = [
 
 function isSolved(board) {
     for (let i = 0; i < 3; i++) {
-        console.log("board 0:", board[i][0]);
-        console.log("board 1:", board[i][1]);
-        console.log("board 2:", board[i][2]);
         if (board[i][0] !== 0 && board[i][0] === board[i][1] && board[i][1] === board[i][2]) {
             return board[i][0];
-        } else if (board[i][1] !== 0 && board[i][1] === board[i][2] && board[i][2] === board[i][3]){
-            return board[i][1];
-        } else if (board[i][2] !== 0 && board[i][2] === board[i][3] && board[i][3] === board[i][0]){
-            return 2
-        } else {
-            return -1
         }
     }
-
-    
-    return board
+    for (let j = 0; j < 3; j++) {
+        if (board[0][j] !== 0 && board[0][j] === board[1][j] && board[1][j] === board[2][j]) {
+            return board[0][j];
+        }
+    }
+    if (board[0][0] !== 0 && board[0][0] === board[1][1] && board[1][1] === board[2][2]) {
+        return board[0][0];
+    }
+    if (board[0][2] !== 0 && board[0][2] === board[1][1] && board[1][1] === board[2][0]) {
+        return board[0][2];
+    }
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (board[i][j] === 0) {
+                return -1;
+            }
+        }
+    }
+    return 0;
 }
 
 
