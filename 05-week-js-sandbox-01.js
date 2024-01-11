@@ -624,8 +624,8 @@ console.log("==========================================")
 // All numerators and denominators will be positive integers.
 
 // Note: This is an introductory Kata for a series... coming soon!
-
+num = [45, 120]
 function reduce(fraction) {
   }
-console.log();
+console.log(fraction(num)); // [3, 8]
   console.log("==========================================")
