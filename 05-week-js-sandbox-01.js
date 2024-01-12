@@ -626,6 +626,9 @@ console.log("==========================================")
 // Note: This is an introductory Kata for a series... coming soon!
 num = [45, 120]
 function reduce(fraction) {
+    console.log("fraction:", fraction);
+    
+
   }
-console.log(fraction(num)); // [3, 8]
+console.log(reduce(num)); // [3, 8]
   console.log("==========================================")
