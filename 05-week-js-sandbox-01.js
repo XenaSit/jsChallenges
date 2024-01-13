@@ -629,15 +629,15 @@ num2 = [1000, 1];
 function reduce(fraction) {
     const minAbs = Math.min(fraction[0], fraction[1]);
     // console.log("minAbs:", minAbs);
+    var newArr =[]
     for (let i = minAbs; i > 1; i--) {
-        var newArr =[]
         if (fraction[0] % i === 0 && fraction[1] % i === 0) {
-          return newArr.push([fraction[0]/i, fraction[1]/i])
-        } else if (fraction[0] === 1 || fraction[1] === 1){
-            return newArr.push([fraction[0], fraction[1]])
+            newArr.push(fraction[0]/i, fraction[1]/i)
+            return newArr
         }
-        return newArr
-      }
+    }
+    newArr.push(fraction[0], fraction[1]);
+    return newArr; 
   }
 console.log(reduce(num1)); // [3, 8]
 console.log(reduce(num2)); // [1000, 1]
