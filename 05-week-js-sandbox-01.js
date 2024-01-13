@@ -624,15 +624,19 @@ console.log("==========================================")
 // All numerators and denominators will be positive integers.
 
 // Note: This is an introductory Kata for a series... coming soon!
-num1 = [45, 120]
-num2 =[1000, 1]
+num1 = [45, 120];
+num2 = [1000, 1];
 function reduce(fraction) {
     const minAbs = Math.min(fraction[0], fraction[1]);
     // console.log("minAbs:", minAbs);
     for (let i = minAbs; i > 1; i--) {
+        var newArr =[]
         if (fraction[0] % i === 0 && fraction[1] % i === 0) {
-          return [fraction[0]/i, fraction[1]/i]
+          return newArr.push([fraction[0]/i, fraction[1]/i])
+        } else if (fraction[0] === 1 || fraction[1] === 1){
+            return newArr.push([fraction[0], fraction[1]])
         }
+        return newArr
       }
   }
 console.log(reduce(num1)); // [3, 8]
