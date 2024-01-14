@@ -659,17 +659,20 @@ str3 = ""
 str4 = "Looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong Cat"
 function generateHashtag (str) {
     // console.log(str);
-    let newStr = str.split('')
-    let newStr2 = newStr.filter(v => v!== " ").join('').toLowerCase()
-    let newStr3 = newStr2.slice(0, 1).toUpperCase() + newStr2.slice(1)
-    if (newStr3.length > 140) {
+    let newStr = str.split(' ')
+    for (let i = 0; i < newStr.length; i++) {
+        newStr[i] = newStr[i].charAt(0).toUpperCase() + newStr[i].substring(1);
+    }
+    let newStr2 = newStr.filter(v => v!== " ").join('')
+    if (newStr2.length > 140) {
         return false;
-    } else if (newStr3 === "" || newStr3 === undefined) {
+    } else if (newStr2 === "" || newStr2 === undefined) {
         return false;
     } else {
 
-        return "#"+newStr3
+        return "#"+newStr2
     }
+    // return newStr
 }
 
 console.log(generateHashtag(str1)); //"#HelloThereThanksForTryingMyKata"
