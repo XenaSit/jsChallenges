@@ -659,6 +659,8 @@ str3 = ""
 str4 = "Looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong Cat"
 function generateHashtag (str) {
     // console.log(str);
+    let newStr = str.split('')
+    // return newStr
 }
 
 console.log(generateHashtag(str1)); //"#HelloThereThanksForTryingMyKata"
