@@ -664,7 +664,8 @@ function generateHashtag (str) {
         newStr[i] = newStr[i].charAt(0).toUpperCase() + newStr[i].substring(1);
     }
     let newStr2 = newStr.filter(v => v!== " ").join('')
-    if (newStr2.length > 140) {
+    if (newStr2.length >= 140) {
+        console.log(newStr2.length);
         return false;
     } else if (newStr2 === "" || newStr2 === undefined) {
         return false;
