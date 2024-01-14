@@ -642,3 +642,29 @@ function reduce(fraction) {
 console.log(reduce(num1)); // [3, 8]
 console.log(reduce(num2)); // [1000, 1]
   console.log("==========================================")
+
+//   The marketing team is spending way too much time typing in hashtags.
+// Let's help them with our own Hashtag Generator!
+
+// Here's the deal:
+
+// It must start with a hashtag (#).
+// All words must have their first letter capitalized.
+// If the final result is longer than 140 chars it must return false.
+// If the input or the result is an empty string it must return false.
+
+str1 = " Hello there thanks for trying my Kata"
+str2 = "    Hello     World   "
+str3 = ""
+str4 = "Looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong Cat"
+function generateHashtag (str) {
+    // console.log(str);
+}
+
+console.log(generateHashtag(str1)); //"#HelloThereThanksForTryingMyKata"
+console.log(generateHashtag(str2)); //"#HelloWorld"
+console.log(generateHashtag(str3)); //false
+console.log(generateHashtag(str4)); //false
+
+
+console.log("==========================================")
