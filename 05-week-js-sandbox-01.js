@@ -662,8 +662,14 @@ function generateHashtag (str) {
     let newStr = str.split('')
     let newStr2 = newStr.filter(v => v!== " ").join('').toLowerCase()
     let newStr3 = newStr2.slice(0, 1).toUpperCase() + newStr2.slice(1)
-    
-    return newStr3
+    if (newStr3.length > 140) {
+        return false;
+    } else if (newStr3 === "" || newStr3 === undefined) {
+        return false;
+    } else {
+
+        return "#"+newStr3
+    }
 }
 
 console.log(generateHashtag(str1)); //"#HelloThereThanksForTryingMyKata"
