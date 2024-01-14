@@ -660,7 +660,10 @@ str4 = "Looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 function generateHashtag (str) {
     // console.log(str);
     let newStr = str.split('')
-    // return newStr
+    let newStr2 = newStr.filter(v => v!== " ").join('').toLowerCase()
+    let newStr3 = newStr2.slice(0, 1).toUpperCase() + newStr2.slice(1)
+    
+    return newStr3
 }
 
 console.log(generateHashtag(str1)); //"#HelloThereThanksForTryingMyKata"
