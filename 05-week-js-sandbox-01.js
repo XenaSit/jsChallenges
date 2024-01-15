@@ -426,13 +426,13 @@ console.log(processArray()); // will be [ 12, 13, 14, 6, 7 ].
 console.log("==========================================")
 // Create a function add(n)/Add(n) which returns a function that always adds n to any number
 // Note for Java: the return type and methods have not been provided to make it a bit more challenging.
-var addOne = add(1);
+var addOne = addadd(1);
 addOne(1); // 4
 
-var addThree = add(3);
+var addThree = addadd(3);
 addThree(3); // 6
 
-function add(n) {
+function addadd(n) {
     return function(num) {
         return num + n;
     };
@@ -682,3 +682,35 @@ console.log(generateHashtag(str3)); //false
 console.log(generateHashtag(str4)); //false
 
 console.log("==========================================")
+
+// We want to create a function that will add numbers together when called in succession.
+
+// add(1)(2); // == 3
+// We also want to be able to continue to add numbers to our chain.
+
+
+// A single call should be equal to the number passed in.
+
+// add(1); // == 1
+// We should be able to store the returned values and reuse them.
+
+// We can assume any number being passed in will be valid whole number.
+var a = add(2);
+var b = a + 5; // == 7
+// var c = a(3); // == 5
+// var d = a(3)(5); // == 10
+// var e = add(1)(2)(3); // == 6
+// var f = add(1)(2)(3)(4); //  == 10
+// var g = add(1)(2)(3)(4)(5); // == 15
+
+function add(n){
+    console.log("n:", n);
+}
+
+console.log(add(a));
+console.log(add(b));
+// console.log(add(c));
+// console.log(add(d));
+// console.log(add(e));
+// console.log(add(f));
+// console.log(add(g));
