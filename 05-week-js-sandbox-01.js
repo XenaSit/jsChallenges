@@ -681,5 +681,4 @@ console.log(generateHashtag(str2)); //"#HelloWorld"
 console.log(generateHashtag(str3)); //false
 console.log(generateHashtag(str4)); //false
 
-
 console.log("==========================================")
