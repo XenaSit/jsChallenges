@@ -684,49 +684,48 @@ console.log(generateHashtag(str3)); //false
 console.log(generateHashtag(str4)); //false
 
 console.log("==========================================")
-
+var addOne = add1(1);
+var addThree = add1(3);
+function add1(n) { return function(num) { return num + n; }; }
+function combineAddFunctions1(func1, func2) { return function(num) { return func2(func1(num)); }; }
+console.log(combineAddFunctions1(addOne, addThree)(5))
+console.log("==========================================")
 // We want to create a function that will add numbers together when called in succession.
-
 // add(1)(2); // == 3
 // We also want to be able to continue to add numbers to our chain.
-
-
 // A single call should be equal to the number passed in.
-
 // add(1); // == 1
 // We should be able to store the returned values and reuse them.
-
 // We can assume any number being passed in will be valid whole number.
 var a = add(2);
-// var b = a + 5; // == 7
-// var c = a(3); // == 5
-// var d = a(3)(5); // == 10
+var b = a + 5; // == 7
+var c = a(3); // == 5
+var d = a(3)(5); // == 10
 var e = add(1)(2)(3); // == 6
 var f = add(1)(2)(3)(4); //  == 10
 var g = add(1)(2)(3)(4)(5); // == 15
 
-function add(n) {
-    console.log("n:", n);
-    return function(num) {
-        console.log("num:", num);
-        return num + n;
+function add(num) {
+    const innerAdd = function(nextNum) {
+        return add(num + nextNum);
     };
+    innerAdd.valueOf = function() {
+        return num;
+    };
+
+    return innerAdd;
 }
 
-function addFunctions(func1, func2) {
-    return function(num) {
-      return func2(func1(num));
-    };
-  }
-
-console.log(addFunctions(a));
-// console.log(addFunctions(b));
-// console.log(addFunctions(c));
-// console.log(addFunctions(d));
-console.log(addFunctions(e));
-console.log(addFunctions(f));
-console.log(addFunctions(g));
+console.log(add(a));
+console.log(add(b));
+console.log(add(c));
+console.log(add(d));
+console.log(add(e));
+console.log(add(f));
+console.log(add(g));
 
 
 
 console.log("==========================================")
+
+// console.log("==========================================")
