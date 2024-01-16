@@ -426,25 +426,27 @@ console.log(processArray()); // will be [ 12, 13, 14, 6, 7 ].
 console.log("==========================================")
 // Create a function add(n)/Add(n) which returns a function that always adds n to any number
 // Note for Java: the return type and methods have not been provided to make it a bit more challenging.
-var addOne = addadd(1);
-addOne(1); // 4
+// var addOne = add(1);
+// addOne(1); // 4
 
-var addThree = addadd(3);
-addThree(3); // 6
+// var addThree = add(3);
+// addThree(3); // 6
 
-function addadd(n) {
-    return function(num) {
-        return num + n;
-    };
-}
+// function add(n) {
+//     console.log("n:", n);
+//     return function(num) {
+//         console.log("num:", num);
+//         return num + n;
+//     };
+// }
 
-function combineAddFunctions(func1, func2) {
-    return function(num) {
-      return func2(func1(num));
-    };
-  }
+// function combineAddFunctions(func1, func2) {
+//     return function(num) {
+//       return func2(func1(num));
+//     };
+//   }
   
-  console.log(combineAddFunctions(addOne, addThree)(5))
+//   console.log(combineAddFunctions(addOne, addThree)(5))
 
 console.log("==========================================")
 
@@ -696,21 +698,35 @@ console.log("==========================================")
 
 // We can assume any number being passed in will be valid whole number.
 var a = add(2);
-var b = a + 5; // == 7
+// var b = a + 5; // == 7
 // var c = a(3); // == 5
 // var d = a(3)(5); // == 10
-// var e = add(1)(2)(3); // == 6
-// var f = add(1)(2)(3)(4); //  == 10
-// var g = add(1)(2)(3)(4)(5); // == 15
+var e = add(1)(2)(3); // == 6
+var f = add(1)(2)(3)(4); //  == 10
+var g = add(1)(2)(3)(4)(5); // == 15
 
-function add(n){
+function add(n) {
     console.log("n:", n);
+    return function(num) {
+        console.log("num:", num);
+        return num + n;
+    };
 }
 
-console.log(add(a));
-console.log(add(b));
-// console.log(add(c));
-// console.log(add(d));
-// console.log(add(e));
-// console.log(add(f));
-// console.log(add(g));
+function addFunctions(func1, func2) {
+    return function(num) {
+      return func2(func1(num));
+    };
+  }
+
+console.log(addFunctions(a));
+// console.log(addFunctions(b));
+// console.log(addFunctions(c));
+// console.log(addFunctions(d));
+console.log(addFunctions(e));
+console.log(addFunctions(f));
+console.log(addFunctions(g));
+
+
+
+console.log("==========================================")
