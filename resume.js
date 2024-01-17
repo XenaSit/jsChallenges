@@ -27,10 +27,10 @@
 // Full stack developer Internship
 
 // 2020
-// Collaborated on enhancing EV-Trips website functionality, contributing to over 200 hours of development in Node.js, MongoDB, Express, and React for a seamless full-stack experience.
+// Joined forces on enhancing EV-Trips website functionality, contributing to over 200 hours of development in Node.js, MongoDB, Express, and React for a seamless full-stack experience.
 // Applied Test-Driven Development (TDD) principles, ensuring robust and reliable code in collaboration with the team.
 // Actively participated in refining and optimizing the map functionality, contributing to the user-friendly and efficient navigation experience on the EV-Trips platform.
-// Collaborated with a team of 5 developers to achieve project milestones for EV-Trips.
+// Partnered with a team of 5 developers to achieve project milestones for EV-Trips.
 
 
 // LEARN Academy, San Diego, CA
@@ -39,7 +39,7 @@
 // 2019 – 2020
 // Led 3 diverse projects with a focus on Test-Driven Development (TDD).
 // Mentored 10 students in HTML, CSS, and JavaScript projects.
-// Collaboratively developed 3 full-stack applications through pair programming within 3 teams and effective debugging.
+// Collectively developed 3 full-stack applications through pair programming within 3 teams and effective debugging.
 // Compiled near 500 hours of direct coding experience. At an accelerated rate of high-impact learning have built 10 applications at a professional level. 
 // Crated Apps with React framework using Webpack, Postgres Database and AWS infrastructure.
 
