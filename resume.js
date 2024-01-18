@@ -79,3 +79,54 @@
 
 
 
+// Review Your Resume Critique
+// Review your TopResume resume critique and writing here.
+
+// 3 min. readView original
+// Your career summary is not as strong as it should be. 
+// This is a key piece to compel the hiring manager to keep reading. 
+// Flesh out your career summary to define you as a professional and cover those areas most relevant to the job that you seek.
+
+// Based on how the resume is phrased, you could be perceived as a "doer," as opposed to an "achiever." 
+// A few too many of your job descriptions are task-based and not results-based. 
+// This means that they tell you what you did, instead of what you achieved. 
+// This is a common misstep for non-professional resume writers. 
+// To be effective and create excitement a good resume aids the hiring executive envisage you delivering similar achievements at his or her company. 
+// Here are some examples of task-based sentences in your resume:
+
+// “Deployed updates for 12 critical gems, addressing security concerns and introducing new features”
+// “Applied Test-Driven Development (TDD) principles, ensuring robust and reliable code in collaboration with the team”
+// Employers want to learn about your previous achievements and specifically how you've helped make an impact. 
+// More importantly, they want to know how you are going to make a significant difference at their organization.
+
+// In reading your resume, I did not find the kind of active language that would bring your work to life. Instead, I saw passive words and non-action verbs.
+
+// Phrases like “Managed” and “developed” are monotonous, overused, and add little value to your resume. 
+// Strong action verbs, used with engaging language to outline outstanding achievements, are essential parts of a soundly-built resume.
+
+// Now, let's see how to put this into practice. Here's a real life sample taken from a former client's resume. By changing the language, we helped to enhance the perception of the job-seeker.
+
+// Passive language / Doing: “Negotiated contracts with vendors”
+// Action language / Achieving: “Slashed payroll/benefits administration costs 30% by negotiating pricing and fees, while ensuring the continuation and enhancements of services.”
+// An adjustment like this makes a big improvement.
+
+// A regular review of every word and sentence in your resume is an important thing to do, especially if you're the only one looking at it. 
+// Hiring managers are looking for an excuse to eliminate you as a candidate. You may not be able to see awkward phrases and grammatical errors if you've already spent too much time with your own resume.
+
+// Sometimes looks do matter. In the case of your resume, it's especially true. I found your design to be visually uneven. 
+// I'd like to see your document more polished, something more fitting of your experience level. Remember that your resume is your marketing tool. It's the first glimpse a potential employer has of you.
+
+// Using bullets to highlight important information is helpful, but in your specific case, you should consider using a few less. 
+// It can be hard to narrow in on the most pertinent information when there are too many bullets. Size and type of bullets are also a consideration. 
+// Although seemingly minor, visual impact of a resume is the key to ensuring that an employer reads it thoroughly.
+
+// Your resume is saved in PDF format. 19% of resumes look like yours. While this may make viewing consistent for recruiters, some older Applicant Tracking Systems (ATS)What is an ATS?
+// An applicant tracking system (ATS) is a program used by employers to screen applicants based on the contents of their resume before passing viable candidates on to the hiring manager.
+//  might not be able to correctly parse this. You might want to consider converting your document to a Microsoft Word file.
+
+// 89% of resumes are smaller than yours, so you might want to trim down pieces that make the file bigger. Sometimes, this is as simple as standardizing fonts for formatting.
+
+// 93% of all Hiring Managers use resume scanning software called applicant tracking systems (ATS) What is an ATS?
+// An applicant tracking system (ATS) is a program used by employers to screen applicants based on the contents of their resume before passing viable candidates
+//  on to the hiring manager. to filter candidates from the application pool. To illustrate how you stand up to the automation, 
+// I passed your resume through the very same software that Hiring Managers use to filter the real talent from the hundreds, sometimes thousands, of candidates that apply for a single open position.
