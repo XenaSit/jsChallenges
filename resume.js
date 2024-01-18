@@ -70,3 +70,12 @@
 // San Diego CA, Remote
 // San Diego State University
 // Bachelor of Science: Psychology
+
+
+
+
+
+
+
+
+
