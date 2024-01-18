@@ -789,13 +789,14 @@ console.log("==========================================")
 // For simplicity there are no units for the amounts (e.g. 1 lb of flour or 200 g of sugar are simply 1 or 200). Ingredients that are not present in the objects, can be considered as 0.
 
 // Examples:
-let r1 = ({flour: 500, sugar: 200, eggs: 1};
-let a1 = {flour: 1200, sugar: 1200, eggs: 5, milk: 200}; // must return 2
+let r1 = {flour: 500, sugar: 200, eggs: 1};
+let a1 = {flour: 1200, sugar: 1200, eggs: 5, milk: 200};
 let r2 = {apples: 3, flour: 300, sugar: 150, milk: 100, oil: 100};
-let a2 = {sugar: 500, flour: 2000, milk: 2000}; // must return 0
+let a2 = {sugar: 500, flour: 2000, milk: 2000};
 
 function cakes(recipe, available) {
-    return
+    console.log(recipe, available);
   }
-
+console.log(cakes(r1, a1)); // must return 2
+console.log(cakes(r2, a2)); // must return 0
 console.log("==========================================")
