@@ -798,6 +798,12 @@ function cakes(recipe, available) {
     // console.log(recipe, available);
     if (recipe.flour === 0 || recipe.sugar === 0 || recipe.eggs === 0) {
         return 0;
+    } else if (recipe.flour === available.flour || recipe.sugar === available.sugar || recipe.eggs === available.eggs){
+        return 1;
+    } else if (recipe.flour > available.flour || recipe.sugar > available.sugar || recipe.eggs > available.eggs) {
+        return 0;
+    } else {
+        return Math.floor(available.flour / recipe.flour) ;  
     }
   }
 console.log(cakes(r1, a1)); // must return 2
