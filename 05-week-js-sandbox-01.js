@@ -795,7 +795,10 @@ let r2 = {apples: 3, flour: 300, sugar: 150, milk: 100, oil: 100};
 let a2 = {sugar: 500, flour: 2000, milk: 2000};
 
 function cakes(recipe, available) {
-    console.log(recipe, available);
+    // console.log(recipe, available);
+    if (recipe.flour === 0 || recipe.sugar === 0 || recipe.eggs === 0) {
+        return 0;
+    }
   }
 console.log(cakes(r1, a1)); // must return 2
 console.log(cakes(r2, a2)); // must return 0
