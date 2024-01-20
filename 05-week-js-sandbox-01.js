@@ -827,8 +827,20 @@ let ip5 = "20.0.0.10"
 let ip6 = "20.0.1.0"
 
 
-function ipsBetween(start, end){
-    return 0
+function ipsBetween(startIP, endIP){
+    function ipToNumber(ip) {
+        return ip.split('.').reduce(function (acc, octet, index, array) {
+            return acc + parseInt(octet) * Math.pow(256, (array.length - index - 1));
+        }, 0);
+    }
+
+    const startNumeric = ipToNumber(startIP);
+    const endNumeric = ipToNumber(endIP);
+
+    // Calculate the number of IP addresses
+    const numAddresses = endNumeric - startNumeric;
+
+    return numAddresses;
   }
 
   console.log(ipsBetween(ip1, ip2)); // return   50 
