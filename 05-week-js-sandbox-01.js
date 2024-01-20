@@ -819,9 +819,20 @@ console.log("==========================================")
 // With input "10.0.0.0", "10.0.0.50"  => return   50 
 // With input "10.0.0.0", "10.0.1.0"   => return  256 
 // With input "20.0.0.10", "20.0.1.0"  => return  246
+let ip1 = "10.0.0.0"
+let ip2 = "10.0.0.50"
+let ip3 = "10.0.0.0"
+let ip4 = "10.0.1.0"
+let ip5 = "20.0.0.10"
+let ip6 = "20.0.1.0"
+
 
 function ipsBetween(start, end){
-    //TODO
+    return 0
   }
+
+  console.log(ipsBetween(ip1, ip2)); // return   50 
+  console.log(ipsBetween(ip3, ip4)); // return  256 
+  console.log(ipsBetween(ip5, ip6)); // return  246
 
 console.log("==========================================")
