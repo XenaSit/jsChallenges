@@ -730,7 +730,8 @@ console.log("==========================================")
 
 // You will be given a certain array of length n, such that n > 4, having positive and negative integers but there will be no zeroes and all the elements will occur once in it.
 // We may obtain an amount of n sub-arrays of length n - 1, removing one element at a time (from left to right).
-// For each subarray, let's calculate the product and sum of its elements with the corresponding absolute value of the quotient, q = SubProduct/SubSum (if it is possible, SubSum cannot be 0). Then we select the array with the lowest value of |q|(absolute value)
+// For each subarray, let's calculate the product and sum of its elements with the corresponding absolute value of the quotient, q = SubProduct/SubSum (if it is possible, SubSum cannot be 0). 
+// Then we select the array with the lowest value of |q|(absolute value)
 // e.g.: we have the array, arr = [1, 23, 2, -8, 5]
 
 // Sub Arrays            SubSum    SubProduct         |q|
