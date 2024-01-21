@@ -858,7 +858,31 @@ console.log("==========================================")
 // The numbers are positives
 
 function add(a, b) {
-    return (Number(a) + Number(b)).toString();
+    // Convert strings to arrays of digits
+  const digitsA = a.split('').map(Number);
+  const digitsB = b.split('').map(Number);
+
+  // Pad the shorter array with zeros
+  const maxLength = Math.max(digitsA.length, digitsB.length);
+  while (digitsA.length < maxLength) digitsA.unshift(0);
+  while (digitsB.length < maxLength) digitsB.unshift(0);
+
+  // Perform addition manually
+  let carry = 0;
+  const result = [];
+  for (let i = maxLength - 1; i >= 0; i--) {
+    const sum = digitsA[i] + digitsB[i] + carry;
+    result.unshift(sum % 10);
+    carry = Math.floor(sum / 10);
+  }
+
+  // Add any remaining carry
+  if (carry > 0) {
+    result.unshift(carry);
+  }
+
+  // Convert array of digits back to string
+  return result.join('');
   }
 
   console.log(add("123", "321")); // -> "444";
