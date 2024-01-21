@@ -79,11 +79,15 @@ console.log("==========================================")
 // Explanation: 5 !== null so this expression returns true.
 
 var expect = function(val) {
-    if (val === val) {
-        return 
-    } else {
-        return "Not Equal"
-    }
+    return {
+        toBe: function(expected) {
+            if (val === expected ) {
+                return {"value": true};
+            } else {
+                return {"error": "Not Equal"}
+            }
+        }
+    };
 };
 
 
