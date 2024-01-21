@@ -697,32 +697,33 @@ console.log("==========================================")
 // add(1); // == 1
 // We should be able to store the returned values and reuse them.
 // We can assume any number being passed in will be valid whole number.
-var a = add(2);
-var b = a + 5; // == 7
-var c = a(3); // == 5
-var d = a(3)(5); // == 10
-var e = add(1)(2)(3); // == 6
-var f = add(1)(2)(3)(4); //  == 10
-var g = add(1)(2)(3)(4)(5); // == 15
 
-function add(num) {
-    const innerAdd = function(nextNum) {
-        return add(num + nextNum);
-    };
-    innerAdd.valueOf = function() {
-        return num;
-    };
+// var a = add(2);
+// var b = a + 5; // == 7
+// var c = a(3); // == 5
+// var d = a(3)(5); // == 10
+// var e = add(1)(2)(3); // == 6
+// var f = add(1)(2)(3)(4); //  == 10
+// var g = add(1)(2)(3)(4)(5); // == 15
 
-    return innerAdd;
-}
+// function add(num) {
+//     const innerAdd = function(nextNum) {
+//         return add(num + nextNum);
+//     };
+//     innerAdd.valueOf = function() {
+//         return num;
+//     };
 
-console.log(add(a));
-console.log(add(b));
-console.log(add(c));
-console.log(add(d));
-console.log(add(e));
-console.log(add(f));
-console.log(add(g));
+//     return innerAdd;
+// }
+
+// console.log(add(a));
+// console.log(add(b));
+// console.log(add(c));
+// console.log(add(d));
+// console.log(add(e));
+// console.log(add(f));
+// console.log(add(g));
 
 
 
@@ -847,5 +848,21 @@ function ipsBetween(startIP, endIP){
   console.log(ipsBetween(ip1, ip2)); // return   50 
   console.log(ipsBetween(ip3, ip4)); // return  256 
   console.log(ipsBetween(ip5, ip6)); // return  246
+
+console.log("==========================================")
+
+// We need to sum big numbers and we require your help.
+// Write a function that returns the sum of two numbers. The input numbers are strings and the function must return a string.
+// The input numbers are big.
+// The input is a string of only digits
+// The numbers are positives
+
+function add(a, b) {
+    return (Number(a) + Number(b)).toString();
+  }
+
+  console.log(add("123", "321")); // -> "444";
+  console.log(add("11", "99"));   // -> "110";
+  console.log(add('63829983432984289347293874', '90938498237058927340892374089')); //"91002328220491911630239667963"
 
 console.log("==========================================")
