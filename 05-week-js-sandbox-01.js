@@ -903,7 +903,14 @@ console.log("==========================================")
 // Zero (0) is not checked for any specific sign. Negative zeros make no mathematical sense.
 
 function makeNegative(num) {
-    // Code?
+    console.log("num:", num);
+    if (num === 0) {
+        return 0
+    } else if (num > 0) {
+        return -num
+    } else {
+        return num
+    }
   }
 
 console.log(makeNegative(1));
