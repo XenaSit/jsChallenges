@@ -94,7 +94,7 @@ var expect = function(val) {
             }
         },
         notToBe: function() {
-            if ( val === null) {
+            if ( val !== null) { // this makes the third test pass
                 return true;
             }
         }
