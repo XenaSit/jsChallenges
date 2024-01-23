@@ -88,7 +88,7 @@ var expect = function(val) {
         toBe: function(expected) {
             // console.log(expected)
             if ( val === expected ) {
-                return true;
+                return true;            // this one is passing, the other two don't, read up on how to pass functions
             } else {
                 return "Not Equal"
             }
