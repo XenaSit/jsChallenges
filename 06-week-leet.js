@@ -86,16 +86,17 @@ var expect = function(val) {
     
     return {
         toBe: function(expected) {
-            // console.log(expected)
-            if ( val === expected ) {
-                return true;            // this one is passing, the other two don't, read up on how to pass functions
+            if (val === expected) {
+                return true;
             } else {
-                return "Not Equal"
+                throw new Error("Not Equal");
             }
         },
         notToBe: function() {
-            if ( val !== null) { // this makes the third test pass
+            if (val !== null) {
                 return true;
+            } else {
+                return { error: "Equal" };
             }
         }
     }
