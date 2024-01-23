@@ -92,11 +92,11 @@ var expect = function(val) {
                 throw new Error("Not Equal");
             }
         },
-        notToBe: function() {
-            if (val !== null) {
+        notToBe: function(expected) {
+            if (val !== expected) {
                 return true;
             } else {
-                return { error: "Equal" };
+                throw new Error("Equal");
             }
         }
     }
