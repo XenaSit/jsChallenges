@@ -933,7 +933,7 @@ console.log("==========================================")
 // Input
 // The input consists in an array of moves made during the game
 
-// [ {p: 'R', x: 0, y: 0},  {p: 'Y', x: 100, y: 100}, {p: 'R', x: 1, y: 0}, {p: 'Y', x: 99, y: 100}, {p: 'R', x: 2, y: 0},  {p: 'Y', x: 98, y: 100}, {p: 'R', x: 3, y: 0}, {p: 'Y', x: 96, y: 100} ];
+var gameOne = [ {p: 'R', x: 0, y: 0},  {p: 'Y', x: 100, y: 100}, {p: 'R', x: 1, y: 0}, {p: 'Y', x: 99, y: 100}, {p: 'R', x: 2, y: 0},  {p: 'Y', x: 98, y: 100}, {p: 'R', x: 3, y: 0}, {p: 'Y', x: 96, y: 100} ];
 // You can see in this example that the player R won making the line
 
 //   {x: 0, y: 0}{x: 1, y: 0}{x: 2, y: 0}{x: 3, y: 0}
@@ -951,8 +951,15 @@ console.log("==========================================")
 // There will not be duplicates points
 
 const connectFour = moves => {
-    // return the winner
+    console.log(moves);
   }
+
+  console.log(connectFour(gameOne));
 
 
 console.log("==========================================")
+// console.log("==========================================")
+// console.log("==========================================")
+// console.log("==========================================")
+// console.log("==========================================")
+// console.log("==========================================")
