@@ -955,8 +955,8 @@ const connectFour = moves => {
     let winningBoard = [{x: 0, y: 0}, {x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0}]
     let playerOne = 'R'
     let playerTwo = 'Y'
-    if (playerOne = winningBoard) {
-        return 'R'
+    if (moves = winningBoard) {
+        return playerOne
     } else {
         return playerTwo
     }
