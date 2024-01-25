@@ -951,7 +951,15 @@ var gameOne = [ {p: 'R', x: 0, y: 0},  {p: 'Y', x: 100, y: 100}, {p: 'R', x: 1, 
 // There will not be duplicates points
 
 const connectFour = moves => {
-    console.log(moves);
+    // console.log(moves);
+    let winningBoard = [{x: 0, y: 0}, {x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0}]
+    let playerOne = 'R'
+    let playerTwo = 'Y'
+    if (playerOne = winningBoard) {
+        return 'R'
+    } else {
+        return playerTwo
+    }
   }
 
   console.log(connectFour(gameOne));
