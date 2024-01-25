@@ -130,3 +130,13 @@
 // An applicant tracking system (ATS) is a program used by employers to screen applicants based on the contents of their resume before passing viable candidates
 //  on to the hiring manager. to filter candidates from the application pool. To illustrate how you stand up to the automation, 
 // I passed your resume through the very same software that Hiring Managers use to filter the real talent from the hundreds, sometimes thousands, of candidates that apply for a single open position.
+
+// What is something you are quite proud of?
+// I am very proud of my 11-year experience in one company. I loved how I grew with the company and implemented my ideas to facilitate rapid growth, automating, and correcting workflows. The most significant achievement was educating myself in oil refining and creating a form for calculating losses, which greatly benefited the company. I apply the same structure to my life, believing that things don't disappear; they just have not been accounted for correctly.
+
+// If you could discuss any topic with anyone in the world for 1 hour, who would you pick and what would be the topic?
+// My favorite topic is organizing, and I would love to talk to David Allen about the GTD system and why it doesn't work. I do have a separate division in my planner called 'Organize My Organizer' because my planning system always needs improvement. However, jokes aside, on a very serious note, I would talk to Stan Lee and find out why, of all the superheroes, they decided to kill off Iron Man. This was an unnecessary loss that could have been avoided.
+
+
+// What's a generally contrarian opinion you hold?
+// "That's a tough one. I definitely think working on Windows is better than Mac. The reason I hold such an opposing view is that Windows has been with me for a quarter of a century, and it is definitely easier getting around it. Also, regardless of what people say, HTML is a language. I am very positive and stand firm on this belief.
