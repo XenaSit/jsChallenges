@@ -952,13 +952,22 @@ var gameOne = [ {p: 'R', x: 0, y: 0},  {p: 'Y', x: 100, y: 100}, {p: 'R', x: 1, 
 
 const connectFour = moves => {
     // console.log(moves);
-    let winningBoard = [{x: 0, y: 0}, {x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0}]
-    let playerOne = 'R'
-    let playerTwo = 'Y'
-    if (moves = winningBoard) {
-        return playerOne
-    } else {
-        return playerTwo
+    // let winningBoard = [{x: 0, y: 0}, {x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0}]
+    // let playerOne = 'R'
+    // let playerTwo = 'Y'
+    // if (moves = winningBoard) {
+    //     return playerOne
+    // } else {
+    //     return playerTwo
+    // }
+    for (let obj of moves) {
+        let entry = Object.entry(obj)
+        if (entry.length > 0) {
+            let firstKeyValuePair = entry[0];
+            console.log(`First key-value pair: ${firstKeyValuePair[0]}: ${firstKeyValuePair[1]}`);
+          } else {
+            console.log("Object is empty");
+          }
     }
   }
 
