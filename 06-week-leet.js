@@ -150,15 +150,18 @@ console.log("==========================================")
 // @return { increment: Function, decrement: Function, reset: Function }
 
 var createCounter = function(init) {
+    let counter = init;
+
     return {
         increment: function() {
-            return init + 1;
-        },
-        reset: function() {
-            return arguments[0] || init
+            return ++counter;
         },
         decrement: function() {
-            return init - 1;
+            return --counter;
+        },
+        reset: function() {
+            counter = init;
+            return counter;
         }
     };
     
