@@ -150,19 +150,20 @@ console.log("==========================================")
 // @return { increment: Function, decrement: Function, reset: Function }
 
 var createCounter = function(init) {
-    // let increment = init + 1;
-    // let reset = init;
-    // let decrement = init - 1;
+    let counter = init;
 
     return {
-        if (init = init ) {
-            return init + 1
-        } else if (init = "decrement") {
-            return init -1
-        } else {
-            return init
+        increment: function() {
+            return ++counter;
+        },
+        decrement: function() {
+            return --counter;
+        },
+        reset: function() {
+            counter = init;
+            return counter;
         }
-    }
+    };
     
 };
 
