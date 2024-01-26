@@ -140,3 +140,18 @@
 
 // What's a generally contrarian opinion you hold?
 // "That's a tough one. I definitely think working on Windows is better than Mac. The reason I hold such an opposing view is that Windows has been with me for a quarter of a century, and it is definitely easier getting around it. Also, regardless of what people say, HTML is a language. I am very positive and stand firm on this belief.
+
+// Please provide examples of stores you've worked on and the specific features and design elements you built.
+// I have experience in the oil industry, and working with both B2B and B2C entails two distinct fields of work. While focusing specifically on B2B outreach in my role, we underwent a logo transformation to align with our company's location in Siberia, Russia. This involved incorporating flames resembling a gas pipe. The motivation behind redesigning our department's logo was to distinguish ourselves from other B2B businesses. Given that many oil companies are situated in the north, this strategic logo change aimed to attract the attention of potential customers.
+
+
+// What Javascript statement in place of "?" will make the result always be between 6 and 7? const x = 2; let y = 4; function update(arg) { return Math.random() + y * arg; } y = 2; ?; const result = update(x); *
+const x = 2; 
+let y = 4; 
+function update(arg) { 
+    return Math.random() + y * arg; 
+} 
+y = 2; 
+y = 1.5;
+const result = update(x);
+console.log(update(result));
