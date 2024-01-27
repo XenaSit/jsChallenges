@@ -960,15 +960,40 @@ const connectFour = moves => {
     // } else {
     //     return playerTwo
     // }
-    for (let obj of moves) {
-        let entry = Object.entry(obj)
-        if (entry.length > 0) {
-            let firstKeyValuePair = entry[0];
-            console.log(`First key-value pair: ${firstKeyValuePair[0]}: ${firstKeyValuePair[1]}`);
-          } else {
-            console.log("Object is empty");
-          }
+    const board = [];
+
+    function checkDirection(x, y, dx, dy, player) {
+        for (let i = 0; i < 4; i++) {
+            if (!board[x] || board[x][y] !== player) {
+                return false;
+            }
+            x += dx;
+            y += dy;
+        }
+        return true;
     }
+
+    function checkWinner(x, y, player) {
+        const directions = [[1, 0], [0, 1], [1, 1], [1, -1]];
+        for (const [dx, dy] of directions) {
+            if (checkDirection(x, y, dx, dy, player)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    for (const move of moves) {
+        const { x, y, p: player } = move;
+        board[x] = board[x] || [];
+        board[x][y] = player;
+
+        if (checkWinner(x, y, player)) {
+            return player;
+        }
+    }
+
+    return null;
   }
 
   console.log(connectFour(gameOne));
