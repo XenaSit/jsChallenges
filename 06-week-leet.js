@@ -210,10 +210,10 @@ var arr3 = [10,20,30]
 // @return {number[]}
 
 var map = function(arr, fn) {
-    console.log(arr, fn)
-   for (let i = 0; i < arr.length; i++) {
-   let returnedArray = [];
-       return returnedArray.push(fn(arr[i], i))
+    // console.log(arr, fn)
+    let returnedArray = [];
+    for (let i = 0; i < arr.length; i++) {
+        returnedArray.push(fn(arr[i], i))
    } 
    return returnedArray
 };
