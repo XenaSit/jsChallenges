@@ -960,54 +960,63 @@ var gameOne = [ {p: 'R', x: 0, y: 0},  {p: 'Y', x: 100, y: 100}, {p: 'R', x: 1, 
     // } else {
     //     return playerTwo
     // }
-function connectFour(moves) {
-    const board = [];
-
-    // Initialize the board with empty cells
-    for (let i = 0; i < 100; i++) {
-        board[i] = [];
-        for (let j = 0; j < 100; j++) {
-            board[i][j] = 'E';
-        }
-    }
-
-    function checkDirection(x, y, dx, dy, player) {
-        for (let i = 0; i < 4; i++) {
-            if (!board[y] || board[y][x] !== player) {
-                return false;
-            }
-            x += dx;
-            y += dy;
-        }
-        return true;
-    }
-
-    function checkWinner(x, y, player) {
-        const directions = [[1, 0], [0, 1], [1, 1], [1, -1]];
-        for (const [dx, dy] of directions) {
-            if (checkDirection(x, y, dx, dy, player)) {
-                return true;
+    function connectFour(moves) {
+        const board = [];
+    
+        // Initialize the board with empty cells
+        for (let i = 0; i < 100; i++) {
+            board[i] = [];
+            for (let j = 0; j < 100; j++) {
+                board[i][j] = 'E';
             }
         }
-        return false;
-    }
-
-    for (const move of moves) {
-        const { x, y, p: player } = move;
-        
-        // Ensure the row is initialized
-        board[y] = board[y] || [];
-        
-        board[y][x] = player;
-
-        if (checkWinner(x, y, player)) {
-            return player;
+    
+        function checkWinner(x, y, player) {
+            const directions = [
+                [[1, 0], [-1, 0]],  // horizontal
+                [[0, 1], [0, -1]],  // vertical
+                [[1, 1], [-1, -1]], // diagonal /
+                [[1, -1], [-1, 1]]  // diagonal \
+            ];
+    
+            for (const dir of directions) {
+                let count = 1;
+    
+                for (const [dx, dy] of dir) {
+                    let newX = x + dx;
+                    let newY = y + dy;
+    
+                    while (board[newY] && board[newY][newX] === player) {
+                        count++;
+                        newX += dx;
+                        newY += dy;
+                    }
+                }
+    
+                if (count >= 4) {
+                    return true;
+                }
+            }
+    
+            return false;
         }
+    
+        for (const move of moves) {
+            const { x, y, p: player } = move;
+    
+            // Ensure the row is initialized
+            board[y] = board[y] || [];
+    
+            board[y][x] = player;
+    
+            if (checkWinner(x, y, player)) {
+                return player;
+            }
+        }
+    
+        return null;
     }
-
-    return null;
-}
-
+    
 
   console.log(connectFour(gameOne));
 
