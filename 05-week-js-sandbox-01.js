@@ -950,7 +950,7 @@ var gameOne = [ {p: 'R', x: 0, y: 0},  {p: 'Y', x: 100, y: 100}, {p: 'R', x: 1, 
 // You will not receive empty array, nor invalid inputs
 // There will not be duplicates points
 
-const connectFour = moves => {
+// const connectFour = moves => {
     // console.log(moves);
     // let winningBoard = [{x: 0, y: 0}, {x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0}]
     // let playerOne = 'R'
@@ -960,11 +960,20 @@ const connectFour = moves => {
     // } else {
     //     return playerTwo
     // }
+function connectFour(moves) {
     const board = [];
+
+    // Initialize the board with empty cells
+    for (let i = 0; i < 100; i++) {
+        board[i] = [];
+        for (let j = 0; j < 100; j++) {
+            board[i][j] = 'E';
+        }
+    }
 
     function checkDirection(x, y, dx, dy, player) {
         for (let i = 0; i < 4; i++) {
-            if (!board[x] || board[x][y] !== player) {
+            if (!board[y] || board[y][x] !== player) {
                 return false;
             }
             x += dx;
@@ -985,8 +994,11 @@ const connectFour = moves => {
 
     for (const move of moves) {
         const { x, y, p: player } = move;
-        board[x] = board[x] || [];
-        board[x][y] = player;
+        
+        // Ensure the row is initialized
+        board[y] = board[y] || [];
+        
+        board[y][x] = player;
 
         if (checkWinner(x, y, player)) {
             return player;
@@ -994,7 +1006,8 @@ const connectFour = moves => {
     }
 
     return null;
-  }
+}
+
 
   console.log(connectFour(gameOne));
 
