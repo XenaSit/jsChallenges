@@ -269,16 +269,20 @@ console.log("==========================================")
 // @return {number[]}
 
 var filter = function(arr, fn) {
-    // console.log(arr, fn)
-    let filteredArray = [];
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] > 10) {
-            filteredArray.push(arr)
-        }
-        // filteredArray.push(fn(arr[i], i))
-    } 
-    return filteredArray
-};
+    const filteredArr = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    const currentValue = arr[i];
+    const passesFilter = fn(currentValue, i);
+
+    if (passesFilter) {
+      filteredArr.push(currentValue);
+    }
+  }
+
+  return filteredArr;
+}
+
 
 console.log("==========================================")
 
