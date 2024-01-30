@@ -1073,7 +1073,19 @@ arrValley5 = [17, 17, 15, 14, 8, 7, 7, 5, 4, 4, 1]
 // The right wing is nearly as steep as the right one.
 
 function makeValley(arr) {
-    console.log(arr);
+    let sortedArr = arr.sort((a, b) => a - b);
+    let leftWing = [];
+    let rightWing = [];
+
+    for (let i = 0; i < sortedArr.length; i++) {
+        if (i % 2 === 0) {
+            rightWing.push(sortedArr[i]);
+        } else {
+            leftWing.unshift(sortedArr[i]);
+        }
+    }
+
+    return leftWing.concat(rightWing);
 }
 
 console.log(makeValley(arrValley1));
