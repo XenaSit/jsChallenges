@@ -339,7 +339,12 @@ console.log("==========================================")
 // @return {number}
 
 var reduce = function(nums, fn, init) {
-    
+    // console.log(nums, fn, init)
+    let returnedArray = [init];
+    for (let i = 0; i < nums.length; i++) {
+        returnedArray.push(fn(nums[0]+nums[1]))
+    } 
+    return returnedArray
 };
 
 console.log("==========================================")
