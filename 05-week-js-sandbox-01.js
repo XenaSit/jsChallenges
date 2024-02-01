@@ -1101,7 +1101,7 @@ console.log("==========================================")
 
 // See some examples:
 
-// var arrayToSearch = [[1,2],[3,4],[5,6]];
+var arrayToSearch1 = [[1,2],[3,4],[5,6]];
 // var query = [1,2]; // => 0
 // query = [5,6]; // => 2
 // query = [9,2]; // => -1
@@ -1114,7 +1114,7 @@ console.log("==========================================")
 
 // See some examples:
 
-// var arrayToSearch = [[1,2],[3,4],[5,6],[7,8,9]]; // => throw Error
+var arrayToSearch2 = [[1,2],[3,4],[5,6],[7,8,9]]; // => throw Error
 // arrayToSearch = [1,2,3,4,5,6]; // => throw Error
 // arrayToSearch = [[1,2],[3,4],[5,6]]; // => valid input
 // var query = [1,2]; // => valid input
@@ -1122,8 +1122,12 @@ console.log("==========================================")
 // query = [9,2,1]; // => throw Error
 
 var searchArray = function (arrayToSearch, query) {
-    console.log(arrayToSearch, query);
+    console.log("arrayToSearch:", arrayToSearch, "query:", query);
+    
     }
+
+console.log(searchArray(arrayToSearch1));
+console.log(searchArray(arrayToSearch2));
 
 // console.log("==========================================")
 // console.log("==========================================")
