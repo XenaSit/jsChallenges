@@ -1121,11 +1121,38 @@ var arrayToSearch2 = [[1,2],[3,4],[5,6],[7,8,9]]; // => throw Error
 // query = 5; // => throw Error
 // query = [9,2,1]; // => throw Error
 
+// var searchArray = function (arrayToSearch, query) {
+//     for (let i = 0; i < arrayToSearch.length; i++) {
+//         if (arrayToSearch[i][0] === query[0] && arrayToSearch[i][1] === query[1]) {
+//             return i;
+//         }
+//     }
+//     return -1;
+// }
 var searchArray = function (arrayToSearch, query) {
-    if (query = arrayToSearch) {
-        return -1;
+    if (!Array.isArray(query)) {
+        throw new Error("Query must be an array");
     }
 
+    for (let i = 0; i < arrayToSearch.length; i++) {
+        if (Array.isArray(arrayToSearch[i]) && arrayToSearch[i].length === query.length) {
+            let match = true;
+            for (let j = 0; j < query.length; j++) {
+                if (arrayToSearch[i][j] !== query[j]) {
+                    match = false;
+                    break;
+                }
+            }
+
+            if (match) {
+                return i;  // Element found, return the index
+            }
+        }
+    }
+
+    // If the loop completes and the element is not found, return -1 or any appropriate value
+    return -1;
+}
 console.log(searchArray(arrayToSearch1));
 console.log(searchArray(arrayToSearch2));
 
