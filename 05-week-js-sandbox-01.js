@@ -1122,8 +1122,8 @@ var arrayToSearch2 = [[1,2],[3,4],[5,6],[7,8,9]]; // => throw Error
 // query = [9,2,1]; // => throw Error
 
 var searchArray = function (arrayToSearch, query) {
-    console.log("arrayToSearch:", arrayToSearch, "query:", query);
-    
+    if (query = arrayToSearch) {
+        return -1;
     }
 
 console.log(searchArray(arrayToSearch1));
