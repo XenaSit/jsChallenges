@@ -389,9 +389,9 @@ console.log("==========================================")
 // @return {Function}
 
 var compose = function(functions) {
-    
+    console.log(functions);
     return function(x) {
-        
+        console.log(x); 
     }
 };
 
