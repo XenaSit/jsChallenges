@@ -1147,8 +1147,8 @@ var searchArray = function (arrayToSearch, query) {
     
       return -1; // Return -1 if no match is found
     }
-console.log(searchArray(arrayToSearch1));
-console.log(searchArray(arrayToSearch2));
+// console.log(searchArray(arrayToSearch1));
+// console.log(searchArray(arrayToSearch2));
 
 console.log("==========================================")
 
@@ -1163,9 +1163,9 @@ console.log("==========================================")
 // arrNum = [12, 0, 10, 0, 8, 12, 7, 6, 0, 4, 10, 12, 0];
 // move_zeros(arrNum) //=> returns [12, 10, 8, 12, 7, 6, 4, 10, 12, 0, 0, 0, 0]
 
-// function move_zeros(arrNum, isRight){
-//     console.log(arrNum, isRight);
-//     }
+function move_zeros(arrNum, isRight){
+    console.log(arrNum, isRight);
+    }
 
 console.log("==========================================")
 // console.log("==========================================")
