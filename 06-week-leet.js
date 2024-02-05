@@ -403,6 +403,11 @@ var compose = function(functions) {
 // const fn = compose([x => x + 1, x => 2 * x])
 // fn(4) // 9
 
+// The line result = functions[i](result); is the core of the function composition. Let's break it down:
+// functions[i]: This accesses the i-th function in the array of functions.
+// functions[i](result): This calls the i-th function with the current value of result as its argument. In other words, it applies the i-th function to the current result.
+// result = functions[i](result);: This assigns the result of applying the i-th function to the variable result. 
+// So, after this line, result now holds the value produced by applying the i-th function to the previous result.
 
 console.log("==========================================")
 
