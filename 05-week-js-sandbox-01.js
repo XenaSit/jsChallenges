@@ -1156,17 +1156,19 @@ console.log("==========================================")
 // and returns the array with all zero to right if isRight is true else to left if isRight is false.
 
 // Example:
-// arrNum = [12, 0, 10, 0, 8, 12, 7, 6, 0, 4, 10, 12, 0];
+arrNum1 = [12, 0, 10, 0, 8, 12, 7, 6, 0, 4, 10, 12, 0];
 // move_zeros(arrNum, true) //=> returns [12, 10, 8, 12, 7, 6, 4, 10, 12, 0, 0, 0, 0]
-// arrNum = [12, 0, 10, 0, 8, 12, 7, 6, 0, 4, 10, 12, 0];
+arrNum2 = [12, 0, 10, 0, 8, 12, 7, 6, 0, 4, 10, 12, 0];
 // move_zeros(arrNum, false) //=> returns [0, 0, 0, 0, 12, 10, 8, 12, 7, 6, 4, 10, 12]
-// arrNum = [12, 0, 10, 0, 8, 12, 7, 6, 0, 4, 10, 12, 0];
+arrNum3 = [12, 0, 10, 0, 8, 12, 7, 6, 0, 4, 10, 12, 0];
 // move_zeros(arrNum) //=> returns [12, 10, 8, 12, 7, 6, 4, 10, 12, 0, 0, 0, 0]
 
 function move_zeros(arrNum, isRight){
     console.log(arrNum, isRight);
     }
-
+console.log(move_zeros(arrNum1, true));
+console.log(move_zeros(arrNum2, true));
+console.log(move_zeros(arrNum3, true));
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
