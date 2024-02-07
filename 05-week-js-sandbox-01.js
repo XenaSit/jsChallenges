@@ -1164,7 +1164,7 @@ arrNum3 = [12, 0, 10, 0, 8, 12, 7, 6, 0, 4, 10, 12, 0];
 // move_zeros(arrNum) //=> returns [12, 10, 8, 12, 7, 6, 4, 10, 12, 0, 0, 0, 0]
 
 function move_zeros(arrNum, isRight){
-    console.log(arrNum, "isRight:", isRight);
+    // console.log(arrNum, "isRight:", isRight);
     // for (let i = 0; i < arrNum.length; i++) {
     //     if (arrNum[i] === 0) {
     //         arrNum.slice(i,1)
@@ -1185,11 +1185,22 @@ function move_zeros(arrNum, isRight){
             return true
         }
     })
-    return arrNum.concat(Array(zeros).fill(0))
+    if (isRight === false) {
+        while (zeros > 0) {
+            arrNum.unshift(0);
+            zeros--;
+        }
+    } else {
+        while (zeros > 0) {
+            arrNum.push(0);
+            zeros--;
+        }
+    }
+    return arrNum
 }
 console.log(move_zeros(arrNum1, true));
 console.log(move_zeros(arrNum2, true));
-// console.log(move_zeros(arrNum3, true));
+console.log(move_zeros(arrNum3, true));
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
