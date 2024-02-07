@@ -1165,17 +1165,27 @@ arrNum3 = [12, 0, 10, 0, 8, 12, 7, 6, 0, 4, 10, 12, 0];
 
 function move_zeros(arrNum, isRight){
     console.log(arrNum, "isRight:", isRight);
-    for (let i = 0; i < arrNum.length; i++) {
-        if (arrNum[i] === 0) {
-            arrNum.slice(i,1)
-            if (isRight === true) {
-                arrNum.push(0);
-            } else {
-                arrNum.unshift(0);
-            }
-            return arrNum
+    // for (let i = 0; i < arrNum.length; i++) {
+    //     if (arrNum[i] === 0) {
+    //         arrNum.slice(i,1)
+    //         if (isRight === true) {
+    //             arrNum.push(0);
+    //         } else {
+    //             arrNum.unshift(0);
+    //         }
+    //         return arrNum
+    //     }
+    // }
+    let zeros = 0
+    arrNum = arrNum.filter(num => {
+        if (num === 0) {
+            zeros++
+            return false;
+        } else {
+            return true
         }
-    }
+    })
+    return arrNum.concat(Array(zeros).fill(0))
 }
 console.log(move_zeros(arrNum1, true));
 console.log(move_zeros(arrNum2, true));
