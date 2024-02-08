@@ -475,7 +475,7 @@ console.log("==========================================")
 var once = function(fn) {
     console.log(fn);
     return function(...args){
-        console.log(arg);
+        console.log(args);
     }
 };
 
