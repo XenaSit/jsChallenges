@@ -473,10 +473,18 @@ console.log("==========================================")
 // @return {Function}
 
 var once = function(fn) {
-    console.log(fn);
-    return function(...args){
-        console.log(args);
-    }
+    let called = false;
+    let result;
+
+    return function (...args) {
+        if (!called) {
+            called = true;
+            result = fn(...args);
+            return result;
+        } else {
+            return undefined;
+        }
+    };
 };
 
 // let fn = (a,b,c) => (a + b + c)
