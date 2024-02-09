@@ -1199,16 +1199,33 @@ var select_subarray3 = ([10, 20, -30, 100, 200])
 // length of the array, l, such that 20 <= l <= 100
 
 function selectSubarray(arr) {
-    let SubProduct = 1
-    let SubSum = 0
-    let q = SubProduct/SubSum
-    console.log(arr)
-    if (SubSum == 0) {
-      return "error"
-    } else {
-      return q
+    let minQ = Infinity;
+    let minIndex = -1;
+
+    for (let i = 0; i < arr.length; i++) {
+        // Create a sub-array by removing the element at index i
+        const subArray = [...arr.slice(0, i), ...arr.slice(i + 1)];
+        
+        // Calculate the product and sum of the elements in the sub-array
+        const subProduct = subArray.reduce((acc, val) => acc * val, 1);
+        const subSum = subArray.reduce((acc, val) => acc + val, 0);
+
+        // Check if the subSum is not zero
+        if (subSum !== 0) {
+            // Calculate the absolute value of q
+            const q = Math.abs(subProduct / subSum);
+            // Update minQ and minIndex if necessary
+            if (q < minQ) {
+                minQ = q;
+                minIndex = i;
+            }
+        }
     }
+
+    // Return the index and value of the removed element for the sub-array with the lowest |q|
+    return [minIndex, arr[minIndex]];
 }
+
 
 console.log(selectSubarray(select_subarray1)); // == [3, -8]
 console.log(selectSubarray(select_subarray2)); // == [2, 23]
