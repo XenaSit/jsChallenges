@@ -551,9 +551,9 @@ console.log("==========================================")
 // @return {Function}
 
 function memoize(fn) {
-    
+    console.log("fn:", fn);
     return function(...args) {
-        
+        console.log("args:", args);
     }
 }
 
