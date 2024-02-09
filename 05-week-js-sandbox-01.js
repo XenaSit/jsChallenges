@@ -1203,7 +1203,11 @@ function selectSubarray(arr) {
     let SubSum = 0
     let q = SubProduct/SubSum
     console.log(arr)
-    return [q];
+    if (SubSum == 0) {
+      return "error"
+    } else {
+      return q
+    }
 }
 
 console.log(selectSubarray(select_subarray1)); // == [3, -8]
