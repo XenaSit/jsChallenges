@@ -551,11 +551,17 @@ console.log("==========================================")
 // @return {Function}
 
 function memoize(fn) {
-    console.log("fn:", fn);
+    let call = 0
+    let getCallCount = 0
+    // console.log("fn:", fn);
     return function(...args) {
-        console.log("args:", args);
+        // console.log("args:", args);
+        if (args == 0) {
+            return fn(++getCallCount)
+        }
     }
 }
+
 
 
 
