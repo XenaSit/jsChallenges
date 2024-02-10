@@ -1257,18 +1257,24 @@ console.log("==========================================")
 // If you do not know what a palindrome is: https://examples.yourdictionary.com/palindrome-examples.html
 
 // Examples
-// s = "aebecda"         ->  "aba | c | ede"      ->  lowest(s) = 1
-// s = "eutxutuatgextu"  ->  "xttattx | uuegeuu"  ->  lowest(s) = 7
-// s = "abbddc"          ->  "bab | dcd"          ->  lowest(s) = 3
-// s = "abcd"            ->  "a | b | c | d"      ->  lowest(s) = 1
-// s = "aabbccdd"        ->  "abcddcba"           ->  lowest(s) = 8
-// s = ""                ->  ""                   ->  lowest(s) = 0
+s1 = "aebecda"         // ->  "aba | c | ede"      ->  lowest(s) = 1
+s2 = "eutxutuatgextu"  // ->  "xttattx | uuegeuu"  ->  lowest(s) = 7
+s3 = "abbddc"          // ->  "bab | dcd"          ->  lowest(s) = 3
+s4 = "abcd"            // ->  "a | b | c | d"      ->  lowest(s) = 1
+s5 = "aabbccdd"        // ->  "abcddcba"           ->  lowest(s) = 8
+s6 = ""                // ->  ""                   ->  lowest(s) = 0
 // Good luck :D
 
 function lowest(s) {
-    return 1;
+    return s;
   }
 
+console.log(lowest(s1));
+console.log(lowest(s2));
+console.log(lowest(s3));
+console.log(lowest(s4));
+console.log(lowest(s5));
+console.log(lowest(s6));
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
