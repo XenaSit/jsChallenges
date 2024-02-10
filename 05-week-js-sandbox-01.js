@@ -1231,7 +1231,45 @@ console.log(selectSubarray(select_subarray1)); // == [3, -8]
 console.log(selectSubarray(select_subarray2)); // == [2, 23]
 console.log(selectSubarray(select_subarray3)); // == [[3, 100], [4, 200]]
 console.log("==========================================")
-// console.log("==========================================")
+
+// Task
+// You are given string s.
+// For example:
+// s = "aebecda"
+// Your task is to shuffle and divide this line into the lowest number of palindromes so that the length of the smallest palindrome in the chosen division is the largest 
+// amongst all the smallest palindromes across all possible divisions. Return this length.
+// In the above example this can be done as follows:
+// s = "aba | c | ede"
+// So the answer is 1.
+// Here's another example:
+// s = "eutxutuatgextu"  ->  "xttattx | uuegeuu"  ->  lowest(s) = 7
+// Another division for the previous example could be:
+
+//  "ttatt | xuuegeuux"  ->  lowest(s) = 5
+// But the length of the smallest palindrome 5 in this division is lower than the one in the initial division 7.
+// Your task is to write the function lowest(s) that returns one number - answer.
+
+// Constraints
+// 100 tests where len(s) = 10
+// 100 tests where len(s) = 1000
+// 100 tests where len(s) = 10000
+// 100 tests where 0 ≤ len(s) ≤ 10000
+// If you do not know what a palindrome is: https://examples.yourdictionary.com/palindrome-examples.html
+
+// Examples
+// s = "aebecda"         ->  "aba | c | ede"      ->  lowest(s) = 1
+// s = "eutxutuatgextu"  ->  "xttattx | uuegeuu"  ->  lowest(s) = 7
+// s = "abbddc"          ->  "bab | dcd"          ->  lowest(s) = 3
+// s = "abcd"            ->  "a | b | c | d"      ->  lowest(s) = 1
+// s = "aabbccdd"        ->  "abcddcba"           ->  lowest(s) = 8
+// s = ""                ->  ""                   ->  lowest(s) = 0
+// Good luck :D
+
+function lowest(s) {
+    return 1;
+  }
+
+console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
