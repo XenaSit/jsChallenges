@@ -496,6 +496,57 @@ var once = function(fn) {
 
 console.log("==========================================")
 
+// 647. Palindromic Substrings
+// Medium
+// Given a string s, return the number of palindromic substrings in it.
+// A string is a palindrome when it reads the same backward as forward.
+// A substring is a contiguous sequence of characters within the string.
+
+// Example 1:
+// Input: s = "abc"
+// Output: 3
+// Explanation: Three palindromic strings: "a", "b", "c".
+// Example 2:
+// Input: s = "aaa"
+// Output: 6
+// Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
+ 
+
+// Constraints:
+
+// 1 <= s.length <= 1000
+// s consists of lowercase English letters.
+
+
+// @param {string} s
+// @return {number}
+
+function countSubstrings(s) {
+    const n = s.length;
+    let count = 0;
+    const dp = Array.from({ length: n }, () => Array(n).fill(false));
+
+    for (let i = 0; i < n; i++) {
+        dp[i][i] = true;
+        count++;
+    }
+
+    for (let start = n - 1; start >= 0; start--) {
+        for (let end = start + 1; end < n; end++) {
+            if (s[start] === s[end]) {
+                if (end - start === 1 || dp[start + 1][end - 1]) {
+                    dp[start][end] = true;
+                    count++;
+                }
+            }
+        }
+    }
+
+    return count;
+}
+
+console.log("==========================================")
+
 // 2623. Memoize
 // Given a function fn, return a memoized version of that function.
 // A memoized function is a function that will never be called twice with the same inputs. Instead it will return a cached value.
