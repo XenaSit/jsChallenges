@@ -1266,8 +1266,13 @@ s6 = ""                // ->  ""                   ->  lowest(s) = 0
 // Good luck :D
 
 function lowest(s) {
-    return s.length;
-  }
+    let cache = []
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] === s[i])
+        return cache.push(s[i])
+    }
+    return cache.length
+}
 
 console.log(lowest(s1));
 console.log(lowest(s2));
