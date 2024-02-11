@@ -1266,7 +1266,7 @@ s6 = ""                // ->  ""                   ->  lowest(s) = 0
 // Good luck :D
 
 function lowest(s) {
-    return s;
+    return s.length;
   }
 
 console.log(lowest(s1));
