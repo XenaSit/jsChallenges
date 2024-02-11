@@ -602,17 +602,18 @@ console.log("==========================================")
 // @return {Function}
 
 function memoize(fn) {
-    let call = 0
-    let getCallCount = 0
-    // console.log("fn:", fn);
+    const cache = {}; // Cache to store function results
+    
     return function(...args) {
-        // console.log("args:", args);
-        if (args == 0) {
-            return fn(++getCallCount)
-        }
-    }
-}
+        const key = JSON.stringify(args); // Generate a unique key based on arguments
 
+        if (cache[key] === undefined) { // Check if result is already cached
+            cache[key] = fn(...args); // If not, calculate and cache the result
+        }
+
+        return cache[key]; // Return cached result
+    };
+}
 
 
 
