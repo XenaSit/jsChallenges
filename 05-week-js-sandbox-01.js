@@ -1266,6 +1266,7 @@ s6 = ""                // ->  ""                   ->  lowest(s) = 0
 // Good luck :D
 
 function lowest(s) {
+    console.log(s.split('').sort());
     let cache = []
     for (let i = 0; i < s.length; i++) {
         if (s[i] === s[i])
@@ -1274,12 +1275,12 @@ function lowest(s) {
     return cache.length
 }
 
-console.log(lowest(s1));
-console.log(lowest(s2));
-console.log(lowest(s3));
-console.log(lowest(s4));
-console.log(lowest(s5));
-console.log(lowest(s6));
+console.log(lowest(s1)); // 1
+console.log(lowest(s2)); // 7
+console.log(lowest(s3)); // 3
+console.log(lowest(s4)); // 1
+console.log(lowest(s5)); // 8
+console.log(lowest(s6)); // 0
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
