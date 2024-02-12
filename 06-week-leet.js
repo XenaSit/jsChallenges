@@ -654,9 +654,14 @@ console.log("==========================================")
 // @return {Promise}
 
 var addTwoPromises = async function(promise1, promise2) {
-    
+    try {
+        const result1 = await promise1;
+        const result2 = await promise2;
+        return result1 + result2;
+    } catch (error) {
+        throw error; // Re-throw the error if any of the promises reject
+    }
 };
-
 
 // addTwoPromises(Promise.resolve(2), Promise.resolve(2))
 //  .then(console.log); // 4
