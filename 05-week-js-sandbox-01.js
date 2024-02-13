@@ -1264,24 +1264,36 @@ s4 = "abcd"            // ->  "a | b | c | d"      ->  lowest(s) = 1
 s5 = "aabbccdd"        // ->  "abcddcba"           ->  lowest(s) = 8
 s6 = ""                // ->  ""                   ->  lowest(s) = 0
 // Good luck :D
-
-function lowest(s) {
-    let cache = []
-    let sm = s.split('')
-    for (let i = 0; i < s.length; i++) {
-      for (let j = 0; j < s.length; j++) {
-        if (sm[i] !== sm[j]){
-          cache.push(sm[i])
-          if (cache.length % 2 === 1) {
-            return 1
-          }
-        } else {
-          return cache.length
-        }
-      }
-    }
-    return cache.length
+function isPalindrome(str) {
+    return str === str.split('').reverse().join('');
 }
+function lowest(s) {
+    let result = Infinity;
+
+    // Iterate through all possible divisions of the string
+    for (let i = 1; i <= s.length; i++) {
+        let divisions = [];
+
+        // Generate all possible divisions of length i
+        for (let j = 0; j < s.length; j += i) {
+            divisions.push(s.substring(j, j + i));
+        }
+
+        // Calculate the length of the smallest palindrome in the current division
+        let smallestPalindromeLength = Math.min(...divisions.map(word => {
+            if (isPalindrome(word)) {
+                return word.length;
+            }
+            return Infinity; // Return infinity if the word is not a palindrome
+        }));
+
+        // Update the result if the length of the smallest palindrome in the current division is smaller
+        result = Math.min(result, smallestPalindromeLength);
+    }
+
+    return result === Infinity ? 0 : result;
+}
+
 
 console.log(lowest(s1)); // 1
 console.log(lowest(s2)); // 7
