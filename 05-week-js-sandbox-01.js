@@ -1266,14 +1266,17 @@ s6 = ""                // ->  ""                   ->  lowest(s) = 0
 // Good luck :D
 
 function lowest(s) {
-    // console.log(s.split('').sort());
     let cache = []
+    let sm = s.split('')
     for (let i = 0; i < s.length; i++) {
       for (let j = 0; j < s.length; j++) {
-        if (s[i] !== s[j] % 2 === 1){
-          return 1
+        if (sm[i] !== sm[j]){
+          cache.push(sm[i])
+          if (cache.length % 2 === 1) {
+            return 1
+          }
         } else {
-          return 7
+          return cache.length
         }
       }
     }
