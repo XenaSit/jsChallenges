@@ -1267,28 +1267,21 @@ s6 = ""                // ->  ""                   ->  lowest(s) = 0
 function isPalindrome(str) {
     return str === str.split('').reverse().join('');
 }
+
 function lowest(s) {
+    if (!s) return 0;
+
     let result = Infinity;
 
     // Iterate through all possible divisions of the string
     for (let i = 1; i <= s.length; i++) {
-        let divisions = [];
-
         // Generate all possible divisions of length i
-        for (let j = 0; j < s.length; j += i) {
-            divisions.push(s.substring(j, j + i));
-        }
-
-        // Calculate the length of the smallest palindrome in the current division
-        let smallestPalindromeLength = Math.min(...divisions.map(word => {
-            if (isPalindrome(word)) {
-                return word.length;
+        for (let j = 0; j < s.length; j++) {
+            const substring = s.substring(j, j + i);
+            if (isPalindrome(substring)) {
+                result = Math.min(result, substring.length);
             }
-            return Infinity; // Return infinity if the word is not a palindrome
-        }));
-
-        // Update the result if the length of the smallest palindrome in the current division is smaller
-        result = Math.min(result, smallestPalindromeLength);
+        }
     }
 
     return result === Infinity ? 0 : result;
