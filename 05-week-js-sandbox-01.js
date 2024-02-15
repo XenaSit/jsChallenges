@@ -1285,9 +1285,9 @@ function lowest(s) {
 
         // For even length palindromes with center between i and i + 1
         expandAroundCenter(i, i + 1);
-    }
+    };
 
-
+}
 
 console.log(lowest(s1)); // 1
 console.log(lowest(s2)); // 7
@@ -1298,6 +1298,6 @@ console.log(lowest(s6)); // 0
 console.log("==========================================")
 
 
-console.log("==========================================")
+// console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
