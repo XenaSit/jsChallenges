@@ -1264,28 +1264,29 @@ s4 = "abcd"            // ->  "a | b | c | d"      ->  lowest(s) = 1
 s5 = "aabbccdd"        // ->  "abcddcba"           ->  lowest(s) = 8
 s6 = ""                // ->  ""                   ->  lowest(s) = 0
 // Good luck :D
-function isPalindrome(str) {
-    return str === str.split('').reverse().join('');
-}
-
 function lowest(s) {
     if (!s) return 0;
 
     let result = Infinity;
 
-    // Iterate through all possible divisions of the string
-    for (let i = 1; i <= s.length; i++) {
-        // Generate all possible divisions of length i
-        for (let j = 0; j < s.length; j++) {
-            const substring = s.substring(j, j + i);
-            if (isPalindrome(substring)) {
-                result = Math.min(result, substring.length);
-            }
+    // Helper function to find the length of a palindrome substring with a given center
+    function expandAroundCenter(left, right) {
+        while (left >= 0 && right < s.length && s[left] === s[right]) {
+            const palindromeLength = right - left + 1;
+            result = Math.min(result, palindromeLength);
+            left--;
+            right++;
         }
     }
 
-    return result === Infinity ? 0 : result;
-}
+    for (let i = 0; i < s.length; i++) {
+        // For odd length palindromes with center at i
+        expandAroundCenter(i, i);
+
+        // For even length palindromes with center between i and i + 1
+        expandAroundCenter(i, i + 1);
+    }
+
 
 
 console.log(lowest(s1)); // 1
