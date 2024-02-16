@@ -907,7 +907,25 @@ console.log("==========================================")
 // @return {number}
 
 var findLeastNumOfUniqueInts = function(arr, k) {
-    
+    const frequencyMap = new Map();
+    // Step 1: Count the frequency of each integer
+    arr.forEach(num => {frequencyMap.set(num, (frequencyMap.get(num) || 0) + 1);});
+    // Step 2: Sort the frequencies and remove the least frequent integers
+    const frequencies = [...frequencyMap.values()].sort((a, b) => a - b);
+    let uniqueIntegers = frequencyMap.size; // Initially, all integers are unique
+    let index = 0;
+
+    while (k > 0 && index < frequencies.length) {
+        if (frequencies[index] <= k) {
+            k -= frequencies[index];
+            uniqueIntegers--; // Decrease the count of unique integers
+        } else {
+            break; // No need to continue if k becomes 0 or negative
+        }
+        index++;
+    }
+
+    return uniqueIntegers;
 };
 
 // function findLeastNumOfUniqueInts(arr: number[], k: number): number {
