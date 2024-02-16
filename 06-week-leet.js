@@ -853,25 +853,9 @@ console.log("==========================================")
 // @return {number}
 
 var largestPerimeter = function(nums) {
-    nums.sort((a, b) => b - a); // Sort the array in non-increasing order
-
-    for (let i = 0; i < nums.length - 2; i++) {
-        const side1 = nums[i];
-        const side2 = nums[i + 1];
-        const side3 = nums[i + 2];
-        
-        if (side1 < side2 + side3) {
-            return side1 + side2 + side3;
-        }
-    }
-
-    return -1; // If no valid polygon can be formed
-};
-// in TypeScript:
-function largestPerimeter(nums: number[]): number {
     nums.sort((a, b) => a - b);
     const n = nums.length;
-    const s: number[] = Array(n + 1).fill(0);
+    const s = Array(n + 1).fill(0);
     for (let i = 0; i < n; ++i) {
         s[i + 1] = s[i] + nums[i];
     }
@@ -883,6 +867,23 @@ function largestPerimeter(nums: number[]): number {
     }
     return ans;
 }
+
+// in TypeScript:
+// function largestPerimeter(nums: number[]): number {
+//     nums.sort((a, b) => a - b);
+//     const n = nums.length;
+//     const s: number[] = Array(n + 1).fill(0);
+//     for (let i = 0; i < n; ++i) {
+//         s[i + 1] = s[i] + nums[i];
+//     }
+//     let ans = -1;
+//     for (let k = 3; k <= n; ++k) {
+//         if (s[k - 1] > nums[k - 1]) {
+//             ans = Math.max(ans, s[k]);
+//         }
+//     }
+//     return ans;
+// }
 
 
 // console.log("==========================================")
