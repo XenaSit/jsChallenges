@@ -966,7 +966,14 @@ console.log("==========================================")
 // @return {number}
 
 var furthestBuilding = function(heights, bricks, ladders) {
-    
+    for (let i= 0; i < heights.length; i++) {
+        if (heights[i+1] <= heights[i]) {
+            return heights[i+1]
+        } else {
+            return bricks - 1 && ladders - 1
+        }
+    }
+    return heights[i]
 };
 
 // console.log("==========================================")
