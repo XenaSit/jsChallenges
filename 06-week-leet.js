@@ -966,14 +966,29 @@ console.log("==========================================")
 // @return {number}
 
 var furthestBuilding = function(heights, bricks, ladders) {
-    for (let i= 0; i < heights.length; i++) {
-        if (heights[i+1] <= heights[i]) {
-            return heights[i+1]
-        } else {
-            return bricks - 1 && ladders - 1
+    const n = heights.length;
+    const priorityQueue = [];
+    let bricksUsed = 0;
+    
+    for (let i = 0; i < n - 1; i++) {
+        const diff = heights[i + 1] - heights[i];
+        if (diff > 0) {
+            bricksUsed += diff;
+            // Push the negative of the difference, as we want a min heap
+            priorityQueue.push(-diff);
+            priorityQueue.sort((a, b) => a - b);
+            // If bricks used exceeds available bricks, use a ladder if available
+            if (bricksUsed > bricks) {
+                if (ladders > 0) {
+                    bricksUsed += priorityQueue.shift();
+                    ladders--;
+                } else {
+                    return i; // Can't progress further
+                }
+            }
         }
     }
-    return heights[i]
+    return n - 1; // Reached the last building
 };
 
 // console.log("==========================================")
