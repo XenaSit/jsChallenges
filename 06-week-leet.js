@@ -1006,5 +1006,13 @@ var furthestBuilding = function(heights, bricks, ladders) {
     }
     return n - 1; // Reached the last building
 };
-
+console.log("==========================================")
 // console.log("==========================================")
+// console.log("==========================================")
+// console.log("==========================================")
+// console.log("==========================================")
+// console.log("==========================================")
+// console.log("==========================================")
+// console.log("==========================================")
+// console.log("==========================================")
+// git commit -m "LEET, branch:leet, the 30 days of JS challenge: Timout Cancellation: EASY"
