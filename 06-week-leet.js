@@ -794,32 +794,48 @@ console.log("==========================================")
 // @return {Function}
 
 var cancellable = function(fn, args, t) {
-    
+    console.log(fn, args, t)
+     // This line declares a variable named cancellable and assigns it a function value.
+    // The function takes three parameters: fn, args, and t.
+    // fn is another function that we want to call later.
+    // args is an array of arguments that we want to pass to fn when we call it.
+    // t is a number of milliseconds that we want to wait before calling fn.
+
+    let timer = setTimeout(() => {
+    // This line creates a variable named timer and assigns it the result of calling setTimeout.
+    // setTimeout is a built-in function that can execute another function after a delay.
+    // The first argument of setTimeout is a function that we want to execute later.
+    // The second argument of setTimeout is the delay in milliseconds.
+    // In this case, we are using an arrow function as the first argument, which is a shorthand way of writing a function.
+    // The arrow function has no parameters and no curly braces, which means it will execute one statement and return its value.
+    fn(...args); // This is the statement that the arrow function will execute. It calls fn with the args as parameters.
+    // The ... operator is called the spread operator, which can expand an array into individual elements.
+    // For example, if args is [2, 3], then fn(...args) is equivalent to fn(2, 3).
+    }, t);
+     // The result of calling setTimeout is a numeric value that represents the timer ID. We can use this ID to cancel the timer later.
+ 
+    return function() {
+    // This line returns another function from the cancellable function. This function will act as the cancel function.
+    // This function has no parameters and no name. It is an anonymous function.
+ 
+    clearTimeout(timer); // This line calls clearTimeout, which is another built-in function that can cancel a timer created by setTimeout.
+    // The argument of clearTimeout is the timer ID that we want to cancel. In this case, we use the timer variable that we created earlier.
+  };
 };
 
-/**
- *  const result = [];
- *
- *  const fn = (x) => x * 5;
- *  const args = [2], t = 20, cancelTimeMs = 50;
- *
- *  const start = performance.now();
- *
- *  const log = (...argsArr) => {
- *      const diff = Math.floor(performance.now() - start);
- *      result.push({"time": diff, "returned": fn(...argsArr)});
- *  }
- *       
- *  const cancel = cancellable(log, args, t);
- *
- *  const maxT = Math.max(t, cancelTimeMs);
- *           
- *  setTimeout(cancel, cancelTimeMs);
- *
- *  setTimeout(() => {
- *      console.log(result); // [{"time":20,"returned":10}]
- *  }, maxT + 15)
- */
+
+// const result = [];
+// const fn = (x) => x * 5;
+// const args = [2], t = 20, cancelTimeMs = 50;
+// const start = performance.now();
+// const log = (...argsArr) => {
+//     const diff = Math.floor(performance.now() - start);
+//     result.push({"time": diff, "returned": fn(...argsArr)});}
+// const cancel = cancellable(log, args, t);
+// const maxT = Math.max(t, cancelTimeMs);       
+// setTimeout(cancel, cancelTimeMs);
+// setTimeout(() => { console.log(result); // [{"time":20,"returned":10}] }, maxT + 15)
+
 
 console.log("==========================================")
 
@@ -933,6 +949,63 @@ var findLeastNumOfUniqueInts = function(arr, k) {
 // };
 
 console.log("==========================================")
+
+// 1642. Furthest Building You Can Reach
+// Medium
+// You are given an integer array heights representing the heights of buildings, some bricks, and some ladders.
+// You start your journey from building 0 and move to the next building by possibly using bricks or ladders.
+// While moving from building i to building i+1 (0-indexed),
+// If the current building's height is greater than or equal to the next building's height, you do not need a ladder or bricks.
+// If the current building's height is less than the next building's height, you can either use one ladder or (h[i+1] - h[i]) bricks.
+// Return the furthest building index (0-indexed) you can reach if you use the given ladders and bricks optimally.
+
+// Example 1:
+// Input: heights = [4,2,7,6,9,14,12], bricks = 5, ladders = 1
+// Output: 4
+// Explanation: Starting at building 0, you can follow these steps:
+// - Go to building 1 without using ladders nor bricks since 4 >= 2.
+// - Go to building 2 using 5 bricks. You must use either bricks or ladders because 2 < 7.
+// - Go to building 3 without using ladders nor bricks since 7 >= 6.
+// - Go to building 4 using your only ladder. You must use either bricks or ladders because 6 < 9.
+// It is impossible to go beyond building 4 because you do not have any more bricks or ladders.
+// Example 2:
+// Input: heights = [4,12,2,7,3,18,20,3,19], bricks = 10, ladders = 2
+// Output: 7
+// Example 3:
+// Input: heights = [14,3,19,3], bricks = 17, ladders = 0
+// Output: 3
+ 
+
+// @param {number[]} heights
+// @param {number} bricks
+// @param {number} ladders
+// @return {number}
+
+var furthestBuilding = function(heights, bricks, ladders) {
+    const n = heights.length;
+    const priorityQueue = [];
+    let bricksUsed = 0;
+    
+    for (let i = 0; i < n - 1; i++) {
+        const diff = heights[i + 1] - heights[i];
+        if (diff > 0) {
+            bricksUsed += diff;
+            // Push the negative of the difference, as we want a min heap
+            priorityQueue.push(-diff);
+            priorityQueue.sort((a, b) => a - b);
+            // If bricks used exceeds available bricks, use a ladder if available
+            if (bricksUsed > bricks) {
+                if (ladders > 0) {
+                    bricksUsed += priorityQueue.shift();
+                    ladders--;
+                } else {
+                    return i; // Can't progress further
+                }
+            }
+        }
+    }
+    return n - 1; // Reached the last building
+};
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
