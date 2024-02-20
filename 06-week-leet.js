@@ -1147,8 +1147,20 @@ console.log("==========================================")
 // @return {number}
 
 var missingNumber = function(nums) {
-    let sortedArr = nums.sort((a, b) => a - b)
-    // console.log(sortedArr)
+    let sortedArr = nums.sort((a, b) => a - b);
+    // If the first number is not 0, then 0 is the missing number
+    if (sortedArr[0] !== 0) return 0;
+    
+    for (let i = 0; i < sortedArr.length - 1; i++) {
+        // If the difference between consecutive numbers is greater than 1,
+        // then there is a missing number between them
+        if (sortedArr[i + 1] - sortedArr[i] > 1) {
+            return sortedArr[i] + 1;
+        }
+    }
+    // If no missing number is found within the array, 
+    // the missing number is the last number plus 1
+    return sortedArr[sortedArr.length - 1] + 1;
 };
 
 console.log("==========================================")
