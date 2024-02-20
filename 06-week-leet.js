@@ -1147,7 +1147,8 @@ console.log("==========================================")
 // @return {number}
 
 var missingNumber = function(nums) {
-    
+    let sortedArr = nums.sort((a, b) => a - b)
+    // console.log(sortedArr)
 };
 
 console.log("==========================================")
