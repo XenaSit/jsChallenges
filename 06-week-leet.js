@@ -1184,15 +1184,24 @@ console.log("==========================================")
 // @param {number} right
 // @return {number}
 
-var rangeBitwiseAnd = function(left, right) {
+function rangeBitwiseAnd(left, right) {
+    // Initialize a variable to keep track of the number of right shifts
     let shift = 0;
+    
+    // Continue looping until left and right numbers are equal
     while (left < right) {
+        // Right shift both left and right numbers by 1 bit
         left >>= 1;
         right >>= 1;
+        
+        // Increment the shift count
         shift++;
     }
+    
+    // Left shift the left number by the number of shifts performed
+    // This will generate the common prefix of the binary representations of left and right numbers
     return left << shift;
-};
+}
 
 // console.log("==========================================")
 // console.log("==========================================")
