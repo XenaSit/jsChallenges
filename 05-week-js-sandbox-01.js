@@ -1311,4 +1311,4 @@ function consecutive(arr, a, b) {
 // console.log("==========================================")
 
 // node .\05-week-js-sandbox-01.js
-// git commit -m "CODEWARS, branch:lowest, nothing is working, i am abandoning this, going to something new"
+// git commit -m "CODEWARS, branch:consecutive, begaan"
