@@ -1300,9 +1300,13 @@ console.log("==========================================")
 // It is guaranteed that a and b are both present in arr.
 
 function consecutive(arr, a, b) {
-    // Your code here...
+    for (let i = 0; i < arr.length - 1; i++) {
+      if ((arr[i] === a && arr[i + 1] === b) || (arr[i] === b && arr[i + 1] === a)) {
+        return true;
+      }
+    }
+    return false;
   }
-
 // console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
