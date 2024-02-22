@@ -1230,7 +1230,20 @@ console.log("==========================================")
 // @return {number}
 
 var findJudge = function(n, trust) {
+    const trustCounts = new Array(n + 1).fill(0); // Initialize trust counts for each person
     
+    for (const [a, b] of trust) {
+        trustCounts[a]--; // Decrement trust count for person 'a'
+        trustCounts[b]++; // Increment trust count for person 'b'
+    }
+    
+    for (let i = 1; i <= n; i++) {
+        if (trustCounts[i] === n - 1) { // Check if the person is trusted by everyone except themselves
+            return i; // Return the label of the town judge
+        }
+    }
+    
+    return -1; // No town judge found
 };
 
 // console.log("==========================================")
