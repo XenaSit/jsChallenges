@@ -1073,13 +1073,14 @@ console.log("==========================================")
 
 var cancellable = function(fn, args, t) {
     console.log(fn, args, t)
+    fn(...args);// Call fn once immediately
      // This line declares a variable named cancellable and assigns it a function value.
     // The function takes three parameters: fn, args, and t.
     // fn is another function that we want to call later.
     // args is an array of arguments that we want to pass to fn when we call it.
     // t is a number of milliseconds that we want to wait before calling fn.
 
-    let interval = setInterval(() => {
+    let interval = setInterval(() => { // Set up the interval for subsequent calls
     // This line creates a variable named timer and assigns it the result of calling setTimeout.
     // setTimeout is a built-in function that can execute another function after a delay.
     // The first argument of setTimeout is a function that we want to execute later.
@@ -1092,7 +1093,7 @@ var cancellable = function(fn, args, t) {
     }, t);
      // The result of calling setTimeout is a numeric value that represents the timer ID. We can use this ID to cancel the timer later.
  
-    return function() {
+    return function() {  // Return cancellation function
     // This line returns another function from the cancellable function. This function will act as the cancel function.
     // This function has no parameters and no name. It is an anonymous function.
  
