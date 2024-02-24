@@ -1299,14 +1299,14 @@ console.log("==========================================")
 // (True if a and b are consecutive, False otherwise).
 // It is guaranteed that a and b are both present in arr.
 
-function consecutive(arr, a, b) {
-    for (let i = 0; i < arr.length - 1; i++) {
-      if ((arr[i] === a && arr[i + 1] === b) || (arr[i] === b && arr[i + 1] === a)) {
-        return true;
-      }
-    }
-    return false;
-  }
+// function consecutive(arr, a, b) {
+//     for (let i = 0; i < arr.length - 1; i++) {
+//       if ((arr[i] === a && arr[i + 1] === b) || (arr[i] === b && arr[i + 1] === a)) {
+//         return true;
+//       }
+//     }
+//     return false;
+//   }
 console.log("==========================================")
 
 // In this kata you need to write a function that will receive two strings (n1 and n2), each representing an integer as a binary number. 
@@ -1319,10 +1319,13 @@ console.log("==========================================")
 // Examples of negatives:
 // 1 - 10 === -1
 // 10 - 100 === -10
+num1 = 1
+num2 = 1
 
 function calculate(n1, n2, o) {
+    console.log(n1, n2, o);
 }
-
+console.log(calculate(num1, num2, "add"))
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
