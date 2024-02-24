@@ -1323,7 +1323,8 @@ num1 = 1
 num2 = 1
 
 function calculate(n1, n2, o) {
-    console.log(n1, n2, o);
+    let binaryNum1 = parseInt(n1, 2)
+    let binaryNum2 = parseInt(n2, 2)
 }
 console.log(calculate(num1, num2, "add"))
 console.log("==========================================")
