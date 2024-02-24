@@ -1323,8 +1323,25 @@ num1 = 1
 num2 = 1
 
 function calculate(n1, n2, o) {
-    let binaryNum1 = parseInt(n1, 2)
-    let binaryNum2 = parseInt(n2, 2)
+    let binaryNum1 = parseInt(n1, 2);
+    let binaryNum2 = parseInt(n2, 2);
+    let result;
+
+    switch (o) {
+        case 'add':
+            result = binaryNum1 + binaryNum2;
+            break;
+        case 'subtract':
+            result = binaryNum1 - binaryNum2;
+            break;
+        case 'multiply':
+            result = binaryNum1 * binaryNum2;
+            break;
+        default:
+            return "Invalid operation";
+    }
+
+    return result.toString(2);
 }
 console.log(calculate(num1, num2, "add"))
 console.log("==========================================")
