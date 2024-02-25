@@ -1315,10 +1315,32 @@ console.log("==========================================")
 // @return {Function}
 
 var timeLimit = function(fn, t) {
-    console.log(fn, t)
     return async function(...args) {
-        return fn(args)
-    }
+        // Create a Promise that resolves with the result of the function or rejects if the time limit is exceeded
+        const promise = new Promise(async (resolve, reject) => {
+            // Start a timer
+            const timer = setTimeout(() => {
+                reject("Time Limit Exceeded");
+            }, t);
+
+            try {
+                // Execute the provided function with the arguments
+                const result = await fn(...args);
+                // Clear the timer
+                clearTimeout(timer);
+                // Resolve with the result
+                resolve(result);
+            } catch (error) {
+                // Clear the timer
+                clearTimeout(timer);
+                // Reject with the error
+                reject(error);
+            }
+        });
+
+        // Return the promise
+        return promise;
+    };
 };
 
 
