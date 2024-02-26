@@ -1355,22 +1355,18 @@ console.log("==========================================")
 // # Doesn't include all numbers between 0 and a.length - 1 (5 - 1 = 4)
 // [0] => True
 // # Includes all numbers between 0 and a.length - 1 (1 - 1 = 0).
+function isAllPossibilities(x) {
+    const n = x.length;
+    const numSet = new Set(x);
 
-function isAllPossibilities(x){
-    // Sort the array in ascending order
-    x.sort((a, b) => a - b);
-
-    // Iterate through the sorted array
-    for (let i = 0; i < x.length; i++) {
-        // Check if the current number is equal to the expected number
-        if (x[i] !== i + 1) {
-            // If any number is missing, return false
-            return false;
+    // Check if each number from 0 to n-1 is present in the array
+    for (let i = 0; i < n; i++) {
+        if (!numSet.has(i)) {
+            return false; // If any number is missing, return false
         }
     }
 
-    // If no numbers are missing, return true
-    return true;
+    return true; // All numbers from 0 to n-1 are present
 }
 
 
