@@ -1441,13 +1441,31 @@ console.log("==========================================")
  *     this.right = (right===undefined ? null : right)
  * }
  */
-/**
- * @param {TreeNode} root
- * @return {number}
- */
+// @param {TreeNode} root
+// @return {number}
+
 var diameterOfBinaryTree = function(root) {
+    let maxDiameter = 0;
+
+    // Helper function to calculate the depth of a subtree
+    const depth = function(node) {
+        if (node === null) return 0;
+        
+        const leftDepth = depth(node.left);
+        const rightDepth = depth(node.right);
+        
+        // Update the max diameter
+        maxDiameter = Math.max(maxDiameter, leftDepth + rightDepth);
+        
+        // Return the depth of the current node
+        return 1 + Math.max(leftDepth, rightDepth);
+    };
     
+    depth(root);
+    
+    return maxDiameter;
 };
+
 
 // console.log("==========================================")
 // console.log("==========================================")
