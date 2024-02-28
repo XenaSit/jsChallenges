@@ -1492,24 +1492,24 @@ console.log("==========================================")
 // @return {number}
 
 var findBottomLeftValue = function(root) {
-    let maxDiameter = 0;
-
-    // Helper function to calculate the depth of a subtree
-    const depth = function(node) {
-        if (node === null) return 0;
-        
-        const leftDepth = depth(node.left);
-        const rightDepth = depth(node.right);
-        
-        // Update the max diameter
-        maxDiameter = Math.max(maxDiameter, leftDepth + rightDepth);
-        
-        // Return the depth of the current node
-        return 1 + Math.max(leftDepth, rightDepth);
-    };
+    if (!root) return null;
     
-    depth(root);
-    return maxDiameter;
+    let queue = [root];
+    let leftmost = null;
+    
+    while (queue.length > 0) {
+        const size = queue.length;
+        leftmost = queue[0].val; // Update leftmost value for each level
+        
+        for (let i = 0; i < size; i++) {
+            const node = queue.shift();
+            
+            if (node.left) queue.push(node.left);
+            if (node.right) queue.push(node.right);
+        }
+    }
+    
+    return leftmost;
 };
 
 console.log("==========================================")
