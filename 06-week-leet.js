@@ -1552,26 +1552,37 @@ console.log("==========================================")
 // @param {TreeNode} root
 // @return {boolean}
 
-var isEvenOddTree = function(root) {
-    if (!root) return null;
+function isEvenOddTree(root) {
+    if (!root) return false;
     
     let queue = [root];
-    let leftmost = null;
+    let level = 0;
     
     while (queue.length > 0) {
         const size = queue.length;
-        leftmost = queue[0].val;
+        let prevVal = level % 2 === 0 ? Number.MIN_SAFE_INTEGER : Number.MAX_SAFE_INTEGER;
         
         for (let i = 0; i < size; i++) {
             const node = queue.shift();
+            const val = node.val;
+            
+            if (level % 2 === 0) { // Even level
+                if (val % 2 !== 1 || val <= prevVal) return false; // Not odd or not strictly increasing
+            } else { // Odd level
+                if (val % 2 !== 0 || val >= prevVal) return false; // Not even or not strictly decreasing
+            }
             
             if (node.left) queue.push(node.left);
             if (node.right) queue.push(node.right);
+            
+            prevVal = val;
         }
+        
+        level++;
     }
     
-    return leftmost;
-};
+    return true;
+}
 
 console.log("==========================================")
 // console.log("==========================================")
