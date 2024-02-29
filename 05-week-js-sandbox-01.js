@@ -1424,9 +1424,23 @@ var charArr4 = [100, 100, 100, 90, 1, 0, 0] // the output should be false.
 // These players can not start with the same amount of money.
 
 function learnCharitableGame(arr) {
-    //coding and coding..
+    // Step 1: Check if all initial amounts are non-negative
+    if (arr.some(amount => amount < 0)) {
+      return false; // If any initial amount is negative, return false
+    }
     
+    // Step 2: Calculate the total sum of the final amounts
+    const finalSum = arr.reduce((sum, amount) => sum + amount, 0);
     
+    // Step 3: Check if the final sum is divisible by the number of players
+    const numPlayers = arr.length;
+    if (finalSum % numPlayers !== 0) {
+      return false; // Redistribution not possible, return false
+    }
+    
+    // Step 4: Check if redistribution results in non-negative amounts for all players
+    const redistributedAmount = finalSum / numPlayers;
+    return arr.every(amount => amount >= redistributedAmount);
   }
 
 console.log("==========================================")
