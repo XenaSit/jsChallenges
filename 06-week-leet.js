@@ -1606,7 +1606,8 @@ console.log("==========================================")
 // @return {number[]}
 
 var sortedSquares = function(nums) {
-    return nums.map(num => num * num);
+    let numbers = nums.map(num => num * num);
+    return numbers.slice().sort((a, b) => a - b);
 };
 
 console.log("==========================================")
