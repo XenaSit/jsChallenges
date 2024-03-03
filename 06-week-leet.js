@@ -1635,7 +1635,6 @@ console.log("==========================================")
 // @return {ListNode}
 
 var removeNthFromEnd = function(head, n) {
-    var removeNthFromEnd = function(head, n) {
         // Initialize dummy node to handle edge cases
         let dummy = new ListNode(0);
         dummy.next = head;
@@ -1657,7 +1656,6 @@ var removeNthFromEnd = function(head, n) {
         second.next = second.next.next;
     
         return dummy.next; // Return the modified list
-    };
 };
 
 console.log("==========================================")
