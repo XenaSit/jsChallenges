@@ -1691,7 +1691,26 @@ console.log("==========================================")
 // @return {number}
 
 var bagOfTokensScore = function(tokens, power) {
-    
+    tokens.sort((a, b) => a - b); // Sort tokens in ascending order
+    let score = 0;
+    let maxScore = 0;
+    let left = 0;
+    let right = tokens.length - 1;
+
+    while (left <= right) {
+        if (power >= tokens[left]) { // Play token face-up
+            power -= tokens[left++];
+            score++;
+            maxScore = Math.max(maxScore, score);
+        } else if (score > 0) { // Play token face-down if score > 0
+            power += tokens[right--];
+            score--;
+        } else {
+            break;
+        }
+    }
+
+    return maxScore;
 };
 
 // console.log("==========================================")
