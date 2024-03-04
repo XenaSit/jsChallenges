@@ -1686,6 +1686,14 @@ console.log("==========================================")
 // Play token2 (300) face-up, reducing power to 0 and increasing score to 2.
 // The maximum score achievable is 2.
 
+// @param {number[]} tokens
+// @param {number} power
+// @return {number}
+
+var bagOfTokensScore = function(tokens, power) {
+    
+};
+
 // console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
