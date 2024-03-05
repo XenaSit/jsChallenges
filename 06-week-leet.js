@@ -1747,9 +1747,24 @@ console.log("==========================================")
 // @return {number}
 
 var minimumLength = function(s) {
-    return s.length
+    let left = 0;
+    let right = s.length - 1;
+    
+    while (left < right && s[left] === s[right]) {
+        const char = s[left];
+        // Move left pointer to the right until it reaches a different character
+        while (left <= right && s[left] === char) {
+            left++;
+        }
+        // Move right pointer to the left until it reaches a different character
+        while (left <= right && s[right] === char) {
+            right--;
+        }
+    }
+    
+    // The minimum length of the string after applying the algorithm is the remaining substring length
+    return right - left + 1;
 };
-
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
