@@ -1743,12 +1743,11 @@ console.log("==========================================")
 // - Take prefix = "aa" and suffix = "a" and remove them, s = "bccabb".
 // - Take prefix = "b" and suffix = "bb" and remove them, s = "cca".
 
-/**
- * @param {string} s
- * @return {number}
- */
+// @param {string} s
+// @return {number}
+
 var minimumLength = function(s) {
-    
+    return s.length
 };
 
 console.log("==========================================")
