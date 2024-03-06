@@ -1786,6 +1786,18 @@ console.log("==========================================")
 // Output: false
 // Explanation: There is no cycle in the linked list.
 
+// Definition for singly-linked list.
+// function ListNode(val) {
+//     this.val = val;
+//     this.next = null;
+// }
+// @param {ListNode} head
+// @return {boolean}
+
+var hasCycle = function(head) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
