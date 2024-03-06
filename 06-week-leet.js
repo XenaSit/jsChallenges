@@ -1795,7 +1795,19 @@ console.log("==========================================")
 // @return {boolean}
 
 var hasCycle = function(head) {
+    let left = 0;
+    let right = head.length - 1;
     
+    while (left < right && head[left] === head[right]) {
+        const char = head[left];
+        while (left <= right && head[left] === char) {
+            left++;
+        }
+        while (left <= right && head[right] === char) {
+            right--;
+        }
+    }
+    return right - left + 1;
 };
 
 console.log("==========================================")
