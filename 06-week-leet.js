@@ -1795,18 +1795,22 @@ console.log("==========================================")
 // @return {boolean}
 
 var hasCycle = function(head) {
-    let left = 0;
-    let right = head.length - 1;
-    
-    while (left < right && head[left] === head[right]) {
-        const char = head[left];
-        while (left <= right && head[left] === char) {
-            left++;
-        }
-        while (left <= right && head[right] === char) {
-            right--;
-        }
+    if (!head || !head.next) {
+        return false;
     }
+
+    let slow = head;
+    let fast = head.next;
+
+    while (slow !== fast) {
+        if (!fast || !fast.next) {
+            return false;
+        }
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+
+    return true;
     return right - left + 1;
 };
 
