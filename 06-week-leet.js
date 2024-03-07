@@ -1840,11 +1840,24 @@ console.log("==========================================")
 // @return {ListNode}
 
 var middleNode = function(head) {
-    if (head.length % 2 === 1) {
-        return head.slice(2)
-    } else {
-        return head.slice(3)
+    // if (Array.isArray(head)) {
+    //     if (head.length % 2 === 1) {
+    //         return head.slice(2);
+    //     } else {
+    //         return head.slice(3);
+    //     }
+    // } else {
+    //     // Handle the case where head is not an array
+    //     return "Input is not an array";
+    // }
+    let slow = head;
+    let fast = head;
+
+    while (fast && fast.next) {
+        slow = slow.next;
+        fast = fast.next.next;
     }
+    return slow;
 };
 
 console.log("==========================================")
