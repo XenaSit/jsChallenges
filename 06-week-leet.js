@@ -1840,7 +1840,11 @@ console.log("==========================================")
 // @return {ListNode}
 
 var middleNode = function(head) {
-    
+    if (head.length % 2 === 1) {
+        return head.slice(2)
+    } else {
+        return head.slice(3)
+    }
 };
 
 console.log("==========================================")
