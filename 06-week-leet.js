@@ -1881,7 +1881,7 @@ console.log("==========================================")
 // @return {number}
 
 var maxFrequencyElements = function(nums) {
-    
+    return nums[nums.length - 1]
 };
 
 console.log("==========================================")
