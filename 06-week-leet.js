@@ -1881,7 +1881,24 @@ console.log("==========================================")
 // @return {number}
 
 var maxFrequencyElements = function(nums) {
-    return nums[nums.length - 1]
+    // Step 1: Create a map to store the frequency of each element
+    let frequencyMap = new Map();
+    for (let num of nums) {
+        frequencyMap.set(num, (frequencyMap.get(num) || 0) + 1);
+    }
+    
+    // Step 2: Find the maximum frequency
+    let maxFrequency = Math.max(...frequencyMap.values());
+    
+    // Step 3: Count the total frequencies of elements with maximum frequency
+    let totalCount = 0;
+    for (let [num, frequency] of frequencyMap) {
+        if (frequency === maxFrequency) {
+            totalCount += frequency;
+        }
+    }
+    
+    return totalCount;
 };
 
 console.log("==========================================")
