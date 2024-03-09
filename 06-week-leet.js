@@ -1922,7 +1922,12 @@ console.log("==========================================")
 // @return {number}
 
 var getCommon = function(nums1, nums2) {
-    
+    for (let i = 0; i < 0; i++) {
+        if (nums1[i] === nums2[i]) {
+            return nums1[i]
+        }
+        return nums1[i]
+    }
 };
 
 
