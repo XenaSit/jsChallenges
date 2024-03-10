@@ -1922,23 +1922,17 @@ console.log("==========================================")
 // @return {number}
 
 var getCommon = function(nums1, nums2) {
-    let i = 0, j = 0;
-    const intersectionArray = [];
-    while (i < nums1.length && j < nums2.length) {
-        if (nums1[i] === nums2[j]) {
-            // Add the matching element to the intersection array
-            if (!intersectionArray.includes(nums1[i])) {
-                intersectionArray.push(nums1[i]);
-            }
-            i++;
-            j++;
-        } else if (nums1[i] < nums2[j]) {
-            i++;
-        } else {
-            j++;
+    const set = new Set();
+    const result = [];
+    const set1 = new Set(nums1);
+    for (let num of nums2) {
+        if (set1.has(num) && !set.has(num)) {
+            result.push(num);
+            set.add(num);
         }
     }
-    return intersectionArray;
+    
+    return result;
 };
 
 console.log("==========================================")
