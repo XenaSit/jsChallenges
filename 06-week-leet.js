@@ -1991,7 +1991,28 @@ console.log("==========================================")
 // @return {string}
 
 var customSortString = function(order, s) {
+    // Create a hashmap to store the frequency of characters in s
+    const freqMap = {};
+    for (const char of s) {
+        freqMap[char] = (freqMap[char] || 0) + 1;
+    }
     
+    let result = '';
+    // Append characters from order according to their frequency in s
+    for (const char of order) {
+        if (char in freqMap) {
+            result += char.repeat(freqMap[char]);
+            // Remove the character from freqMap to mark it as processed
+            delete freqMap[char];
+        }
+    }
+    
+    // Append any remaining characters in s that are not in order
+    for (const char in freqMap) {
+        result += char.repeat(freqMap[char]);
+    }
+    
+    return result;
 };
 
 console.log("==========================================")
