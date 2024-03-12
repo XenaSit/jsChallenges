@@ -2019,28 +2019,17 @@ console.log("==========================================")
 
 // 1171. Remove Zero Sum Consecutive Nodes from Linked List
 // Medium
-// Topics
-// Companies
-// Hint
 // Given the head of a linked list, we repeatedly delete consecutive sequences of nodes that sum to 0 until there are no such sequences.
-
 // After doing so, return the head of the final linked list.  You may return any such answer.
-
- 
-
 // (Note that in the examples below, all sequences are serializations of ListNode objects.)
-
 // Example 1:
-
 // Input: head = [1,2,-3,3,1]
 // Output: [3,1]
 // Note: The answer [1,2,1] would also be accepted.
 // Example 2:
-
 // Input: head = [1,2,3,-3,4]
 // Output: [1,2,4]
 // Example 3:
-
 // Input: head = [1,2,3,-3,-2]
 // Output: [1]
 
@@ -2054,7 +2043,30 @@ console.log("==========================================")
 // @return {ListNode}
  
 var removeZeroSumSublists = function(head) {
-    
+    // Dummy node at the start of the list to simplify edge cases.
+  const dummy = { val: 0, next: head };
+  // A map to store the cumulative sum of nodes and their last occurrences.
+  const lastOccurrenceOfSum = new Map();
+  let sum = 0;
+
+  // First pass: Compute the cumulative sum and track the last occurrence of each sum.
+  for (let currentNode = dummy; currentNode; currentNode = currentNode.next) {
+    sum += currentNode.val;
+    lastOccurrenceOfSum.set(sum, currentNode);
+  }
+
+  sum = 0; // Reset sum for the second pass.
+
+  // Second pass: Use the last occurrence map to skip over zero-sum sublists.
+  for (let currentNode = dummy; currentNode; currentNode = currentNode.next) {
+    sum += currentNode.val;
+    // The next node will be the one after the last occurrence of the current sum.
+    // As we have removed zero-sum sublists, the sums will not repeat in the new list.
+    currentNode.next = lastOccurrenceOfSum.get(sum).next;
+  }
+
+  // Return the modified list, sans the dummy node.
+  return dummy.next;
 };
 
 
