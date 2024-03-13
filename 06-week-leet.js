@@ -2094,19 +2094,20 @@ console.log("==========================================")
 // @return {number}
 
 var pivotInteger = function(n) {
-    let totalSum = (n * (n + 1)) / 2; // Sum of all elements from 1 to n
-    let leftSum = 0;
+    if (n === 1) return 1; // Special case: n equals 1
     
-    for (let x = 1; x <= n; x++) {
-        leftSum += x;
-        let rightSum = totalSum - leftSum;
+    let totalSum = (n * (n + 1)) / 2; // Sum of all elements from 1 to n
+    
+    for (let x = 2; x <= n; x++) {
+        let leftSum = (x * (x - 1)) / 2; // Sum of all elements from 1 to x-1
+        let rightSum = totalSum - leftSum - x; // Sum of all elements from x+1 to n
         
         if (leftSum === rightSum) {
             return x;
         }
     }
     
-    return -1; // No pivot integer found
+    return -1;
 };
 
 
