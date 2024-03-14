@@ -2115,8 +2115,6 @@ console.log("==========================================")
 
 // 930. Binary Subarrays With Sum
 // Medium
-// Topics
-// Companies
 // Given a binary array nums and an integer goal, return the number of non-empty subarrays with a sum goal.
 // A subarray is a contiguous part of the array.
 // Example 1:
@@ -2136,7 +2134,21 @@ console.log("==========================================")
 // @return {number}
 
 var numSubarraysWithSum = function(nums, goal) {
-    
+    let count = 0;
+    let sum = 0;
+    const sumCount = new Map();
+    sumCount.set(0, 1); // Initialize with sum 0 with count 1
+
+    for (let i = 0; i < nums.length; i++) {
+        sum += nums[i];
+        const complement = sum - goal;
+        if (sumCount.has(complement)) {
+            count += sumCount.get(complement);
+        }
+        sumCount.set(sum, (sumCount.get(sum) || 0) + 1);
+    }
+
+    return count;
 };
 
 
