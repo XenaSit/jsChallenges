@@ -2208,7 +2208,26 @@ console.log("==========================================")
 // @return {number}
 
 var findMaxLength = function(nums) {
+    var findMaxLength = function(nums) {
+        let maxLen = 0;
+        let sum = 0;
+        const map = new Map();
+        map.set(0, -1); // Initialize the map with the sum 0 at index -1 (helps in case the first equal count is encountered)
     
+        for (let i = 0; i < nums.length; i++) {
+            sum += nums[i] === 0 ? -1 : 1; // Convert 0 to -1 and 1 to 1, then add to the sum
+            
+            if (map.has(sum)) {
+                // If the current sum has been seen before, update maxLen with the difference between current index and the index where the sum occurred previously
+                maxLen = Math.max(maxLen, i - map.get(sum));
+            } else {
+                // If the current sum is encountered for the first time, store it in the map with the current index
+                map.set(sum, i);
+            }
+        }
+    
+        return maxLen;
+    };
 };
 
 // console.log("==========================================")
