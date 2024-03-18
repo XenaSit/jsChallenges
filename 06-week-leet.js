@@ -2312,7 +2312,25 @@ console.log("==========================================")
 // @return {number}
 
 var findMinArrowShots = function(points) {
+    if (points.length === 0) return 0;
     
+    // Sort the points based on their end points
+    points.sort((a, b) => a[1] - b[1]);
+    
+    let arrows = 1; // Initialize the number of arrows needed
+    let end = points[0][1];
+    
+    // Iterate through the points to find overlapping intervals
+    for (let i = 1; i < points.length; i++) {
+        if (points[i][0] > end) {
+            // If the current balloon starts after the end of the previous overlapping interval,
+            // we need to shoot another arrow and update the end point
+            arrows++;
+            end = points[i][1];
+        }
+    }
+    
+    return arrows;
 };
 
 console.log("==========================================")
