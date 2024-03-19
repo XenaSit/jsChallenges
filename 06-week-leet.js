@@ -2364,7 +2364,35 @@ console.log("==========================================")
 // @return {number}
 
 var leastInterval = function(tasks, n) {
+    // Step 1: Create a hash map to store the frequency of each task
+    const taskFrequency = new Map();
+    for (const task of tasks) {
+        taskFrequency.set(task, (taskFrequency.get(task) || 0) + 1);
+    }
     
+    // Step 2: Find the maximum frequency
+    let maxFrequency = 0;
+    for (const frequency of taskFrequency.values()) {
+        maxFrequency = Math.max(maxFrequency, frequency);
+    }
+    
+    // Step 3: Count the number of tasks with the same maximum frequency
+    let maxCount = 0;
+    for (const frequency of taskFrequency.values()) {
+        if (frequency === maxFrequency) {
+            maxCount++;
+        }
+    }
+    
+    // Step 4: Calculate the number of intervals without considering the cooling time
+    const partCount = maxFrequency - 1;
+    const partLength = n - (maxCount - 1);
+    const emptySlots = partCount * partLength;
+    const availableTasks = tasks.length - maxFrequency * maxCount;
+    const idleSlots = Math.max(0, emptySlots - availableTasks);
+    
+    // Step 5: Calculate the total number of intervals required, considering the cooling time
+    return tasks.length + idleSlots;
 };
 
 
