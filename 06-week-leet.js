@@ -2425,7 +2425,35 @@ console.log("==========================================")
 // @return {ListNode}
 
 var mergeInBetween = function(list1, a, b, list2) {
+    let prevA = null;
+    let nextB = null;
+    let current = list1;
+    let count = 0;
     
+    // Find the node at position a-1
+    while (current !== null) {
+        if (count === a - 1) {
+            prevA = current;
+        }
+        if (count === b + 1) {
+            nextB = current;
+            break;
+        }
+        current = current.next;
+        count++;
+    }
+    
+    // Find the tail of list2
+    let tailList2 = list2;
+    while (tailList2.next !== null) {
+        tailList2 = tailList2.next;
+    }
+    
+    // Link prevA to list2 and list2 to nextB
+    prevA.next = list2;
+    tailList2.next = nextB;
+    
+    return list1;
 };
 
 
