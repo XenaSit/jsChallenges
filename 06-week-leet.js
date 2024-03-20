@@ -2427,6 +2427,26 @@ Input: list1 = [0,1,2,3,4,5,6], a = 2, b = 5, list2 = [1000000,1000001,1000002,1
 Output: [0,1,1000000,1000001,1000002,1000003,1000004,6]
 Explanation: The blue edges and nodes in the above figure indicate the result.
 
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} list1
+ * @param {number} a
+ * @param {number} b
+ * @param {ListNode} list2
+ * @return {ListNode}
+ */
+var mergeInBetween = function(list1, a, b, list2) {
+    
+};
+
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
