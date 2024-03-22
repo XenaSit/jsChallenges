@@ -2517,7 +2517,28 @@ console.log("==========================================")
 // @return {boolean}
 
 var isPalindrome = function(head) {
+    let values = [];
+    let current = head;
     
+    // Traverse the linked list and store node values in an array
+    while (current !== null) {
+        values.push(current.val);
+        current = current.next;
+    }
+    
+    // Use two pointers approach to check if the array is a palindrome
+    let left = 0;
+    let right = values.length - 1;
+    
+    while (left < right) {
+        if (values[left] !== values[right]) {
+            return false;
+        }
+        left++;
+        right--;
+    }
+    
+    return true;
 };
 
 console.log("==========================================")
