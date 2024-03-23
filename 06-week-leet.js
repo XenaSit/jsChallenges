@@ -2567,8 +2567,40 @@ console.log("==========================================")
 // @return {void} Do not return anything, modify head in-place instead.
 
 var reorderList = function(head) {
-    
+    if (!head || !head.next) return;
+
+    // Step 1: Find the middle of the linked list
+    let slow = head;
+    let fast = head;
+    while (fast.next && fast.next.next) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+
+    // Step 2: Reverse the second half of the linked list
+    let prev = null;
+    let curr = slow.next;
+    while (curr) {
+        const nextNode = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = nextNode;
+    }
+    slow.next = null;
+
+    // Step 3: Merge the first half and the reversed second half alternately
+    let p1 = head;
+    let p2 = prev;
+    while (p1 && p2) {
+        const nextP1 = p1.next;
+        const nextP2 = p2.next;
+        p1.next = p2;
+        p2.next = nextP1;
+        p1 = nextP1;
+        p2 = nextP2;
+    }
 };
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
