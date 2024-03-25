@@ -2664,7 +2664,21 @@ console.log("==========================================")
 // @return {number[]}
 
 var findDuplicates = function(nums) {
+    const result = [];
     
+    for (let i = 0; i < nums.length; i++) {
+        const index = Math.abs(nums[i]) - 1; // Get the corresponding index (zero-based)
+        
+        // If the number at nums[index] is negative, it means we've seen it before
+        if (nums[index] < 0) {
+            result.push(index + 1); // Add the number to the result array
+        }
+        
+        // Mark the number at nums[index] as seen by negating it
+        nums[index] = -nums[index];
+    }
+    
+    return result;
 };
 
 console.log("==========================================")
