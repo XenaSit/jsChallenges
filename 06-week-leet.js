@@ -2666,6 +2666,14 @@ Example 3:
 Input: nums = [1]
 Output: []
 
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var findDuplicates = function(nums) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
