@@ -2696,6 +2696,11 @@ console.log("==========================================")
 // Input: nums = [1,2,3], k = 0
 // Output: 0
 
+// @param {number[]} nums
+// @param {number} k
+// @return {number}
+
+
 var numSubarrayProductLessThanK = function (nums, k) {
     if (k <= 1) return 0; // If k is less than or equal to 1, no subarray can have a product less than k
     let count = 0;
