@@ -2794,6 +2794,16 @@ Output: 4
 Explanation: The longest possible good subarray is [5,5,5,5] since the value 5 occurs 4 times in this subarray.
 It can be shown that there are no good subarrays with length more than 4.
 
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var maxSubarrayLength = function(nums, k) {
+    
+};
+
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
