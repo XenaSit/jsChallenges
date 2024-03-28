@@ -2787,23 +2787,22 @@ console.log("==========================================")
 // @return {number}
 
 var maxSubarrayLength = function(nums, k) {
-    const n = nums.length;
-    const prefixSum = Array(n + 1).fill(0);
-    let maxLen = 0;
-
-    for (let i = 1; i <= n; i++) {
-        prefixSum[i] = prefixSum[i - 1] + nums[i - 1];
+    let ans = 0;
+  const count = new Map();
+  
+  for (let l = 0, r = 0; r < nums.length; ++r) {
+    const num = nums[r];
+    count.set(num, (count.get(num) || 0) + 1);
+    
+    while (count.get(num) === k + 1) {
+      count.set(nums[l], count.get(nums[l]) - 1);
+      l++;
     }
-
-    for (let i = 0; i <= n; i++) {
-        for (let j = i + 1; j <= n; j++) {
-            const freq = Math.min(prefixSum[j] - prefixSum[i], j - i);
-            if (freq <= k) {
-                maxLen = Math.max(maxLen, j - i);
-            }
-        }
-    }
-    return maxLen;
+    
+    ans = Math.max(ans, r - l + 1);
+  }
+  
+  return ans;
 };
 
 
