@@ -2827,7 +2827,28 @@ console.log("==========================================")
 // @return {number}
 
 var countSubarrays = function(nums, k) {
+    let count = 0;
     
+    for (let i = 0; i < nums.length; i++) {
+        let maxElement = nums[i];
+        let occurrences = [];
+        
+        for (let j = i; j < nums.length; j++) {
+            if (nums[j] > maxElement) {
+                maxElement = nums[j];
+                occurrences = [j];
+            } else if (nums[j] === maxElement) {
+                occurrences.push(j);
+            }
+            
+            if (occurrences.length >= k) {
+                count += nums.length - j;
+                break;
+            }
+        }
+    }
+    
+    return count;
 };
 
 console.log("==========================================")
