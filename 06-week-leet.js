@@ -2827,28 +2827,29 @@ console.log("==========================================")
 // @return {number}
 
 var countSubarrays = function(nums, k) {
+    let maxNum = Math.max(...nums);
+    let ans = 0;
     let count = 0;
-    
-    for (let i = 0; i < nums.length; i++) {
-        let maxElement = nums[i];
-        let occurrences = [];
-        
-        for (let j = i; j < nums.length; j++) {
-            if (nums[j] > maxElement) {
-                maxElement = nums[j];
-                occurrences = [j];
-            } else if (nums[j] === maxElement) {
-                occurrences.push(j);
-            }
-            
-            if (occurrences.length >= k) {
-                count += nums.length - j;
-                break;
-            }
+
+    let l = 0;
+    for (let r = 0; r < nums.length; r++) {
+        if (nums[r] === maxNum) {
+            count += 1;
         }
+        // Keep the window to include k - 1 times of the maximum number.
+        while (count === k) {
+            if (nums[l] === maxNum) {
+                count -= 1;
+            }
+            l += 1;
+        }
+        // If l > 0, nums[l:r+1] has k - 1 times of the maximum number. For any
+        // subarray nums[i:r+1], where i < l, it will have at least k times of the
+        // maximum number, since nums[l - 1] equals the maximum number.
+        ans += l;
     }
-    
-    return count;
+
+    return ans;
 };
 
 console.log("==========================================")
