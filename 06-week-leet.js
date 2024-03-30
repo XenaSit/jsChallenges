@@ -2875,7 +2875,35 @@ console.log("==========================================")
 // @return {number}
 
 var subarraysWithKDistinct = function(nums, k) {
+    function atMostKDistinct(nums, k) {
+        const freq = {};
+        let count = 0,
+            left = 0;
+        
+        for (let right = 0; right < nums.length; right++) {
+            if (!freq[nums[right]]) {
+                freq[nums[right]] = 0;
+                k--;
+            }
+            freq[nums[right]]++;
+            
+            while (k < 0) {
+                freq[nums[left]]--;
+                if (freq[nums[left]] === 0) k++;
+                left++;
+            }
+            
+            count += right - left + 1;
+        }
+        
+        return count;
+    }
     
+    function exactlyKDistinct(nums, k) {
+        return atMostKDistinct(nums, k) - atMostKDistinct(nums, k - 1);
+    }
+    
+    return exactlyKDistinct(nums, k);
 };
 
 // console.log("==========================================")
