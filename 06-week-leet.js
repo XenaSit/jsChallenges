@@ -2855,37 +2855,55 @@ var countSubarrays = function(nums, k) {
 console.log("==========================================")
 
 
-992. Subarrays with K Different Integers
-Hard
-Topics
-Companies
-Given an integer array nums and an integer k, return the number of good subarrays of nums.
+// 992. Subarrays with K Different Integers
+// Hard
+// Given an integer array nums and an integer k, return the number of good subarrays of nums.
+// A good array is an array where the number of different integers in that array is exactly k.
+// For example, [1,2,3,1,2] has 3 different integers: 1, 2, and 3.
+// A subarray is a contiguous part of an array.
+// Example 1:
+// Input: nums = [1,2,1,2,3], k = 2
+// Output: 7
+// Explanation: Subarrays formed with exactly 2 different integers: [1,2], [2,1], [1,2], [2,3], [1,2,1], [2,1,2], [1,2,1,2]
+// Example 2:
+// Input: nums = [1,2,1,3,4], k = 3
+// Output: 3
+// Explanation: Subarrays formed with exactly 3 different integers: [1,2,1,3], [2,1,3], [1,3,4].
 
-A good array is an array where the number of different integers in that array is exactly k.
+// @param {number[]} nums
+// @param {number} k
+// @return {number}
 
-For example, [1,2,3,1,2] has 3 different integers: 1, 2, and 3.
-A subarray is a contiguous part of an array.
-
- 
-
-Example 1:
-
-Input: nums = [1,2,1,2,3], k = 2
-Output: 7
-Explanation: Subarrays formed with exactly 2 different integers: [1,2], [2,1], [1,2], [2,3], [1,2,1], [2,1,2], [1,2,1,2]
-Example 2:
-
-Input: nums = [1,2,1,3,4], k = 3
-Output: 3
-Explanation: Subarrays formed with exactly 3 different integers: [1,2,1,3], [2,1,3], [1,3,4].
-
-/**
- * @param {number[]} nums
- * @param {number} k
- * @return {number}
- */
 var subarraysWithKDistinct = function(nums, k) {
+    function atMostKDistinct(nums, k) {
+        const freq = {};
+        let count = 0,
+            left = 0;
+        
+        for (let right = 0; right < nums.length; right++) {
+            if (!freq[nums[right]]) {
+                freq[nums[right]] = 0;
+                k--;
+            }
+            freq[nums[right]]++;
+            
+            while (k < 0) {
+                freq[nums[left]]--;
+                if (freq[nums[left]] === 0) k++;
+                left++;
+            }
+            
+            count += right - left + 1;
+        }
+        
+        return count;
+    }
     
+    function exactlyKDistinct(nums, k) {
+        return atMostKDistinct(nums, k) - atMostKDistinct(nums, k - 1);
+    }
+    
+    return exactlyKDistinct(nums, k);
 };
 
 // console.log("==========================================")
