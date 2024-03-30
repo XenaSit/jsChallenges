@@ -2879,6 +2879,15 @@ Input: nums = [1,2,1,3,4], k = 3
 Output: 3
 Explanation: Subarrays formed with exactly 3 different integers: [1,2,1,3], [2,1,3], [1,3,4].
 
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var subarraysWithKDistinct = function(nums, k) {
+    
+};
+
 // console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
