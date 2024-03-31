@@ -2931,7 +2931,26 @@ console.log("==========================================")
 // @return {number}
 
 var countSubarrays = function(nums, minK, maxK) {
-    
+    let ans = 0;
+    let j = -1;
+    let prevMinKIndex = -1;
+    let prevMaxKIndex = -1;
+
+    for (let i = 0; i < nums.length; i++) {
+        let num = nums[i];
+        if (num < minK || num > maxK) {
+            j = i;
+        }
+        if (num === minK) {
+            prevMinKIndex = i;
+        }
+        if (num === maxK) {
+            prevMaxKIndex = i;
+        }
+        ans += Math.max(0, Math.min(prevMinKIndex, prevMaxKIndex) - j);
+    }
+
+    return ans;
 };
 
 console.log("==========================================")
