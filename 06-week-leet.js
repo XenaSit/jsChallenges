@@ -2936,6 +2936,16 @@ Input: nums = [1,1,1,1], minK = 1, maxK = 1
 Output: 10
 Explanation: Every subarray of nums is a fixed-bound subarray. There are 10 possible subarrays.
 
+/**
+ * @param {number[]} nums
+ * @param {number} minK
+ * @param {number} maxK
+ * @return {number}
+ */
+var countSubarrays = function(nums, minK, maxK) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
