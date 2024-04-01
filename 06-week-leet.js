@@ -2983,6 +2983,13 @@ Input: s = "luffy is still joyboy"
 Output: 6
 Explanation: The last word is "joyboy" with length 6.
 
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLastWord = function(s) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
