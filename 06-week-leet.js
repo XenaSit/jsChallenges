@@ -2976,7 +2976,17 @@ console.log("==========================================")
 // @return {number}
 
 var lengthOfLastWord = function(s) {
+    // Trim the input string to remove leading and trailing spaces
+    s = s.trim();
     
+    // Split the trimmed string by spaces to get an array of words
+    const words = s.split(' ');
+    
+    // Access the last element of the array to get the last word
+    const lastWord = words[words.length - 1];
+    
+    // Return the length of the last word
+    return lastWord.length;
 };
 
 console.log("==========================================")
