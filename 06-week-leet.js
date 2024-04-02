@@ -3012,7 +3012,26 @@ console.log("==========================================")
 // @return {boolean}
 
 var isIsomorphic = function(s, t) {
+    if (s.length !== t.length) {
+        return false; // If the lengths of s and t are different, they cannot be isomorphic
+    }
     
+    const mapS = {}; // Store mappings from characters in s to characters in t
+    const mapT = {}; // Store mappings from characters in t to characters in s
+    
+    for (let i = 0; i < s.length; i++) {
+        const charS = s[i];
+        const charT = t[i];
+        
+        if ((mapS[charS] && mapS[charS] !== charT) || (mapT[charT] && mapT[charT] !== charS)) {
+            return false; // If mappings conflict, return false
+        }
+        
+        mapS[charS] = charT;
+        mapT[charT] = charS;
+    }
+    
+    return true; // If no conflicts found, strings are isomorphic
 };
 
 console.log("==========================================")
