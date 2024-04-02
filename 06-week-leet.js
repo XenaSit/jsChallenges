@@ -3016,6 +3016,15 @@ Example 3:
 Input: s = "paper", t = "title"
 Output: true
 
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+var isIsomorphic = function(s, t) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
