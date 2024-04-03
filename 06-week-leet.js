@@ -3039,7 +3039,8 @@ console.log("==========================================")
 // 79. Word Search
 // Medium
 // Given an m x n grid of characters board and a string word, return true if word exists in the grid.
-// The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.
+// The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. 
+// The same letter cell may not be used more than once.
 // Example 1:
 // Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED"
 // Output: true
@@ -3055,9 +3056,92 @@ console.log("==========================================")
 // @return {boolean}
 
 var exist = function(board, word) {
+    const dfs = (i, j, k) => {
+        // Base case: If k equals the length of the word, then all characters have been found
+        if (k === word.length) return true;
+        
+        // Check boundaries and if current cell matches the word character
+        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || board[i][j] !== word[k]) return false;
+        
+        // Temporarily mark the current cell as visited
+        const temp = board[i][j];
+        board[i][j] = '#';
+        
+        // Check the neighbors recursively
+        const found = dfs(i + 1, j, k + 1) || dfs(i - 1, j, k + 1) || dfs(i, j + 1, k + 1) || dfs(i, j - 1, k + 1);
+        
+        // Restore the original value of the current cell
+        board[i][j] = temp;
+        
+        return found;
+    };
     
+    // Iterate through each cell and check if the word exists
+    for (let i = 0; i < board.length; i++) {
+        for (let j = 0; j < board[0].length; j++) {
+            if (dfs(i, j, 0)) return true;
+        }
+    }
+    
+    return false; // Word not found
 };
 
+var exist = function (board, word) {
+    const rows = board.length;
+    const cols = board[0].length;
+  
+    // Function to check if word can be formed starting from a cell
+    const dfs = (row, col, index) => {
+      // Base cases:
+      // - Out of bounds
+      if (row < 0 || row >= rows || col < 0 || col >= cols) return false;
+      // - Character mismatch
+      if (board[row][col] !== word[index]) return false;
+      // - Word found
+      if (index === word.length - 1) return true;
+  
+      // Mark cell as visited (to avoid revisiting and infinite loops)
+      const temp = board[row][col];
+      board[row][col] = '#';
+  
+      // Check all 8 directions (up, down, left, right, and diagonals)
+      const directions = [
+        [-1, 0], // Up
+        [1, 0],  // Down
+        [0, -1], // Left
+        [0, 1],  // Right
+        [-1, -1], // Top-left diagonal
+        [-1, 1],  // Top-right diagonal
+        [1, -1], // Bottom-left diagonal
+        [1, 1],  // Bottom-right diagonal
+      ];
+  
+      // Recursively search in each direction
+      for (const [dRow, dCol] of directions) {
+        const newRow = row + dRow;
+        const newCol = col + dCol;
+        if (dfs(newRow, newCol, index + 1)) {
+          return true;
+        }
+      }
+  
+      // Backtrack: reset the cell value after checking all directions
+      board[row][col] = temp;
+      return false;
+    };
+  
+    // Iterate through the board and start searching from each cell
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        if (board[row][col] === word[0] && dfs(row, col, 0)) {
+          return true;
+        }
+      }
+    }
+  
+    // If no match found
+    return false;
+  };
 console.log("==========================================")
 
 
