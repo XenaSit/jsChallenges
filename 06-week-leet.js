@@ -3214,7 +3214,17 @@ console.log("==========================================")
 // @return {string}
 
 var makeGood = function(s) {
+    const stack = [];
     
+    for (const char of s) {
+        if (stack.length && Math.abs(char.charCodeAt(0) - stack[stack.length - 1].charCodeAt(0)) === 32) {
+            stack.pop(); // Remove the previous character
+        } else {
+            stack.push(char); // Add the current character
+        }
+    }
+    
+    return stack.join(''); // Convert the stack back to string
 };
 
 console.log("==========================================")
