@@ -3222,6 +3222,14 @@ Example 3:
 Input: s = "s"
 Output: "s"
 
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var makeGood = function(s) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
