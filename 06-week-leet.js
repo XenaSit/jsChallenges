@@ -3308,7 +3308,28 @@ console.log("==========================================")
 // @return {boolean}
 
 var checkValidString = function(s) {
-    
+    let low = 0; // minimum possible left parentheses count
+    let high = 0; // maximum possible left parentheses count
+
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] === '(') {
+            low++;
+            high++;
+        } else if (s[i] === ')') {
+            low = Math.max(0, low - 1); // decrement low count if possible
+            high--; // decrement high count
+        } else { // wildcard '*'
+            low = Math.max(0, low - 1); // decrement low count if possible
+            high++; // increment high count
+        }
+
+        // If the high count becomes negative, it means too many ')' encountered without matching '(',
+        // or '*'s are considered as ')' more than the actual count of '('.
+        if (high < 0) return false;
+    }
+
+    // If low is 0, all open parentheses have been matched.
+    return low === 0;
 };
 
 // console.log("==========================================")
