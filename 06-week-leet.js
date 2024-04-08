@@ -3367,7 +3367,20 @@ console.log("==========================================")
 // @return {number}
 
 var countStudents = function(students, sandwiches) {
+    let circularCount = students.reduce((acc, curr) => acc + curr, 0);
+    let squareCount = students.length - circularCount;
     
+    for (let sandwich of sandwiches) {
+        if (sandwich === 0) { // Square sandwich
+            if (squareCount === 0) return circularCount; // All remaining students prefer circular sandwiches
+            squareCount--;
+        } else { // Circular sandwich
+            if (circularCount === 0) return squareCount; // All remaining students prefer square sandwiches
+            circularCount--;
+        }
+    }
+    
+    return 0; // All students were able to eat
 };
 
 console.log("==========================================")
