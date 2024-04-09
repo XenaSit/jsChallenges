@@ -3413,7 +3413,28 @@ console.log("==========================================")
 // @return {number}
 
 var timeRequiredToBuy = function(tickets, k) {
+    // Create a copy of the tickets array to avoid modifying the original
+    const remainingTickets = tickets.slice();
+    let totalTime = 0;
     
+    // Continue looping until the person at position k has bought all their tickets
+    while (remainingTickets[k] > 0) {
+        // Loop through each person in the line
+        for (let i = 0; i < remainingTickets.length; i++) {
+            // If the person has tickets to buy, decrement their tickets and increment the total time
+            if (remainingTickets[i] > 0) {
+                remainingTickets[i]--;
+                totalTime++;
+                
+                // If this person is at position k and has bought all their tickets, break the loop
+                if (i === k && remainingTickets[k] === 0) {
+                    break;
+                }
+            }
+        }
+    }
+    
+    return totalTime;
 };
 
 console.log("==========================================")
