@@ -3478,6 +3478,14 @@ Example 2:
 Input: deck = [1,1000]
 Output: [1,1000]
 
+/**
+ * @param {number[]} deck
+ * @return {number[]}
+ */
+var deckRevealedIncreasing = function(deck) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
