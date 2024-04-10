@@ -3474,9 +3474,27 @@ console.log("==========================================")
 // @param {number[]} deck
 // @return {number[]}
 
-var deckRevealedIncreasing = function(deck) {
-    
-};
+function deckRevealedIncreasing(deck) {
+    // Sort the deck in descending order (largest card first)
+    deck.sort((a, b) => b - a);
+  
+    // Use an array as the queue (similar to deque)
+    const queue = [];
+  
+    // Iterate through the sorted deck
+    for (const card of deck) {
+      // Simulate revealing process (move last element to front if queue is not empty)
+      if (queue.length > 0) {
+        queue.unshift(queue.pop());
+      }
+  
+      // Place current card (largest) at the front
+      queue.unshift(card);
+    }
+  
+    // Return the queue (representing the reveal order)
+    return queue;
+  }
 
 console.log("==========================================")
 // console.log("==========================================")
