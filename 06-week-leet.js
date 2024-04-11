@@ -3520,7 +3520,42 @@ console.log("==========================================")
 // @return {string}
 
 var removeKdigits = function(num, k) {
+    if (k >= num.length) {
+        return "0";
+    }
     
+    const stack = [];
+    
+    for (let i = 0; i < num.length; i++) {
+        const currentDigit = num[i];
+        
+        // While we can remove elements from the stack (i.e., k > 0)
+        // and the current digit is less than the top of the stack,
+        // pop the stack to remove a larger digit.
+        while (k > 0 && stack.length > 0 && stack[stack.length - 1] > currentDigit) {
+            stack.pop();
+            k--;
+        }
+        
+        // Add the current digit to the stack.
+        stack.push(currentDigit);
+    }
+    
+    // Remove the remaining k digits from the end of the stack if k > 0
+    stack.splice(stack.length - k, k);
+    
+    // Join the stack to form the resulting number as a string.
+    let result = stack.join("");
+    
+    // Remove leading zeros
+    result = result.replace(/^0+/, "");
+    
+    // If the result is empty or reduced to an empty string, return "0"
+    if (result === "") {
+        return "0";
+    }
+    
+    return result;
 };
 
 console.log("==========================================")
