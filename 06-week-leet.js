@@ -3579,6 +3579,14 @@ Example 2:
 Input: height = [4,2,0,3,2,5]
 Output: 9
 
+/**
+ * @param {number[]} height
+ * @return {number}
+ */
+var trap = function(height) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
