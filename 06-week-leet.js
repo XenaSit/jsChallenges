@@ -3576,7 +3576,42 @@ console.log("==========================================")
 // @return {number}
 
 var trap = function(height) {
-    
+    // Initialize pointers for left and right ends of the array
+    let left = 0, right = height.length - 1;
+    // Initialize variables to track the maximum height on the left and right sides
+    let leftMax = 0, rightMax = 0;
+    // Initialize a variable to track the total water trapped
+    let waterTrapped = 0;
+
+    // Traverse the array using the two pointers
+    while (left < right) {
+        if (height[left] < height[right]) {
+            // If the height at left is less than the height at right
+            // Update the left maximum height
+            if (height[left] >= leftMax) {
+                leftMax = height[left];
+            } else {
+                // Calculate the water trapped at the current left index
+                waterTrapped += leftMax - height[left];
+            }
+            // Move the left pointer to the right
+            left++;
+        } else {
+            // If the height at right is less than or equal to the height at left
+            // Update the right maximum height
+            if (height[right] >= rightMax) {
+                rightMax = height[right];
+            } else {
+                // Calculate the water trapped at the current right index
+                waterTrapped += rightMax - height[right];
+            }
+            // Move the right pointer to the left
+            right--;
+        }
+    }
+
+    // Return the total amount of water trapped
+    return waterTrapped;
 };
 
 console.log("==========================================")
