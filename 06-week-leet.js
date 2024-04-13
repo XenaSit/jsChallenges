@@ -3639,6 +3639,13 @@ Example 3:
 Input: matrix = [["1"]]
 Output: 1
  
+/**
+ * @param {character[][]} matrix
+ * @return {number}
+ */
+var maximalRectangle = function(matrix) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
