@@ -3637,7 +3637,56 @@ console.log("==========================================")
 // @return {number}
 
 var maximalRectangle = function(matrix) {
+    if (matrix.length === 0) return 0;
+
+    // Initialize heights array with zeros
+    const heights = new Array(matrix[0].length).fill(0);
+    let maxArea = 0;
+
+    // Iterate through each row
+    for (let row = 0; row < matrix.length; row++) {
+        // Update heights based on the current row
+        for (let col = 0; col < matrix[row].length; col++) {
+            if (matrix[row][col] === '1') {
+                heights[col]++;
+            } else {
+                heights[col] = 0;
+            }
+        }
+        
+        // Calculate the maximum rectangle area using the current heights
+        maxArea = Math.max(maxArea, largestRectangleArea(heights));
+    }
     
+    return maxArea;
+};
+
+function largestRectangleArea(heights) {
+    const stack = [];
+    let maxArea = 0;
+    let i = 0;
+    
+    while (i < heights.length) {
+        // If the stack is empty or the current height is greater than the stack's top height, push index to stack
+        if (stack.length === 0 || heights[i] >= heights[stack[stack.length - 1]]) {
+            stack.push(i);
+            i++;
+        } else {
+            // Pop the top element and calculate the area
+            const height = heights[stack.pop()];
+            const width = stack.length === 0 ? i : i - stack[stack.length - 1] - 1;
+            maxArea = Math.max(maxArea, height * width);
+        }
+    }
+    
+    // Final calculation for any remaining elements in the stack
+    while (stack.length > 0) {
+        const height = heights[stack.pop()];
+        const width = stack.length === 0 ? i : i - stack[stack.length - 1] - 1;
+        maxArea = Math.max(maxArea, height * width);
+    }
+    
+    return maxArea;
 };
 
 console.log("==========================================")
