@@ -3715,7 +3715,37 @@ console.log("==========================================")
 // @return {number}
 
 var sumOfLeftLeaves = function(root) {
+    // Initialize sum of left leaves
+    let sum = 0;
+
+    // Helper function for depth-first search
+    function dfs(node) {
+        if (node == null) {
+            // If node is null, return
+            return;
+        }
+        
+        // Check the left child
+        if (node.left) {
+            // Check if the left child is a leaf
+            if (node.left.left === null && node.left.right === null) {
+                // Add the value of the left leaf to the sum
+                sum += node.left.val;
+            } else {
+                // Recurse on the left child
+                dfs(node.left);
+            }
+        }
+        
+        // Recurse on the right child
+        dfs(node.right);
+    }
+
+    // Start DFS from the root
+    dfs(root);
     
+    // Return the sum of left leaves
+    return sum;
 };
 
 console.log("==========================================")
