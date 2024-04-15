@@ -3784,7 +3784,36 @@ console.log("==========================================")
 // @return {number}
 
 var sumNumbers = function(root) {
-    
+    // Initialize total sum as 0
+    let totalSum = 0;
+
+    // Helper function to perform DFS traversal
+    function dfs(node, currentNumber) {
+        // If the node is null, return immediately
+        if (node === null) {
+            return;
+        }
+
+        // Update the current number formed by the path
+        currentNumber = currentNumber * 10 + node.val;
+
+        // Check if the current node is a leaf
+        if (node.left === null && node.right === null) {
+            // Add the current number to total sum
+            totalSum += currentNumber;
+            return;
+        }
+
+        // Recursively traverse left and right children
+        dfs(node.left, currentNumber);
+        dfs(node.right, currentNumber);
+    }
+
+    // Start the DFS traversal from the root with the initial number as 0
+    dfs(root, 0);
+
+    // Return the total sum of all root-to-leaf numbers
+    return totalSum;
 };
 
 console.log("==========================================")
