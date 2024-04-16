@@ -3818,7 +3818,6 @@ var sumNumbers = function(root) {
 
 console.log("==========================================")
 
-
 // 623. Add One Row to Tree
 // Medium
 // Given the root of a binary tree and two integers val and depth, add a row of nodes with value val at the given depth depth.
@@ -3851,7 +3850,48 @@ console.log("==========================================")
 // @return {TreeNode}
 
 var addOneRow = function(root, val, depth) {
+    // Handle case when depth is 1
+    if (depth === 1) {
+        // Create a new root node with value val
+        const newRoot = new TreeNode(val);
+        // Set the original root as the left child of the new root
+        newRoot.left = root;
+        // Return the new root
+        return newRoot;
+    }
     
+    // Function to traverse the tree recursively
+    function traverseAndAdd(node, currentDepth) {
+        // Base case: if node is null, return
+        if (node === null) {
+            return;
+        }
+        
+        // If we are at the depth minus one level, add the new row
+        if (currentDepth === depth - 1) {
+            // Create new left and right nodes with value val
+            const newLeftNode = new TreeNode(val);
+            const newRightNode = new TreeNode(val);
+            
+            // Set the original left and right children as children of new nodes
+            newLeftNode.left = node.left;
+            newRightNode.right = node.right;
+            
+            // Attach the new nodes to the current node
+            node.left = newLeftNode;
+            node.right = newRightNode;
+        } else {
+            // Otherwise, recursively traverse left and right children
+            traverseAndAdd(node.left, currentDepth + 1);
+            traverseAndAdd(node.right, currentDepth + 1);
+        }
+    }
+    
+    // Start the recursive traversal from the root with depth 1
+    traverseAndAdd(root, 1);
+    
+    // Return the modified root
+    return root;
 };
 
 console.log("==========================================")
