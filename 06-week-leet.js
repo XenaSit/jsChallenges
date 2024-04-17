@@ -3924,7 +3924,43 @@ console.log("==========================================")
 // @return {string}
 
 var smallestFromLeaf = function(root) {
-    
+    this.val = (val === undefined ? 0 : val);
+    this.left = (left === undefined ? null : left);
+    this.right = (right === undefined ? null : right);
+}
+
+// @param {TreeNode} root
+// @return {string}
+var smallestFromLeaf = function(root) {
+    let smallestString = null;
+
+    function dfs(node, currentPath) {
+        // If the node is null, return immediately
+        if (!node) {
+            return;
+        }
+
+        // Prepend the current node's value (converted to a character) to the current path
+        currentPath = String.fromCharCode(97 + node.val) + currentPath;
+
+        // If this is a leaf node, check the current path
+        if (!node.left && !node.right) {
+            // Compare the current path with the smallest path found so far
+            if (smallestString === null || currentPath < smallestString) {
+                smallestString = currentPath;
+            }
+            return;
+        }
+
+        // Recursively explore left and right children
+        dfs(node.left, currentPath);
+        dfs(node.right, currentPath);
+    }
+
+    // Start DFS traversal from the root node
+    dfs(root, "");
+
+    return smallestString;
 };
 
 console.log("==========================================")
