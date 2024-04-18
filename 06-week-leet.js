@@ -3996,6 +3996,13 @@ Example 3:
 Input: grid = [[1,0]]
 Output: 4
  
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var islandPerimeter = function(grid) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
