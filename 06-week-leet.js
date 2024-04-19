@@ -4056,6 +4056,14 @@ Input: grid = [
 ]
 Output: 3
 
+/**
+ * @param {character[][]} grid
+ * @return {number}
+ */
+var numIslands = function(grid) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
