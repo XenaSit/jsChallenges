@@ -4052,7 +4052,39 @@ console.log("==========================================")
 // @return {number}
 
 var numIslands = function(grid) {
-    
+    // Function to perform Depth-First Search on the grid
+    function dfs(grid, row, col) {
+        // Check if the current position is within bounds and is land ('1')
+        if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length || grid[row][col] === '0') {
+            return;
+        }
+        // Mark the current cell as visited by setting it to '0' (water)
+        grid[row][col] = '0';
+        
+        // Recursively visit the adjacent cells in four directions (up, down, left, right)
+        dfs(grid, row - 1, col); // Up
+        dfs(grid, row + 1, col); // Down
+        dfs(grid, row, col - 1); // Left
+        dfs(grid, row, col + 1); // Right
+    }
+
+    // Initialize the count of islands
+    let islandCount = 0;
+
+    // Iterate through each cell in the grid
+    for (let row = 0; row < grid.length; row++) {
+        for (let col = 0; col < grid[0].length; col++) {
+            // If the cell is land ('1'), start a DFS to mark all connected land cells
+            if (grid[row][col] === '1') {
+                dfs(grid, row, col);
+                // Increment the island count as we've found a new island
+                islandCount++;
+            }
+        }
+    }
+
+    // Return the total number of islands found
+    return islandCount;
 };
 
 console.log("==========================================")
