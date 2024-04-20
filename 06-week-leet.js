@@ -4124,7 +4124,40 @@ console.log("==========================================")
 // @return {number[][]}
 
 var findFarmland = function(land) {
+    const result = [];
+    const m = land.length;
+    const n = land[0].length;
     
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            if (land[i][j] === 1) {
+                let rowEnd = i;
+                let colEnd = j;
+                
+                // Find the bottom right corner of the group
+                while (rowEnd < m && land[rowEnd][j] === 1) {
+                    colEnd = j;
+                    while (colEnd < n && land[rowEnd][colEnd] === 1) {
+                        colEnd++;
+                    }
+                    rowEnd++;
+                }
+                rowEnd--; // Adjust to the actual bottom row
+                
+                // Add coordinates to the result
+                result.push([i, j, rowEnd, colEnd - 1]);
+                
+                // Mark the current group as visited
+                for (let row = i; row <= rowEnd; row++) {
+                    for (let col = j; col <= colEnd - 1; col++) {
+                        land[row][col] = 0;
+                    }
+                }
+            }
+        }
+    }
+    
+    return result;
 };
 
 console.log("==========================================")
