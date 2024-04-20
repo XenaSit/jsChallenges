@@ -4127,6 +4127,14 @@ Output: []
 Explanation:
 There are no groups of farmland.
 
+/**
+ * @param {number[][]} land
+ * @return {number[][]}
+ */
+var findFarmland = function(land) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
