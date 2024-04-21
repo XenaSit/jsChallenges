@@ -4189,7 +4189,16 @@ Input: n = 6, edges = [[0,1],[0,2],[3,5],[5,4],[4,3]], source = 0, destination =
 Output: false
 Explanation: There is no path from vertex 0 to vertex 5.
  
-
+/**
+ * @param {number} n
+ * @param {number[][]} edges
+ * @param {number} source
+ * @param {number} destination
+ * @return {boolean}
+ */
+var validPath = function(n, edges, source, destination) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
