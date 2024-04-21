@@ -4189,7 +4189,41 @@ console.log("==========================================")
 // @return {boolean}
 
 var validPath = function(n, edges, source, destination) {
+    // Create an adjacency list to represent the graph
+    const adjacencyList = {};
+    for (let i = 0; i < edges.length; i++) {
+        const [u, v] = edges[i];
+        if (!adjacencyList[u]) adjacencyList[u] = [];
+        if (!adjacencyList[v]) adjacencyList[v] = [];
+        adjacencyList[u].push(v);
+        adjacencyList[v].push(u);
+    }
     
+    // Create a visited array to keep track of visited vertices
+    const visited = new Array(n).fill(false);
+    
+    // Define a DFS function to traverse the graph
+    const dfs = (vertex) => {
+        // Mark the current vertex as visited
+        visited[vertex] = true;
+        
+        // If the current vertex is the destination, return true
+        if (vertex === destination) return true;
+        
+        // Traverse all adjacent vertices
+        for (const neighbor of adjacencyList[vertex]) {
+            // If the neighbor vertex has not been visited, recursively call dfs
+            if (!visited[neighbor] && dfs(neighbor)) {
+                return true;
+            }
+        }
+        
+        // If no valid path found from this vertex, backtrack
+        return false;
+    };
+    
+    // Start DFS from the source vertex
+    return dfs(source);
 };
 
 console.log("==========================================")
