@@ -4262,6 +4262,14 @@ Input: deadends = ["8887","8889","8878","8898","8788","8988","7888","9888"], tar
 Output: -1
 Explanation: We cannot reach the target without getting stuck.
 
+/**
+ * @param {string[]} deadends
+ * @param {string} target
+ * @return {number}
+ */
+var openLock = function(deadends, target) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
