@@ -4332,7 +4332,43 @@ console.log("==========================================")
 // @return {number[]}
 
 var findMinHeightTrees = function(n, edges) {
+    if (n === 1) return [0]; // Special case when there is only one node
     
+    // Step 1: Create adjacency list
+    const adjacencyList = new Array(n).fill(null).map(() => []);
+    const degrees = new Array(n).fill(0);
+    for (const [u, v] of edges) {
+        adjacencyList[u].push(v);
+        adjacencyList[v].push(u);
+        degrees[u]++;
+        degrees[v]++;
+    }
+    
+    // Step 2: Initialize queue with leaf nodes
+    const queue = [];
+    for (let i = 0; i < n; i++) {
+        if (degrees[i] === 1) {
+            queue.push(i);
+        }
+    }
+    
+    // Step 3: Remove leaf nodes iteratively until 1 or 2 nodes remain
+    while (n > 2) {
+        const size = queue.length;
+        n -= size;
+        for (let i = 0; i < size; i++) {
+            const node = queue.shift();
+            for (const neighbor of adjacencyList[node]) {
+                degrees[neighbor]--;
+                if (degrees[neighbor] === 1) {
+                    queue.push(neighbor);
+                }
+            }
+        }
+    }
+    
+    // Step 4: Remaining nodes in the queue are the roots of MHTs
+    return queue;
 };
 
 console.log("==========================================")
