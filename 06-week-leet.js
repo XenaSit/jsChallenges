@@ -4403,6 +4403,14 @@ Example 2:
 Input: n = 25
 Output: 1389537
 
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var tribonacci = function(n) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
