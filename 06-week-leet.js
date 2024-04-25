@@ -4436,8 +4436,25 @@ console.log("==========================================")
 // @return {number}
 
 var longestIdealString = function(s, k) {
-    
+    const dp = Array(26).fill(0);
+
+    for (const c of s) {
+        const i = c.charCodeAt(0) - 'a'.charCodeAt(0);
+        dp[i] = 1 + getMaxReachable(dp, i, k);
+    }
+
+    return Math.max(...dp);
 };
+
+function getMaxReachable(dp, i, k) {
+    const first = Math.max(0, i - k);
+    const last = Math.min(25, i + k);
+    let maxReachable = 0;
+    for (let j = first; j <= last; j++) {
+        maxReachable = Math.max(maxReachable, dp[j]);
+    }
+    return maxReachable;
+}
 
 console.log("==========================================")
 // console.log("==========================================")
