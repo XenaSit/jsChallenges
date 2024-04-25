@@ -4439,6 +4439,15 @@ Input: s = "abcd", k = 3
 Output: 4
 Explanation: The longest ideal string is "abcd". The length of this string is 4, so 4 is returned.
 
+
+/**
+ * @param {string} s
+ * @param {number} k
+ * @return {number}
+ */
+var longestIdealString = function(s, k) {
+    
+};
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
