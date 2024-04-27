@@ -4489,6 +4489,15 @@ Example 2:
 Input: ring = "godding", key = "godding"
 Output: 13
 
+
+/**
+ * @param {string} ring
+ * @param {string} key
+ * @return {number}
+ */
+var findRotateSteps = function(ring, key) {
+    
+};
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
