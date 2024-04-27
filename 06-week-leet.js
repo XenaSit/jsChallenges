@@ -4499,8 +4499,45 @@ console.log("==========================================")
 // @return {number}
 
 var findRotateSteps = function(ring, key) {
+    const memo = new Map(); // Map for memoization
     
+    // Helper function to calculate minimum steps
+    const minSteps = (ringIndex, keyIndex) => {
+        // If all characters in key are spelled
+        if (keyIndex === key.length) return 0;
+        
+        // If result for current indices is already memoized
+        const memoKey = ringIndex + '-' + keyIndex;
+        if (memo.has(memoKey)) return memo.get(memoKey);
+        
+        const char = key[keyIndex];
+        let min = Infinity;
+        
+        // Iterate over possible positions on the ring
+        for (let i = 0; i < ring.length; i++) {
+            if (ring[i] === char) {
+                // Calculate steps needed to align current character
+                const clockWiseSteps = Math.abs(i - ringIndex);
+                const counterClockWiseSteps = ring.length - clockWiseSteps;
+                
+                // Recursively calculate minimum steps for the next character
+                const steps = 1 + Math.min(clockWiseSteps, counterClockWiseSteps) + 
+                              minSteps(i, keyIndex + 1);
+                
+                // Update minimum steps
+                min = Math.min(min, steps);
+            }
+        }
+        
+        // Memoize the result
+        memo.set(memoKey, min);
+        return min;
+    };
+    
+    // Call helper function with initial parameters
+    return minSteps(0, 0);
 };
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
