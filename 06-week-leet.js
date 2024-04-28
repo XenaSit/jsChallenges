@@ -4571,7 +4571,41 @@ console.log("==========================================")
 // @return {number[]}
 
 var sumOfDistancesInTree = function(n, edges) {
-    
+    const tree = new Array(n).fill(0).map(() => []);
+    const count = new Array(n).fill(1);
+    const ans = new Array(n).fill(0);
+
+    // Build the adjacency list representation of the tree
+    edges.forEach(([u, v]) => {
+        tree[u].push(v);
+        tree[v].push(u);
+    });
+
+    // Function to perform depth-first search
+    const dfs = (node, parent) => {
+        for (const child of tree[node]) {
+            if (child === parent) continue;
+            dfs(child, node);
+            count[node] += count[child];
+            ans[node] += ans[child] + count[child];
+        }
+    };
+
+    // Function to calculate the sum of distances for each node
+    const calculateDistances = (node, parent) => {
+        for (const child of tree[node]) {
+            if (child === parent) continue;
+            ans[child] = ans[node] - count[child] + (n - count[child]);
+            calculateDistances(child, node);
+        }
+    };
+
+    // Perform the depth-first search from node 0
+    dfs(0, -1);
+    // Calculate distances for each node
+    calculateDistances(0, -1);
+
+    return ans;
 };
 
 console.log("==========================================")
