@@ -4572,6 +4572,14 @@ Example 3:
 Input: n = 2, edges = [[1,0]]
 Output: [1,1]
 
+/**
+ * @param {number} n
+ * @param {number[][]} edges
+ * @return {number[]}
+ */
+var sumOfDistancesInTree = function(n, edges) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
