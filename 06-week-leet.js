@@ -4641,6 +4641,14 @@ Input: nums = [2,0,2,0], k = 0
 Output: 0
 Explanation: The XOR of elements of the array is (2 XOR 0 XOR 2 XOR 0) == 0 == k. So no operation is needed.
 
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var minOperations = function(nums, k) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
