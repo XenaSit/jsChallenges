@@ -4640,7 +4640,10 @@ console.log("==========================================")
 // @return {number}
 
 var minOperations = function(nums, k) {
-    
+    for (const num of nums) {
+        k ^= num
+      }
+      return k.toString(2).replaceAll(/0/g, "").length
 };
 
 console.log("==========================================")
