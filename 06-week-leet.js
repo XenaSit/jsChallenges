@@ -4691,7 +4691,25 @@ console.log("==========================================")
 // @return {number}
 
 var wonderfulSubstrings = function(word) {
+    const map = new Map();
+    map.set(0, 1);
+    let mask = 0;
+    let result = 0;
     
+    for (const char of word) {
+        const charIndex = char.charCodeAt(0) - 'a'.charCodeAt(0);
+        mask ^= 1 << charIndex;
+        result += map.get(mask) || 0;
+        
+        for (let i = 0; i < 10; i++) {
+            const newMask = mask ^ (1 << i);
+            result += map.get(newMask) || 0;
+        }
+        
+        map.set(mask, (map.get(mask) || 0) + 1);
+    }
+    
+    return result;
 };
 
 // console.log("==========================================")
