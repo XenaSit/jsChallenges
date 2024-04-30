@@ -4693,7 +4693,13 @@ Explanation: The two wonderful substrings are underlined below:
 - "he" -> "h"
 - "he" -> "e"
 
-
+/**
+ * @param {string} word
+ * @return {number}
+ */
+var wonderfulSubstrings = function(word) {
+    
+};
 
 // console.log("==========================================")
 // console.log("==========================================")
