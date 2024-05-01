@@ -4744,7 +4744,15 @@ Input: word = "abcd", ch = "z"
 Output: "abcd"
 Explanation: "z" does not exist in word.
 You should not do any reverse operation, the resulting string is "abcd".
- 
+
+/**
+ * @param {string} word
+ * @param {character} ch
+ * @return {string}
+ */
+var reversePrefix = function(word, ch) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
