@@ -4748,7 +4748,15 @@ console.log("==========================================")
 // @return {string}
 
 var reversePrefix = function(word, ch) {
+    const index = word.indexOf(ch); // Find the index of the first occurrence of ch
     
+    if (index !== -1) { // If ch exists in word
+        const prefix = word.substring(0, index + 1); // Extract the substring to be reversed
+        const reversedPrefix = prefix.split('').reverse().join(''); // Reverse the substring
+        return reversedPrefix + word.substring(index + 1); // Concatenate the reversed prefix with the rest of word
+    }
+    
+    return word; // If ch doesn't exist, return the original word
 };
 
 console.log("==========================================")
