@@ -4788,6 +4788,13 @@ Input: nums = [-10,8,6,7,-2,-3]
 Output: -1
 Explanation: There is no a single valid k, we return -1.
 
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findMaxK = function(nums) {
+    
+};
 
 // console.log("==========================================")
 // console.log("==========================================")
