@@ -4839,7 +4839,20 @@ console.log("==========================================")
 // @return {number}
 
 var compareVersion = function(version1, version2) {
+    const v1Revisions = version1.split('.');
+    const v2Revisions = version2.split('.');
     
+    const maxLength = Math.max(v1Revisions.length, v2Revisions.length);
+    
+    for (let i = 0; i < maxLength; i++) {
+        const v1Rev = parseInt(v1Revisions[i] || '0');
+        const v2Rev = parseInt(v2Revisions[i] || '0');
+        
+        if (v1Rev < v2Rev) return -1;
+        if (v1Rev > v2Rev) return 1;
+    }
+    
+    return 0;
 };
 
 console.log("==========================================")
