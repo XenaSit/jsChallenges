@@ -4884,7 +4884,29 @@ console.log("==========================================")
 // @return {number}
 
 var numRescueBoats = function(people, limit) {
+    // Step 1: Sort the array of people
+    people.sort((a, b) => a - b);
     
+    // Step 2: Initialize pointers and boat count
+    let left = 0;
+    let right = people.length - 1;
+    let boats = 0;
+    
+    // Step 4: Iterate through the array
+    while (left <= right) {
+        // Step 4a: Check if both people can fit on the boat
+        if (people[left] + people[right] <= limit) {
+            left++; // Increment left pointer
+            right--; // Decrement right pointer
+        } else {
+            right--; // Decrement right pointer (only one person can fit)
+        }
+        // Step 5: Increment boat count
+        boats++;
+    }
+    
+    // Step 6: Return boat count
+    return boats;
 };
 
 
