@@ -4880,6 +4880,15 @@ console.log("==========================================")
 // Output: 4
 // Explanation: 4 boats (3), (3), (4), (5)
 
+/**
+ * @param {number[]} people
+ * @param {number} limit
+ * @return {number}
+ */
+var numRescueBoats = function(people, limit) {
+    
+};
+
 
 console.log("==========================================")
 // console.log("==========================================")
