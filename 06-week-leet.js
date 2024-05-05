@@ -4948,7 +4948,13 @@ console.log("==========================================")
 // @return {void} Do not return anything, modify node in-place instead.
 
 var deleteNode = function(node) {
+    if (!node || !node.next) return; // Check if the node or its next node is null
     
+    // Copy the value of the next node to the current node
+    node.val = node.next.val;
+    
+    // Remove the next node by skipping it
+    node.next = node.next.next;
 };
 
 console.log("==========================================")
