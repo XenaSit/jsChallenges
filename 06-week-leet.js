@@ -4914,8 +4914,6 @@ console.log("==========================================")
 
 237. Delete Node in a Linked List
 Medium
-Topics
-Companies
 There is a singly-linked list head and we want to delete a node node in it.
 
 You are given the node to be deleted node. You will not be given access to the first node of head.
@@ -4947,6 +4945,21 @@ Example 2:
 Input: head = [4,5,1,9], node = 1
 Output: [4,5,9]
 Explanation: You are given the third node with value 1, the linked list should become 4 -> 5 -> 9 after calling your function.
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} node
+ * @return {void} Do not return anything, modify node in-place instead.
+ */
+var deleteNode = function(node) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
