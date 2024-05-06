@@ -4987,8 +4987,38 @@ console.log("==========================================")
 // @param {ListNode} head
 // @return {ListNode}
 
+function ListNode(val, next) {
+    this.val = (val === undefined ? 0 : val);
+    this.next = (next === undefined ? null : next);
+}
+
 var removeNodes = function(head) {
-    
+    if (!head) return head;
+
+    let dummy = new ListNode(-1);
+    dummy.next = head;
+    let current = head;
+    let prev = dummy;
+    let stack = [];
+
+    while (current) {
+        // Traverse the stack and remove nodes with greater values
+        while (stack.length > 0 && stack[stack.length - 1].val < current.val) {
+            stack.pop();
+        }
+        // Add the current node to the stack
+        stack.push(current);
+        // Move to the next node
+        current = current.next;
+    }
+
+    // Link the nodes from the stack
+    prev.next = stack[0];
+    for (let i = 0; i < stack.length; i++) {
+        stack[i].next = (i + 1 < stack.length) ? stack[i + 1] : null;
+    }
+
+    return dummy.next;
 };
 
 // console.log("==========================================")
