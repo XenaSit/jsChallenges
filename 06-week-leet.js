@@ -4987,6 +4987,20 @@ Input: head = [1,1,1,1]
 Output: [1,1,1,1]
 Explanation: Every node has value 1, so no nodes are removed.
 
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var removeNodes = function(head) {
+    
+};
 
 // console.log("==========================================")
 // console.log("==========================================")
