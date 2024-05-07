@@ -5050,7 +5050,46 @@ console.log("==========================================")
 // @return {ListNode}
 
 var doubleIt = function(head) {
+    // Helper function to reverse a linked list
+    const reverseLinkedList = function(node) {
+        let prev = null;
+        let current = node;
+        let next = null;
+        
+        while (current !== null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        
+        return prev;
+    };
     
+    // Reverse the linked list to simplify carry handling
+    let reversedHead = reverseLinkedList(head);
+    
+    let current = reversedHead;
+    let carry = 0;
+
+    while (current !== null) {
+        let newVal = current.val * 2 + carry;
+        current.val = newVal % 10;
+        carry = Math.floor(newVal / 10);
+        
+        // If there's a carry and no next node, create one
+        if (carry > 0 && current.next === null) {
+            current.next = new ListNode(carry);
+            break;
+        }
+        
+        current = current.next;
+    }
+
+    // Reverse the linked list back to its original order
+    reversedHead = reverseLinkedList(reversedHead);
+    
+    return reversedHead;
 };
 console.log("==========================================")
 // console.log("==========================================")
