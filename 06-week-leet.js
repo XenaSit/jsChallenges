@@ -5049,6 +5049,20 @@ Output: [1,9,9,8]
 Explanation: The figure above corresponds to the given linked list which represents the number 999. 
 Hence, the returned linked list reprersents the number 999 * 2 = 1998. 
 
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var doubleIt = function(head) {
+    
+};
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
