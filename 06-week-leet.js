@@ -5120,7 +5120,32 @@ console.log("==========================================")
 // @return {string[]}
 
 var findRelativeRanks = function(score) {
-    
+    // Create a copy of the score array and sort it in descending order
+    const sortedScores = [...score].sort((a, b) => b - a);
+    // Initialize an empty array to store the ranks
+    const result = [];
+
+    // Create a map to store the rank for each athlete's score
+    const rankMap = new Map();
+    // Assign ranks based on position in the sorted array
+    for (let i = 0; i < sortedScores.length; i++) {
+        if (i === 0) {
+            rankMap.set(sortedScores[i], "Gold Medal");
+        } else if (i === 1) {
+            rankMap.set(sortedScores[i], "Silver Medal");
+        } else if (i === 2) {
+            rankMap.set(sortedScores[i], "Bronze Medal");
+        } else {
+            rankMap.set(sortedScores[i], (i + 1).toString());
+        }
+    }
+
+    // Iterate over the original scores array to get the ranks
+    for (let i = 0; i < score.length; i++) {
+        result.push(rankMap.get(score[i]));
+    }
+
+    return result;
 };
 
 console.log("==========================================")
