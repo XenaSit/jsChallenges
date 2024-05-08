@@ -5122,6 +5122,13 @@ Input: score = [10,3,8,9,4]
 Output: ["Gold Medal","5","Bronze Medal","Silver Medal","4"]
 Explanation: The placements are [1st, 5th, 3rd, 2nd, 4th].
 
+/**
+ * @param {number[]} score
+ * @return {string[]}
+ */
+var findRelativeRanks = function(score) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
