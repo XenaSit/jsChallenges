@@ -5188,7 +5188,15 @@ Output: 5
 Explanation: We can pick 1 child in the following way:
 - Pick the child with the happiness value == 5. The happiness value of the remaining children becomes [1,2,3].
 The sum of the happiness values of the selected children is 5.
- 
+
+/**
+ * @param {number[]} happiness
+ * @param {number} k
+ * @return {number}
+ */
+var maximumHappinessSum = function(happiness, k) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
