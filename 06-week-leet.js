@@ -5191,7 +5191,17 @@ console.log("==========================================")
 // return {number}
 
 var maximumHappinessSum = function(happiness, k) {
-    
+    let ans = 0;
+    let decremented = 0;
+
+    happiness.sort((a, b) => b - a);
+
+    for (let i = 0; i < k; i++) {
+        ans += Math.max(0, happiness[i] - decremented);
+        decremented++;
+    }
+
+    return ans;
 };
 
 console.log("==========================================")
