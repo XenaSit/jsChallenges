@@ -5230,9 +5230,40 @@ console.log("==========================================")
 // @return {number[]}
 
 var kthSmallestPrimeFraction = function(arr, k) {
-    
-};
+    let n = arr.length;
+    let ans = [0, 1];
+    let l = 0;
+    let r = 1;
 
+    while (true) {
+        let m = (l + r) / 2;
+        ans[0] = 0;
+        let count = 0;
+        let j = 1;
+
+        for (let i = 0; i < n; i++) {
+            while (j < n && arr[i] > m * arr[j]) {
+                j += 1;
+            }
+            count += n - j;
+            if (j === n) {
+                break;
+            }
+            if (ans[0] * arr[j] < ans[1] * arr[i]) {
+                ans[0] = arr[i];
+                ans[1] = arr[j];
+            }
+        }
+
+        if (count < k) {
+            l = m;
+        } else if (count > k) {
+            r = m;
+        } else {
+            return ans;
+        }
+    }
+};
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
