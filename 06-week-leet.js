@@ -5230,6 +5230,15 @@ Example 2:
 Input: arr = [1,7], k = 1
 Output: [1,7]
 
+/**
+ * @param {number[]} arr
+ * @param {number} k
+ * @return {number[]}
+ */
+var kthSmallestPrimeFraction = function(arr, k) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
