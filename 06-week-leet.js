@@ -5320,7 +5320,7 @@ var mincostToHireWorkers = function(quality, wage, k) {
         
         // If the group size exceeds k, remove the worker with the highest quality
         if (heap.size() > k) {
-            totalQuality -= heap.extractMin();
+            totalQuality -= heap.extractMax(); // Corrected to extractMax
         }
         
         // If the group size reaches k, calculate total wage and update result if needed
@@ -5347,14 +5347,14 @@ class MinHeap {
         this.bubbleUp();
     }
     
-    extractMin() {
-        const min = this.heap[0];
+    extractMax() { // Corrected to extractMax
+        const max = this.heap[0];
         const end = this.heap.pop();
         if (this.heap.length > 0) {
             this.heap[0] = end;
             this.sinkDown();
         }
-        return min;
+        return max;
     }
     
     bubbleUp() {
@@ -5363,7 +5363,7 @@ class MinHeap {
         while (index > 0) {
             let parentIndex = Math.floor((index - 1) / 2);
             let parent = this.heap[parentIndex];
-            if (element[0] < parent[0]) {
+            if (element > parent) { // Corrected to compare values directly
                 this.heap[parentIndex] = element;
                 this.heap[index] = parent;
                 index = parentIndex;
@@ -5384,15 +5384,15 @@ class MinHeap {
             let swap = null;
             if (leftChildIdx < length) {
                 leftChild = this.heap[leftChildIdx];
-                if (leftChild[0] < element[0]) {
+                if (leftChild > element) { // Corrected to compare values directly
                     swap = leftChildIdx;
                 }
             }
             if (rightChildIdx < length) {
                 rightChild = this.heap[rightChildIdx];
                 if (
-                    (swap === null && rightChild[0] < element[0]) ||
-                    (swap !== null && rightChild[0] < leftChild[0])
+                    (swap === null && rightChild > element) || // Corrected to compare values directly
+                    (swap !== null && rightChild > leftChild) // Corrected to compare values directly
                 ) {
                     swap = rightChildIdx;
                 }
@@ -5404,6 +5404,7 @@ class MinHeap {
         }
     }
 }
+
 
 console.log("==========================================")
 // console.log("==========================================")
