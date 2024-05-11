@@ -5291,6 +5291,16 @@ Input: quality = [3,1,10,10,1], wage = [4,8,2,2,7], k = 3
 Output: 30.66667
 Explanation: We pay 4 to 0th worker, 13.33333 to 2nd and 3rd workers separately.
 
+/**
+ * @param {number[]} quality
+ * @param {number[]} wage
+ * @param {number} k
+ * @return {number}
+ */
+var mincostToHireWorkers = function(quality, wage, k) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
