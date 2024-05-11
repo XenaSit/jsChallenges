@@ -5295,8 +5295,115 @@ console.log("==========================================")
 // @return {number}
 
 var mincostToHireWorkers = function(quality, wage, k) {
+    const n = quality.length;
+    const workers = [];
     
+    // Calculate the ratio of wage to quality for each worker
+    for (let i = 0; i < n; i++) {
+        workers.push([wage[i] / quality[i], quality[i]]);
+    }
+    
+    // Sort workers based on their ratio in ascending order
+    workers.sort((a, b) => a[0] - b[0]);
+    
+    let result = Infinity;
+    let totalQuality = 0;
+    const heap = new MinHeap();
+    
+    // Iterate over the sorted workers
+    for (let i = 0; i < n; i++) {
+        const [ratio, quality] = workers[i];
+        
+        // Add quality to the total quality
+        totalQuality += quality;
+        heap.insert(quality);
+        
+        // If the group size exceeds k, remove the worker with the highest quality
+        if (heap.size() > k) {
+            totalQuality -= heap.extractMin();
+        }
+        
+        // If the group size reaches k, calculate total wage and update result if needed
+        if (heap.size() === k) {
+            result = Math.min(result, totalQuality * ratio);
+        }
+    }
+    
+    return result;
 };
+
+// MinHeap implementation
+class MinHeap {
+    constructor() {
+        this.heap = [];
+    }
+    
+    size() {
+        return this.heap.length;
+    }
+    
+    insert(val) {
+        this.heap.push(val);
+        this.bubbleUp();
+    }
+    
+    extractMin() {
+        const min = this.heap[0];
+        const end = this.heap.pop();
+        if (this.heap.length > 0) {
+            this.heap[0] = end;
+            this.sinkDown();
+        }
+        return min;
+    }
+    
+    bubbleUp() {
+        let index = this.heap.length - 1;
+        const element = this.heap[index];
+        while (index > 0) {
+            let parentIndex = Math.floor((index - 1) / 2);
+            let parent = this.heap[parentIndex];
+            if (element[0] < parent[0]) {
+                this.heap[parentIndex] = element;
+                this.heap[index] = parent;
+                index = parentIndex;
+            } else {
+                break;
+            }
+        }
+    }
+    
+    sinkDown() {
+        let index = 0;
+        const length = this.heap.length;
+        const element = this.heap[0];
+        while (true) {
+            let leftChildIdx = 2 * index + 1;
+            let rightChildIdx = 2 * index + 2;
+            let leftChild, rightChild;
+            let swap = null;
+            if (leftChildIdx < length) {
+                leftChild = this.heap[leftChildIdx];
+                if (leftChild[0] < element[0]) {
+                    swap = leftChildIdx;
+                }
+            }
+            if (rightChildIdx < length) {
+                rightChild = this.heap[rightChildIdx];
+                if (
+                    (swap === null && rightChild[0] < element[0]) ||
+                    (swap !== null && rightChild[0] < leftChild[0])
+                ) {
+                    swap = rightChildIdx;
+                }
+            }
+            if (swap === null) break;
+            this.heap[index] = this.heap[swap];
+            this.heap[swap] = element;
+            index = swap;
+        }
+    }
+}
 
 console.log("==========================================")
 // console.log("==========================================")
