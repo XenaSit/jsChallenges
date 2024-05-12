@@ -5431,7 +5431,26 @@ console.log("==========================================")
 // @return {number[][]}
 
 var largestLocal = function(grid) {
+    const n = grid.length;
+    const maxLocal = [];
     
+    // Iterate through the grid, skipping the first and last rows and columns
+    for (let i = 1; i < n - 1; i++) {
+        const row = [];
+        for (let j = 1; j < n - 1; j++) {
+            let max = Number.MIN_SAFE_INTEGER;
+            // Iterate over the 3x3 submatrix centered at grid[i][j]
+            for (let x = i - 1; x <= i + 1; x++) {
+                for (let y = j - 1; y <= j + 1; y++) {
+                    max = Math.max(max, grid[x][y]);
+                }
+            }
+            row.push(max);
+        }
+        maxLocal.push(row);
+    }
+    
+    return maxLocal;
 };
 
 console.log("==========================================")
