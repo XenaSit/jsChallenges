@@ -5480,6 +5480,14 @@ Example 2:
 Input: grid = [[0]]
 Output: 1
 
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var matrixScore = function(grid) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
