@@ -5476,7 +5476,40 @@ console.log("==========================================")
 // @return {number}
 
 var matrixScore = function(grid) {
-    
+    const rows = grid.length;
+    const cols = grid[0].length;
+
+    // Step 1: Ensure all rows begin with a 1
+    for (let i = 0; i < rows; i++) {
+        if (grid[i][0] === 0) {
+            // If the first element of the row is 0, flip the row
+            for (let j = 0; j < cols; j++) {
+                grid[i][j] = 1 - grid[i][j];
+            }
+        }
+    }
+
+    // Step 2: Ensure all columns have more 1s than 0s
+    for (let j = 1; j < cols; j++) {
+        let countOnes = 0;
+        for (let i = 0; i < rows; i++) {
+            countOnes += grid[i][j];
+        }
+        // If the column has more 0s than 1s, flip the column
+        if (countOnes < rows / 2) {
+            for (let i = 0; i < rows; i++) {
+                grid[i][j] = 1 - grid[i][j];
+            }
+        }
+    }
+
+    // Step 3: Calculate the score
+    let score = 0;
+    for (let i = 0; i < rows; i++) {
+        let rowVal = parseInt(grid[i].join(''), 2);
+        score += rowVal;
+    }
+    return score;
 };
 
 console.log("==========================================")
