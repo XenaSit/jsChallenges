@@ -5548,7 +5548,43 @@ console.log("==========================================")
 // @return {number}
 
 var getMaximumGold = function(grid) {
-    
+    const rows = grid.length;
+    const cols = grid[0].length;
+    let maxGold = 0;
+
+    const dfs = (row, col, currentGold) => {
+        if (row < 0 || row >= rows || col < 0 || col >= cols || grid[row][col] === 0) {
+            // Out of bounds or no gold in this cell
+            maxGold = Math.max(maxGold, currentGold);
+            return;
+        }
+
+        const goldInCurrentCell = grid[row][col];
+        const originalValue = goldInCurrentCell;
+
+        // Mark this cell as visited by changing its value to 0 temporarily
+        grid[row][col] = 0;
+
+        // Explore all four directions
+        dfs(row + 1, col, currentGold + originalValue); // Down
+        dfs(row - 1, col, currentGold + originalValue); // Up
+        dfs(row, col + 1, currentGold + originalValue); // Right
+        dfs(row, col - 1, currentGold + originalValue); // Left
+
+        // Restore the original value of the cell
+        grid[row][col] = originalValue;
+    };
+
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+            if (grid[i][j] !== 0) {
+                // Start DFS from each cell with nonzero gold
+                dfs(i, j, 0);
+            }
+        }
+    }
+
+    return maxGold;
 };
 
 console.log("==========================================")
