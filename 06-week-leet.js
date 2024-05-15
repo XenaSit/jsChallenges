@@ -5634,6 +5634,14 @@ Explanation: The path depicted in the picture above has a safeness factor of 2 s
 - The closest cell of the path to the thief at cell (3, 0) is cell (3, 2). The distance between them is | 3 - 3 | + | 0 - 2 | = 2.
 It can be shown that there are no other paths with a higher safeness factor.
 
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var maximumSafenessFactor = function(grid) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
