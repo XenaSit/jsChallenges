@@ -5739,7 +5739,28 @@ console.log("==========================================")
 // @return {boolean}
 
 var evaluateTree = function(root) {
+    // Base case: if the node is null, return false
+    if (!root) {
+        return false;
+    }
     
+    // If the node is a leaf, return its boolean value
+    if (!root.left && !root.right) {
+        return root.val === 1;
+    }
+    
+    // Recursively evaluate the left and right subtrees
+    const leftValue = evaluateTree(root.left);
+    const rightValue = evaluateTree(root.right);
+    
+    // Apply the boolean operation based on the node's value
+    if (root.val === 2) { // OR operation
+        return leftValue || rightValue;
+    } else if (root.val === 3) { // AND operation
+        return leftValue && rightValue;
+    }
+    
+    return false; // Default case
 };
 
 
