@@ -5739,6 +5739,24 @@ Input: root = [0]
 Output: false
 Explanation: The root node is a leaf node and it evaluates to false, so we return false.
 
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+var evaluateTree = function(root) {
+    
+};
+
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
