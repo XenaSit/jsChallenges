@@ -5799,7 +5799,26 @@ console.log("==========================================")
 // @return {TreeNode}
 
 var removeLeafNodes = function(root, target) {
-    
+    // Helper function to recursively remove target leaf nodes
+    function removeLeaf(node) {
+        if (node === null) {
+            return null;
+        }
+
+        // Recursively process left and right subtrees
+        node.left = removeLeaf(node.left);
+        node.right = removeLeaf(node.right);
+
+        // If the current node is a leaf and its value is equal to the target, remove it
+        if (node.left === null && node.right === null && node.val === target) {
+            return null;
+        }
+
+        return node;
+    }
+
+    // Call the helper function with the root node
+    return removeLeaf(root);
 };
 
 console.log("==========================================")
