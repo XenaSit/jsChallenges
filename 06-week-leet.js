@@ -5853,7 +5853,33 @@ console.log("==========================================")
 // @return {number}
 
 var distributeCoins = function(root) {
-    
+    let moves = 0;
+
+    // Helper function to recursively balance the coins
+    function balance(node) {
+        if (node === null) {
+            return 0;
+        }
+
+        // Recursively balance the left and right subtrees
+        let left = balance(node.left);
+        let right = balance(node.right);
+
+        // The number of coins to be moved from the current node is the excess coins it has
+        // which is total coins - 1 (since each node should have exactly one coin)
+        let excess = node.val + left + right - 1;
+
+        // Increment the number of moves by the absolute value of excess coins
+        moves += Math.abs(excess);
+
+        // Return the excess coins for the parent node to handle
+        return excess;
+    }
+
+    // Call the helper function with the root node
+    balance(root);
+
+    return moves;
 };
 
 console.log("==========================================")
