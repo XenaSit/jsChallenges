@@ -5823,39 +5823,63 @@ var removeLeafNodes = function(root, target) {
 
 console.log("==========================================")
 
-979. Distribute Coins in Binary Tree
-Medium
-Topics
-Companies
-You are given the root of a binary tree with n nodes where each node in the tree has node.val coins. There are n coins in total throughout the whole tree.
-In one move, we may choose two adjacent nodes and move one coin from one node to another. A move may be from parent to child, or from child to parent.
-Return the minimum number of moves required to make every node have exactly one coin.
+// 979. Distribute Coins in Binary Tree
+// Medium
+// You are given the root of a binary tree with n nodes where each node in the tree has node.val coins. T
+// here are n coins in total throughout the whole tree.
+// In one move, we may choose two adjacent nodes and move one coin from one node to another. 
+// A move may be from parent to child, or from child to parent.
+// Return the minimum number of moves required to make every node have exactly one coin.
 
-Example 1:
-Input: root = [3,0,0]
-Output: 2
-Explanation: From the root of the tree, we move one coin to its left child, and one coin to its right child.
+// Example 1:
+// Input: root = [3,0,0]
+// Output: 2
+// Explanation: From the root of the tree, we move one coin to its left child, and one coin to its right child.
 
-Example 2:
-Input: root = [0,3,0]
-Output: 3
-Explanation: From the left child of the root, we move two coins to the root [taking two moves]. 
-Then, we move one coin from the root of the tree to the right child.
+// Example 2:
+// Input: root = [0,3,0]
+// Output: 3
+// Explanation: From the left child of the root, we move two coins to the root [taking two moves]. 
+// Then, we move one coin from the root of the tree to the right child.
 
-/**
- * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
- * }
- */
-/**
- * @param {TreeNode} root
- * @return {number}
- */
+// Definition for a binary tree node.
+// function TreeNode(val, left, right) {
+//     this.val = (val===undefined ? 0 : val)
+//     this.left = (left===undefined ? null : left)
+//     this.right = (right===undefined ? null : right)
+// }
+
+// @param {TreeNode} root
+// @return {number}
+
 var distributeCoins = function(root) {
-    
+    let moves = 0;
+
+    // Helper function to recursively balance the coins
+    function balance(node) {
+        if (node === null) {
+            return 0;
+        }
+
+        // Recursively balance the left and right subtrees
+        let left = balance(node.left);
+        let right = balance(node.right);
+
+        // The number of coins to be moved from the current node is the excess coins it has
+        // which is total coins - 1 (since each node should have exactly one coin)
+        let excess = node.val + left + right - 1;
+
+        // Increment the number of moves by the absolute value of excess coins
+        moves += Math.abs(excess);
+
+        // Return the excess coins for the parent node to handle
+        return excess;
+    }
+
+    // Call the helper function with the root node
+    balance(root);
+
+    return moves;
 };
 
 console.log("==========================================")
