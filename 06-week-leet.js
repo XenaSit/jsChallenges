@@ -5924,7 +5924,20 @@ console.log("==========================================")
 // @return {number}
 
 var maximumValueSum = function(nums, k, edges) {
+    // Initialize the maximum sum as 0
+    let maxSum = 0;
     
+    // Iterate through each value in nums
+    for (let i = 0; i < nums.length; i++) {
+        // Calculate the value if we XOR with k
+        let xorValue = nums[i] ^ k;
+        
+        // Take the maximum of the current value or the XORed value
+        maxSum += Math.max(nums[i], xorValue);
+    }
+    
+    // Return the maximum sum possible
+    return maxSum;
 };
 
 
