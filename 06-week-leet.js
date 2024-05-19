@@ -5921,6 +5921,18 @@ Input: nums = [7,7,7,7,7,7], k = 3, edges = [[0,1],[0,2],[0,3],[0,4],[0,5]]
 Output: 42
 Explanation: The maximum achievable sum is 42 which can be achieved by Alice performing no operations.
 
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @param {number[][]} edges
+ * @return {number}
+ */
+var maximumValueSum = function(nums, k, edges) {
+    
+};
+
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
