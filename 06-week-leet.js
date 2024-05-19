@@ -5924,20 +5924,22 @@ console.log("==========================================")
 // @return {number}
 
 var maximumValueSum = function(nums, k, edges) {
-    // Initialize the maximum sum as 0
-    let maxSum = 0;
+    // Calculate the maximum possible sum
+    let maxSum = nums.reduce((sum, num) => sum + Math.max(num, num ^ k), 0);
     
-    // Iterate through each value in nums
-    for (let i = 0; i < nums.length; i++) {
-        // Calculate the value if we XOR with k
-        let xorValue = nums[i] ^ k;
-        
-        // Take the maximum of the current value or the XORed value
-        maxSum += Math.max(nums[i], xorValue);
+    // Count how many nodes are better off with their XORed value
+    let changedCount = nums.reduce((count, num) => count + ((num ^ k) > num ? 1 : 0), 0);
+    
+    // If the number of changes is even, return the maximum sum
+    if (changedCount % 2 === 0) {
+        return maxSum;
     }
     
-    // Return the maximum sum possible
-    return maxSum;
+    // Find the minimum change difference
+    let minChangeDiff = Math.min(...nums.map(num => Math.abs(num - (num ^ k))));
+    
+    // Adjust the sum if the number of changes is odd
+    return maxSum - minChangeDiff;
 };
 
 
