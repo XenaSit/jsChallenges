@@ -5991,6 +5991,14 @@ Input: nums = [3,4,5,6,7,8]
 Output: 480
 Explanation: The sum of all XOR totals for every subset is 480.
 
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var subsetXORSum = function(nums) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
