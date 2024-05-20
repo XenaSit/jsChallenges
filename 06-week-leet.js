@@ -5996,7 +5996,25 @@ Explanation: The sum of all XOR totals for every subset is 480.
  * @return {number}
  */
 var subsetXORSum = function(nums) {
-    
+    let totalSum = 0;
+
+    const helper = (index, currentXOR) => {
+        if (index === nums.length) {
+            totalSum += currentXOR;
+            return;
+        }
+
+        // Exclude the current element
+        helper(index + 1, currentXOR);
+        
+        // Include the current element
+        helper(index + 1, currentXOR ^ nums[index]);
+    };
+
+    // Start the recursive process
+    helper(0, 0);
+
+    return totalSum;
 };
 
 console.log("==========================================")
