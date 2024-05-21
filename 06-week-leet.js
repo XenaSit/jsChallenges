@@ -6037,6 +6037,14 @@ Constraints:
 -10 <= nums[i] <= 10
 All the numbers of nums are unique.
 
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var subsets = function(nums) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
