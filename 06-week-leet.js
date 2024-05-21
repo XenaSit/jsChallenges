@@ -6033,7 +6033,28 @@ console.log("==========================================")
 // @return {number[][]}
 
 var subsets = function(nums) {
-    
+    const result = [];
+
+    const backtrack = (start, currentSubset) => {
+        // Add the current subset to the result
+        result.push([...currentSubset]);
+
+        for (let i = start; i < nums.length; i++) {
+            // Include the current element
+            currentSubset.push(nums[i]);
+
+            // Recur with the current element included
+            backtrack(i + 1, currentSubset);
+
+            // Backtrack by removing the current element
+            currentSubset.pop();
+        }
+    };
+
+    // Start the backtracking process
+    backtrack(0, []);
+
+    return result;
 };
 
 console.log("==========================================")
