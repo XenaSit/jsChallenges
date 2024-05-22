@@ -6059,31 +6059,21 @@ var subsets = function(nums) {
 
 console.log("==========================================")
 
-131. Palindrome Partitioning
-Medium
-Topics
-Companies
-Given a string s, partition s such that every 
-substring
- of the partition is a 
-palindrome
-. Return all possible palindrome partitioning of s.
+// 131. Palindrome Partitioning
+// Medium
+// Given a string s, partition s such that every  substring of the partition is a palindrome. Return all possible palindrome partitioning of s.
 
- 
+// Example 1:
+// Input: s = "aab"
+// Output: [["a","a","b"],["aa","b"]]
 
-Example 1:
+// Example 2:
+// Input: s = "a"
+// Output: [["a"]]
 
-Input: s = "aab"
-Output: [["a","a","b"],["aa","b"]]
-Example 2:
+// @param {string} s
+// @return {string[][]}
 
-Input: s = "a"
-Output: [["a"]]
-
-/**
- * @param {string} s
- * @return {string[][]}
- */
 var partition = function(s) {
     
 };
