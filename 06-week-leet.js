@@ -6075,7 +6075,38 @@ console.log("==========================================")
 // @return {string[][]}
 
 var partition = function(s) {
-    
+    const results = [];
+    const isPalindrome = (str) => {
+        let left = 0;
+        let right = str.length - 1;
+        while (left < right) {
+            if (str[left] !== str[right]) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    };
+
+    const backtrack = (currentPartition, startIndex) => {
+        if (startIndex === s.length) {
+            results.push(currentPartition.slice()); // Add a copy of currentPartition
+            return;
+        }
+
+        for (let i = startIndex; i < s.length; i++) {
+            const subString = s.substring(startIndex, i + 1);
+                if (isPalindrome(subString)) {
+                    currentPartition.push(subString);
+                    backtrack(currentPartition, i + 1);
+                    currentPartition.pop(); // Backtrack by removing the substring
+                }
+        }
+    };
+
+    backtrack([], 0);
+    return results;
 };
 
 console.log("==========================================")
