@@ -6080,6 +6080,14 @@ Example 2:
 Input: s = "a"
 Output: [["a"]]
 
+/**
+ * @param {string} s
+ * @return {string[][]}
+ */
+var partition = function(s) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
