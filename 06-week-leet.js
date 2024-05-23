@@ -6136,7 +6136,26 @@ console.log("==========================================")
 // @return {number}
 
 var beautifulSubsets = function(nums, k) {
-    
+    let result = 0;
+
+    const backtrack = (index, subset, freq) => {
+        if (subset.length > 0) {
+            result++;
+        }
+        for (let i = index; i < nums.length; i++) {
+            let num = nums[i];
+            if (!freq[num - k] && !freq[num + k]) {
+                subset.push(num);
+                freq[num] = (freq[num] || 0) + 1;
+                backtrack(i + 1, subset, freq);
+                freq[num]--;
+                subset.pop();
+            }
+        }
+    };
+
+    backtrack(0, [], {});
+    return result;
 };
 
 console.log("==========================================")
