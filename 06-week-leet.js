@@ -6139,6 +6139,15 @@ Output: 1
 Explanation: The beautiful subset of the array nums is [1].
 It can be proved that there is only 1 beautiful subset in the array [1].
 
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var beautifulSubsets = function(nums, k) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
