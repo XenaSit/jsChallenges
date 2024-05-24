@@ -6196,6 +6196,15 @@ Output: 0
 Explanation:
 Letter "e" can only be used once.
 
+/**
+ * @param {string[]} words
+ * @param {character[]} letters
+ * @param {number[]} score
+ * @return {number}
+ */
+var maxScoreWords = function(words, letters, score) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
