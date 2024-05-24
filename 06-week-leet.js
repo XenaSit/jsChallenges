@@ -6195,9 +6195,61 @@ console.log("==========================================")
 // @return {number}
 
 var maxScoreWords = function(words, letters, score) {
-    
-};
+    // Step 1: Create a frequency map for the letters
+    const letterCount = Array(26).fill(0);
+    for (let letter of letters) {
+        letterCount[letter.charCodeAt(0) - 97]++;
+    }
 
+    // Step 2: Calculate the score and letter frequency for each word
+    const wordScores = [];
+    const wordLetters = [];
+    for (let word of words) {
+        let wordScore = 0;
+        const currentWordLetterCount = Array(26).fill(0);
+        for (let letter of word) {
+            let index = letter.charCodeAt(0) - 97;
+            wordScore += score[index];
+            currentWordLetterCount[index]++;
+        }
+        wordScores.push(wordScore);
+        wordLetters.push(currentWordLetterCount);
+    }
+
+    // Step 3: Backtracking function to explore all combinations
+    function backtrack(index, currentLetterCount) {
+        if (index === words.length) {
+            return 0;
+        }
+
+        // Option 1: Skip the current word
+        let maxScore = backtrack(index + 1, currentLetterCount);
+
+        // Option 2: Include the current word if possible
+        let canIncludeWord = true;
+        for (let i = 0; i < 26; i++) {
+            if (wordLetters[index][i] > currentLetterCount[i]) {
+                canIncludeWord = false;
+                break;
+            }
+        }
+
+        if (canIncludeWord) {
+            for (let i = 0; i < 26; i++) {
+                currentLetterCount[i] -= wordLetters[index][i];
+            }
+            maxScore = Math.max(maxScore, wordScores[index] + backtrack(index + 1, currentLetterCount));
+            for (let i = 0; i < 26; i++) {
+                currentLetterCount[i] += wordLetters[index][i];
+            }
+        }
+
+        return maxScore;
+    }
+
+    // Step 4: Start backtracking from the first word
+    return backtrack(0, letterCount);
+};
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
