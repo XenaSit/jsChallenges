@@ -6336,26 +6336,45 @@ console.log("==========================================")
 var checkRecord = function(n) {
     const MOD = 1000000007;
 
-    // Initialize DP arrays
-    let dp = Array.from({ length: n + 1 }, () => [0, 0, 0]);
+    // Initialize DP arrays for sequences without 'A'
+    let P = Array(n + 1).fill(0);
+    let PL = Array(n + 1).fill(0);
+    let PLL = Array(n + 1).fill(0);
 
-    // Base case
-    dp[0] = [1, 0, 0];
+    // Initialize DP arrays for sequences with exactly one 'A'
+    let PA = Array(n + 1).fill(0);
+    let PLA = Array(n + 1).fill(0);
+    let PLLA = Array(n + 1).fill(0);
 
-    for (let i = 1; i <= n; i++) {
-        dp[i][0] = (dp[i-1][0] + dp[i-1][1] + dp[i-1][2]) % MOD;
-        dp[i][1] = dp[i-1][0];
-        dp[i][2] = dp[i-1][1];
+    // Base case: Length 0 sequence (1 way, the empty sequence)
+    P[0] = 1;
+    PL[0] = 0;
+    PLL[0] = 0;
+
+    PA[0] = 0;
+    PLA[0] = 0;
+    PLLA[0] = 0;
+
+    // Base case: Length 1 sequences
+    P[1] = 1; // "P"
+    PL[1] = 1; // "L"
+    PLL[1] = 0; // "LL" is not valid for length 1
+
+    PA[1] = 1; // "A"
+    PLA[1] = 0; // "LA" is not valid for length 1
+    PLLA[1] = 0; // "LLA" is not valid for length 1
+
+    for (let i = 2; i <= n; i++) {
+        P[i] = (P[i - 1] + PL[i - 1] + PLL[i - 1]) % MOD;
+        PL[i] = P[i - 1] % MOD;
+        PLL[i] = PL[i - 1] % MOD;
+
+        PA[i] = (PA[i - 1] + PLA[i - 1] + PLLA[i - 1] + P[i - 1] + PL[i - 1] + PLL[i - 1]) % MOD;
+        PLA[i] = PA[i - 1] % MOD;
+        PLLA[i] = PLA[i - 1] % MOD;
     }
 
-    let result = (dp[n][0] + dp[n][1] + dp[n][2]) % MOD;
-
-    // Count sequences with one 'A'
-    for (let i = 0; i < n; i++) {
-        let left = (dp[i][0] + dp[i][1] + dp[i][2]) % MOD;
-        let right = (dp[n-i-1][0] + dp[n-i-1][1] + dp[n-i-1][2]) % MOD;
-        result = (result + left * right % MOD) % MOD;
-    }
+    let result = (P[n] + PL[n] + PLL[n] + PA[n] + PLA[n] + PLLA[n]) % MOD;
 
     return result;
 };
