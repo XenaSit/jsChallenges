@@ -6336,6 +6336,14 @@ Example 3:
 Input: n = 10101
 Output: 183236316
 
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var checkRecord = function(n) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
