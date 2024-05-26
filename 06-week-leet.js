@@ -6334,7 +6334,30 @@ console.log("==========================================")
 // @return {number}
 
 var checkRecord = function(n) {
-    
+    const MOD = 1000000007;
+
+    // Initialize DP arrays
+    let dp = Array.from({ length: n + 1 }, () => [0, 0, 0]);
+
+    // Base case
+    dp[0] = [1, 0, 0];
+
+    for (let i = 1; i <= n; i++) {
+        dp[i][0] = (dp[i-1][0] + dp[i-1][1] + dp[i-1][2]) % MOD;
+        dp[i][1] = dp[i-1][0];
+        dp[i][2] = dp[i-1][1];
+    }
+
+    let result = (dp[n][0] + dp[n][1] + dp[n][2]) % MOD;
+
+    // Count sequences with one 'A'
+    for (let i = 0; i < n; i++) {
+        let left = (dp[i][0] + dp[i][1] + dp[i][2]) % MOD;
+        let right = (dp[n-i-1][0] + dp[n-i-1][1] + dp[n-i-1][2]) % MOD;
+        result = (result + left * right % MOD) % MOD;
+    }
+
+    return result;
 };
 
 console.log("==========================================")
