@@ -6414,6 +6414,14 @@ Input: nums = [0,4,3,0,4]
 Output: 3
 Explanation: There are 3 values that are greater than or equal to 3.
 
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var specialArray = function(nums) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
