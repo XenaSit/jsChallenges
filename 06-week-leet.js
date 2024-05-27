@@ -6411,7 +6411,19 @@ console.log("==========================================")
 // @return {number}
 
 var specialArray = function(nums) {
+    nums.sort((a, b) => a - b); // Step 1: Sort the array in ascending order.
     
+    for (let x = 0; x <= nums.length; x++) { // Step 2: Iterate through possible values of x from 0 to nums.length.
+        // Step 3: Count how many numbers in nums are greater than or equal to x.
+        let count = nums.filter(num => num >= x).length;
+        
+        // Step 4: Check if the count equals x.
+        if (count === x) {
+            return x;
+        }
+    }
+    
+    return -1; // If no such x is found, return -1.
 };
 
 console.log("==========================================")
