@@ -6458,6 +6458,16 @@ Input: s = "abcd", t = "acde", maxCost = 0
 Output: 1
 Explanation: You cannot make any change, so the maximum length is 1.
 
+/**
+ * @param {string} s
+ * @param {string} t
+ * @param {number} maxCost
+ * @return {number}
+ */
+var equalSubstring = function(s, t, maxCost) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
