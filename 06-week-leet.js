@@ -6458,7 +6458,22 @@ console.log("==========================================")
 // @return {number}
 
 var equalSubstring = function(s, t, maxCost) {
-    
+    let left = 0;
+    let currentCost = 0;
+    let maxLength = 0;
+
+    for (let right = 0; right < s.length; right++) {
+        currentCost += Math.abs(s[right].charCodeAt() - t[right].charCodeAt());
+
+        while (currentCost > maxCost) {
+            currentCost -= Math.abs(s[left].charCodeAt() - t[left].charCodeAt());
+            left++;
+        }
+
+        maxLength = Math.max(maxLength, right - left + 1);
+    }
+
+    return maxLength;
 };
 
 console.log("==========================================")
