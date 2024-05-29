@@ -6515,6 +6515,13 @@ Example 3:
 Input: s = "1"
 Output: 0
 
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var numSteps = function(s) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
