@@ -6510,7 +6510,33 @@ console.log("==========================================")
 // @return {number}
 
 var numSteps = function(s) {
+    let steps = 0;
+    let carry = 0;
     
+    // Start from the least significant bit and move left
+    for (let i = s.length - 1; i > 0; i--) {
+        if (s[i] === '1') {
+            if (carry === 1) {
+                steps += 1; // We are already in the "add 1" scenario, so just count the step
+            } else {
+                carry = 1; // Set carry because adding 1 to a 1 gives us 10 (binary)
+                steps += 2; // One for adding 1 (making it even), another for dividing by 2
+            }
+        } else {
+            if (carry === 1) {
+                steps += 2; // We are in a carry scenario, 0 + 1 = 1 (make it odd and add 1 more step)
+            } else {
+                steps += 1; // Just divide by 2 (remove the trailing 0)
+            }
+        }
+    }
+    
+    // Finally, if there's still a carry left, it means we have to account for it
+    if (carry === 1) {
+        steps += 1;
+    }
+    
+    return steps;
 };
 
 console.log("==========================================")
