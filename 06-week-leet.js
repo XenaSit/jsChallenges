@@ -6570,6 +6570,13 @@ Example 2:
 Input: arr = [1,1,1,1,1]
 Output: 10
 
+/**
+ * @param {number[]} arr
+ * @return {number}
+ */
+var countTriplets = function(arr) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
