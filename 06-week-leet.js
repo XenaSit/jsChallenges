@@ -6605,7 +6605,26 @@ console.log("==========================================")
 // @return {number[]}
 
 var singleNumber = function(nums) {
-    
+    // Step 1: XOR all numbers to find xor of the two unique numbers
+    let xor = 0;
+    for (let num of nums) {
+        xor ^= num;
+    }
+
+    // Step 2: Find a set bit (rightmost set bit) in the xor result
+    let setBit = xor & -xor;
+
+    // Step 3: Partition numbers into two groups and XOR within each group
+    let num1 = 0, num2 = 0;
+    for (let num of nums) {
+        if ((num & setBit) === 0) {
+            num1 ^= num;
+        } else {
+            num2 ^= num;
+        }
+    }
+
+    return [num1, num2];
 };
 
 console.log("==========================================")
