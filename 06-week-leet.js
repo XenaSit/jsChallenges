@@ -6606,6 +6606,14 @@ Example 3:
 Input: nums = [0,1]
 Output: [1,0]
 
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var singleNumber = function(nums) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
