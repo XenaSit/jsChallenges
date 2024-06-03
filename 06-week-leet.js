@@ -6729,6 +6729,15 @@ Explanation: Append the characters "abcde" to the end of s so that s = "zabcde".
 Now, t is a subsequence of s ("zabcde").
 It can be shown that appending any 4 characters to the end of s will never make t a subsequence.
 
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {number}
+ */
+var appendCharacters = function(s, t) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
