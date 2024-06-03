@@ -6727,7 +6727,17 @@ console.log("==========================================")
 // @return {number}
 
 var appendCharacters = function(s, t) {
-    
+    let tIndex = 0;  // Pointer for string t
+
+    // Iterate through string s
+    for (let i = 0; i < s.length; i++) {
+        if (tIndex < t.length && s[i] === t[tIndex]) {
+            tIndex++;  // Move to the next character in t
+        }
+    }
+
+    // The remaining characters in t (that weren't matched) need to be appended to s
+    return t.length - tIndex;
 };
 
 console.log("==========================================")
