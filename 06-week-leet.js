@@ -6761,7 +6761,33 @@ console.log("==========================================")
 // @return {number}
 
 var longestPalindrome = function(s) {
+    // Create a map to store the frequency of each character
+    const charCount = new Map();
     
+    // Count the frequency of each character in the string
+    for (const char of s) {
+        charCount.set(char, (charCount.get(char) || 0) + 1);
+    }
+    
+    let length = 0;
+    let hasOddCount = false;
+    
+    // Calculate the length of the longest palindrome
+    for (const count of charCount.values()) {
+        if (count % 2 === 0) {
+            length += count;
+        } else {
+            length += count - 1; // Use the even part
+            hasOddCount = true; // Track that we have at least one odd count
+        }
+    }
+    
+    // If there is any character with an odd count, we can place one in the center
+    if (hasOddCount) {
+        length += 1;
+    }
+    
+    return length;
 };
 
 console.log("==========================================")
