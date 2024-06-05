@@ -6809,6 +6809,14 @@ Example 2:
 Input: words = ["cool","lock","cook"]
 Output: ["c","o"]
 
+/**
+ * @param {string[]} words
+ * @return {string[]}
+ */
+var commonChars = function(words) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
