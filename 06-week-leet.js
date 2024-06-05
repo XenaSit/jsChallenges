@@ -6809,7 +6809,35 @@ console.log("==========================================")
 // @return {string[]}
 
 var commonChars = function(words) {
-    
+     // Initialize an array to keep track of the minimum frequency of each character
+     let minFreq = Array(26).fill(Infinity);
+
+     // Function to count character frequency in a word
+     const countChars = (word) => {
+         let freq = Array(26).fill(0);
+         for (let char of word) {
+             freq[char.charCodeAt(0) - 'a'.charCodeAt(0)]++;
+         }
+         return freq;
+     };
+ 
+     // Update the minFreq array based on the frequencies in each word
+     for (let word of words) {
+         let wordFreq = countChars(word);
+         for (let i = 0; i < 26; i++) {
+             minFreq[i] = Math.min(minFreq[i], wordFreq[i]);
+         }
+     }
+ 
+     // Construct the result array based on the minFreq array
+     let result = [];
+     for (let i = 0; i < 26; i++) {
+         for (let j = 0; j < minFreq[i]; j++) {
+             result.push(String.fromCharCode(i + 'a'.charCodeAt(0)));
+         }
+     }
+ 
+     return result;
 };
 
 console.log("==========================================")
