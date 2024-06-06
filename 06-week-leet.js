@@ -6866,7 +6866,34 @@ console.log("==========================================")
 // @return {boolean}
 
 var isNStraightHand = function(hand, groupSize) {
-    
+    if (hand.length % groupSize !== 0) return false; // Early return if the hand cannot be evenly divided into groups
+
+    // Frequency count of each card
+    let cardCount = {};
+    for (let card of hand) {
+        if (cardCount[card] == null) {
+            cardCount[card] = 0;
+        }
+        cardCount[card]++;
+    }
+
+    // Sorted unique cards
+    let sortedCards = Object.keys(cardCount).map(Number).sort((a, b) => a - b);
+
+    // Try to form groups
+    for (let card of sortedCards) {
+        while (cardCount[card] > 0) {
+            for (let i = 0; i < groupSize; i++) {
+                let currentCard = card + i;
+                if (cardCount[currentCard] == null || cardCount[currentCard] === 0) {
+                    return false;
+                }
+                cardCount[currentCard]--;
+            }
+        }
+    }
+
+    return true;
 };
 
 console.log("==========================================")
