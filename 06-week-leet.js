@@ -6921,7 +6921,23 @@ console.log("==========================================")
 // @return {string}
 
 var replaceWords = function(dictionary, sentence) {
-    
+    // Sort the dictionary by length of the roots
+    dictionary.sort((a, b) => a.length - b.length);
+    // Split the sentence into words
+    let words = sentence.split(' ');
+    // Process each word
+    for (let i = 0; i < words.length; i++) {
+        for (let root of dictionary) {
+            // Check if the word starts with the root
+            if (words[i].startsWith(root)) {
+                // Replace the word with the root
+                words[i] = root;
+                break;  // No need to check further roots
+            }
+        }
+    }
+    // Join the words back into a sentence
+    return words.join(' ');
 };
 
 console.log("==========================================")
