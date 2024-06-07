@@ -6918,7 +6918,15 @@ Example 2:
 
 Input: dictionary = ["a","b","c"], sentence = "aadsfasf absbs bbab cadsfafs"
 Output: "a a b c"
- 
+
+/**
+ * @param {string[]} dictionary
+ * @param {string} sentence
+ * @return {string}
+ */
+var replaceWords = function(dictionary, sentence) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
