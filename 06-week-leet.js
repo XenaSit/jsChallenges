@@ -6974,6 +6974,14 @@ Example 3:
 Input: nums = [23,2,6,4,7], k = 13
 Output: false
 
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {boolean}
+ */
+var checkSubarraySum = function(nums, k) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
