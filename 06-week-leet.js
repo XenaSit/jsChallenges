@@ -6972,7 +6972,31 @@ console.log("==========================================")
 // @return {boolean}
 
 var checkSubarraySum = function(nums, k) {
-    
+    let modMap = new Map();
+    modMap.set(0, -1); // Initialize with mod 0 at index -1 to handle cases where subarray starts from index 0
+    let cumSum = 0;
+
+    for (let i = 0; i < nums.length; i++) {
+        cumSum += nums[i];
+        let mod = cumSum % k;
+
+        // Ensure the mod is non-negative
+        if (mod < 0) {
+            mod += k;
+        }
+
+        if (modMap.has(mod)) {
+            // If we have seen this mod before, check the subarray length
+            if (i - modMap.get(mod) > 1) {
+                return true;
+            }
+        } else {
+            // Store the first occurrence of this mod
+            modMap.set(mod, i);
+        }
+    }
+
+    return false;
 };
 
 
