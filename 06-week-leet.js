@@ -7022,7 +7022,23 @@ console.log("==========================================")
 // @return {number}
 
 var subarraysDivByK = function(nums, k) {
-    
+    let count = 0;
+    let prefix_sum = 0;
+    let remainder_count = {0: 1};  // Initial prefix sum remainder of 0
+
+    for (let num of nums) {
+        prefix_sum += num;
+        let remainder = ((prefix_sum % k) + k) % k;  // Handle negative remainders
+
+        if (remainder_count[remainder] !== undefined) {
+            count += remainder_count[remainder];
+            remainder_count[remainder]++;
+        } else {
+            remainder_count[remainder] = 1;
+        }
+    }
+
+    return count;
 };
 
 console.log("==========================================")
