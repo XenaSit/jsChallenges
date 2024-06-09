@@ -7021,6 +7021,14 @@ Example 2:
 Input: nums = [5], k = 9
 Output: 0
 
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var subarraysDivByK = function(nums, k) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
