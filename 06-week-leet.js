@@ -7082,7 +7082,21 @@ console.log("==========================================")
 // @return {number}
 
 var heightChecker = function(heights) {
+    // Create the expected array by sorting the heights array
+    const expected = [...heights].sort((a, b) => a - b);
     
+    // Initialize a counter for mismatched indices
+    let mismatchCount = 0;
+    
+    // Compare each element in heights with the corresponding element in expected
+    for (let i = 0; i < heights.length; i++) {
+        if (heights[i] !== expected[i]) {
+            mismatchCount++;
+        }
+    }
+    
+    // Return the count of mismatched indices
+    return mismatchCount;
 };
 
 console.log("==========================================")
