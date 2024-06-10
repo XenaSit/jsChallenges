@@ -7081,6 +7081,14 @@ heights:  [1,2,3,4,5]
 expected: [1,2,3,4,5]
 All indices match.
 
+/**
+ * @param {number[]} heights
+ * @return {number}
+ */
+var heightChecker = function(heights) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
