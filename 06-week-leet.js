@@ -7121,7 +7121,28 @@ console.log("==========================================")
 // @return {number[]}
 
 var relativeSortArray = function(arr1, arr2) {
-    
+    // Create a mapping of value to index for arr2
+    const orderMap = new Map();
+    arr2.forEach((value, index) => {
+        orderMap.set(value, index);
+    });
+
+    // Custom sort function
+    return arr1.sort((a, b) => {
+        if (orderMap.has(a) && orderMap.has(b)) {
+            // Both elements are in arr2, sort by their index in arr2
+            return orderMap.get(a) - orderMap.get(b);
+        } else if (orderMap.has(a)) {
+            // Only a is in arr2, it should come before b
+            return -1;
+        } else if (orderMap.has(b)) {
+            // Only b is in arr2, it should come before a
+            return 1;
+        } else {
+            // Neither element is in arr2, sort by their natural order (ascending)
+            return a - b;
+        }
+    });
 };
 
 console.log("==========================================")
