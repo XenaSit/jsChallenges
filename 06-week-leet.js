@@ -7234,6 +7234,16 @@ The students are moved as follows:
 - The fourth student is not moved.
 In total, 1 + 3 + 0 + 0 = 4 moves were used.
 
+
+/**
+ * @param {number[]} seats
+ * @param {number[]} students
+ * @return {number}
+ */
+var minMovesToSeat = function(seats, students) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
