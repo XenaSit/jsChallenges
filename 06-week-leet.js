@@ -7235,7 +7235,20 @@ console.log("==========================================")
 // @return {number}
 
 var minMovesToSeat = function(seats, students) {
-    
+    // Sort both the seats and students arrays
+    seats.sort((a, b) => a - b);
+    students.sort((a, b) => a - b);
+
+    // Initialize a variable to keep track of the total number of moves
+    let totalMoves = 0;
+
+    // Calculate the total moves required by summing the absolute differences
+    for (let i = 0; i < seats.length; i++) {
+        totalMoves += Math.abs(seats[i] - students[i]);
+    }
+
+    // Return the total number of moves
+    return totalMoves;
 };
 
 console.log("==========================================")
