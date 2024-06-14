@@ -7274,7 +7274,26 @@ console.log("==========================================")
 // @return {number}
 
 var minIncrementForUnique = function(nums) {
+    // Sort the array first
+    nums.sort((a, b) => a - b);
     
+    // Initialize the number of moves to 0
+    let moves = 0;
+    
+    // Iterate through the sorted array
+    for (let i = 1; i < nums.length; i++) {
+        // If the current number is less than or equal to the previous number
+        if (nums[i] <= nums[i - 1]) {
+            // Calculate the increment needed to make it unique
+            let increment = nums[i - 1] + 1 - nums[i];
+            // Add the increment to the number of moves
+            moves += increment;
+            // Update the current number to the new unique value
+            nums[i] = nums[i - 1] + 1;
+        }
+    }
+    
+    return moves;
 };
 
 console.log("==========================================")
