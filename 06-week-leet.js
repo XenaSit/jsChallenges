@@ -7328,6 +7328,16 @@ Example 2:
 Input: k = 3, w = 0, profits = [1,2,3], capital = [0,1,2]
 Output: 6
 
+/**
+ * @param {number} k
+ * @param {number} w
+ * @param {number[]} profits
+ * @param {number[]} capital
+ * @return {number}
+ */
+var findMaximizedCapital = function(k, w, profits, capital) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
