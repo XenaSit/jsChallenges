@@ -7300,8 +7300,6 @@ console.log("==========================================")
 
 // 502. IPO
 // Hard
-// Topics
-// Companies
 // Suppose LeetCode will start its IPO soon. In order to sell a good price of its shares to Venture Capital, 
 // LeetCode would like to work on some projects to increase its capital before the IPO. 
 // Since it has limited resources, it can only finish at most k distinct projects before the IPO. 
@@ -7335,8 +7333,113 @@ console.log("==========================================")
 // @return {number}
 
 var findMaximizedCapital = function(k, w, profits, capital) {
+    let n = profits.length;
+    let projects = [];
     
+    // Create a list of [capital, profit] pairs and sort it by capital
+    for (let i = 0; i < n; i++) {
+        projects.push([capital[i], profits[i]]);
+    }
+    projects.sort((a, b) => a[0] - b[0]);
+    
+    let maxHeap = new MaxHeap();
+    let i = 0;
+    
+    // We can complete at most k projects
+    for (let j = 0; j < k; j++) {
+        // Add all feasible projects to the max-heap
+        while (i < n && projects[i][0] <= w) {
+            maxHeap.insert(projects[i][1]);
+            i++;
+        }
+        
+        // If there are no feasible projects, break
+        if (maxHeap.isEmpty()) break;
+        
+        // Pick the project with the maximum profit
+        w += maxHeap.extractMax();
+    }
+    
+    return w;
 };
+
+// Max-Heap implementation
+class MaxHeap {
+    constructor() {
+        this.heap = [];
+    }
+    
+    insert(val) {
+        this.heap.push(val);
+        this.bubbleUp();
+    }
+    
+    bubbleUp() {
+        let index = this.heap.length - 1;
+        while (index > 0) {
+            let element = this.heap[index];
+            let parentIndex = Math.floor((index - 1) / 2);
+            let parent = this.heap[parentIndex];
+            
+            if (parent >= element) break;
+            
+            this.heap[index] = parent;
+            this.heap[parentIndex] = element;
+            index = parentIndex;
+        }
+    }
+    
+    extractMax() {
+        const max = this.heap[0];
+        const end = this.heap.pop();
+        
+        if (this.heap.length > 0) {
+            this.heap[0] = end;
+            this.sinkDown(0);
+        }
+        
+        return max;
+    }
+    
+    sinkDown(index) {
+        const length = this.heap.length;
+        const element = this.heap[index];
+        
+        while (true) {
+            let leftChildIndex = 2 * index + 1;
+            let rightChildIndex = 2 * index + 2;
+            let leftChild, rightChild;
+            let swap = null;
+            
+            if (leftChildIndex < length) {
+                leftChild = this.heap[leftChildIndex];
+                if (leftChild > element) {
+                    swap = leftChildIndex;
+                }
+            }
+            
+            if (rightChildIndex < length) {
+                rightChild = this.heap[rightChildIndex];
+                if (
+                    (swap === null && rightChild > element) || 
+                    (swap !== null && rightChild > leftChild)
+                ) {
+                    swap = rightChildIndex;
+                }
+            }
+            
+            if (swap === null) break;
+            
+            this.heap[index] = this.heap[swap];
+            this.heap[swap] = element;
+            index = swap;
+        }
+    }
+    
+    isEmpty() {
+        return this.heap.length === 0;
+    }
+}
 
 console.log("==========================================")
 // console.log("==========================================")
