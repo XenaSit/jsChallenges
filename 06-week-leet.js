@@ -7472,6 +7472,14 @@ Example 3:
 Input: nums = [1,2,2], n = 5
 Output: 0
 
+/**
+ * @param {number[]} nums
+ * @param {number} n
+ * @return {number}
+ */
+var minPatches = function(nums, n) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
