@@ -7510,6 +7510,13 @@ Example 2:
 Input: c = 3
 Output: false
 
+/**
+ * @param {number} c
+ * @return {boolean}
+ */
+var judgeSquareSum = function(c) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
