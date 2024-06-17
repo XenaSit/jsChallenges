@@ -7492,28 +7492,22 @@ var minPatches = function(nums, n) {
 
 console.log("==========================================")
 
-633. Sum of Square Numbers
-Medium
-Topics
-Companies
-Given a non-negative integer c, decide whether there're two integers a and b such that a2 + b2 = c.
+// 633. Sum of Square Numbers
+// Medium
+// Given a non-negative integer c, decide whether there're two integers a and b such that a2 + b2 = c.
 
- 
+// Example 1:
+// Input: c = 5
+// Output: true
+// Explanation: 1 * 1 + 2 * 2 = 5
 
-Example 1:
+// Example 2:
+// Input: c = 3
+// Output: false
 
-Input: c = 5
-Output: true
-Explanation: 1 * 1 + 2 * 2 = 5
-Example 2:
+// @param {number} c
+// @return {boolean}
 
-Input: c = 3
-Output: false
-
-/**
- * @param {number} c
- * @return {boolean}
- */
 var judgeSquareSum = function(c) {
     
 };
