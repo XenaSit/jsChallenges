@@ -7556,7 +7556,32 @@ console.log("==========================================")
 // @return {number}
 
 var maxProfitAssignment = function(difficulty, profit, worker) {
+    // Combine difficulty and profit into a single array of objects and sort by difficulty
+    let jobs = [];
+    for (let i = 0; i < difficulty.length; i++) {
+        jobs.push({ difficulty: difficulty[i], profit: profit[i] });
+    }
+    jobs.sort((a, b) => a.difficulty - b.difficulty);
     
+    // Sort the worker array
+    worker.sort((a, b) => a - b);
+    
+    let maxProfit = 0;
+    let totalProfit = 0;
+    let jobIndex = 0;
+    
+    // Iterate over each worker
+    for (let i = 0; i < worker.length; i++) {
+        // Move the jobIndex to the highest profit job the worker can do
+        while (jobIndex < jobs.length && jobs[jobIndex].difficulty <= worker[i]) {
+            maxProfit = Math.max(maxProfit, jobs[jobIndex].profit);
+            jobIndex++;
+        }
+        // Add the maximum profit achievable by the current worker to total profit
+        totalProfit += maxProfit;
+    }
+    
+    return totalProfit;
 };
 
 console.log("==========================================")
