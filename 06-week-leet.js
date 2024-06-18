@@ -7554,6 +7554,15 @@ Example 2:
 Input: difficulty = [85,47,57], profit = [24,66,99], worker = [40,25,25]
 Output: 0
 
+/**
+ * @param {number[]} difficulty
+ * @param {number[]} profit
+ * @param {number[]} worker
+ * @return {number}
+ */
+var maxProfitAssignment = function(difficulty, profit, worker) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
