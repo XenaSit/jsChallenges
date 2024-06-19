@@ -7626,7 +7626,15 @@ We can make one bouquet of the first three flowers that bloomed. We cannot make 
 After day 12: [x, x, x, x, x, x, x]
 It is obvious that we can make two bouquets in different ways.
 
-
+/**
+ * @param {number[]} bloomDay
+ * @param {number} m
+ * @param {number} k
+ * @return {number}
+ */
+var minDays = function(bloomDay, m, k) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
