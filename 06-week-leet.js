@@ -7688,7 +7688,44 @@ console.log("==========================================")
 // @return {number}
 
 var maxDistance = function(position, m) {
+    // Step 1: Sort the positions
+    position.sort((a, b) => a - b);
     
+    // Step 2: Define the binary search boundaries
+    let left = 1;
+    let right = position[position.length - 1] - position[0];
+    let result = 0;
+
+    // Step 3: Binary search to find the maximum minimum distance
+    while (left <= right) {
+        let mid = Math.floor((left + right) / 2);
+        if (canPlaceBalls(position, m, mid)) {
+            result = mid;  // Valid minimum distance found, try for a larger one
+            left = mid + 1;
+        } else {
+            right = mid - 1;  // Minimum distance too large, try for a smaller one
+        }
+    }
+    
+    return result;
+};
+
+// Helper function to check if we can place m balls with at least `dist` distance apart
+function canPlaceBalls(position, m, dist) {
+    let count = 1;  // Place the first ball in the first position
+    let lastPos = position[0];
+
+    for (let i = 1; i < position.length; i++) {
+        if (position[i] - lastPos >= dist) {
+            count++;
+            lastPos = position[i];
+            if (count === m) {
+                return true;
+            }
+        }
+    }
+
+    return false;
 };
 
 console.log("==========================================")
