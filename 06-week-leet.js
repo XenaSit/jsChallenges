@@ -7689,6 +7689,15 @@ Input: position = [5,4,3,2,1,1000000000], m = 2
 Output: 999999999
 Explanation: We can use baskets 1 and 1000000000.
 
+/**
+ * @param {number[]} position
+ * @param {number} m
+ * @return {number}
+ */
+var maxDistance = function(position, m) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
