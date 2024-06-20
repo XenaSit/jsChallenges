@@ -7724,7 +7724,6 @@ function canPlaceBalls(position, m, dist) {
             }
         }
     }
-
     return false;
 };
 
