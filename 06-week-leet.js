@@ -7756,7 +7756,15 @@ Example 2:
 
 Input: customers = [1], grumpy = [0], minutes = 1
 Output: 1
-
+/**
+ * @param {number[]} customers
+ * @param {number[]} grumpy
+ * @param {number} minutes
+ * @return {number}
+ */
+var maxSatisfied = function(customers, grumpy, minutes) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
