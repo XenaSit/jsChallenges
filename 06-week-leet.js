@@ -7756,7 +7756,33 @@ console.log("==========================================")
 // @return {number}
 
 var maxSatisfied = function(customers, grumpy, minutes) {
+    let n = customers.length;
     
+    // Calculate the total satisfied customers when the owner is not grumpy
+    let totalSatisfied = 0;
+    for (let i = 0; i < n; i++) {
+        if (grumpy[i] === 0) {
+            totalSatisfied += customers[i];
+        }
+    }
+    
+    // Find the maximum additional customers we can satisfy by making the owner not grumpy for `minutes` consecutive minutes
+    let extraSatisfied = 0;
+    let maxExtraSatisfied = 0;
+    
+    for (let i = 0; i < n; i++) {
+        if (grumpy[i] === 1) {
+            extraSatisfied += customers[i];
+        }
+        if (i >= minutes) {
+            if (grumpy[i - minutes] === 1) {
+                extraSatisfied -= customers[i - minutes];
+            }
+        }
+        maxExtraSatisfied = Math.max(maxExtraSatisfied, extraSatisfied);
+    }
+    
+    return totalSatisfied + maxExtraSatisfied;
 };
 
 console.log("==========================================")
