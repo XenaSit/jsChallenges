@@ -7811,7 +7811,35 @@ console.log("==========================================")
 // @return {number}
 
 var numberOfSubarrays = function(nums, k) {
-    
+    // Helper function to count subarrays with at most K odd numbers
+    const atMostKOdd = (nums, k) => {
+        let count = 0;
+        let left = 0;
+        let oddCount = 0;
+        
+        for (let right = 0; right < nums.length; right++) {
+            // If the current number is odd, increment the odd count
+            if (nums[right] % 2 !== 0) {
+                oddCount++;
+            }
+            
+            // If there are more than k odd numbers, move the left pointer
+            while (oddCount > k) {
+                if (nums[left] % 2 !== 0) {
+                    oddCount--;
+                }
+                left++;
+            }
+            
+            // Add the number of subarrays ending at right that are valid
+            count += right - left + 1;
+        }
+        
+        return count;
+    };
+
+    // The number of subarrays with exactly k odd numbers
+    return atMostKOdd(nums, k) - atMostKOdd(nums, k - 1);
 };
 
 console.log("==========================================")
