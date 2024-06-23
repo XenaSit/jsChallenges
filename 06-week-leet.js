@@ -7879,6 +7879,14 @@ Example 3:
 Input: nums = [4,2,2,2,4,4,2,2], limit = 0
 Output: 3
 
+/**
+ * @param {number[]} nums
+ * @param {number} limit
+ * @return {number}
+ */
+var longestSubarray = function(nums, limit) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
