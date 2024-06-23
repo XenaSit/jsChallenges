@@ -7880,7 +7880,34 @@ console.log("==========================================")
 // @return {number}
 
 var longestSubarray = function(nums, limit) {
-    
+    let maxDeque = [], minDeque = [];
+    let left = 0, longest = 0;
+
+    for (let right = 0; right < nums.length; right++) {
+        // Maintain max deque
+        while (maxDeque.length && nums[maxDeque[maxDeque.length - 1]] <= nums[right]) {
+            maxDeque.pop();
+        }
+        maxDeque.push(right);
+
+        // Maintain min deque
+        while (minDeque.length && nums[minDeque[minDeque.length - 1]] >= nums[right]) {
+            minDeque.pop();
+        }
+        minDeque.push(right);
+
+        // If the window is invalid, move the left pointer
+        while (nums[maxDeque[0]] - nums[minDeque[0]] > limit) {
+            left++;
+            if (maxDeque[0] < left) maxDeque.shift();
+            if (minDeque[0] < left) minDeque.shift();
+        }
+
+        // Update the longest valid subarray length
+        longest = Math.max(longest, right - left + 1);
+    }
+
+    return longest;
 };
 
 console.log("==========================================")
