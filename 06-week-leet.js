@@ -7945,6 +7945,15 @@ Flip nums[0],nums[1],nums[2]: nums becomes [1,1,1,1,0,1,1,0]
 Flip nums[4],nums[5],nums[6]: nums becomes [1,1,1,1,1,0,0,0]
 Flip nums[5],nums[6],nums[7]: nums becomes [1,1,1,1,1,1,1,1]
 
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var minKBitFlips = function(nums, k) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
