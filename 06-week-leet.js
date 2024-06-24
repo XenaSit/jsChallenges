@@ -7942,7 +7942,28 @@ console.log("==========================================")
 // @return {number}
 
 var minKBitFlips = function(nums, k) {
-    
+    let n = nums.length;
+    let isFlipped = new Array(n).fill(0);
+    let flips = 0;
+    let flipCount = 0;
+
+    for (let i = 0; i < n; i++) {
+        if (i >= k) {
+            flipCount ^= isFlipped[i - k];
+        }
+
+        if (flipCount % 2 === nums[i]) {
+            if (i + k > n) {
+                return -1;
+            }
+
+            flips++;
+            flipCount ^= 1;
+            isFlipped[i] = 1;
+        }
+    }
+
+    return flips;
 };
 
 console.log("==========================================")
