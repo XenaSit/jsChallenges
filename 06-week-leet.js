@@ -7996,7 +7996,24 @@ console.log("==========================================")
 // @return {TreeNode}
 
 var bstToGst = function(root) {
+    let sum = 0;
     
+    const traverse = (node) => {
+        if (!node) return;
+        
+        // Traverse right subtree first
+        traverse(node.right);
+        
+        // Update the sum and node's value
+        sum += node.val;
+        node.val = sum;
+        
+        // Traverse left subtree
+        traverse(node.left);
+    };
+    
+    traverse(root);
+    return root;
 };
 
 console.log("==========================================")
