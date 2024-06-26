@@ -8043,8 +8043,35 @@ console.log("==========================================")
 // @param {TreeNode} root
 // @return {TreeNode}
 
+// Definition for a binary tree node.
+function TreeNode(val, left, right) {
+    this.val = (val === undefined ? 0 : val);
+    this.left = (left === undefined ? null : left);
+    this.right = (right === undefined ? null : right);
+}
+
+// Function to perform inorder traversal and collect nodes
+function inorderTraversal(root, nodes) {
+    if (root === null) return;
+    inorderTraversal(root.left, nodes);
+    nodes.push(root.val);
+    inorderTraversal(root.right, nodes);
+}
+
+// Function to build a balanced BST from sorted nodes
+function buildBalancedBST(nodes, start, end) {
+    if (start > end) return null;
+    let mid = Math.floor((start + end) / 2);
+    let node = new TreeNode(nodes[mid]);
+    node.left = buildBalancedBST(nodes, start, mid - 1);
+    node.right = buildBalancedBST(nodes, mid + 1, end);
+    return node;
+}
+
 var balanceBST = function(root) {
-    
+    let nodes = [];
+    inorderTraversal(root, nodes); // Get the nodes in sorted order
+    return buildBalancedBST(nodes, 0, nodes.length - 1); // Build and return the balanced BST
 };
 
 console.log("==========================================")
