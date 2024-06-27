@@ -8099,7 +8099,16 @@ console.log("==========================================")
 // @return {number}
 
 var findCenter = function(edges) {
-    
+    // Take the first two edges
+    let [a, b] = edges[0];
+    let [c, d] = edges[1];
+
+    // Check which node is common in both edges
+    if (a === c || a === d) {
+        return a;
+    } else {
+        return b;
+    }
 };
 
 console.log("==========================================")
