@@ -8100,6 +8100,13 @@ Example 2:
 Input: edges = [[1,2],[5,1],[1,3],[1,4]]
 Output: 1
 
+/**
+ * @param {number[][]} edges
+ * @return {number}
+ */
+var findCenter = function(edges) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
