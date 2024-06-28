@@ -8149,7 +8149,30 @@ console.log("==========================================")
 // @return {number}
 
 var maximumImportance = function(n, roads) {
-    
+    // Step 1: Count connections for each city
+    const connections = Array(n).fill(0);
+    for (const [a, b] of roads) {
+        connections[a]++;
+        connections[b]++;
+    }
+
+    // Step 2: Sort cities by the number of connections (descending order)
+    const cities = Array.from({ length: n }, (_, i) => i);
+    cities.sort((a, b) => connections[b] - connections[a]);
+
+    // Step 3: Assign values from n to 1 based on sorted order
+    const values = Array(n).fill(0);
+    for (let i = 0; i < n; i++) {
+        values[cities[i]] = n - i;
+    }
+
+    // Step 4: Calculate the total importance
+    let totalImportance = 0;
+    for (const [a, b] of roads) {
+        totalImportance += values[a] + values[b];
+    }
+
+    return totalImportance;
 };
 
 console.log("==========================================")
