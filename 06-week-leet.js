@@ -8212,7 +8212,54 @@ console.log("==========================================")
 // @return {number[][]}
 
 var getAncestors = function(n, edges) {
+    // Step 1: Initialize adjacency list and in-degree array
+    const graph = Array.from({ length: n }, () => []);
+    const inDegree = Array(n).fill(0);
     
+    // Step 2: Build the graph and in-degree array from edges
+    for (const [from, to] of edges) {
+        graph[from].push(to);
+        inDegree[to]++;
+    }
+    
+    // Step 3: Perform topological sort
+    const topoOrder = [];
+    const queue = [];
+    
+    for (let i = 0; i < n; i++) {
+        if (inDegree[i] === 0) {
+            queue.push(i);
+        }
+    }
+    
+    while (queue.length > 0) {
+        const node = queue.shift();
+        topoOrder.push(node);
+        for (const neighbor of graph[node]) {
+            inDegree[neighbor]--;
+            if (inDegree[neighbor] === 0) {
+                queue.push(neighbor);
+            }
+        }
+    }
+    
+    // Step 4: Initialize ancestors array
+    const ancestors = Array.from({ length: n }, () => new Set());
+    
+    // Step 5: Propagate ancestors using topological order
+    for (const node of topoOrder) {
+        for (const neighbor of graph[node]) {
+            // Add the current node as an ancestor of the neighbor
+            ancestors[neighbor].add(node);
+            // Add all ancestors of the current node to the neighbor
+            for (const ancestor of ancestors[node]) {
+                ancestors[neighbor].add(ancestor);
+            }
+        }
+    }
+    
+    // Step 6: Convert sets to sorted arrays and return the result
+    return ancestors.map(ancestorSet => Array.from(ancestorSet).sort((a, b) => a - b));
 };
 
 console.log("==========================================")
