@@ -8218,6 +8218,14 @@ The above diagram represents the input graph.
 - Node 3 has three ancestors 0, 1, and 2.
 - Node 4 has four ancestors 0, 1, 2, and 3.
 
+/**
+ * @param {number} n
+ * @param {number[][]} edges
+ * @return {number[][]}
+ */
+var getAncestors = function(n, edges) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
