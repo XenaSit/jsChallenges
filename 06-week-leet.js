@@ -8302,9 +8302,16 @@ Input: n = 4, edges = [[3,2,3],[1,1,2],[2,3,4]]
 Output: -1
 Explanation: In the current graph, Alice cannot reach node 4 from the other nodes. Likewise, Bob cannot reach 1. Therefore it's impossible to make the graph fully traversable.
 
+/**
+ * @param {number} n
+ * @param {number[][]} edges
+ * @return {number}
+ */
+var maxNumEdgesToRemove = function(n, edges) {
+    
+};
 
-
-// console.log("==========================================")
+console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
