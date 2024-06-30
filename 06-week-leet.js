@@ -8297,7 +8297,90 @@ console.log("==========================================")
 // @return {number}
 
 var maxNumEdgesToRemove = function(n, edges) {
+    class DSU {
+        constructor(size) {
+            this.parent = Array(size).fill(0).map((_, index) => index);
+            this.rank = Array(size).fill(0);
+        }
+        
+        find(x) {
+            if (this.parent[x] !== x) {
+                this.parent[x] = this.find(this.parent[x]);
+            }
+            return this.parent[x];
+        }
+        
+        union(x, y) {
+            const rootX = this.find(x);
+            const rootY = this.find(y);
+            if (rootX !== rootY) {
+                if (this.rank[rootX] > this.rank[rootY]) {
+                    this.parent[rootY] = rootX;
+                } else if (this.rank[rootX] < this.rank[rootY]) {
+                    this.parent[rootX] = rootY;
+                } else {
+                    this.parent[rootY] = rootX;
+                    this.rank[rootX]++;
+                }
+                return true;
+            }
+            return false;
+        }
+    }
     
+    const aliceDSU = new DSU(n + 1);
+    const bobDSU = new DSU(n + 1);
+    
+    let removedEdges = 0;
+    let commonEdges = [];
+    let aliceEdges = [];
+    let bobEdges = [];
+
+    // Categorize edges
+    for (const [type, u, v] of edges) {
+        if (type === 3) {
+            commonEdges.push([u, v]);
+        } else if (type === 1) {
+            aliceEdges.push([u, v]);
+        } else if (type === 2) {
+            bobEdges.push([u, v]);
+        }
+    }
+
+    // Process common edges
+    for (const [u, v] of commonEdges) {
+        const aliceUnion = aliceDSU.union(u, v);
+        const bobUnion = bobDSU.union(u, v);
+        if (!aliceUnion && !bobUnion) {
+            removedEdges++;
+        }
+    }
+
+    // Process Alice's edges
+    for (const [u, v] of aliceEdges) {
+        if (!aliceDSU.union(u, v)) {
+            removedEdges++;
+        }
+    }
+
+    // Process Bob's edges
+    for (const [u, v] of bobEdges) {
+        if (!bobDSU.union(u, v)) {
+            removedEdges++;
+        }
+    }
+
+    // Check if both graphs are fully traversable
+    const aliceParent = aliceDSU.find(1);
+    const bobParent = bobDSU.find(1);
+
+    for (let i = 2; i <= n; i++) {
+        if (aliceDSU.find(i) !== aliceParent || bobDSU.find(i) !== bobParent) {
+            return -1;
+        }
+    }
+
+    return removedEdges;
 };
 
 console.log("==========================================")
