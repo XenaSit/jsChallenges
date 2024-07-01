@@ -8403,8 +8403,16 @@ console.log("==========================================")
 // @return {boolean}
 
 var threeConsecutiveOdds = function(arr) {
-    
+    // Loop through the array until the third last element
+    for (let i = 0; i < arr.length - 2; i++) {
+        // Check if the current element and the next two elements are odd
+        if (arr[i] % 2 !== 0 && arr[i + 1] % 2 !== 0 && arr[i + 2] % 2 !== 0) {
+            return true; // Return true if all three are odd
+        }
+    }
+    return false; // Return false if no such triplet is found
 };
+
 
 console.log("==========================================")
 // console.log("==========================================")
