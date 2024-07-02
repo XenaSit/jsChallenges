@@ -8435,7 +8435,26 @@ console.log("==========================================")
 // @return {number[]}
 
 var intersect = function(nums1, nums2) {
-    
+    // Create a hashmap to store the counts of elements in nums1
+    let countMap = {};
+    for (let num of nums1) {
+        if (countMap[num]) {
+            countMap[num]++;
+        } else {
+            countMap[num] = 1;
+        }
+    }
+
+    // Array to store the intersection
+    let result = [];
+    for (let num of nums2) {
+        if (countMap[num] && countMap[num] > 0) {
+            result.push(num);
+            countMap[num]--;
+        }
+    }
+
+    return result;
 };
 
 console.log("==========================================")
