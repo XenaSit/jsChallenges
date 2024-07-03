@@ -8501,6 +8501,13 @@ In the second move, change 20 to 7. nums becomes [3,7,7].
 In the third move, change 3 to 7. nums becomes [7,7,7].
 After performing 3 moves, the difference between the minimum and maximum is 7 - 7 = 0.
 
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var minDifference = function(nums) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
