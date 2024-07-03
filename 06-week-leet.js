@@ -8497,7 +8497,18 @@ console.log("==========================================")
 // @return {number}
 
 var minDifference = function(nums) {
-    
+    const n = nums.length;
+    if (n <= 4) return 0;
+
+    nums.sort((a, b) => a - b);
+
+    // Calculate the minimum difference after removing up to three elements
+    return Math.min(
+        nums[n - 1] - nums[3],  // Remove the three smallest
+        nums[n - 2] - nums[2],  // Remove the two smallest and one largest
+        nums[n - 3] - nums[1],  // Remove the one smallest and two largest
+        nums[n - 4] - nums[0]   // Remove the three largest
+    );
 };
 
 console.log("==========================================")
