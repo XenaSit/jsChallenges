@@ -8548,6 +8548,21 @@ The above figure represents the given linked list. The modified list contains
 - The sum of the nodes marked in red: 3 = 3.
 - The sum of the nodes marked in yellow: 2 + 2 = 4.
 
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var mergeNodes = function(head) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
