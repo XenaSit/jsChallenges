@@ -8625,6 +8625,21 @@ Both the minimum and maximum distances are between the second and the fifth node
 Thus, minDistance and maxDistance is 5 - 2 = 3.
 Note that the last node is not considered a local maxima because it does not have a next node.
 
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {number[]}
+ */
+var nodesBetweenCriticalPoints = function(head) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
