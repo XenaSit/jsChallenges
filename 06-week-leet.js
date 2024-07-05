@@ -8624,8 +8624,39 @@ console.log("==========================================")
 // @param {ListNode} head
 // @return {number[]}
 
+function ListNode(val, next) {
+    this.val = (val===undefined ? 0 : val);
+    this.next = (next===undefined ? null : next);
+}
+
 var nodesBetweenCriticalPoints = function(head) {
+    if (!head || !head.next || !head.next.next) return [-1, -1];
     
+    let prev = head;
+    let curr = head.next;
+    let index = 1;  // Start from the second node
+    let criticalPoints = [];
+    
+    while (curr.next) {
+        let next = curr.next;
+        if ((curr.val > prev.val && curr.val > next.val) || (curr.val < prev.val && curr.val < next.val)) {
+            criticalPoints.push(index);
+        }
+        prev = curr;
+        curr = next;
+        index++;
+    }
+    
+    if (criticalPoints.length < 2) return [-1, -1];
+    
+    let minDistance = Infinity;
+    for (let i = 1; i < criticalPoints.length; i++) {
+        minDistance = Math.min(minDistance, criticalPoints[i] - criticalPoints[i - 1]);
+    }
+    
+    let maxDistance = criticalPoints[criticalPoints.length - 1] - criticalPoints[0];
+    
+    return [minDistance, maxDistance];
 };
 
 console.log("==========================================")
