@@ -8686,7 +8686,14 @@ Output: 3
 Explanation: People pass the pillow in the following way: 1 -> 2 -> 3.
 After two seconds, the 3rd person is holding the pillow.
 
-
+/**
+ * @param {number} n
+ * @param {number} time
+ * @return {number}
+ */
+var passThePillow = function(n, time) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
