@@ -8687,7 +8687,17 @@ console.log("==========================================")
 // @return {number}
 
 var passThePillow = function(n, time) {
+    // Determine the effective time within a single round trip (forward and backward)
+    let effectiveTime = time % (2 * (n - 1));
     
+    // Calculate the position based on the effective time
+    if (effectiveTime < n) {
+        // Moving forward
+        return 1 + effectiveTime;
+    } else {
+        // Moving backward
+        return n - (effectiveTime - (n - 1));
+    }
 };
 
 console.log("==========================================")
