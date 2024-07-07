@@ -8726,7 +8726,17 @@ console.log("==========================================")
 // @return {number}
 
 var numWaterBottles = function(numBottles, numExchange) {
+    let totalDrunk = 0;
+    let emptyBottles = 0;
     
+    while (numBottles > 0) {
+        totalDrunk += numBottles;
+        emptyBottles += numBottles;
+        numBottles = Math.floor(emptyBottles / numExchange);
+        emptyBottles = emptyBottles % numExchange;
+    }
+    
+    return totalDrunk;
 };
 
 console.log("==========================================")
