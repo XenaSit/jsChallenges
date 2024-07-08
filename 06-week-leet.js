@@ -8779,7 +8779,11 @@ console.log("==========================================")
 // @return {number}
 
 var findTheWinner = function(n, k) {
-    
+    let winner = 0; // base case: if there's only one person, the winner is at position 0
+    for (let i = 1; i <= n; i++) {
+        winner = (winner + k) % i;
+    }
+    return winner + 1; // +1 to convert from 0-based index to 1-based index
 };
 
 // console.log("==========================================")
