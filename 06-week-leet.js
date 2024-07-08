@@ -8780,6 +8780,14 @@ Input: n = 6, k = 5
 Output: 1
 Explanation: The friends leave in this order: 5, 4, 6, 2, 3. The winner is friend 1.
 
+/**
+ * @param {number} n
+ * @param {number} k
+ * @return {number}
+ */
+var findTheWinner = function(n, k) {
+    
+};
 
 // console.log("==========================================")
 // console.log("==========================================")
