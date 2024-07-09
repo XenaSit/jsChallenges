@@ -8828,7 +8828,28 @@ console.log("==========================================")
 // @return {number}
 
 var averageWaitingTime = function(customers) {
+    let currentTime = 0;
+    let totalWaitingTime = 0;
+
+    for (let i = 0; i < customers.length; i++) {
+        let arrival = customers[i][0];
+        let timeToPrepare = customers[i][1];
+        
+        // Chef starts the order at the max of currentTime and the customer's arrival time
+        currentTime = Math.max(currentTime, arrival);
+        
+        // Waiting time for the current customer
+        let waitingTime = currentTime + timeToPrepare - arrival;
+        
+        // Add the waiting time to the total waiting time
+        totalWaitingTime += waitingTime;
+        
+        // Update the current time to when the chef finishes this order
+        currentTime += timeToPrepare;
+    }
     
+    // Calculate the average waiting time
+    return totalWaitingTime / customers.length;
 };
 
 console.log("==========================================")
