@@ -8823,6 +8823,13 @@ Explanation:
 4) The fourth customer arrives at time 20, the chef takes his order and starts preparing it immediately at time 20, and finishes at time 21, so the waiting time of the fourth customer is 21 - 20 = 1.
 So the average waiting time = (2 + 6 + 4 + 1) / 4 = 3.25.
 
+/**
+ * @param {number[][]} customers
+ * @return {number}
+ */
+var averageWaitingTime = function(customers) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
