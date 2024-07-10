@@ -8882,7 +8882,20 @@ console.log("==========================================")
 // @return {number}
 
 var minOperations = function(logs) {
+    let depth = 0;  // this will track our current depth in the folder structure
     
+    for (let log of logs) {
+        if (log === "../") {
+            if (depth > 0) {
+                depth--;  // move one level up, if we are not at the main folder
+            }
+        } else if (log !== "./") {
+            depth++;  // move one level down to a child folder
+        }
+        // if log is "./", we do nothing since we stay in the same folder
+    }
+    
+    return depth;  // this will be the number of "../" operations needed to get back to the main folder
 };
 
 console.log("==========================================")
