@@ -8892,6 +8892,13 @@ Example 3:
 Input: logs = ["d1/","../","../","../"]
 Output: 0
 
+/**
+ * @param {string[]} logs
+ * @return {number}
+ */
+var minOperations = function(logs) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
