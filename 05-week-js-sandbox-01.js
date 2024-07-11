@@ -1443,7 +1443,7 @@ function learnCharitableGame(arr) {
     return arr.every(amount => amount >= redistributedAmount);
   }
 
-console.log("==========================================")\
+console.log("==========================================")
 
 // 1190. Reverse Substrings Between Each Pair of Parentheses
 // Medium
