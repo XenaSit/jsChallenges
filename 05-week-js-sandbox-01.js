@@ -1469,9 +1469,25 @@ console.log("==========================================")\
 // @return {string}
 
 var reverseParentheses = function(s) {
+    let stack = [];
     
+    for (let char of s) {
+        if (char === ')') {
+            let temp = [];
+            while (stack.length && stack[stack.length - 1] !== '(') {
+                temp.push(stack.pop());
+            }
+            stack.pop(); // remove the '('
+            for (let item of temp) {
+                stack.push(item);
+            }
+        } else {
+            stack.push(char);
+        }
+    }
+    
+    return stack.join('');
 };
-
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
