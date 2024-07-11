@@ -1473,6 +1473,13 @@ Input: s = "(ed(et(oc))el)"
 Output: "leetcode"
 Explanation: First, we reverse the substring "oc", then "etco", and finally, the whole string.
 
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var reverseParentheses = function(s) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
