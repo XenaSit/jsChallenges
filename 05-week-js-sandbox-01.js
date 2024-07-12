@@ -1519,7 +1519,44 @@ console.log("==========================================")
 // @return {number}
 
 var maximumGain = function(s, x, y) {
-    
+    let stack = [];
+    let score = 0;
+    let first, second, firstScore, secondScore;
+
+    if (x > y) {
+        first = 'a';
+        second = 'b';
+        firstScore = x;
+        secondScore = y;
+    } else {
+        first = 'b';
+        second = 'a';
+        firstScore = y;
+        secondScore = x;
+    }
+
+    // Remove the more valuable pair first
+    for (let char of s) {
+        if (stack.length && stack[stack.length - 1] === first && char === second) {
+            stack.pop();
+            score += firstScore;
+        } else {
+            stack.push(char);
+        }
+    }
+
+    // Process the remaining characters to remove the second pair
+    let tempStack = [];
+    for (let char of stack) {
+        if (tempStack.length && tempStack[tempStack.length - 1] === second && char === first) {
+            tempStack.pop();
+            score += secondScore;
+        } else {
+            tempStack.push(char);
+        }
+    }
+
+    return score;
 };
 
 console.log("==========================================")
