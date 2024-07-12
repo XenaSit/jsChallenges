@@ -1520,7 +1520,15 @@ Example 2:
 Input: s = "aabbaaxybbaabb", x = 5, y = 4
 Output: 20
 
-
+/**
+ * @param {string} s
+ * @param {number} x
+ * @param {number} y
+ * @return {number}
+ */
+var maximumGain = function(s, x, y) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
