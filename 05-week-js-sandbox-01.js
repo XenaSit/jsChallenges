@@ -1594,7 +1594,14 @@ Input: positions = [1,2,5,6], healths = [10,10,11,11], directions = "RLRL"
 Output: []
 Explanation: Robot 1 and robot 2 will collide and since both have the same health, they are both removed. Robot 3 and 4 will collide and since both have the same health, they are both removed. So, we return an empty array, [].
 
+@param {number[]} positions
+@param {number[]} healths
+@param {string} directions
+@return {number[]}
 
+var survivedRobotsHealths = function(positions, healths, directions) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
