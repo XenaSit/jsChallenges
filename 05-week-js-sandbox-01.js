@@ -1600,7 +1600,63 @@ console.log("==========================================")
 // @return {number[]}
 
 var survivedRobotsHealths = function(positions, healths, directions) {
+    // Combine the inputs into a single array for easier sorting and processing
+    let robots = positions.map((pos, index) => ({
+        position: pos,
+        health: healths[index],
+        direction: directions[index],
+        originalIndex: index
+    }));
     
+    // Sort robots by their positions
+    robots.sort((a, b) => a.position - b.position);
+    
+    let stack = [];
+    
+    // Process each robot
+    for (let robot of robots) {
+        if (robot.direction === 'R') {
+            stack.push(robot);
+        } else {
+            // Handle collisions with robots in the stack moving to the right
+            while (stack.length > 0 && stack[stack.length - 1].direction === 'R') {
+                let topRobot = stack[stack.length - 1];
+                
+                if (topRobot.health > robot.health) {
+                    // Top robot survives, current robot is destroyed
+                    topRobot.health -= 1;
+                    robot = null; // Mark current robot as destroyed
+                    break;
+                } else if (topRobot.health < robot.health) {
+                    // Top robot is destroyed, current robot's health decreases by 1
+                    robot.health -= 1;
+                    stack.pop();
+                } else {
+                    // Both robots have the same health, both are destroyed
+                    stack.pop();
+                    robot = null; // Mark current robot as destroyed
+                    break;
+                }
+            }
+            
+            // If the current robot survived the collision process, push it to the stack
+            if (robot) {
+                stack.push(robot);
+            }
+        }
+    }
+    
+    // Extract the surviving robots' healths and sort them back to the original order
+    let survivors = stack.map(robot => ({
+        health: robot.health,
+        originalIndex: robot.originalIndex
+    }));
+    
+    // Sort survivors back to the original order
+    survivors.sort((a, b) => a.originalIndex - b.originalIndex);
+    
+    // Return the final healths of the surviving robots
+    return survivors.map(robot => robot.health);
 };
 
 console.log("==========================================")
