@@ -1696,7 +1696,64 @@ console.log("==========================================")
 // @return {string}
 
 var countOfAtoms = function(formula) {
-    
+    let i = 0;
+
+    const parse = () => {
+        let counts = new Map();
+
+        while (i < formula.length) {
+            if (formula[i] === '(') {
+                i++;
+                let innerCounts = parse();
+                let num = parseNumber();
+                for (let [elem, cnt] of innerCounts) {
+                    counts.set(elem, (counts.get(elem) || 0) + cnt * num);
+                }
+            } else if (formula[i] === ')') {
+                i++;
+                break;
+            } else {
+                let name = parseName();
+                let num = parseNumber();
+                counts.set(name, (counts.get(name) || 0) + num);
+            }
+        }
+
+        return counts;
+    };
+
+    const parseName = () => {
+        let start = i;
+        i++;
+        while (i < formula.length && formula[i] >= 'a' && formula[i] <= 'z') {
+            i++;
+        }
+        return formula.slice(start, i);
+    };
+
+    const parseNumber = () => {
+        if (i < formula.length && formula[i] >= '0' && formula[i] <= '9') {
+            let start = i;
+            while (i < formula.length && formula[i] >= '0' && formula[i] <= '9') {
+                i++;
+            }
+            return parseInt(formula.slice(start, i));
+        }
+        return 1;
+    };
+
+    let counts = parse();
+    let elements = Array.from(counts.keys()).sort();
+
+    let result = '';
+    for (let elem of elements) {
+        result += elem;
+        if (counts.get(elem) > 1) {
+            result += counts.get(elem);
+        }
+    }
+
+    return result;
 };
 
 console.log("==========================================")
