@@ -1701,6 +1701,13 @@ Input: formula = "K4(ON(SO3)2)2"
 Output: "K4N2O14S4"
 Explanation: The count of elements are {'K': 4, 'N': 2, 'O': 14, 'S': 4}.
 
+/**
+ * @param {string} formula
+ * @return {string}
+ */
+var countOfAtoms = function(formula) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
