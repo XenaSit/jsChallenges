@@ -1789,8 +1789,53 @@ console.log("==========================================")
 // @param {number[][]} descriptions
 // @return {TreeNode}
 
+// Definition for a binary tree node.
+function TreeNode(val, left, right) {
+    this.val = (val === undefined ? 0 : val)
+    this.left = (left === undefined ? null : left)
+    this.right = (right === undefined ? null : right)
+}
+
 var createBinaryTree = function(descriptions) {
-    
+    const nodeMap = new Map(); // To store the TreeNode by their value
+    const children = new Set(); // To track all child nodes
+
+    // Iterate through each description
+    for (const [parentVal, childVal, isLeft] of descriptions) {
+        // Create parent node if it doesn't exist
+        if (!nodeMap.has(parentVal)) {
+            nodeMap.set(parentVal, new TreeNode(parentVal));
+        }
+        // Create child node if it doesn't exist
+        if (!nodeMap.has(childVal)) {
+            nodeMap.set(childVal, new TreeNode(childVal));
+        }
+        
+        // Get the parent and child nodes from the map
+        const parent = nodeMap.get(parentVal);
+        const child = nodeMap.get(childVal);
+
+        // Link the parent and child nodes appropriately
+        if (isLeft) {
+            parent.left = child;
+        } else {
+            parent.right = child;
+        }
+
+        // Add the child to the set of children
+        children.add(childVal);
+    }
+
+    // The root is the node that is not a child of any node
+    let root = null;
+    for (const [parentVal] of descriptions) {
+        if (!children.has(parentVal)) {
+            root = nodeMap.get(parentVal);
+            break;
+        }
+    }
+
+    return root;
 };
 
 console.log("==========================================")
