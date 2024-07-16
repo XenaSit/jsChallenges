@@ -1876,8 +1876,42 @@ console.log("==========================================")
 // @param {number} destValue
 // @return {string}
 
+function TreeNode(val, left, right) {
+    this.val = (val===undefined ? 0 : val);
+    this.left = (left===undefined ? null : left);
+    this.right = (right===undefined ? null : right);
+}
+
 var getDirections = function(root, startValue, destValue) {
-    
+    const findPath = (node, target, path) => {
+        if (!node) return false;
+        if (node.val === target) return true;
+
+        path.push('L');
+        if (findPath(node.left, target, path)) return true;
+        path.pop();
+
+        path.push('R');
+        if (findPath(node.right, target, path)) return true;
+        path.pop();
+
+        return false;
+    }
+
+    const startPath = [];
+    const destPath = [];
+
+    findPath(root, startValue, startPath);
+    findPath(root, destValue, destPath);
+
+    let i = 0;
+    while (i < startPath.length && i < destPath.length && startPath[i] === destPath[i]) {
+        i++;
+    }
+
+    const upMoves = 'U'.repeat(startPath.length - i);
+    const downMoves = destPath.slice(i).join('');
+    return upMoves + downMoves;
 };
 
 console.log("==========================================")
