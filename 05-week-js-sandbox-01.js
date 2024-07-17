@@ -1942,7 +1942,25 @@ console.log("==========================================")
 // @return {TreeNode[]}
 
 var delNodes = function(root, to_delete) {
-    
+    const toDeleteSet = new Set(to_delete);
+    const forest = [];
+
+    function dfs(node, isRoot) {
+        if (!node) return null;
+        
+        const isDeleted = toDeleteSet.has(node.val);
+        if (isRoot && !isDeleted) {
+            forest.push(node);
+        }
+        
+        node.left = dfs(node.left, isDeleted);
+        node.right = dfs(node.right, isDeleted);
+        
+        return isDeleted ? null : node;
+    }
+
+    dfs(root, true);
+    return forest;
 };
 
 console.log("==========================================")
