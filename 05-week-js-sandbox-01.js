@@ -2000,7 +2000,40 @@ console.log("==========================================")
 // @return {number}
 
 var countPairs = function(root, distance) {
+    let count = 0;
     
+    // Helper function to perform DFS and calculate distances
+    function dfs(node) {
+        if (!node) return [];
+        
+        if (!node.left && !node.right) return [1]; // Leaf node, return distance 1
+        
+        let leftDistances = dfs(node.left);
+        let rightDistances = dfs(node.right);
+        
+        // Count good pairs
+        for (let ld of leftDistances) {
+            for (let rd of rightDistances) {
+                if (ld + rd <= distance) {
+                    count++;
+                }
+            }
+        }
+        
+        // Increment distances by 1 and filter out distances greater than the allowed distance
+        let result = [];
+        for (let d of leftDistances) {
+            if (d + 1 <= distance) result.push(d + 1);
+        }
+        for (let d of rightDistances) {
+            if (d + 1 <= distance) result.push(d + 1);
+        }
+        
+        return result;
+    }
+    
+    dfs(root);
+    return count;
 };
 
 console.log("==========================================")
