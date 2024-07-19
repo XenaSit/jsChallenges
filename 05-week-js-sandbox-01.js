@@ -2065,6 +2065,13 @@ Input: matrix = [[7,8],[1,2]]
 Output: [7]
 Explanation: 7 is the only lucky number since it is the minimum in its row and the maximum in its column.
 
+/**
+ * @param {number[][]} matrix
+ * @return {number[]}
+ */
+var luckyNumbers  = function(matrix) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
