@@ -2062,7 +2062,37 @@ console.log("==========================================")
 // @return {number[]}
 
 var luckyNumbers  = function(matrix) {
+    let luckyNumbers = [];
     
+    // Traverse each row to find the minimum element in each row
+    for (let i = 0; i < matrix.length; i++) {
+        let min = matrix[i][0];
+        let minIndex = 0;
+        
+        // Find the minimum element in the row
+        for (let j = 1; j < matrix[i].length; j++) {
+            if (matrix[i][j] < min) {
+                min = matrix[i][j];
+                minIndex = j;
+            }
+        }
+        
+        // Check if the minimum element is the maximum in its column
+        let isMaxInColumn = true;
+        for (let k = 0; k < matrix.length; k++) {
+            if (matrix[k][minIndex] > min) {
+                isMaxInColumn = false;
+                break;
+            }
+        }
+        
+        // If it is the max in its column, add it to the result
+        if (isMaxInColumn) {
+            luckyNumbers.push(min);
+        }
+    }
+    
+    return luckyNumbers;
 };
 
 console.log("==========================================")
