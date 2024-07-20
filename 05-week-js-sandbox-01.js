@@ -2131,6 +2131,15 @@ Output: [[0,5,0],
          [2,0,8]]
 
 
+/**
+ * @param {number[]} rowSum
+ * @param {number[]} colSum
+ * @return {number[][]}
+ */
+var restoreMatrix = function(rowSum, colSum) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
