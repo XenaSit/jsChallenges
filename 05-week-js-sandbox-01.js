@@ -2190,7 +2190,15 @@ Output: []
 Explanation: From the first two conditions, 3 has to be below 1 but the third conditions needs 3 to be above 1 to be satisfied.
 No matrix can satisfy all the conditions, so we return the empty matrix.
 
-
+/**
+ * @param {number} k
+ * @param {number[][]} rowConditions
+ * @param {number[][]} colConditions
+ * @return {number[][]}
+ */
+var buildMatrix = function(k, rowConditions, colConditions) {
+    
+};
 
 
 // console.log("==========================================")
