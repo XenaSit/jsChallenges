@@ -2185,7 +2185,57 @@ console.log("==========================================")
 // @return {number[][]}
 
 var buildMatrix = function(k, rowConditions, colConditions) {
+    const topologicalSort = (n, edges) => {
+        const inDegree = Array(n + 1).fill(0);
+        const adjList = Array.from({ length: n + 1 }, () => []);
+        
+        // Build the graph
+        for (const [u, v] of edges) {
+            adjList[u].push(v);
+            inDegree[v]++;
+        }
+        
+        const queue = [];
+        for (let i = 1; i <= n; i++) {
+            if (inDegree[i] === 0) {
+                queue.push(i);
+            }
+        }
+        
+        const sorted = [];
+        while (queue.length > 0) {
+            const node = queue.shift();
+            sorted.push(node);
+            for (const neighbor of adjList[node]) {
+                inDegree[neighbor]--;
+                if (inDegree[neighbor] === 0) {
+                    queue.push(neighbor);
+                }
+            }
+        }
+        
+        return sorted.length === n ? sorted : null;
+    };
     
+    const rowOrder = topologicalSort(k, rowConditions);
+    const colOrder = topologicalSort(k, colConditions);
+    
+    if (!rowOrder || !colOrder) return [];
+    
+    const rowPosition = {};
+    const colPosition = {};
+    
+    for (let i = 0; i < k; i++) {
+        rowPosition[rowOrder[i]] = i;
+        colPosition[colOrder[i]] = i;
+    }
+    
+    const matrix = Array.from({ length: k }, () => Array(k).fill(0));
+    for (let i = 1; i <= k; i++) {
+        matrix[rowPosition[i]][colPosition[i]] = i;
+    }
+    
+    return matrix;
 };
 
 
