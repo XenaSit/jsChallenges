@@ -2262,7 +2262,14 @@ console.log("==========================================")
 // @return {string[]}
 
 var sortPeople = function(names, heights) {
+    // Create an array of objects with name and height
+    let people = names.map((name, index) => ({ name, height: heights[index] }));
     
+    // Sort the array by height in descending order
+    people.sort((a, b) => b.height - a.height);
+    
+    // Extract the names from the sorted array
+    return people.map(person => person.name);
 };
 
 console.log("==========================================")
