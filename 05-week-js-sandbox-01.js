@@ -2306,8 +2306,23 @@ Output: [5,-1,4,4,-6,-6,1,1,1]
  * @return {number[]}
  */
 var frequencySort = function(nums) {
+    // Step 1: Count the frequency of each number
+    const frequencyMap = new Map();
+    for (const num of nums) {
+        frequencyMap.set(num, (frequencyMap.get(num) || 0) + 1);
+    }
     
+    // Step 2: Sort the array based on the frequency and value
+    return nums.sort((a, b) => {
+        const freqA = frequencyMap.get(a);
+        const freqB = frequencyMap.get(b);
+        if (freqA === freqB) {
+            return b - a; // Descending order for same frequency
+        }
+        return freqA - freqB; // Ascending order based on frequency
+    });
 };
+
 
 console.log("==========================================")
 // console.log("==========================================")
