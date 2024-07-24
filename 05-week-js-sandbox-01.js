@@ -2352,7 +2352,30 @@ console.log("==========================================")
 // @return {number[]}
 
 var sortJumbled = function(mapping, nums) {
+    // Function to map a number according to the mapping array
+    const mapNumber = (num) => {
+        return parseInt(
+            num.toString().split('').map(digit => mapping[parseInt(digit)]).join('')
+        );
+    };
     
+    // Create a mapped array with original index to maintain stability
+    const mappedNums = nums.map((num, index) => ({
+        original: num,
+        mapped: mapNumber(num),
+        index: index
+    }));
+    
+    // Sort based on mapped value, if equal maintain the original order
+    mappedNums.sort((a, b) => {
+        if (a.mapped === b.mapped) {
+            return a.index - b.index;
+        }
+        return a.mapped - b.mapped;
+    });
+    
+    // Extract the original numbers in the sorted order
+    return mappedNums.map(item => item.original);
 };
 
 console.log("==========================================")
