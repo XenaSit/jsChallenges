@@ -2401,8 +2401,33 @@ console.log("==========================================")
 // @return {number[]}
 
 var sortArray = function(nums) {
-    
+    quickSort(nums, 0, nums.length - 1);
+    return nums;
 };
+
+function quickSort(arr, low, high) {
+    if (low < high) {
+        let pi = partition(arr, low, high);
+
+        // Recursively sort elements before partition and after partition
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+
+function partition(arr, low, high) {
+    let pivot = arr[high];
+    let i = (low - 1);
+
+    for (let j = low; j <= high - 1; j++) {
+        if (arr[j] < pivot) {
+            i++;
+            [arr[i], arr[j]] = [arr[j], arr[i]]; // Swap arr[i] and arr[j]
+        }
+    }
+    [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]]; // Swap arr[i + 1] and arr[high] (or pivot)
+    return (i + 1);
+}
 
 
 console.log("==========================================")
