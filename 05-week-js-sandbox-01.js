@@ -2401,32 +2401,43 @@ console.log("==========================================")
 // @return {number[]}
 
 var sortArray = function(nums) {
-    quickSort(nums, 0, nums.length - 1);
-    return nums;
+    if (nums.length <= 1) {
+        return nums;
+    }
+
+    let mid = Math.floor(nums.length / 2);
+    let left = sortArray(nums.slice(0, mid));
+    let right = sortArray(nums.slice(mid));
+
+    return merge(left, right);
 };
 
-function quickSort(arr, low, high) {
-    if (low < high) {
-        let pi = partition(arr, low, high);
+function merge(left, right) {
+    let sortedArray = [];
+    let i = 0;
+    let j = 0;
 
-        // Recursively sort elements before partition and after partition
-        quickSort(arr, low, pi - 1);
-        quickSort(arr, pi + 1, high);
-    }
-}
-
-function partition(arr, low, high) {
-    let pivot = arr[high];
-    let i = (low - 1);
-
-    for (let j = low; j <= high - 1; j++) {
-        if (arr[j] < pivot) {
+    while (i < left.length && j < right.length) {
+        if (left[i] < right[j]) {
+            sortedArray.push(left[i]);
             i++;
-            [arr[i], arr[j]] = [arr[j], arr[i]]; // Swap arr[i] and arr[j]
+        } else {
+            sortedArray.push(right[j]);
+            j++;
         }
     }
-    [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]]; // Swap arr[i + 1] and arr[high] (or pivot)
-    return (i + 1);
+
+    while (i < left.length) {
+        sortedArray.push(left[i]);
+        i++;
+    }
+
+    while (j < right.length) {
+        sortedArray.push(right[j]);
+        j++;
+    }
+
+    return sortedArray;
 }
 
 
