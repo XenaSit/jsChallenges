@@ -2482,7 +2482,15 @@ City 3 -> [City 2, City 4]
 City 4 -> [City 1, City 2, City 3] 
 The city 0 has 1 neighboring city at a distanceThreshold = 2.
 
-
+/**
+ * @param {number} n
+ * @param {number[][]} edges
+ * @param {number} distanceThreshold
+ * @return {number}
+ */
+var findTheCity = function(n, edges, distanceThreshold) {
+    
+};
 
 
 console.log("==========================================")
