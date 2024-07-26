@@ -2486,7 +2486,52 @@ console.log("==========================================")
 // @return {number}
 
 var findTheCity = function(n, edges, distanceThreshold) {
+    // Initialize the distance matrix
+    const inf = Number.MAX_SAFE_INTEGER;
+    let dist = Array.from({ length: n }, () => Array(n).fill(inf));
     
+    for (let i = 0; i < n; i++) {
+        dist[i][i] = 0;
+    }
+    
+    // Fill initial distances from edges
+    for (const [u, v, w] of edges) {
+        dist[u][v] = w;
+        dist[v][u] = w;
+    }
+    
+    // Floyd-Warshall algorithm to find shortest paths between all pairs
+    for (let k = 0; k < n; k++) {
+        for (let i = 0; i < n; i++) {
+            for (let j = 0; j < n; j++) {
+                if (dist[i][k] < inf && dist[k][j] < inf) {
+                    dist[i][j] = Math.min(dist[i][j], dist[i][k] + dist[k][j]);
+                }
+            }
+        }
+    }
+    
+    // Count reachable cities for each city
+    let minCount = n;
+    let resultCity = -1;
+    
+    for (let i = 0; i < n; i++) {
+        let count = 0;
+        for (let j = 0; j < n; j++) {
+            if (i !== j && dist[i][j] <= distanceThreshold) {
+                count++;
+            }
+        }
+        
+        if (count <= minCount) {
+            if (count < minCount || i > resultCity) {
+                minCount = count;
+                resultCity = i;
+            }
+        }
+    }
+    
+    return resultCity;
 };
 
 
