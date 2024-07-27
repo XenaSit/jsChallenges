@@ -2580,8 +2580,127 @@ console.log("==========================================")
 // @return {number}
 
 var minimumCost = function(source, target, original, changed, cost) {
-    
+    const n = source.length;
+    const charSet = new Set([...original, ...changed, ...source, ...target]);
+
+    // Build the graph for transformations and costs
+    const transformationMap = {};
+    for (let ch of charSet) {
+        transformationMap[ch] = {};
+    }
+    for (let i = 0; i < original.length; i++) {
+        let from = original[i], to = changed[i], c = cost[i];
+        if (!transformationMap[from][to] || transformationMap[from][to] > c) {
+            transformationMap[from][to] = c;
+        }
+    }
+
+    // Dijkstra's algorithm to find minimum transformation cost from start to end
+    const findMinCost = (start, end) => {
+        if (start === end) return 0;
+
+        const distances = {};
+        const pq = new MinHeap({ priority: x => x[1] });
+        pq.enqueue([start, 0]);
+        distances[start] = 0;
+
+        while (!pq.isEmpty()) {
+            const [current, currentDist] = pq.dequeue();
+
+            if (current === end) {
+                return currentDist;
+            }
+
+            if (transformationMap[current]) {
+                for (let next in transformationMap[current]) {
+                    const newDist = currentDist + transformationMap[current][next];
+                    if (!distances[next] || newDist < distances[next]) {
+                        distances[next] = newDist;
+                        pq.enqueue([next, newDist]);
+                    }
+                }
+            }
+        }
+
+        return Infinity; // if no path found, return a large number indicating impossible transformation
+    };
+
+    let totalCost = 0;
+
+    for (let i = 0; i < n; i++) {
+        const srcChar = source[i], tgtChar = target[i];
+        if (srcChar === tgtChar) continue; // no cost if characters are the same
+
+        const cost = findMinCost(srcChar, tgtChar);
+        if (cost === Infinity) return -1; // if transformation is impossible
+
+        totalCost += cost;
+    }
+
+    return totalCost;
 };
+
+// MinHeap class for the priority queue (min-heap)
+class MinHeap {
+    constructor(opts) {
+        this.elements = [];
+        this.priority = opts.priority;
+    }
+
+    enqueue(element) {
+        this.elements.push(element);
+        this._bubbleUp(this.elements.length - 1);
+    }
+
+    dequeue() {
+        const first = this.elements[0];
+        const last = this.elements.pop();
+        if (this.elements.length > 0) {
+            this.elements[0] = last;
+            this._sinkDown(0);
+        }
+        return first;
+    }
+
+    isEmpty() {
+        return this.elements.length === 0;
+    }
+
+    _bubbleUp(n) {
+        const element = this.elements[n];
+        while (n > 0) {
+            const parentN = Math.floor((n + 1) / 2) - 1;
+            const parent = this.elements[parentN];
+            if (this.priority(element) >= this.priority(parent)) break;
+            this.elements[parentN] = element;
+            this.elements[n] = parent;
+            n = parentN;
+        }
+    }
+
+    _sinkDown(n) {
+        const length = this.elements.length;
+        const element = this.elements[n];
+        while (true) {
+            const child2N = (n + 1) * 2;
+            const child1N = child2N - 1;
+            let swap = null;
+            let child1, child2;
+            if (child1N < length) {
+                child1 = this.elements[child1N];
+                if (this.priority(child1) < this.priority(element)) swap = child1N;
+            }
+            if (child2N < length) {
+                child2 = this.elements[child2N];
+                if (this.priority(child2) < (swap === null ? this.priority(element) : this.priority(child1))) swap = child2N;
+            }
+            if (swap === null) break;
+            this.elements[n] = this.elements[swap];
+            this.elements[swap] = element;
+            n = swap;
+        }
+    }
+}
 
 console.log("==========================================")
 // console.log("==========================================")
