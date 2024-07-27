@@ -2574,7 +2574,17 @@ Input: source = "abcd", target = "abce", original = ["a"], changed = ["e"], cost
 Output: -1
 Explanation: It is impossible to convert source to target because the value at index 3 cannot be changed from 'd' to 'e'.
 
-
+/**
+ * @param {string} source
+ * @param {string} target
+ * @param {character[]} original
+ * @param {character[]} changed
+ * @param {number[]} cost
+ * @return {number}
+ */
+var minimumCost = function(source, target, original, changed, cost) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
