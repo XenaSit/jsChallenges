@@ -2672,52 +2672,103 @@ console.log("==========================================")
 // @param {number} change
 // @return {number}
 
-var secondMinimum = function(n, edges, time, change) {
-    var secondMinimum = function(n, edges, time, change) {
-        // Create adjacency list
-        const graph = Array.from({ length: n + 1 }, () => []);
-        for (const [u, v] of edges) {
-            graph[u].push(v);
-            graph[v].push(u);
+class MinHeap {
+    constructor() {
+        this.heap = [];
+    }
+
+    push([time, node]) {
+        this.heap.push([time, node]);
+        this._bubbleUp(this.heap.length - 1);
+    }
+
+    pop() {
+        if (this.heap.length === 1) return this.heap.pop();
+        const top = this.heap[0];
+        this.heap[0] = this.heap.pop();
+        this._bubbleDown(0);
+        return top;
+    }
+
+    _bubbleUp(index) {
+        while (index > 0) {
+            const parentIndex = Math.floor((index - 1) / 2);
+            if (this.heap[index][0] >= this.heap[parentIndex][0]) break;
+            [this.heap[index], this.heap[parentIndex]] = [this.heap[parentIndex], this.heap[index]];
+            index = parentIndex;
         }
-    
-        // Initialize time tracking array
-        const times = Array.from({ length: n + 1 }, () => [Infinity, Infinity]);
-        times[1][0] = 0; // Start from node 1
-    
-        // Priority Queue for BFS (Min-Heap)
-        const pq = [[0, 1]]; // [time, node]
-    
-        while (pq.length) {
-            // Extract the current node with the smallest time
-            const [currentTime, node] = pq.shift();
-    
-            for (const neighbor of graph[node]) {
-                // Calculate the next time considering the traffic signal
-                let nextTime = currentTime + time;
-                const fullCycle = 2 * change;
-                if (Math.floor(currentTime / change) % 2 === 1) {
-                    nextTime += (fullCycle - (currentTime % fullCycle));
-                }
-    
-                // Check and update the times for reaching the neighbor node
-                if (nextTime < times[neighbor][0]) {
-                    times[neighbor][1] = times[neighbor][0];
-                    times[neighbor][0] = nextTime;
-                    pq.push([nextTime, neighbor]);
-                } else if (nextTime > times[neighbor][0] && nextTime < times[neighbor][1]) {
-                    times[neighbor][1] = nextTime;
-                    pq.push([nextTime, neighbor]);
-                }
+    }
+
+    _bubbleDown(index) {
+        const lastIndex = this.heap.length - 1;
+        while (true) {
+            let smallest = index;
+            const left = index * 2 + 1;
+            const right = index * 2 + 2;
+            if (left <= lastIndex && this.heap[left][0] < this.heap[smallest][0]) {
+                smallest = left;
             }
-    
-            // Sort the priority queue by time
-            pq.sort((a, b) => a[0] - b[0]);
+            if (right <= lastIndex && this.heap[right][0] < this.heap[smallest][0]) {
+                smallest = right;
+            }
+            if (smallest === index) break;
+            [this.heap[index], this.heap[smallest]] = [this.heap[smallest], this.heap[index]];
+            index = smallest;
         }
-    
-        // Return the second minimum time to reach node n
-        return times[n][1];
-    };
+    }
+
+    size() {
+        return this.heap.length;
+    }
+}
+
+var secondMinimum = function(n, edges, time, change) {
+    // Create adjacency list
+    const graph = Array.from({ length: n + 1 }, () => []);
+    for (const [u, v] of edges) {
+        graph[u].push(v);
+        graph[v].push(u);
+    }
+
+    // Initialize time tracking array
+    const times = Array.from({ length: n + 1 }, () => [Infinity, Infinity]);
+    times[1][0] = 0; // Start from node 1
+
+    // Priority Queue for BFS (Min-Heap)
+    const pq = new MinHeap();
+    pq.push([0, 1]); // [time, node]
+
+    while (pq.size() > 0) {
+        // Extract the current node with the smallest time
+        const [currentTime, node] = pq.pop();
+
+        for (const neighbor of graph[node]) {
+            // Calculate the next time considering the traffic signal
+            let nextTime = currentTime + time;
+            const fullCycle = 2 * change;
+            if (Math.floor(currentTime / change) % 2 === 1) {
+                nextTime += (fullCycle - (currentTime % fullCycle));
+            }
+
+            // Check and update the times for reaching the neighbor node
+            if (nextTime < times[neighbor][0]) {
+                times[neighbor][1] = times[neighbor][0];
+                times[neighbor][0] = nextTime;
+                pq.push([nextTime, neighbor]);
+            } else if (nextTime > times[neighbor][0] && nextTime < times[neighbor][1]) {
+                times[neighbor][1] = nextTime;
+                pq.push([nextTime, neighbor]);
+            }
+
+            // Early exit if we have already found two distinct times for the destination
+            if (neighbor === n && times[n][1] < Infinity) {
+                return times[n][1];
+            }
+        }
+    }
+
+    // Return the second minimum time to reach node n
+    return times[n][1];
 };
 
 console.log("==========================================")
