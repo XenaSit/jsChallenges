@@ -2673,7 +2673,51 @@ console.log("==========================================")
 // @return {number}
 
 var secondMinimum = function(n, edges, time, change) {
+    var secondMinimum = function(n, edges, time, change) {
+        // Create adjacency list
+        const graph = Array.from({ length: n + 1 }, () => []);
+        for (const [u, v] of edges) {
+            graph[u].push(v);
+            graph[v].push(u);
+        }
     
+        // Initialize time tracking array
+        const times = Array.from({ length: n + 1 }, () => [Infinity, Infinity]);
+        times[1][0] = 0; // Start from node 1
+    
+        // Priority Queue for BFS (Min-Heap)
+        const pq = [[0, 1]]; // [time, node]
+    
+        while (pq.length) {
+            // Extract the current node with the smallest time
+            const [currentTime, node] = pq.shift();
+    
+            for (const neighbor of graph[node]) {
+                // Calculate the next time considering the traffic signal
+                let nextTime = currentTime + time;
+                const fullCycle = 2 * change;
+                if (Math.floor(currentTime / change) % 2 === 1) {
+                    nextTime += (fullCycle - (currentTime % fullCycle));
+                }
+    
+                // Check and update the times for reaching the neighbor node
+                if (nextTime < times[neighbor][0]) {
+                    times[neighbor][1] = times[neighbor][0];
+                    times[neighbor][0] = nextTime;
+                    pq.push([nextTime, neighbor]);
+                } else if (nextTime > times[neighbor][0] && nextTime < times[neighbor][1]) {
+                    times[neighbor][1] = nextTime;
+                    pq.push([nextTime, neighbor]);
+                }
+            }
+    
+            // Sort the priority queue by time
+            pq.sort((a, b) => a[0] - b[0]);
+        }
+    
+        // Return the second minimum time to reach node n
+        return times[n][1];
+    };
 };
 
 console.log("==========================================")
