@@ -2799,7 +2799,30 @@ console.log("==========================================")
 // @return {number}
 
 var numTeams = function(rating) {
+    let n = rating.length;
+    let count = 0;
     
+    for (let j = 0; j < n; j++) {
+        let leftLess = 0, leftGreater = 0;
+        let rightLess = 0, rightGreater = 0;
+        
+        // Count how many numbers are less/greater on the left of j
+        for (let i = 0; i < j; i++) {
+            if (rating[i] < rating[j]) leftLess++;
+            if (rating[i] > rating[j]) leftGreater++;
+        }
+        
+        // Count how many numbers are less/greater on the right of j
+        for (let k = j + 1; k < n; k++) {
+            if (rating[k] < rating[j]) rightLess++;
+            if (rating[k] > rating[j]) rightGreater++;
+        }
+        
+        // Calculate the number of valid teams with rating[j] as the middle element
+        count += leftLess * rightGreater + leftGreater * rightLess;
+    }
+    
+    return count;
 };
 
 console.log("==========================================")
