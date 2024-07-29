@@ -2803,6 +2803,13 @@ Example 3:
 Input: rating = [1,2,3,4]
 Output: 4
 
+/**
+ * @param {number[]} rating
+ * @return {number}
+ */
+var numTeams = function(rating) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
