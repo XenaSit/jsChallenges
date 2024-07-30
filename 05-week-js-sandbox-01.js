@@ -2853,6 +2853,13 @@ Input: s = "bbaaaaabb"
 Output: 2
 Explanation: The only solution is to delete the first two characters.
 
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var minimumDeletions = function(s) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
