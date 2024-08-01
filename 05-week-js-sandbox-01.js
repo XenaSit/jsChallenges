@@ -2925,7 +2925,8 @@ Easy
 Topics
 Companies
 Hint
-You are given a 0-indexed array of strings details. Each element of details provides information about a given passenger compressed into a string of length 15. The system is such that:
+You are given a 0-indexed array of strings details. Each element of details provides information 
+about a given passenger compressed into a string of length 15. The system is such that:
 
 The first ten characters consist of the phone number of passengers.
 The next character denotes the gender of the person.
@@ -2945,6 +2946,14 @@ Example 2:
 Input: details = ["1313579440F2036","2921522980M5644"]
 Output: 0
 Explanation: None of the passengers are older than 60.
+
+/**
+ * @param {string[]} details
+ * @return {number}
+ */
+var countSeniors = function(details) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
