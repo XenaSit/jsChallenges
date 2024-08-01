@@ -2945,7 +2945,16 @@ console.log("==========================================")
 // @return {number}
 
 var countSeniors = function(details) {
+    let seniorCount = 0;
     
+    for (let detail of details) {
+        let age = parseInt(detail.substring(11, 13), 10);
+        if (age > 60) {
+            seniorCount++;
+        }
+    }
+    
+    return seniorCount;
 };
 
 console.log("==========================================")
