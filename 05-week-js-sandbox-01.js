@@ -2994,7 +2994,35 @@ console.log("==========================================")
 // @return {number}
 
 var minSwaps = function(nums) {
+    const totalOnes = nums.reduce((sum, num) => sum + num, 0);
     
+    if (totalOnes === 0) return 0;
+    
+    const n = nums.length;
+    const extendedNums = nums.concat(nums);
+    let currentOnes = 0;
+    let minSwaps = Infinity;
+
+    for (let i = 0; i < totalOnes; i++) {
+        if (extendedNums[i] === 1) {
+            currentOnes++;
+        }
+    }
+
+    minSwaps = totalOnes - currentOnes;
+
+    for (let i = 1; i < n; i++) {
+        if (extendedNums[i - 1] === 1) {
+            currentOnes--;
+        }
+        if (extendedNums[i + totalOnes - 1] === 1) {
+            currentOnes++;
+        }
+
+        minSwaps = Math.min(minSwaps, totalOnes - currentOnes);
+    }
+
+    return minSwaps;
 };
 
 console.log("==========================================")
