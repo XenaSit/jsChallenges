@@ -2998,7 +2998,13 @@ Output: 0
 Explanation: All the 1's are already grouped together due to the circular property of the array.
 Thus, the minimum number of swaps required is 0.
 
-
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var minSwaps = function(nums) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
