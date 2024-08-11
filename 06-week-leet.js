@@ -8919,6 +8919,13 @@ Input: grid = [[1,1]]
 Output: 2
 Explanation: Grid of full water is also disconnected ([[1,1]] -> [[0,0]]), 0 islands.
 
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var minDays = function(grid) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
