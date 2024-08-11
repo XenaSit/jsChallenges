@@ -8953,20 +8953,12 @@ var minDays = function(grid) {
     };
 
     const isDisconnected = () => {
-        let ones = 0;
-        for (let r = 0; r < rows; r++) {
-            for (let c = 0; c < cols; c++) {
-                if (grid[r][c] === 1) {
-                    ones++;
-                    if (ones > 1) break;
-                }
-            }
-        }
-        return ones <= 1 || !isConnected();
+        return !isConnected();
     };
 
     if (isDisconnected()) return 0;
 
+    // Check if we can disconnect the grid by removing just one land cell.
     for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
             if (grid[r][c] === 1) {
@@ -8977,6 +8969,7 @@ var minDays = function(grid) {
         }
     }
 
+    // If the grid cannot be disconnected by removing one cell, it requires two days.
     return 2;
 };
 
