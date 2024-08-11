@@ -8923,7 +8923,61 @@ console.log("==========================================")
 // @return {number}
 
 var minDays = function(grid) {
-    
+    const rows = grid.length;
+    const cols = grid[0].length;
+
+    const isConnected = () => {
+        const visited = Array.from({ length: rows }, () => Array(cols).fill(false));
+        let found = false;
+
+        const dfs = (r, c) => {
+            if (r < 0 || r >= rows || c < 0 || c >= cols || grid[r][c] === 0 || visited[r][c]) return;
+            visited[r][c] = true;
+            dfs(r + 1, c);
+            dfs(r - 1, c);
+            dfs(r, c + 1);
+            dfs(r, c - 1);
+        };
+
+        for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < cols; c++) {
+                if (grid[r][c] === 1 && !visited[r][c]) {
+                    if (found) return false;
+                    dfs(r, c);
+                    found = true;
+                }
+            }
+        }
+
+        return found;
+    };
+
+    const isDisconnected = () => {
+        let ones = 0;
+        for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < cols; c++) {
+                if (grid[r][c] === 1) {
+                    ones++;
+                    if (ones > 1) break;
+                }
+            }
+        }
+        return ones <= 1 || !isConnected();
+    };
+
+    if (isDisconnected()) return 0;
+
+    for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+            if (grid[r][c] === 1) {
+                grid[r][c] = 0;
+                if (isDisconnected()) return 1;
+                grid[r][c] = 1;
+            }
+        }
+    }
+
+    return 2;
 };
 
 console.log("==========================================")
