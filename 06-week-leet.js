@@ -8976,19 +8976,14 @@ var minDays = function(grid) {
 console.log("==========================================")
 
 703. Kth Largest Element in a Stream
-Easy
-Topics
-Companies
-Design a class to find the kth largest element in a stream. Note that it is the kth largest element in the sorted order, not the kth distinct element.
-
+Easy 
+Design a class to find the kth largest element in a stream. 
+Note that it is the kth largest element in the sorted order, not the kth distinct element.
 Implement KthLargest class:
-
 KthLargest(int k, int[] nums) Initializes the object with the integer k and the stream of integers nums.
 int add(int val) Appends the integer val to the stream and returns the element representing the kth largest element in the stream.
- 
 
 Example 1:
-
 Input
 ["KthLargest", "add", "add", "add", "add", "add"]
 [[3, [4, 5, 8, 2]], [3], [5], [10], [9], [4]]
@@ -9003,28 +8998,24 @@ kthLargest.add(10);  // return 5
 kthLargest.add(9);   // return 8
 kthLargest.add(4);   // return 8
 
+// @param {number} k
+// @param {number[]} nums
 
-/**
- * @param {number} k
- * @param {number[]} nums
- */
 var KthLargest = function(k, nums) {
     
 };
 
-/** 
- * @param {number} val
- * @return {number}
- */
+// @param {number} val
+// @return {number}
+
 KthLargest.prototype.add = function(val) {
     
 };
 
-/** 
- * Your KthLargest object will be instantiated and called as such:
- * var obj = new KthLargest(k, nums)
- * var param_1 = obj.add(val)
- */
+// Your KthLargest object will be instantiated and called as such:
+//  var obj = new KthLargest(k, nums)
+// var param_1 = obj.add(val)
+
 
 
 console.log("==========================================")
