@@ -9061,7 +9061,33 @@ console.log("==========================================")
 // @return {number[][]}
 
 var combinationSum2 = function(candidates, target) {
+    const results = [];
     
+    // Sort the array to help with skipping duplicates
+    candidates.sort((a, b) => a - b);
+    
+    function backtrack(start, currentCombo, currentSum) {
+        if (currentSum === target) {
+            results.push([...currentCombo]);
+            return;
+        }
+        
+        if (currentSum > target) {
+            return;
+        }
+        
+        for (let i = start; i < candidates.length; i++) {
+            // Skip duplicates
+            if (i > start && candidates[i] === candidates[i - 1]) continue;
+            
+            currentCombo.push(candidates[i]);
+            backtrack(i + 1, currentCombo, currentSum + candidates[i]);
+            currentCombo.pop();
+        }
+    }
+    
+    backtrack(0, [], 0);
+    return results;
 };
 
 console.log("==========================================")
