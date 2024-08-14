@@ -9115,7 +9115,13 @@ Example 3:
 Input: nums = [1,6,1], k = 3
 Output: 5
 
+@param {number[]} nums
+@param {number} k
+@return {number}
 
+var smallestDistancePair = function(nums, k) {
+    
+};
 
 
 console.log("==========================================")
