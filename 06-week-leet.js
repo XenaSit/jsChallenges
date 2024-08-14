@@ -9120,7 +9120,32 @@ console.log("==========================================")
 // @return {number}
 
 var smallestDistancePair = function(nums, k) {
+    nums.sort((a, b) => a - b); // Step 1: Sort the array
     
+    let left = 0; // The smallest possible distance
+    let right = nums[nums.length - 1] - nums[0]; // The largest possible distance
+    
+    while (left < right) {
+        let mid = Math.floor((left + right) / 2);
+        let count = 0;
+        let j = 0;
+
+        // Count how many pairs have a distance <= mid
+        for (let i = 0; i < nums.length; i++) {
+            while (j < nums.length && nums[j] - nums[i] <= mid) {
+                j++;
+            }
+            count += j - i - 1;
+        }
+
+        if (count < k) {
+            left = mid + 1;
+        } else {
+            right = mid;
+        }
+    }
+    
+    return left;
 };
 
 
