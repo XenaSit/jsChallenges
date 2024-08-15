@@ -9181,7 +9181,12 @@ For the next two customers in order, we collect a $10 bill and give back a $5 bi
 For the last customer, we can not give the change of $15 back because we only have two $10 bills.
 Since not every customer received the correct change, the answer is false.
 
+@param {number[]} bills
+@return {boolean}
 
+var lemonadeChange = function(bills) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
