@@ -9230,6 +9230,13 @@ Example 2:
 Input: arrays = [[1],[1]]
 Output: 0
 
+/**
+ * @param {number[][]} arrays
+ * @return {number}
+ */
+var maxDistance = function(arrays) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
