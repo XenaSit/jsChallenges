@@ -9234,7 +9234,23 @@ console.log("==========================================")
 // @return {number}
 
 var maxDistance = function(arrays) {
-    
+    let minVal = arrays[0][0];
+    let maxVal = arrays[0][arrays[0].length - 1];
+    let maxDist = 0;
+
+    for (let i = 1; i < arrays.length; i++) {
+        const currMin = arrays[i][0];
+        const currMax = arrays[i][arrays[i].length - 1];
+
+        // Calculate distance considering current min and max values
+        maxDist = Math.max(maxDist, Math.abs(currMax - minVal), Math.abs(maxVal - currMin));
+
+        // Update the global min and max
+        minVal = Math.min(minVal, currMin);
+        maxVal = Math.max(maxVal, currMax);
+    }
+
+    return maxDist;
 };
 
 console.log("==========================================")
