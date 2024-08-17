@@ -9289,7 +9289,13 @@ You add 5 + 3 + 4 = 12 to your score.
 However, you must subtract abs(1 - 1) + abs(1 - 0) = 1 from your score.
 Your final score is 12 - 1 = 11.
 
-
+/**
+ * @param {number[][]} points
+ * @return {number}
+ */
+var maxPoints = function(points) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
