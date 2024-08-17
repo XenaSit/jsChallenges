@@ -9293,7 +9293,43 @@ console.log("==========================================")
 // @return {number}
 
 var maxPoints = function(points) {
-    
+    const m = points.length;
+    const n = points[0].length;
+    let dp = new Array(n).fill(0);
+
+    // Initialize the first row of dp
+    for (let j = 0; j < n; j++) {
+        dp[j] = points[0][j];
+    }
+
+    // Process each subsequent row
+    for (let i = 1; i < m; i++) {
+        let left = new Array(n).fill(0);
+        let right = new Array(n).fill(0);
+        let newDp = new Array(n).fill(0);
+
+        // Compute left array (max values from left to right)
+        left[0] = dp[0];
+        for (let j = 1; j < n; j++) {
+            left[j] = Math.max(left[j - 1] - 1, dp[j]);
+        }
+
+        // Compute right array (max values from right to left)
+        right[n - 1] = dp[n - 1];
+        for (let j = n - 2; j >= 0; j--) {
+            right[j] = Math.max(right[j + 1] - 1, dp[j]);
+        }
+
+        // Compute the new dp array for the current row
+        for (let j = 0; j < n; j++) {
+            newDp[j] = points[i][j] + Math.max(left[j], right[j]);
+        }
+
+        dp = newDp; // Move to the next row
+    }
+
+    // The answer will be the max value in the last row
+    return Math.max(...dp);
 };
 
 console.log("==========================================")
