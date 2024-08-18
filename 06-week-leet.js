@@ -9353,9 +9353,38 @@ console.log("==========================================")
 // @return {number}
 
 var nthUglyNumber = function(n) {
+    // Create an array to store the ugly numbers
+    let dp = new Array(n);
+    dp[0] = 1; // The first ugly number is 1
     
+    // Initialize pointers for multiples of 2, 3, and 5
+    let i2 = 0, i3 = 0, i5 = 0;
+    
+    // Initialize the next multiples of 2, 3, and 5
+    let next_2 = 2, next_3 = 3, next_5 = 5;
+    
+    for (let i = 1; i < n; i++) {
+        // Find the next ugly number
+        dp[i] = Math.min(next_2, next_3, next_5);
+        
+        // Update the pointers and next multiples
+        if (dp[i] === next_2) {
+            i2++;
+            next_2 = dp[i2] * 2;
+        }
+        if (dp[i] === next_3) {
+            i3++;
+            next_3 = dp[i3] * 3;
+        }
+        if (dp[i] === next_5) {
+            i5++;
+            next_5 = dp[i5] * 5;
+        }
+    }
+    
+    // Return the nth ugly number
+    return dp[n - 1];
 };
-
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
