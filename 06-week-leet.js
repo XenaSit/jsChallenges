@@ -9356,6 +9356,13 @@ Input: n = 1
 Output: 1
 Explanation: 1 has no prime factors, therefore all of its prime factors are limited to 2, 3, and 5.
 
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var nthUglyNumber = function(n) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
