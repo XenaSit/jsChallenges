@@ -9407,7 +9407,13 @@ Example 2:
 Input: n = 1
 Output: 0
 
-
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var minSteps = function(n) {
+    
+};
 
 
 
