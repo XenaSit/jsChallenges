@@ -9503,7 +9503,13 @@ Input: s = "aba"
 Output: 2
 Explanation: Print "aaa" first and then print "b" from the second place of the string, which will cover the existing character 'a'.
 
-
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var strangePrinter = function(s) {
+    
+};
 
 
 
