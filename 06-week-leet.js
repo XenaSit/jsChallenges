@@ -9542,7 +9542,11 @@ console.log("==========================================")
 // @return {number}
 
 var findComplement = function(num) {
+    // Step 1: Calculate the mask
+    let mask = (1 << num.toString(2).length) - 1;
     
+    // Step 2: XOR num with the mask
+    return num ^ mask;
 };
 
 console.log("==========================================")
