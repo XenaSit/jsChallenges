@@ -9581,6 +9581,13 @@ If the denominator is 1, it means this fraction is actually an integer in a frac
 The number of given fractions will be in the range [1, 10].
 The numerator and denominator of the final result are guaranteed to be valid and in the range of 32-bit int.
 
+/**
+ * @param {string} expression
+ * @return {string}
+ */
+var fractionAddition = function(expression) {
+    
+};
 
 // console.log("==========================================")
 // console.log("==========================================")
