@@ -9584,9 +9584,27 @@ console.log("==========================================")
 // @param {string} expression
 // @return {string}
 
-var fractionAddition = function(expression) {
+function fractionAddition(expression) {
+    const gcd = (a, b) => b === 0 ? a : gcd(b, a % b);
+
+    let nums = expression.match(/[\+\-]?\d+\/\d+/g);
     
-};
+    let numerator = 0, denominator = 1;
+    
+    for (let frac of nums) {
+        let [num, denom] = frac.split('/').map(Number);
+        
+        numerator = numerator * denom + num * denominator;
+        denominator *= denom;
+        
+        let g = gcd(Math.abs(numerator), denominator);
+        
+        numerator /= g;
+        denominator /= g;
+    }
+    
+    return `${numerator}/${denominator}`;
+}
 
 // console.log("==========================================")
 // console.log("==========================================")
