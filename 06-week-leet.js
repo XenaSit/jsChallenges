@@ -9629,6 +9629,13 @@ n consists of only digits.
 n does not have leading zeros.
 n is representing an integer in the range [1, 1018 - 1].
 
+/**
+ * @param {string} n
+ * @return {string}
+ */
+var nearestPalindromic = function(n) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
