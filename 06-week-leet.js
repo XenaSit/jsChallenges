@@ -9633,7 +9633,44 @@ console.log("==========================================")
 // @return {string}
 
 var nearestPalindromic = function(n) {
-    
+    let length = n.length;
+    let candidates = new Set();
+
+    // Case 1: Same length palindrome by mirroring the first half
+    let prefix = n.substring(0, Math.ceil(length / 2));
+    let prefixNumber = BigInt(prefix);
+    let prefixes = [prefixNumber - 1n, prefixNumber, prefixNumber + 1n];
+
+    // Generate all palindromes
+    for (let p of prefixes) {
+        let strP = p.toString();
+        let palindrome = strP + strP.slice(0, length % 2 === 0 ? strP.length : strP.length - 1).split('').reverse().join('');
+        candidates.add(BigInt(palindrome));
+    }
+
+    // Case 2: Consider edge cases like 999..999 and 100..001
+    candidates.add(BigInt((10n ** BigInt(length - 1)) - 1n)); // 999...999
+    candidates.add(BigInt((10n ** BigInt(length)) + 1n));     // 100...001
+
+    // Remove the original number itself from the candidates
+    let originalNumber = BigInt(n);
+    candidates.delete(originalNumber);
+
+    // Find the closest palindrome by absolute difference
+    let result = "";
+    let minDiff = null;
+
+    for (let candidate of candidates) {
+        let diff = candidate - originalNumber;
+        if (diff < 0n) diff = -diff;  // Manual absolute value calculation for BigInt
+
+        if (minDiff === null || diff < minDiff || (diff === minDiff && candidate < BigInt(result))) {
+            minDiff = diff;
+            result = candidate.toString();
+        }
+    }
+
+    return result;
 };
 
 console.log("==========================================")
