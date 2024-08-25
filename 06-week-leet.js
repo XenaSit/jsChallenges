@@ -9702,7 +9702,18 @@ console.log("==========================================")
 // @return {number[]}
 
 var postorderTraversal = function(root) {
+    const result = [];
     
+    const traverse = (node) => {
+        if (!node) return;
+        
+        traverse(node.left);  // visit left subtree
+        traverse(node.right); // visit right subtree
+        result.push(node.val); // visit root
+    }
+    
+    traverse(root);
+    return result;
 };
 
 
