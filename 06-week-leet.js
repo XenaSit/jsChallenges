@@ -9744,9 +9744,23 @@ console.log("==========================================")
 // @return {number[]}
 
 var postorder = function(root) {
+    const result = [];
     
+    function traverse(node) {
+        if (!node) return;
+        
+        // Traverse all children
+        for (let child of node.children) {
+            traverse(child);
+        }
+        
+        // Visit the node
+        result.push(node.val);
+    }
+    
+    traverse(root);
+    return result;
 };
-
 
 console.log("==========================================")
 // console.log("==========================================")
