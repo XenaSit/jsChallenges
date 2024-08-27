@@ -9804,13 +9804,14 @@ var maxProbability = function(n, edges, succProb, start_node, end_node) {
     }
     
     // Step 2: Initialize the max heap (priority queue) and the probability array
-    const maxHeap = [[start_node, 1]]; // [node, probability]
+    const maxHeap = new MaxHeap();
+    maxHeap.push([start_node, 1]); // [node, probability]
     const probabilities = new Array(n).fill(0);
     probabilities[start_node] = 1;
     
     // Step 3: Dijkstra's algorithm with max-heap
-    while (maxHeap.length > 0) {
-        const [current_node, current_prob] = maxHeap.shift();
+    while (!maxHeap.isEmpty()) {
+        const [current_node, current_prob] = maxHeap.pop();
         
         if (current_node === end_node) {
             return current_prob;
@@ -9823,13 +9824,85 @@ var maxProbability = function(n, edges, succProb, start_node, end_node) {
                 maxHeap.push([neighbor, new_prob]);
             }
         }
-        
-        // Sort maxHeap based on probabilities (decreasing order)
-        maxHeap.sort((a, b) => b[1] - a[1]);
     }
     
     return 0;
 };
+
+// MaxHeap implementation
+class MaxHeap {
+    constructor() {
+        this.heap = [];
+    }
+
+    push(val) {
+        this.heap.push(val);
+        this._heapifyUp();
+    }
+
+    pop() {
+        const max = this.heap[0];
+        const end = this.heap.pop();
+        if (this.heap.length > 0) {
+            this.heap[0] = end;
+            this._heapifyDown();
+        }
+        return max;
+    }
+
+    isEmpty() {
+        return this.heap.length === 0;
+    }
+
+    _heapifyUp() {
+        let index = this.heap.length - 1;
+        const element = this.heap[index];
+        while (index > 0) {
+            let parentIndex = Math.floor((index - 1) / 2);
+            let parent = this.heap[parentIndex];
+            if (element[1] <= parent[1]) break;
+            this.heap[index] = parent;
+            index = parentIndex;
+        }
+        this.heap[index] = element;
+    }
+
+    _heapifyDown() {
+        let index = 0;
+        const length = this.heap.length;
+        const element = this.heap[0];
+
+        while (true) {
+            let leftChildIndex = 2 * index + 1;
+            let rightChildIndex = 2 * index + 2;
+            let leftChild, rightChild;
+            let swap = null;
+
+            if (leftChildIndex < length) {
+                leftChild = this.heap[leftChildIndex];
+                if (leftChild[1] > element[1]) {
+                    swap = leftChildIndex;
+                }
+            }
+
+            if (rightChildIndex < length) {
+                rightChild = this.heap[rightChildIndex];
+                if (
+                    (swap === null && rightChild[1] > element[1]) ||
+                    (swap !== null && rightChild[1] > leftChild[1])
+                ) {
+                    swap = rightChildIndex;
+                }
+            }
+
+            if (swap === null) break;
+            this.heap[index] = this.heap[swap];
+            index = swap;
+        }
+        this.heap[index] = element;
+    }
+}
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
