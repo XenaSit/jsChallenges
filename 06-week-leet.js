@@ -9785,6 +9785,17 @@ Input: n = 3, edges = [[0,1]], succProb = [0.5], start = 0, end = 2
 Output: 0.00000
 Explanation: There is no path between 0 and 2.
 
+/**
+ * @param {number} n
+ * @param {number[][]} edges
+ * @param {number[]} succProb
+ * @param {number} start_node
+ * @param {number} end_node
+ * @return {number}
+ */
+var maxProbability = function(n, edges, succProb, start_node, end_node) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
