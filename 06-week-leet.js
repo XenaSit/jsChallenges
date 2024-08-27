@@ -9793,9 +9793,43 @@ console.log("==========================================")
 // @return {number}
 
 var maxProbability = function(n, edges, succProb, start_node, end_node) {
+    // Step 1: Build the graph
+    const graph = new Array(n).fill(0).map(() => []);
     
+    for (let i = 0; i < edges.length; i++) {
+        const [u, v] = edges[i];
+        const prob = succProb[i];
+        graph[u].push([v, prob]);
+        graph[v].push([u, prob]);
+    }
+    
+    // Step 2: Initialize the max heap (priority queue) and the probability array
+    const maxHeap = [[start_node, 1]]; // [node, probability]
+    const probabilities = new Array(n).fill(0);
+    probabilities[start_node] = 1;
+    
+    // Step 3: Dijkstra's algorithm with max-heap
+    while (maxHeap.length > 0) {
+        const [current_node, current_prob] = maxHeap.shift();
+        
+        if (current_node === end_node) {
+            return current_prob;
+        }
+        
+        for (const [neighbor, edge_prob] of graph[current_node]) {
+            const new_prob = current_prob * edge_prob;
+            if (new_prob > probabilities[neighbor]) {
+                probabilities[neighbor] = new_prob;
+                maxHeap.push([neighbor, new_prob]);
+            }
+        }
+        
+        // Sort maxHeap based on probabilities (decreasing order)
+        maxHeap.sort((a, b) => b[1] - a[1]);
+    }
+    
+    return 0;
 };
-
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
