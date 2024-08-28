@@ -9927,6 +9927,14 @@ Output: 2
 Explanation: In the picture above, the grid on the left is grid1 and the grid on the right is grid2.
 The 1s colored red in grid2 are those considered to be part of a sub-island. There are two sub-islands.
 
+/**
+ * @param {number[][]} grid1
+ * @param {number[][]} grid2
+ * @return {number}
+ */
+var countSubIslands = function(grid1, grid2) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
