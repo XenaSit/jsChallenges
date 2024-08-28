@@ -9932,7 +9932,43 @@ console.log("==========================================")
 // @return {number}
 
 var countSubIslands = function(grid1, grid2) {
-    
+    const m = grid2.length;
+    const n = grid2[0].length;
+
+    const dfs = (i, j) => {
+        if (i < 0 || i >= m || j < 0 || j >= n || grid2[i][j] === 0) {
+            return true;
+        }
+
+        // Mark the cell as visited by setting it to 0
+        grid2[i][j] = 0;
+
+        // Check if the current cell in grid2 is part of a valid sub-island in grid1
+        let isSubIsland = grid1[i][j] === 1;
+
+        // Explore all four directions (up, down, left, right)
+        isSubIsland = dfs(i + 1, j) && isSubIsland;
+        isSubIsland = dfs(i - 1, j) && isSubIsland;
+        isSubIsland = dfs(i, j + 1) && isSubIsland;
+        isSubIsland = dfs(i, j - 1) && isSubIsland;
+
+        return isSubIsland;
+    };
+
+    let subIslandCount = 0;
+
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            if (grid2[i][j] === 1) {
+                // Start a DFS to explore the entire island in grid2
+                if (dfs(i, j)) {
+                    subIslandCount++;
+                }
+            }
+        }
+    }
+
+    return subIslandCount;
 };
 
 console.log("==========================================")
