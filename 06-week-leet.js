@@ -10006,6 +10006,13 @@ Input: stones = [[0,0]]
 Output: 0
 Explanation: [0,0] is the only stone on the plane, so you cannot remove it.
 
+/**
+ * @param {number[][]} stones
+ * @return {number}
+ */
+var removeStones = function(stones) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
