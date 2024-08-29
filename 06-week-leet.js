@@ -10010,7 +10010,41 @@ console.log("==========================================")
 // @return {number}
 
 var removeStones = function(stones) {
+    const parent = {};
     
+    // Find function with path compression
+    const find = (x) => {
+        if (parent[x] === undefined) {
+            parent[x] = x;
+        }
+        if (parent[x] !== x) {
+            parent[x] = find(parent[x]);
+        }
+        return parent[x];
+    };
+    
+    // Union function
+    const union = (x, y) => {
+        const rootX = find(x);
+        const rootY = find(y);
+        if (rootX !== rootY) {
+            parent[rootX] = rootY;
+        }
+    };
+    
+    // Union stones based on row and column
+    for (let [x, y] of stones) {
+        union(x, ~y); // Use ~y to differentiate between row and column
+    }
+    
+    // Count distinct roots
+    const uniqueRoots = new Set();
+    for (let [x, y] of stones) {
+        uniqueRoots.add(find(x));
+    }
+    
+    // The number of removable stones is total stones minus number of connected components
+    return stones.length - uniqueRoots.size;
 };
 
 console.log("==========================================")
