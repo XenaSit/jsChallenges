@@ -10085,9 +10085,97 @@ console.log("==========================================")
 // @param {number} target
 // @return {number[][]}
 
-var modifiedGraphEdges = function(n, edges, source, destination, target) {
-    
-};
+function modifiedGraphEdges(
+    nodeCount,
+    edges,
+    sourceNode,
+    destNode,
+    targetDistance
+) {
+    // Initialize a very large value as a placeholder for infinity
+    const INF = 2e9;
+
+    // Dijkstra's algorithm implementation to find the shortest path
+    const dijkstra = (edges) => {
+        // Graph representation with distances initialized to infinity
+        const graph = Array(nodeCount)
+            .fill(0)
+            .map(() => Array(nodeCount).fill(INF));
+        // Array to hold shortest distances from source
+        const dist = Array(nodeCount).fill(INF);
+        // Boolean array to track visited nodes
+        const visited = Array(nodeCount).fill(false);
+
+        // Convert adjacency list to adjacency matrix and skip edges with weight -1
+        for (const [from, to, weight] of edges) {
+            if (weight === -1) {
+                continue;
+            }
+            graph[from][to] = weight;
+            graph[to][from] = weight;
+        }
+
+        // Distance from source to itself is always 0
+        dist[sourceNode] = 0;
+
+        // Find the shortest path to each node
+        for (let i = 0; i < nodeCount; ++i) {
+            let closestNode = -1;
+            for (let j = 0; j < nodeCount; ++j) {
+                if (!visited[j] && (closestNode === -1 || dist[j] < dist[closestNode])) {
+                    closestNode = j;
+                }
+            }
+            visited[closestNode] = true;
+
+            // Update the distances for the neighbors of the closestNode
+            for (let neighbor = 0; neighbor < nodeCount; ++neighbor) {
+                dist[neighbor] = Math.min(dist[neighbor], dist[closestNode] + graph[closestNode][neighbor]);
+            }
+        }
+
+        // Return the shortest distance to the destination node
+        return dist[destNode];
+    };
+
+    // Find the initial shortest path from source to destination
+    let shortestDistance = dijkstra(edges);
+
+    // If shortest distance is already less than target, return empty array
+    if (shortestDistance < targetDistance) {
+        return [];
+    }
+
+    // Check if the initial shortest path equals the target distance
+    let pathFound = shortestDistance === targetDistance;
+
+    // Iterate over edges to adjust weights to try meeting the target distance
+    for (const edge of edges) {
+        // Skip edges with positive weight
+        if (edge[2] > 0) {
+            continue;
+        }
+
+        // If path is already found, set edge weight to infinity to exclude it
+        if (pathFound) {
+            edge[2] = INF;
+            continue;
+        }
+
+        // Set temporary weight to 1 and recalculate shortest path
+        edge[2] = 1;
+        shortestDistance = dijkstra(edges);
+
+        // If new path meets or is lower than target, set edge weight to make the path exact
+        if (shortestDistance <= targetDistance) {
+            pathFound = true;
+            edge[2] += targetDistance - shortestDistance;
+        }
+    }
+
+    // Return the modified edges if path found, otherwise empty array
+    return pathFound ? edges : [];
+}
 
 console.log("==========================================")
 // console.log("==========================================")
