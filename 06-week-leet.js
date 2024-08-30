@@ -10078,6 +10078,17 @@ Input: n = 4, edges = [[1,0,4],[1,2,3],[2,3,5],[0,3,-1]], source = 0, destinatio
 Output: [[1,0,4],[1,2,3],[2,3,5],[0,3,1]]
 Explanation: The graph above shows a modified graph having the shortest distance from 0 to 2 as 6.
 
+/**
+ * @param {number} n
+ * @param {number[][]} edges
+ * @param {number} source
+ * @param {number} destination
+ * @param {number} target
+ * @return {number[][]}
+ */
+var modifiedGraphEdges = function(n, edges, source, destination, target) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
