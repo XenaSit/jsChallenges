@@ -10102,7 +10102,14 @@ Explanation: The robot starts at (0, 0):
 4. Move south 6 units to (0, 0).
 The furthest point the robot ever gets from the origin is (0, 6), which squared is 62 = 36 units away.
 
-
+/**
+ * @param {number[]} commands
+ * @param {number[][]} obstacles
+ * @return {number}
+ */
+var robotSim = function(commands, obstacles) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
