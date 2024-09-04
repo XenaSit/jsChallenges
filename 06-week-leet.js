@@ -10235,7 +10235,44 @@ console.log("==========================================")
 // @return {number}
 
 var robotSim = function(commands, obstacles) {
-    
+    // Directions: North, East, South, West
+    const directions = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+    let x = 0, y = 0; // Initial position
+    let dir = 0; // Start facing North
+    let maxDistance = 0;
+
+    // Convert obstacles array to a Set for faster lookup
+    const obstacleSet = new Set(obstacles.map(([ox, oy]) => `${ox},${oy}`));
+
+    for (let command of commands) {
+        if (command === -2) {
+            // Turn left: Counterclockwise (subtract 1 from direction index)
+            dir = (dir + 3) % 4; 
+        } else if (command === -1) {
+            // Turn right: Clockwise (add 1 to direction index)
+            dir = (dir + 1) % 4; 
+        } else {
+            // Move forward `command` steps
+            for (let i = 0; i < command; i++) {
+                const nx = x + directions[dir][0];
+                const ny = y + directions[dir][1];
+                
+                // Check if the next position is an obstacle
+                if (obstacleSet.has(`${nx},${ny}`)) {
+                    break; // Stop if there's an obstacle
+                }
+
+                // Update the robot's position
+                x = nx;
+                y = ny;
+
+                // Calculate the squared distance from the origin
+                maxDistance = Math.max(maxDistance, x * x + y * y);
+            }
+        }
+    }
+
+    return maxDistance;
 };
 
 console.log("==========================================")
