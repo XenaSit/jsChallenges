@@ -10049,6 +10049,135 @@ var removeStones = function(stones) {
 
 console.log("==========================================")
 
+// 2699. Modify Graph Edge Weights
+// Hard
+// You are given an undirected weighted connected graph containing n nodes labeled from 0 to n - 1, 
+// and an integer array edges where edges[i] = [ai, bi, wi] 
+// indicates that there is an edge between nodes ai and bi with weight wi.
+// Some edges have a weight of -1 (wi = -1), while others have a positive weight (wi > 0).
+// Your task is to modify all edges with a weight of -1 by assigning them positive integer values 
+// in the range [1, 2 * 109] so that the shortest distance between the nodes source and destination 
+// becomes equal to an integer target. If there are multiple modifications that make the shortest 
+// distance between source and destination equal to target, any of them will be considered correct.
+// Return an array containing all edges (even unmodified ones) in any order if it is possible 
+// to make the shortest distance from source to destination equal to target, or an empty array if it's impossible.
+// Note: You are not allowed to modify the weights of edges with initial positive weights.
+
+// Example 1:
+// Input: n = 5, edges = [[4,1,-1],[2,0,-1],[0,3,-1],[4,3,-1]], source = 0, destination = 1, target = 5
+// Output: [[4,1,1],[2,0,1],[0,3,3],[4,3,1]]
+// Explanation: The graph above shows a possible modification to the edges, making the distance from 0 to 1 equal to 5.
+
+// Example 2:
+// Input: n = 3, edges = [[0,1,-1],[0,2,5]], source = 0, destination = 2, target = 6
+// Output: []
+// Explanation: The graph above contains the initial edges. It is not possible to make the distance from 0 to 2 equal to 6 by modifying the edge with weight -1. So, an empty array is returned.
+
+// Example 3:
+// Input: n = 4, edges = [[1,0,4],[1,2,3],[2,3,5],[0,3,-1]], source = 0, destination = 2, target = 6
+// Output: [[1,0,4],[1,2,3],[2,3,5],[0,3,1]]
+// Explanation: The graph above shows a modified graph having the shortest distance from 0 to 2 as 6.
+
+// @param {number} n
+// @param {number[][]} edges
+// @param {number} source
+// @param {number} destination
+// @param {number} target
+// @return {number[][]}
+
+function modifiedGraphEdges(
+    nodeCount,
+    edges,
+    sourceNode,
+    destNode,
+    targetDistance
+) {
+    // Initialize a very large value as a placeholder for infinity
+    const INF = 2e9;
+
+    // Dijkstra's algorithm implementation to find the shortest path
+    const dijkstra = (edges) => {
+        // Graph representation with distances initialized to infinity
+        const graph = Array(nodeCount)
+            .fill(0)
+            .map(() => Array(nodeCount).fill(INF));
+        // Array to hold shortest distances from source
+        const dist = Array(nodeCount).fill(INF);
+        // Boolean array to track visited nodes
+        const visited = Array(nodeCount).fill(false);
+
+        // Convert adjacency list to adjacency matrix and skip edges with weight -1
+        for (const [from, to, weight] of edges) {
+            if (weight === -1) {
+                continue;
+            }
+            graph[from][to] = weight;
+            graph[to][from] = weight;
+        }
+
+        // Distance from source to itself is always 0
+        dist[sourceNode] = 0;
+
+        // Find the shortest path to each node
+        for (let i = 0; i < nodeCount; ++i) {
+            let closestNode = -1;
+            for (let j = 0; j < nodeCount; ++j) {
+                if (!visited[j] && (closestNode === -1 || dist[j] < dist[closestNode])) {
+                    closestNode = j;
+                }
+            }
+            visited[closestNode] = true;
+
+            // Update the distances for the neighbors of the closestNode
+            for (let neighbor = 0; neighbor < nodeCount; ++neighbor) {
+                dist[neighbor] = Math.min(dist[neighbor], dist[closestNode] + graph[closestNode][neighbor]);
+            }
+        }
+
+        // Return the shortest distance to the destination node
+        return dist[destNode];
+    };
+
+    // Find the initial shortest path from source to destination
+    let shortestDistance = dijkstra(edges);
+
+    // If shortest distance is already less than target, return empty array
+    if (shortestDistance < targetDistance) {
+        return [];
+    }
+
+    // Check if the initial shortest path equals the target distance
+    let pathFound = shortestDistance === targetDistance;
+
+    // Iterate over edges to adjust weights to try meeting the target distance
+    for (const edge of edges) {
+        // Skip edges with positive weight
+        if (edge[2] > 0) {
+            continue;
+        }
+
+        // If path is already found, set edge weight to infinity to exclude it
+        if (pathFound) {
+            edge[2] = INF;
+            continue;
+        }
+
+        // Set temporary weight to 1 and recalculate shortest path
+        edge[2] = 1;
+        shortestDistance = dijkstra(edges);
+
+        // If new path meets or is lower than target, set edge weight to make the path exact
+        if (shortestDistance <= targetDistance) {
+            pathFound = true;
+            edge[2] += targetDistance - shortestDistance;
+        }
+    }
+
+    // Return the modified edges if path found, otherwise empty array
+    return pathFound ? edges : [];
+}
+console.log("==========================================")
+
 874. Walking Robot Simulation
 Medium
 Topics
@@ -10112,6 +10241,7 @@ var robotSim = function(commands, obstacles) {
 };
 
 console.log("==========================================")
+
 // console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
