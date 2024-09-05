@@ -10313,7 +10313,34 @@ console.log("==========================================")
 // @return {number[]}
 
 var missingRolls = function(rolls, mean, n) {
+    const m = rolls.length;
     
+    // Calculate total sum of all n + m rolls
+    const totalSum = mean * (n + m);
+    
+    // Calculate sum of the given rolls
+    const sumOfRolls = rolls.reduce((sum, roll) => sum + roll, 0);
+    
+    // Calculate the sum that is missing
+    const missingSum = totalSum - sumOfRolls;
+    
+    // Check if missingSum is within feasible range
+    if (missingSum < n || missingSum > 6 * n) {
+        return [];
+    }
+    
+    // Create an array of length n with each element starting at 1
+    const result = new Array(n).fill(1);
+    let remainingSum = missingSum - n; // Distribute the remaining sum
+    
+    // Distribute the remaining sum across the array, ensuring no value exceeds 6
+    for (let i = 0; i < n && remainingSum > 0; i++) {
+        let addValue = Math.min(5, remainingSum); // Max we can add is 5 (to make the roll 6)
+        result[i] += addValue;
+        remainingSum -= addValue;
+    }
+    
+    return result;
 };
 
 console.log("==========================================")
