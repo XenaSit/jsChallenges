@@ -10307,6 +10307,15 @@ Input: rolls = [1,2,3,4], mean = 6, n = 4
 Output: []
 Explanation: It is impossible for the mean to be 6 no matter what the 4 missing rolls are.
 
+/**
+ * @param {number[]} rolls
+ * @param {number} mean
+ * @param {number} n
+ * @return {number[]}
+ */
+var missingRolls = function(rolls, mean, n) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
