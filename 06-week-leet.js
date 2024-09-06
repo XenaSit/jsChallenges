@@ -10379,9 +10379,33 @@ console.log("==========================================")
 // @return {ListNode}
 
 var modifiedList = function(nums, head) {
+    // Convert nums to a set for O(1) lookup
+    const numSet = new Set(nums);
     
+    // Create a dummy node to simplify edge cases like removing the head node
+    let dummy = new ListNode(0);
+    dummy.next = head;
+    
+    // Initialize pointers
+    let prev = dummy;
+    let curr = head;
+    
+    // Traverse the list
+    while (curr !== null) {
+        if (numSet.has(curr.val)) {
+            // If the current value is in nums, skip the current node
+            prev.next = curr.next;
+        } else {
+            // Otherwise, move prev pointer forward
+            prev = curr;
+        }
+        // Move the current pointer forward
+        curr = curr.next;
+    }
+    
+    // Return the head of the modified list
+    return dummy.next;
 };
-
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
