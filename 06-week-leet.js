@@ -10446,9 +10446,31 @@ console.log("==========================================")
 // @return {boolean}
 
 var isSubPath = function(head, root) {
+    // Helper function to check if starting from this root we can match the linked list
+    const dfs = (head, root) => {
+        // If head is null, we have matched the entire linked list
+        if (head === null) return true;
+        // If root is null, we cannot continue matching
+        if (root === null) return false;
+        // If values don't match, we can't proceed
+        if (head.val !== root.val) return false;
+        // Check the left and right children recursively for the next node in the linked list
+        return dfs(head.next, root.left) || dfs(head.next, root.right);
+    };
     
+    // Function to traverse the binary tree and find the starting node
+    const traverse = (head, root) => {
+        // If root is null, no more nodes to check
+        if (root === null) return false;
+        // Check if from this node we can match the linked list
+        if (dfs(head, root)) return true;
+        // Otherwise, try traversing to the left and right child nodes
+        return traverse(head, root.left) || traverse(head, root.right);
+    };
+    
+    // Start the traversal from the root of the tree
+    return traverse(head, root);
 };
-
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
