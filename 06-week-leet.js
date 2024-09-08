@@ -10504,7 +10504,40 @@ console.log("==========================================")
 // @return {ListNode[]}
 
 var splitListToParts = function(head, k) {
-    
+    let current = head;
+    let length = 0;
+
+    // Step 1: Calculate the length of the list
+    while (current !== null) {
+        length++;
+        current = current.next;
+    }
+
+    // Step 2: Calculate the size of each part
+    const partSize = Math.floor(length / k);
+    let extra = length % k;
+
+    const result = new Array(k).fill(null);
+    current = head;
+
+    // Step 3: Split the list into parts
+    for (let i = 0; i < k && current !== null; i++) {
+        result[i] = current;
+        let currentPartSize = partSize + (extra > 0 ? 1 : 0); // Add extra element to the first 'extra' parts
+        extra--;
+
+        // Move to the end of the current part
+        for (let j = 1; j < currentPartSize; j++) {
+            current = current.next;
+        }
+
+        // Break the list if there are more nodes to process
+        let next = current.next;
+        current.next = null; // Split the list here
+        current = next; // Move to the next part of the list
+    }
+
+    return result;
 };
 
 // console.log("==========================================")
