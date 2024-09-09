@@ -10493,12 +10493,6 @@ console.log("==========================================")
 // Explanation:
 // The input has been split into consecutive parts with size difference at most 1, and earlier parts are a larger size than the later parts.
 
-// Definition for singly-linked list.
-// function ListNode(val, next) {
-//     this.val = (val===undefined ? 0 : val)
-//     this.next = (next===undefined ? null : next)
-// }
-
 // @param {ListNode} head
 // @param {number} k
 // @return {ListNode[]}
@@ -10562,19 +10556,17 @@ Output: [[0,1,2,-1]]
 Explanation: The diagram above shows how the values are printed from left to right in the matrix.
 The last space in the matrix is set to -1.
 
-/**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
-/**
- * @param {number} m
- * @param {number} n
- * @param {ListNode} head
- * @return {number[][]}
- */
+// Definition for singly-linked list.
+// function ListNode(val, next) {
+//     this.val = (val===undefined ? 0 : val)
+//     this.next = (next===undefined ? null : next)
+// }
+
+// @param {number} m
+// @param {number} n
+// @param {ListNode} head
+// @return {number[][]}
+
 var spiralMatrix = function(m, n, head) {
     
 };
