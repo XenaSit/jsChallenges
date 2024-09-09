@@ -10562,6 +10562,23 @@ Output: [[0,1,2,-1]]
 Explanation: The diagram above shows how the values are printed from left to right in the matrix.
 The last space in the matrix is set to -1.
 
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {number} m
+ * @param {number} n
+ * @param {ListNode} head
+ * @return {number[][]}
+ */
+var spiralMatrix = function(m, n, head) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
