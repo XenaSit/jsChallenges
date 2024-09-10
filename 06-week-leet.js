@@ -10567,11 +10567,74 @@ var splitListToParts = function(head, k) {
 // @param {ListNode} head
 // @return {number[][]}
 
-var spiralMatrix = function(m, n, head) {
-    
-};
+// Function to populate an m x n matrix with the values from a given linked list in spiral order.
+function spiralMatrix(m, n, head) {
+    // Direction vectors for moving right, down, left, and up
+    const directionVectors = [
+        [0, 1], // right
+        [1, 0], // down
+        [0, -1], // left
+        [-1, 0], // up
+    ];
+
+    // Initialize matrix with -1, indicating unfilled positions
+    let matrix = Array.from({ length: m }, () => new Array(n).fill(-1));
+
+    // Variables to track the current position and direction
+    let row = 0,
+        col = 0,
+        dirIndex = 0; // Direction index to index into directionVectors
+
+    // Iterate through the linked list until we reach the end
+    while (head !== null) {
+        // Place the current value into the matrix
+        matrix[row][col] = head.val;
+        // Move to the next node in the list
+        head = head.next;
+
+        // Calculate the next position using the current direction
+        let nextRow = row + directionVectors[dirIndex][0];
+        let nextCol = col + directionVectors[dirIndex][1];
+
+        // Check bounds and if the next position has already been visited
+        if (nextRow < 0 || nextRow >= m || nextCol < 0 || nextCol >= n || matrix[nextRow][nextCol] !== -1) {
+            // Change direction if out of bounds or if position is filled
+            dirIndex = (dirIndex + 1) % 4;
+        }
+
+        // Update current position to the new position based on updated direction
+        row = row + directionVectors[dirIndex][0];
+        col = col + directionVectors[dirIndex][1];
+    }
+
+    // Return the filled matrix
+    return matrix;
+}
 
 console.log("==========================================")
+
+2807. Insert Greatest Common Divisors in Linked List
+Medium
+Given the head of a linked list head, in which each node contains an integer value.
+Between every pair of adjacent nodes, insert a new node with a value equal to the greatest common divisor of them
+Return the linked list after insertion.
+The greatest common divisor of two numbers is the largest positive integer that evenly divides both numbers.
+
+Example 1:
+Input: head = [18,6,10,3]
+Output: [18,6,6,2,10,1,3]
+Explanation: The 1st diagram denotes the initial linked list and the 2nd diagram denotes the linked list after inserting the new nodes (nodes in blue are the inserted nodes).
+- We insert the greatest common divisor of 18 and 6 = 6 between the 1st and the 2nd nodes.
+- We insert the greatest common divisor of 6 and 10 = 2 between the 2nd and the 3rd nodes.
+- We insert the greatest common divisor of 10 and 3 = 1 between the 3rd and the 4th nodes.
+There are no more adjacent nodes, so we return the linked list.
+
+Example 2:
+Input: head = [7]
+Output: [7]
+Explanation: The 1st diagram denotes the initial linked list and the 2nd diagram denotes the linked list after inserting the new nodes.
+There are no pairs of adjacent nodes, so we return the initial linked list.
+
 // console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
