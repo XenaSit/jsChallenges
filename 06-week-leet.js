@@ -10635,6 +10635,21 @@ Output: [7]
 Explanation: The 1st diagram denotes the initial linked list and the 2nd diagram denotes the linked list after inserting the new nodes.
 There are no pairs of adjacent nodes, so we return the initial linked list.
 
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var insertGreatestCommonDivisors = function(head) {
+    
+};
+
 // console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
