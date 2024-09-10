@@ -10644,8 +10644,41 @@ console.log("==========================================")
 // @param {ListNode} head
 // @return {ListNode}
 
+// Definition for singly-linked list.
+function ListNode(val, next) {
+    this.val = (val === undefined ? 0 : val);
+    this.next = (next === undefined ? null : next);
+}
+
+// Helper function to calculate GCD of two numbers
+function gcd(a, b) {
+    if (b === 0) return a;
+    return gcd(b, a % b);
+}
+
 var insertGreatestCommonDivisors = function(head) {
+    let current = head;
     
+    // Traverse the list until we reach the last node
+    while (current !== null && current.next !== null) {
+        // Get the next node
+        let nextNode = current.next;
+        
+        // Calculate GCD of current node value and next node value
+        let gcdValue = gcd(current.val, nextNode.val);
+        
+        // Create a new node with the GCD value
+        let gcdNode = new ListNode(gcdValue);
+        
+        // Insert the new GCD node between current node and next node
+        current.next = gcdNode;
+        gcdNode.next = nextNode;
+        
+        // Move to the next pair of nodes
+        current = nextNode;
+    }
+    
+    return head;
 };
 
 // console.log("==========================================")
