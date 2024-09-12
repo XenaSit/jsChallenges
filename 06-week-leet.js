@@ -10760,6 +10760,14 @@ Input: allowed = "cad", words = ["cc","acd","b","ba","bac","bad","ac","d"]
 Output: 4
 Explanation: Strings "cc", "acd", "ac", and "d" are consistent.
 
+/**
+ * @param {string} allowed
+ * @param {string[]} words
+ * @return {number}
+ */
+var countConsistentStrings = function(allowed, words) {
+    
+};
 
 // console.log("==========================================")
 // console.log("==========================================")
