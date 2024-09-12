@@ -10759,7 +10759,19 @@ console.log("==========================================")
 // @return {number}
 
 var countConsistentStrings = function(allowed, words) {
-    
+    // Convert allowed string to a set for faster lookup
+    const allowedSet = new Set(allowed);
+    let count = 0;
+
+    // Iterate through each word
+    for (let word of words) {
+        // Check if every character in the word is in the allowed set
+        if ([...word].every(char => allowedSet.has(char))) {
+            count++;
+        }
+    }
+
+    return count;
 };
 
 // console.log("==========================================")
