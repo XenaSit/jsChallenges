@@ -10806,7 +10806,26 @@ console.log("==========================================")
 // @return {number[]}
 
 var xorQueries = function(arr, queries) {
+    const n = arr.length;
+    const prefixXor = new Array(n).fill(0);
     
+    // Step 1: Compute the prefix XOR array
+    prefixXor[0] = arr[0];
+    for (let i = 1; i < n; i++) {
+        prefixXor[i] = prefixXor[i - 1] ^ arr[i];
+    }
+    
+    // Step 2: Answer each query using the prefix XOR array
+    const result = [];
+    for (let [left, right] of queries) {
+        if (left === 0) {
+            result.push(prefixXor[right]);
+        } else {
+            result.push(prefixXor[right] ^ prefixXor[left - 1]);
+        }
+    }
+    
+    return result;
 };
 
 console.log("==========================================")
