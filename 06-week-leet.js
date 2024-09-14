@@ -10857,7 +10857,19 @@ console.log("==========================================")
 // @return {number}
 
 var longestSubarray = function(nums) {
+    let maxNum = Math.max(...nums);  // Step 1: Find the maximum element
+    let maxLength = 0, currentLength = 0;
     
+    for (let num of nums) {
+        if (num === maxNum) {
+            currentLength++;          // Step 2: Count the contiguous subarray with the max value
+            maxLength = Math.max(maxLength, currentLength);
+        } else {
+            currentLength = 0;        // Reset the length if the number is not equal to maxNum
+        }
+    }
+    
+    return maxLength;                 // Step 3: Return the longest length found
 };
 
 console.log("==========================================")
