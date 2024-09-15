@@ -10897,7 +10897,36 @@ console.log("==========================================")
 // @return {number}
 
 var findTheLongestSubstring = function(s) {
+    // Vowel to bitmask mapping
+    const vowels = { 'a': 0, 'e': 1, 'i': 2, 'o': 3, 'u': 4 };
     
+    // Initialize the bitmask for vowels. Start with all vowels having even count (00000).
+    let bitmask = 0;
+    
+    // Map to store the first occurrence of each bitmask state
+    const firstOccurrence = new Map();
+    firstOccurrence.set(0, -1);  // Initial state (all vowels even) at index -1
+    
+    let maxLength = 0;
+    
+    // Traverse through the string
+    for (let i = 0; i < s.length; i++) {
+        // Update bitmask if the character is a vowel
+        if (s[i] in vowels) {
+            bitmask ^= (1 << vowels[s[i]]);  // Toggle the corresponding vowel's bit
+        }
+        
+        // Check if we've seen this bitmask before
+        if (firstOccurrence.has(bitmask)) {
+            // Calculate the length of the substring between first occurrence and current index
+            maxLength = Math.max(maxLength, i - firstOccurrence.get(bitmask));
+        } else {
+            // Otherwise, store the first occurrence of this bitmask
+            firstOccurrence.set(bitmask, i);
+        }
+    }
+    
+    return maxLength;
 };
 
 // console.log("==========================================")
