@@ -10893,6 +10893,14 @@ Input: s = "bcbcbc"
 Output: 6
 Explanation: In this case, the given string "bcbcbc" is the longest because all vowels: a, e, i, o and u appear zero times.
 
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var findTheLongestSubstring = function(s) {
+    
+};
+
 // console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
