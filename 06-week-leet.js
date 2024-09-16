@@ -10947,7 +10947,27 @@ console.log("==========================================")
 // @return {number}
 
 var findMinDifference = function(timePoints) {
-    
+    // Convert time to minutes from the start of the day
+    const convertToMinutes = (time) => {
+        const [hours, minutes] = time.split(":").map(Number);
+        return hours * 60 + minutes;
+    };
+
+    // Sort timePoints based on their minute value
+    const minutesList = timePoints.map(convertToMinutes).sort((a, b) => a - b);
+
+    let minDiff = Infinity;
+
+    // Check the difference between consecutive times
+    for (let i = 1; i < minutesList.length; i++) {
+        minDiff = Math.min(minDiff, minutesList[i] - minutesList[i - 1]);
+    }
+
+    // Check the difference between the last and the first time (across midnight)
+    const wrapAroundDiff = (1440 - minutesList[minutesList.length - 1]) + minutesList[0];
+    minDiff = Math.min(minDiff, wrapAroundDiff);
+
+    return minDiff;
 };
 
 console.log("==========================================")
