@@ -10947,6 +10947,14 @@ Example 2:
 Input: timePoints = ["00:00","23:59","00:00"]
 Output: 0
 
+/**
+ * @param {string[]} timePoints
+ * @return {number}
+ */
+var findMinDifference = function(timePoints) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
