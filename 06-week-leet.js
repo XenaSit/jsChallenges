@@ -10931,26 +10931,21 @@ var findTheLongestSubstring = function(s) {
 
 console.log("==========================================")
 
-539. Minimum Time Difference
-Medium
-Topics
-Companies
-Given a list of 24-hour clock time points in "HH:MM" format, return the minimum minutes difference between any two time-points in the list.
- 
+// 539. Minimum Time Difference
+// Medium
+// Given a list of 24-hour clock time points in "HH:MM" format, return the minimum minutes difference between any two time-points in the list.
 
-Example 1:
+// Example 1:
+// Input: timePoints = ["23:59","00:00"]
+// Output: 1
 
-Input: timePoints = ["23:59","00:00"]
-Output: 1
-Example 2:
+// Example 2:
+// Input: timePoints = ["00:00","23:59","00:00"]
+// Output: 0
 
-Input: timePoints = ["00:00","23:59","00:00"]
-Output: 0
+// @param {string[]} timePoints
+// @return {number}
 
-/**
- * @param {string[]} timePoints
- * @return {number}
- */
 var findMinDifference = function(timePoints) {
     
 };
