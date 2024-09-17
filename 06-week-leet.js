@@ -10993,7 +10993,32 @@ console.log("==========================================")
 // @return {string[]}
 
 var uncommonFromSentences = function(s1, s2) {
+    // Split both sentences into words
+    let words1 = s1.split(" ");
+    let words2 = s2.split(" ");
     
+    // Create a map to count the frequency of each word
+    let wordCount = new Map();
+    
+    // Count occurrences of words in the first sentence
+    for (let word of words1) {
+        wordCount.set(word, (wordCount.get(word) || 0) + 1);
+    }
+    
+    // Count occurrences of words in the second sentence
+    for (let word of words2) {
+        wordCount.set(word, (wordCount.get(word) || 0) + 1);
+    }
+    
+    // Collect words that appear exactly once across both sentences
+    let uncommonWords = [];
+    for (let [word, count] of wordCount) {
+        if (count === 1) {
+            uncommonWords.push(word);
+        }
+    }
+    
+    return uncommonWords;
 };
 
 console.log("==========================================")
