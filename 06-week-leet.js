@@ -11000,6 +11000,14 @@ Input: s1 = "apple apple", s2 = "banana"
 
 Output: ["banana"]
 
+/**
+ * @param {string} s1
+ * @param {string} s2
+ * @return {string[]}
+ */
+var uncommonFromSentences = function(s1, s2) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
