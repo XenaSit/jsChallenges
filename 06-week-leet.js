@@ -11040,7 +11040,17 @@ console.log("==========================================")
 // @return {string}
 
 var largestNumber = function(nums) {
+    // Convert numbers to strings
+    nums = nums.map(String);
     
+    // Custom sort function that compares concatenated strings
+    nums.sort((a, b) => (b + a) - (a + b));
+    
+    // Join the sorted array to form the largest number
+    let result = nums.join('');
+    
+    // Edge case: If the result starts with '0', the entire number is '0'
+    return result[0] === '0' ? '0' : result;
 };
 
 console.log("==========================================")
