@@ -11086,7 +11086,39 @@ console.log("==========================================")
 // @return {number[]}
 
 var diffWaysToCompute = function(expression) {
+    const result = [];
     
+    // Check if the entire expression is a number
+    if (!expression.includes('+') && !expression.includes('-') && !expression.includes('*')) {
+        return [parseInt(expression)];
+    }
+
+    // Loop through each character in the expression
+    for (let i = 0; i < expression.length; i++) {
+        const char = expression[i];
+
+        // If the character is an operator, split the expression
+        if (char === '+' || char === '-' || char === '*') {
+            // Recursively solve left and right parts of the expression
+            const leftParts = diffWaysToCompute(expression.slice(0, i));
+            const rightParts = diffWaysToCompute(expression.slice(i + 1));
+            
+            // Combine results from left and right based on the current operator
+            for (let left of leftParts) {
+                for (let right of rightParts) {
+                    if (char === '+') {
+                        result.push(left + right);
+                    } else if (char === '-') {
+                        result.push(left - right);
+                    } else if (char === '*') {
+                        result.push(left * right);
+                    }
+                }
+            }
+        }
+    }
+    
+    return result;
 };
 
 console.log("==========================================")
