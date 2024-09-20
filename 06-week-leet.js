@@ -11140,7 +11140,35 @@ console.log("==========================================")
 // @return {string}
 
 var shortestPalindrome = function(s) {
+    // Reverse the input string `s`
+    let rev = s.split('').reverse().join('');
     
+    // Create a new string that concatenates `s` and `rev` with a special separator
+    let combined = s + '#' + rev;
+    
+    // Build the prefix table using KMP algorithm on the combined string
+    let n = combined.length;
+    let lps = new Array(n).fill(0);
+    
+    for (let i = 1; i < n; i++) {
+        let j = lps[i - 1];
+        
+        while (j > 0 && combined[i] !== combined[j]) {
+            j = lps[j - 1];
+        }
+        
+        if (combined[i] === combined[j]) {
+            j++;
+        }
+        
+        lps[i] = j;
+    }
+    
+    // Find the non-palindromic suffix and reverse it
+    let suffix = rev.substring(0, s.length - lps[n - 1]);
+    
+    // Return the shortest palindrome by adding the reversed suffix in front of `s`
+    return suffix + s;
 };
 
 console.log("==========================================")
