@@ -11186,6 +11186,13 @@ Example 2:
 Input: n = 2
 Output: [1,2]
 
+/**
+ * @param {number} n
+ * @return {number[]}
+ */
+var lexicalOrder = function(n) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
