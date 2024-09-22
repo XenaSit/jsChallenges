@@ -11226,6 +11226,14 @@ Example 2:
 Input: n = 1, k = 1
 Output: 1
 
+/**
+ * @param {number} n
+ * @param {number} k
+ * @return {number}
+ */
+var findKthNumber = function(n, k) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
