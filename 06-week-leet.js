@@ -11231,7 +11231,33 @@ console.log("==========================================")
 // @return {number}
 
 var findKthNumber = function(n, k) {
-    
+    let curr = 1;
+    k--; // Because we are starting from 1st number, so decrease k by 1
+
+    const countSteps = (curr, n) => {
+        let steps = 0;
+        let first = curr;
+        let last = curr;
+        while (first <= n) {
+            steps += Math.min(n + 1, last + 1) - first;
+            first *= 10;
+            last = last * 10 + 9;
+        }
+        return steps;
+    };
+
+    while (k > 0) {
+        let steps = countSteps(curr, n);
+        if (steps <= k) {
+            k -= steps;
+            curr++;
+        } else {
+            curr *= 10;
+            k--;
+        }
+    }
+
+    return curr;
 };
 
 console.log("==========================================")
