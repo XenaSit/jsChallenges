@@ -11286,7 +11286,24 @@ console.log("==========================================")
 // @return {number}
 
 var minExtraChar = function(s, dictionary) {
-    
+    const n = s.length;
+    const dp = new Array(n + 1).fill(Infinity);  // DP array filled with infinity initially
+    dp[0] = 0;  // No extra characters when there's no string
+
+    const wordSet = new Set(dictionary);  // Convert dictionary to a set for O(1) lookup
+
+    for (let i = 1; i <= n; i++) {
+        dp[i] = dp[i - 1] + 1;  // Assume the current character is extra
+        
+        for (let j = 0; j < i; j++) {
+            const substring = s.slice(j, i);  // Substring s[j:i]
+            if (wordSet.has(substring)) {
+                dp[i] = Math.min(dp[i], dp[j]);  // If it's a word, take the minimum extra chars
+            }
+        }
+    }
+
+    return dp[n];  // The answer is dp[n], the min extra chars for the whole string
 };
 
 console.log("==========================================")
