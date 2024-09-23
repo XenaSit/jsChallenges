@@ -11281,6 +11281,14 @@ Output: 3
 Explanation: We can break s in two substrings: "hello" from index 3 to 7 and "world" from index 8 to 12. 
 The characters at indices 0, 1, 2 are not used in any substring and thus are considered as extra characters. Hence, we return 3.
 
+/**
+ * @param {string} s
+ * @param {string[]} dictionary
+ * @return {number}
+ */
+var minExtraChar = function(s, dictionary) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
