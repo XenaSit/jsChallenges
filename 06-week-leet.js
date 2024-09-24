@@ -11338,7 +11338,33 @@ console.log("==========================================")
 // @return {number}
 
 var longestCommonPrefix = function(arr1, arr2) {
-    
+    // Helper function to find the length of common prefix between two numbers
+    function findCommonPrefix(a, b) {
+        let strA = a.toString();
+        let strB = b.toString();
+        let i = 0;
+        
+        // Compare characters of both strings one by one
+        while (i < strA.length && i < strB.length && strA[i] === strB[i]) {
+            i++;
+        }
+        
+        return i;  // i will be the length of the common prefix
+    }
+
+    let maxPrefixLength = 0;
+
+    // Iterate over all pairs (x, y) where x is from arr1 and y is from arr2
+    for (let i = 0; i < arr1.length; i++) {
+        for (let j = 0; j < arr2.length; j++) {
+            // Find the common prefix length between arr1[i] and arr2[j]
+            let prefixLength = findCommonPrefix(arr1[i], arr2[j]);
+            // Update maxPrefixLength if we find a longer prefix
+            maxPrefixLength = Math.max(maxPrefixLength, prefixLength);
+        }
+    }
+
+    return maxPrefixLength;
 };
 
 // console.log("==========================================")
