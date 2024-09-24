@@ -11354,25 +11354,18 @@ var longestCommonPrefix = function(arr1, arr2) {
 
     let maxPrefixLength = 0;
 
-    // Sort both arrays to exploit the natural order
-    arr1.sort((a, b) => a - b);
-    arr2.sort((a, b) => a - b);
-
     // Iterate over all pairs (x, y) where x is from arr1 and y is from arr2
-    let i = 0, j = 0;
-    while (i < arr1.length && j < arr2.length) {
-        let prefixLength = findCommonPrefix(arr1[i], arr2[j]);
-        maxPrefixLength = Math.max(maxPrefixLength, prefixLength);
-
-        // Optimization: skip comparisons when arr1[i] < arr2[j] or vice versa
-        if (arr1[i] < arr2[j]) {
-            i++;  // arr1[i] is smaller, so move to the next element in arr1
-        } else if (arr1[i] > arr2[j]) {
-            j++;  // arr2[j] is smaller, so move to the next element in arr2
-        } else {
-            // If arr1[i] == arr2[j], move both pointers
-            i++;
-            j++;
+    for (let i = 0; i < arr1.length; i++) {
+        for (let j = 0; j < arr2.length; j++) {
+            // If the first digits don't match, no need to check further
+            if (arr1[i].toString()[0] !== arr2[j].toString()[0]) {
+                continue;  // No common prefix possible if the first digits differ
+            }
+            
+            // Find the common prefix length between arr1[i] and arr2[j]
+            let prefixLength = findCommonPrefix(arr1[i], arr2[j]);
+            // Update maxPrefixLength if we find a longer prefix
+            maxPrefixLength = Math.max(maxPrefixLength, prefixLength);
         }
     }
 
