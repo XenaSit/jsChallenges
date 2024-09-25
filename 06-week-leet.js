@@ -11406,6 +11406,13 @@ Explanation:
 "abcd" has 4 prefixes: "a", "ab", "abc", and "abcd".
 Each prefix has a score of one, so the total is answer[0] = 1 + 1 + 1 + 1 = 4.
 
+/**
+ * @param {string[]} words
+ * @return {number[]}
+ */
+var sumPrefixScores = function(words) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
