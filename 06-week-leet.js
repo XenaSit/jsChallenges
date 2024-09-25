@@ -11409,10 +11409,62 @@ console.log("==========================================")
 // @param {string[]} words
 // @return {number[]}
 
-var sumPrefixScores = function(words) {
-    
-};
+class TrieNode {
+    constructor() {
+        this.children = {};
+        this.count = 0; // Count how many words share this prefix
+    }
+}
 
+class Trie {
+    constructor() {
+        this.root = new TrieNode();
+    }
+    
+    // Inserts a word into the trie and increments counts for each prefix
+    insert(word) {
+        let node = this.root;
+        for (const char of word) {
+            if (!node.children[char]) {
+                node.children[char] = new TrieNode();
+            }
+            node = node.children[char];
+            node.count += 1; // Increment count for this prefix
+        }
+    }
+    
+    // Calculate the sum of prefix scores for a word
+    getPrefixScore(word) {
+        let node = this.root;
+        let sum = 0;
+        for (const char of word) {
+            if (node.children[char]) {
+                node = node.children[char];
+                sum += node.count; // Add the count of this prefix
+            } else {
+                break; // No more matching prefixes
+            }
+        }
+        return sum;
+    }
+}
+
+var sumPrefixScores = function(words) {
+    const trie = new Trie();
+    
+    // Insert all words into the trie
+    for (const word of words) {
+        trie.insert(word);
+    }
+    
+    // Calculate prefix scores for each word
+    const result = [];
+    for (const word of words) {
+        result.push(trie.getPrefixScore(word));
+    }
+    
+    return result;
+};
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
