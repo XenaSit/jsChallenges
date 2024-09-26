@@ -11493,7 +11493,7 @@ console.log("==========================================")
 
 
 var MyCalendar = function() {
-    
+    this.bookings = [];
 };
 
 // @param {number} start 
@@ -11501,7 +11501,15 @@ var MyCalendar = function() {
 // @return {boolean}
 
 MyCalendar.prototype.book = function(start, end) {
-    
+    for (let [s, e] of this.bookings) {
+        // Check if the new event overlaps with any existing event
+        if (Math.max(s, start) < Math.min(e, end)) {
+            return false; // There is an overlap
+        }
+    }
+    // No overlap, add the event
+    this.bookings.push([start, end]);
+    return true;
 };
 
 // Your MyCalendar object will be instantiated and called as such:
