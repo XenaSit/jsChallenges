@@ -11499,6 +11499,24 @@ myCalendar.book(15, 25); // return False, It can not be booked because time 15 i
 myCalendar.book(20, 30); // return True, The event can be booked, as the first event takes every time less than 20, but not including 20.
 
 
+var MyCalendar = function() {
+    
+};
+
+/** 
+ * @param {number} start 
+ * @param {number} end
+ * @return {boolean}
+ */
+MyCalendar.prototype.book = function(start, end) {
+    
+};
+
+/** 
+ * Your MyCalendar object will be instantiated and called as such:
+ * var obj = new MyCalendar()
+ * var param_1 = obj.book(start,end)
+ */
 
 // console.log("==========================================")
 // console.log("==========================================")
