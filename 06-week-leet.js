@@ -11553,7 +11553,9 @@ console.log("==========================================")
 // // the time [40, 50) will be single booked, and the time [50, 55) will be double booked with the second event.
 
 var MyCalendarTwo = function() {
-    
+    // Store all bookings and double bookings
+    this.events = [];
+    this.overlaps = [];
 };
 
 // @param {number} start 
@@ -11561,7 +11563,26 @@ var MyCalendarTwo = function() {
 // @return {boolean}
 
 MyCalendarTwo.prototype.book = function(start, end) {
+    // First check if this booking would cause a triple booking
+    for (let [oStart, oEnd] of this.overlaps) {
+        // If there is an overlap with a double booked event, it's a triple booking
+        if (start < oEnd && end > oStart) {
+            return false;
+        }
+    }
     
+    // Now find all overlaps with existing events and record them as double bookings
+    for (let [eStart, eEnd] of this.events) {
+        // Check if the current event overlaps with an existing event
+        if (start < eEnd && end > eStart) {
+            // There is an overlap, so we record this overlap
+            this.overlaps.push([Math.max(start, eStart), Math.min(end, eEnd)]);
+        }
+    }
+    
+    // Add the new event to the list of booked events
+    this.events.push([start, end]);
+    return true;
 };
 
 // Your MyCalendarTwo object will be instantiated and called as such:
