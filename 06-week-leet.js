@@ -11552,6 +11552,25 @@ myCalendarTwo.book(25, 55);
 // return True, The event can be booked, as the time in [25, 40) will be double booked with the third event, 
 // the time [40, 50) will be single booked, and the time [50, 55) will be double booked with the second event.
 
+var MyCalendarTwo = function() {
+    
+};
+
+/** 
+ * @param {number} start 
+ * @param {number} end
+ * @return {boolean}
+ */
+MyCalendarTwo.prototype.book = function(start, end) {
+    
+};
+
+/** 
+ * Your MyCalendarTwo object will be instantiated and called as such:
+ * var obj = new MyCalendarTwo()
+ * var param_1 = obj.book(start,end)
+ */
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
