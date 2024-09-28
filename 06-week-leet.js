@@ -11594,12 +11594,8 @@ console.log("==========================================")
 
 641. Design Circular Deque
 Medium
-Topics
-Companies
 Design your implementation of the circular double-ended queue (deque).
-
 Implement the MyCircularDeque class:
-
 MyCircularDeque(int k) Initializes the deque with a maximum size of k.
 boolean insertFront() Adds an item at the front of Deque. Returns true if the operation is successful, or false otherwise.
 boolean insertLast() Adds an item at the rear of Deque. Returns true if the operation is successful, or false otherwise.
@@ -11609,16 +11605,13 @@ int getFront() Returns the front item from the Deque. Returns -1 if the deque is
 int getRear() Returns the last item from Deque. Returns -1 if the deque is empty.
 boolean isEmpty() Returns true if the deque is empty, or false otherwise.
 boolean isFull() Returns true if the deque is full, or false otherwise.
- 
 
 Example 1:
-
 Input
 ["MyCircularDeque", "insertLast", "insertLast", "insertFront", "insertFront", "getRear", "isFull", "deleteLast", "insertFront", "getFront"]
 [[3], [1], [2], [3], [4], [], [], [], [4], []]
 Output
 [null, true, true, true, false, 2, true, true, true, 4]
-
 Explanation
 MyCircularDeque myCircularDeque = new MyCircularDeque(3);
 myCircularDeque.insertLast(1);  // return True
@@ -11631,83 +11624,93 @@ myCircularDeque.deleteLast();   // return True
 myCircularDeque.insertFront(4); // return True
 myCircularDeque.getFront();     // return 4
 
-/**
- * @param {number} k
- */
+// @param {number} k
+
 var MyCircularDeque = function(k) {
-    
+    this.deque = new Array(k);
+    this.capacity = k;
+    this.front = 0;
+    this.rear = k - 1;
+    this.size = 0;
 };
 
-/** 
- * @param {number} value
- * @return {boolean}
- */
+// @param {number} value
+// @return {boolean}
+
 MyCircularDeque.prototype.insertFront = function(value) {
-    
+    if (this.isFull()) return false;
+    this.front = (this.front - 1 + this.capacity) % this.capacity;
+    this.deque[this.front] = value;
+    this.size++;
+    return true;
 };
 
-/** 
- * @param {number} value
- * @return {boolean}
- */
+// @param {number} value
+// @return {boolean}
+
 MyCircularDeque.prototype.insertLast = function(value) {
-    
+    if (this.isFull()) return false;
+    this.rear = (this.rear + 1) % this.capacity;
+    this.deque[this.rear] = value;
+    this.size++;
+    return true;
 };
 
-/**
- * @return {boolean}
- */
+// @return {boolean}
+
 MyCircularDeque.prototype.deleteFront = function() {
-    
+    if (this.isEmpty()) return false;
+    this.front = (this.front + 1) % this.capacity;
+    this.size--;
+    return true;
 };
 
-/**
- * @return {boolean}
- */
+// @return {boolean}
+
 MyCircularDeque.prototype.deleteLast = function() {
-    
+    if (this.isEmpty()) return false;
+    this.rear = (this.rear - 1 + this.capacity) % this.capacity;
+    this.size--;
+    return true;
 };
 
-/**
- * @return {number}
- */
+// @return {number}
+
 MyCircularDeque.prototype.getFront = function() {
-    
+    if (this.isEmpty()) return -1;
+    return this.deque[this.front];
 };
 
-/**
- * @return {number}
- */
+// @return {number}
+
 MyCircularDeque.prototype.getRear = function() {
-    
+    if (this.isEmpty()) return -1;
+    return this.deque[this.rear];
 };
 
-/**
- * @return {boolean}
- */
+// @return {boolean}
+
 MyCircularDeque.prototype.isEmpty = function() {
-    
+    return this.size === 0;
 };
 
-/**
- * @return {boolean}
- */
+// @return {boolean}
+
 MyCircularDeque.prototype.isFull = function() {
-    
+    return this.size === this.capacity;
 };
 
-/** 
- * Your MyCircularDeque object will be instantiated and called as such:
- * var obj = new MyCircularDeque(k)
- * var param_1 = obj.insertFront(value)
- * var param_2 = obj.insertLast(value)
- * var param_3 = obj.deleteFront()
- * var param_4 = obj.deleteLast()
- * var param_5 = obj.getFront()
- * var param_6 = obj.getRear()
- * var param_7 = obj.isEmpty()
- * var param_8 = obj.isFull()
- */
+// Your MyCircularDeque object will be instantiated and called as such:
+// var obj = new MyCircularDeque(k)
+// var param_1 = obj.insertFront(value)
+// var param_2 = obj.insertLast(value)
+// var param_3 = obj.deleteFront()
+// var param_4 = obj.deleteLast()
+// var param_5 = obj.getFront()
+// var param_6 = obj.getRear()
+// var param_7 = obj.isEmpty()
+// var param_8 = obj.isFull()
+
 
 console.log("==========================================")
 // console.log("==========================================")
