@@ -11777,6 +11777,105 @@ AllOne.prototype.getMinKey = function() {
 // var param_3 = obj.getMaxKey()
 // var param_4 = obj.getMinKey()
 
+ANSWER:
+class ListNode {
+    constructor(count) {
+        this.count = count;
+        this.keys = new Set();
+        this.prev = null;
+        this.next = null;
+    }
+}
+
+class AllOne {
+    constructor() {
+        this.keyCountMap = new Map();  // Key -> Count
+        this.countNodeMap = new Map(); // Count -> Node
+        this.head = new ListNode(0);   // Dummy head
+        this.tail = new ListNode(0);   // Dummy tail
+        this.head.next = this.tail;
+        this.tail.prev = this.head;
+    }
+
+    // Helper method to insert a new node after the given prevNode
+    _insertNodeAfter(prevNode, newNode) {
+        newNode.prev = prevNode;
+        newNode.next = prevNode.next;
+        prevNode.next.prev = newNode;
+        prevNode.next = newNode;
+    }
+
+    // Helper method to remove a node
+    _removeNode(node) {
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
+        this.countNodeMap.delete(node.count);
+    }
+
+    // Increment the count of the key
+    inc(key) {
+        let count = this.keyCountMap.get(key) || 0;
+        this.keyCountMap.set(key, count + 1);
+
+        let curNode = this.countNodeMap.get(count);
+        let newNode;
+
+        if (this.countNodeMap.has(count + 1)) {
+            newNode = this.countNodeMap.get(count + 1);
+        } else {
+            newNode = new ListNode(count + 1);
+            this.countNodeMap.set(count + 1, newNode);
+            this._insertNodeAfter(curNode || this.head, newNode);
+        }
+
+        newNode.keys.add(key);
+        if (curNode) {
+            curNode.keys.delete(key);
+            if (curNode.keys.size === 0) {
+                this._removeNode(curNode);
+            }
+        }
+    }
+
+    // Decrement the count of the key
+    dec(key) {
+        let count = this.keyCountMap.get(key);
+        if (count === 1) {
+            this.keyCountMap.delete(key);
+        } else {
+            this.keyCountMap.set(key, count - 1);
+        }
+
+        let curNode = this.countNodeMap.get(count);
+        let newNode;
+
+        if (count > 1) {
+            if (this.countNodeMap.has(count - 1)) {
+                newNode = this.countNodeMap.get(count - 1);
+            } else {
+                newNode = new ListNode(count - 1);
+                this.countNodeMap.set(count - 1, newNode);
+                this._insertNodeAfter(curNode.prev, newNode);
+            }
+            newNode.keys.add(key);
+        }
+
+        curNode.keys.delete(key);
+        if (curNode.keys.size === 0) {
+            this._removeNode(curNode);
+        }
+    }
+
+    // Return one of the keys with the maximal count
+    getMaxKey() {
+        return this.tail.prev === this.head ? "" : [...this.tail.prev.keys][0];
+    }
+
+    // Return one of the keys with the minimal count
+    getMinKey() {
+        return this.head.next === this.tail ? "" : [...this.head.next.keys][0];
+    }
+}
 
 console.log("==========================================")
 // console.log("==========================================")
