@@ -11917,7 +11917,44 @@ stk.pop();                            // return 202 --> Return top of the stack 
 stk.pop();                            // return 201 --> Return top of the stack 201, stack becomes []
 stk.pop();                            // return -1 --> Stack is empty return -1.
  
+/**
+ * @param {number} maxSize
+ */
+var CustomStack = function(maxSize) {
+    
+};
 
+/** 
+ * @param {number} x
+ * @return {void}
+ */
+CustomStack.prototype.push = function(x) {
+    
+};
+
+/**
+ * @return {number}
+ */
+CustomStack.prototype.pop = function() {
+    
+};
+
+/** 
+ * @param {number} k 
+ * @param {number} val
+ * @return {void}
+ */
+CustomStack.prototype.increment = function(k, val) {
+    
+};
+
+/** 
+ * Your CustomStack object will be instantiated and called as such:
+ * var obj = new CustomStack(maxSize)
+ * obj.push(x)
+ * var param_2 = obj.pop()
+ * obj.increment(k,val)
+ */
 
 console.log("==========================================")
 // console.log("==========================================")
