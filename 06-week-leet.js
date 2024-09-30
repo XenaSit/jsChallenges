@@ -11943,6 +11943,34 @@ CustomStack.prototype.increment = function(k, val) {
 // var param_2 = obj.pop()
 // obj.increment(k,val)
 
+class CustomStack {
+    constructor(maxSize) {
+        this.stack = [];
+        this.maxSize = maxSize;
+    }
+
+    push(x) {
+        if (this.stack.length < this.maxSize) {
+            this.stack.push(x);
+        }
+    }
+
+    pop() {
+        if (this.stack.length === 0) {
+            return -1;
+        } else {
+            return this.stack.pop();
+        }
+    }
+
+    increment(k, val) {
+        // We increment the first 'k' elements by 'val'
+        const limit = Math.min(k, this.stack.length);
+        for (let i = 0; i < limit; i++) {
+            this.stack[i] += val;
+        }
+    }
+}
 
 console.log("==========================================")
 // console.log("==========================================")
