@@ -12000,9 +12000,30 @@ console.log("==========================================")
 // @return {boolean}
 
 var canArrange = function(arr, k) {
+    let remainderFreq = new Array(k).fill(0);
     
+    // Step 1: Calculate remainders and count frequencies
+    for (let num of arr) {
+        let remainder = ((num % k) + k) % k;  // This handles negative numbers correctly
+        remainderFreq[remainder]++;
+    }
+    
+    // Step 2: Check pairing conditions
+    for (let i = 0; i <= k / 2; i++) {
+        if (i === 0) {
+            // For remainder 0, there must be an even number of such elements
+            if (remainderFreq[i] % 2 !== 0) return false;
+        } else if (i === k - i) {
+            // For remainder k / 2, there must be an even number (if k is even)
+            if (remainderFreq[i] % 2 !== 0) return false;
+        } else {
+            // For all other remainders, remainderFreq[i] must equal remainderFreq[k - i]
+            if (remainderFreq[i] !== remainderFreq[k - i]) return false;
+        }
+    }
+    
+    return true;
 };
-
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
