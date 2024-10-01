@@ -11995,6 +11995,14 @@ Input: arr = [1,2,3,4,5,6], k = 10
 Output: false
 Explanation: You can try all possible pairs to see that there is no way to divide arr into 3 pairs each with sum divisible by 10.
 
+/**
+ * @param {number[]} arr
+ * @param {number} k
+ * @return {boolean}
+ */
+var canArrange = function(arr, k) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
