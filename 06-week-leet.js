@@ -12052,7 +12052,19 @@ console.log("==========================================")
 // @return {number[]}
 
 var arrayRankTransform = function(arr) {
-    
+    if (arr.length === 0) return [];
+
+    // Create a sorted version of the array with unique elements
+    let sortedUniqueArr = [...new Set(arr)].sort((a, b) => a - b);
+
+    // Create a rank map
+    let rankMap = new Map();
+    sortedUniqueArr.forEach((val, index) => {
+        rankMap.set(val, index + 1);
+    });
+
+    // Transform the original array to its rank
+    return arr.map(val => rankMap.get(val));
 };
 
 console.log("==========================================")
