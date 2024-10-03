@@ -12098,6 +12098,15 @@ Input: nums = [1,2,3], p = 3
 Output: 0
 Explanation: Here the sum is 6. which is already divisible by 3. Thus we do not need to remove anything.
 
+/**
+ * @param {number[]} nums
+ * @param {number} p
+ * @return {number}
+ */
+var minSubarray = function(nums, p) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
