@@ -12098,7 +12098,34 @@ console.log("==========================================")
 // @return {number}
 
 var minSubarray = function(nums, p) {
+    let totalSum = nums.reduce((acc, num) => acc + num, 0);
+    let target_mod = totalSum % p;
     
+    // If the sum is already divisible by p, we don't need to remove anything
+    if (target_mod === 0) return 0;
+
+    let prefixSum = 0;
+    let minLength = nums.length;
+    let prefixModMap = new Map(); // To store the modulo of prefix sums and their index
+    prefixModMap.set(0, -1); // Base case: prefix sum 0 at index -1
+
+    for (let i = 0; i < nums.length; i++) {
+        prefixSum += nums[i];
+        let current_mod = prefixSum % p;
+        
+        // The value we're looking for to remove
+        let desired_mod = (current_mod - target_mod + p) % p;
+
+        if (prefixModMap.has(desired_mod)) {
+            // Calculate the length of the subarray that could be removed
+            minLength = Math.min(minLength, i - prefixModMap.get(desired_mod));
+        }
+
+        // Store the current prefix sum mod and its index
+        prefixModMap.set(current_mod, i);
+    }
+
+    return minLength === nums.length ? -1 : minLength;
 };
 
 console.log("==========================================")
