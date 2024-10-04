@@ -12158,6 +12158,14 @@ Output: -1
 Explanation: 
 There is no way to divide the players into teams such that the total skill of each team is equal.
 
+/**
+ * @param {number[]} skill
+ * @return {number}
+ */
+var dividePlayers = function(skill) {
+    
+};
+
 // console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
