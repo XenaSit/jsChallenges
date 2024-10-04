@@ -12162,9 +12162,25 @@ console.log("==========================================")
 // @return {number}
 
 var dividePlayers = function(skill) {
+    skill.sort((a, b) => a - b);  // Sort the skills array
     
-};
+    let totalSkill = skill[0] + skill[skill.length - 1];  // Total skill for the first team
+    let chemistrySum = 0;
 
+    for (let i = 0, j = skill.length - 1; i < j; i++, j--) {
+        let currentSkill = skill[i] + skill[j];
+        
+        // Check if the current pair has the same total skill as the first pair
+        if (currentSkill !== totalSkill) {
+            return -1;  // Not possible to divide into teams with equal total skill
+        }
+        
+        // Add the chemistry (product of skills) of the current pair
+        chemistrySum += skill[i] * skill[j];
+    }
+    
+    return chemistrySum;  // Return the sum of chemistry
+};
 // console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
