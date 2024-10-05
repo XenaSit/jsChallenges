@@ -12206,6 +12206,14 @@ Example 2:
 Input: s1 = "ab", s2 = "eidboaoo"
 Output: false
  
+/**
+ * @param {string} s1
+ * @param {string} s2
+ * @return {boolean}
+ */
+var checkInclusion = function(s1, s2) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
