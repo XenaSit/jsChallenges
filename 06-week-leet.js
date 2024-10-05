@@ -12202,7 +12202,44 @@ console.log("==========================================")
 // @return {boolean}
 
 var checkInclusion = function(s1, s2) {
+    if (s1.length > s2.length) return false;
     
+    // Create frequency arrays for s1 and the current window in s2
+    let s1Count = new Array(26).fill(0);
+    let windowCount = new Array(26).fill(0);
+    
+    // Fill the frequency array for s1 and the first window in s2
+    for (let i = 0; i < s1.length; i++) {
+        s1Count[s1.charCodeAt(i) - 'a'.charCodeAt(0)]++;
+        windowCount[s2.charCodeAt(i) - 'a'.charCodeAt(0)]++;
+    }
+    
+    let matches = 0;
+    // Compare both frequency arrays initially
+    for (let i = 0; i < 26; i++) {
+        if (s1Count[i] === windowCount[i]) matches++;
+    }
+    
+    // Sliding window over s2
+    for (let i = s1.length; i < s2.length; i++) {
+        if (matches === 26) return true; // All characters match
+        
+        // Slide the window to the right: remove the char going out of the window and add the new one
+        let indexOut = s2.charCodeAt(i - s1.length) - 'a'.charCodeAt(0);
+        let indexIn = s2.charCodeAt(i) - 'a'.charCodeAt(0);
+        
+        // Remove the outgoing char
+        if (windowCount[indexOut] === s1Count[indexOut]) matches--;
+        windowCount[indexOut]--;
+        if (windowCount[indexOut] === s1Count[indexOut]) matches++;
+        
+        // Add the incoming char
+        if (windowCount[indexIn] === s1Count[indexIn]) matches--;
+        windowCount[indexIn]++;
+        if (windowCount[indexIn] === s1Count[indexIn]) matches++;
+    }
+    
+    return matches === 26;
 };
 
 console.log("==========================================")
