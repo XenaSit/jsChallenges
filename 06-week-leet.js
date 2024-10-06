@@ -12283,9 +12283,23 @@ console.log("==========================================")
 // @return {boolean}
 
 var areSentencesSimilar = function(sentence1, sentence2) {
+    let s1 = sentence1.split(" ");
+    let s2 = sentence2.split(" ");
     
+    let i = 0, j = 0;
+    // Compare prefix
+    while (i < s1.length && i < s2.length && s1[i] === s2[i]) {
+        i++;
+    }
+    
+    // Compare suffix
+    while (j < s1.length - i && j < s2.length - i && s1[s1.length - 1 - j] === s2[s2.length - 1 - j]) {
+        j++;
+    }
+    
+    // Check if the remaining words (middle part) can form an insertion.
+    return i + j === Math.min(s1.length, s2.length);
 };
-
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
