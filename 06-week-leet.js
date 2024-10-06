@@ -12278,6 +12278,15 @@ Input: sentence1 = "Eating right now", sentence2 = "Eating"
 Output: true
 Explanation:
 
+/**
+ * @param {string} sentence1
+ * @param {string} sentence2
+ * @return {boolean}
+ */
+var areSentencesSimilar = function(sentence1, sentence2) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
