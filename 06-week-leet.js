@@ -12329,7 +12329,26 @@ console.log("==========================================")
 // @return {number}
 
 var minLength = function(s) {
+    const stack = [];
     
+    for (let char of s) {
+        if (stack.length > 0) {
+            const last = stack[stack.length - 1];
+            if ((last === 'A' && char === 'B') || (last === 'C' && char === 'D')) {
+                // Remove the last element as "AB" or "CD" is found
+                stack.pop();
+            } else {
+                // Push current character to stack
+                stack.push(char);
+            }
+        } else {
+            // Stack is empty, just push the current character
+            stack.push(char);
+        }
+    }
+    
+    // The remaining stack size is the minimum possible length
+    return stack.length;
 };
 
 console.log("==========================================")
