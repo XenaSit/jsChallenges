@@ -12325,6 +12325,13 @@ Input: s = "ACBBD"
 Output: 5
 Explanation: We cannot do any operations on the string so the length remains the same.
 
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var minLength = function(s) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
