@@ -12385,10 +12385,32 @@ console.log("==========================================")
 // @param {string} s
 // @return {number}
 
-var minSwaps = function(s) {
-    
-};
+// Function to calculate the minimum number of swaps required to balance the brackets
+function minSwaps(s) {
+    let openBrackets = 0; // Variable to keep track of the number of unmatched '['
+    let swaps = 0;        // Variable to keep track of the minimum number of swaps
 
+    // Loop through each character in the string
+    for (let c of s) {
+        // If the current character is an opening bracket
+        if (c === '[') {
+            // Increase the count of unmatched opening brackets
+            openBrackets++;
+        } 
+        // If it is a closing bracket and there are unmatched opening brackets
+        else if (openBrackets > 0) {
+            // Match the bracket and decrease the count of unmatched opening brackets
+            openBrackets--;
+        }
+    }
+  
+    // The number of swaps needed is half the number of unmatched opening brackets (rounded up)
+    // because each swap can fix two unmatched opening brackets
+    swaps = Math.ceil(openBrackets / 2);
+  
+    // Return the calculated number of swaps
+    return swaps;
+}
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
