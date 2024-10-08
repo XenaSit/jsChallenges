@@ -12382,6 +12382,14 @@ Input: s = "[]"
 Output: 0
 Explanation: The string is already balanced.
 
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var minSwaps = function(s) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
