@@ -12435,7 +12435,23 @@ console.log("==========================================")
 // @return {number}
 
 var minAddToMakeValid = function(s) {
+    let balance = 0; // To track unmatched opening parentheses '('
+    let unmatchedClose = 0; // To track unmatched closing parentheses ')'
     
+    for (let char of s) {
+        if (char === '(') {
+            balance++; // Unmatched opening parenthesis
+        } else if (char === ')') {
+            if (balance > 0) {
+                balance--; // Match with an opening parenthesis
+            } else {
+                unmatchedClose++; // Unmatched closing parenthesis
+            }
+        }
+    }
+    
+    // The result is the sum of unmatched opening and closing parentheses
+    return balance + unmatchedClose;
 };
 
 console.log("==========================================")
