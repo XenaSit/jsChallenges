@@ -12475,7 +12475,25 @@ console.log("==========================================")
 // @return {number}
 
 var maxWidthRamp = function(nums) {
+    let stack = [];
+    let maxWidth = 0;
     
+    // Build the stack with indices, maintaining a decreasing order of nums values
+    for (let i = 0; i < nums.length; i++) {
+        if (stack.length === 0 || nums[stack[stack.length - 1]] > nums[i]) {
+            stack.push(i);
+        }
+    }
+    
+    // Traverse from right to left to find the maximum width ramp
+    for (let j = nums.length - 1; j >= 0; j--) {
+        while (stack.length > 0 && nums[stack[stack.length - 1]] <= nums[j]) {
+            let i = stack.pop();
+            maxWidth = Math.max(maxWidth, j - i);
+        }
+    }
+    
+    return maxWidth;
 };
 
 console.log("==========================================")
