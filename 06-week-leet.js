@@ -12538,6 +12538,15 @@ Explanation:
 - Friend 0 leaves at time 10 and chair 2 becomes empty.
 Since friend 0 sat on chair 2, we return 2.
 
+/**
+ * @param {number[][]} times
+ * @param {number} targetFriend
+ * @return {number}
+ */
+var smallestChair = function(times, targetFriend) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
