@@ -12537,48 +12537,109 @@ console.log("==========================================")
 // @param {number} targetFriend
 // @return {number}
 
-var smallestChair = function(times, targetFriend) {
-    let n = times.length;
-    
-    // Step 1: Create an array of [arrival, leaving, friendIndex] and sort by arrival time
-    let events = times.map((time, idx) => [time[0], time[1], idx]);
-    events.sort((a, b) => a[0] - b[0]); // Sort by arrival time
-    
-    // Step 2: Initialize a priority queue (min-heap) for available chairs and friends' leaving times
-    let availableChairs = [];
-    let leavingTimes = [];
-    
-    // Fill the availableChairs heap initially with all chairs
-    for (let i = 0; i < n; i++) {
-        availableChairs.push(i);
+class MinHeap {
+    constructor() {
+      this.data = [];
     }
-    
-    availableChairs.sort((a, b) => a - b); // Min-heap of available chairs
-    
-    // Step 3: Process each event (friends' arrivals and departures)
-    for (let i = 0; i < n; i++) {
-        let [arrival, leaving, friend] = events[i];
-        
-        // Free up chairs of friends who have left by the time of this arrival
-        while (leavingTimes.length && leavingTimes[0][0] <= arrival) {
-            let [leaveTime, chairIndex] = leavingTimes.shift();
-            availableChairs.push(chairIndex); // Chair becomes available again
-            availableChairs.sort((a, b) => a - b); // Keep the heap sorted
-        }
-        
-        // Assign the smallest available chair to the current friend
-        let assignedChair = availableChairs.shift();
-        
-        // If this is the target friend, return the chair number
-        if (friend === targetFriend) {
-            return assignedChair;
-        }
-        
-        // Record when the friend will leave and which chair they occupy
-        leavingTimes.push([leaving, assignedChair]);
-        leavingTimes.sort((a, b) => a[0] - b[0]); // Sort by leaving times
+  
+    // Insert element into heap and maintain heap order
+    push(val) {
+      this.data.push(val);
+      this._heapifyUp();
     }
-};
+  
+    // Remove and return the smallest element (root) from the heap
+    pop() {
+      if (this.data.length === 1) return this.data.pop();
+      const root = this.data[0];
+      this.data[0] = this.data.pop();
+      this._heapifyDown();
+      return root;
+    }
+  
+    // Get the smallest element without removing it
+    peek() {
+      return this.data[0];
+    }
+  
+    size() {
+      return this.data.length;
+    }
+  
+    _heapifyUp() {
+      let index = this.data.length - 1;
+      const current = this.data[index];
+      while (index > 0) {
+        const parentIndex = Math.floor((index - 1) / 2);
+        if (this.data[parentIndex] <= current) break;
+        this.data[index] = this.data[parentIndex];
+        index = parentIndex;
+      }
+      this.data[index] = current;
+    }
+  
+    _heapifyDown() {
+      let index = 0;
+      const length = this.data.length;
+      const current = this.data[0];
+  
+      while (true) {
+        let leftChildIdx = 2 * index + 1;
+        let rightChildIdx = 2 * index + 2;
+        let smallestIdx = index;
+  
+        if (leftChildIdx < length && this.data[leftChildIdx] < this.data[smallestIdx]) {
+          smallestIdx = leftChildIdx;
+        }
+  
+        if (rightChildIdx < length && this.data[rightChildIdx] < this.data[smallestIdx]) {
+          smallestIdx = rightChildIdx;
+        }
+  
+        if (smallestIdx === index) break;
+  
+        this.data[index] = this.data[smallestIdx];
+        index = smallestIdx;
+      }
+  
+      this.data[index] = current;
+    }
+  }
+  
+  function smallestChair(times, targetFriend) {
+    let nextUnsatChair = 0;
+    const emptyChairs = new MinHeap(); // Min-heap for available chairs
+    const occupied = new MinHeap();    // Min-heap for occupied chairs (sorted by leaving time)
+  
+    // Add the friend's index to each entry in times and sort by arrival time
+    times = times.map((time, index) => [...time, index]);
+    times.sort((a, b) => a[0] - b[0]); // Sort by arrival time
+  
+    // Process each friend based on their arrival and leaving times
+    for (const [arrival, leaving, i] of times) {
+      // Free up chairs from friends who have left before the current friend's arrival
+      while (occupied.size() > 0 && occupied.peek()[0] <= arrival) {
+        const unsatChair = occupied.pop()[1];
+        emptyChairs.push(unsatChair); // Add the chair back to available chairs
+      }
+  
+      // If the current friend is the target friend, return their chair
+      if (i === targetFriend) {
+        return emptyChairs.size() > 0 ? emptyChairs.peek() : nextUnsatChair;
+      }
+  
+      // Assign a chair to the current friend
+      if (emptyChairs.size() === 0) {
+        occupied.push([leaving, nextUnsatChair]);
+        nextUnsatChair += 1;
+      } else {
+        const emptyChair = emptyChairs.pop();
+        occupied.push([leaving, emptyChair]);
+      }
+    }
+  
+    return -1; // Fallback in case no result is found (should not occur)
+  }
 
 console.log("==========================================")
 // console.log("==========================================")
