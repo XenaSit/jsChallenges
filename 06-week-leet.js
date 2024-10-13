@@ -12666,7 +12666,13 @@ Example 2:
 Input: nums = [[1,2,3],[1,2,3],[1,2,3]]
 Output: [1,1]
  
-
+/**
+ * @param {number[][]} nums
+ * @return {number[]}
+ */
+var smallestRange = function(nums) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
