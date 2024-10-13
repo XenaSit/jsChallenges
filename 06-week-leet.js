@@ -12664,7 +12664,38 @@ console.log("==========================================")
 // @return {number[]}
 
 var smallestRange = function(nums) {
+    // Min heap to store [value, row index, element index in the row]
+    let minHeap = new MinPriorityQueue({ priority: x => x[0] });
     
+    let max = -Infinity;  // Keep track of the current max element in the heap
+    let rangeStart = 0, rangeEnd = Infinity;  // Start with an infinite range
+    
+    // Initialize the heap with the first element from each list
+    for (let i = 0; i < nums.length; i++) {
+        minHeap.enqueue([nums[i][0], i, 0]);
+        max = Math.max(max, nums[i][0]);
+    }
+
+    // Process the heap until we can't proceed
+    while (minHeap.size() === nums.length) {
+        // Extract the minimum element
+        let [minValue, listIndex, elemIndex] = minHeap.dequeue().element;
+
+        // If the current range is smaller, update it
+        if (max - minValue < rangeEnd - rangeStart) {
+            rangeStart = minValue;
+            rangeEnd = max;
+        }
+
+        // If there's a next element in the same list, push it into the heap
+        if (elemIndex + 1 < nums[listIndex].length) {
+            let nextElem = nums[listIndex][elemIndex + 1];
+            minHeap.enqueue([nextElem, listIndex, elemIndex + 1]);
+            max = Math.max(max, nextElem);  // Update max if necessary
+        }
+    }
+    
+    return [rangeStart, rangeEnd];
 };
 
 console.log("==========================================")
