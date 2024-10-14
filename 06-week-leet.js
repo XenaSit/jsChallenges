@@ -12733,6 +12733,14 @@ Operation 2: Select i = 1, so nums becomes [1,2,3,3,3]. Your score increases by 
 Operation 3: Select i = 2, so nums becomes [1,1,1,3,3]. Your score increases by 3.
 The final score is 10 + 4 + 3 = 17.
 
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var maxKelements = function(nums, k) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
