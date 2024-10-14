@@ -12729,7 +12729,32 @@ console.log("==========================================")
 // @return {number}
 
 var maxKelements = function(nums, k) {
+    // Create a max-heap using a min-heap by pushing negative values
+    let maxHeap = new MaxPriorityQueue({ compare: (a, b) => b - a });
     
+    // Push all the numbers into the max-heap
+    for (let num of nums) {
+        maxHeap.enqueue(num);
+    }
+
+    let score = 0;
+    
+    // Perform k operations
+    for (let i = 0; i < k; i++) {
+        // Get the largest element
+        let largest = maxHeap.dequeue();
+        
+        // Add to the score
+        score += largest;
+        
+        // Calculate the new value after applying the ceil operation
+        let newVal = Math.ceil(largest / 3);
+        
+        // Push the new value back into the heap
+        maxHeap.enqueue(newVal);
+    }
+    
+    return score;
 };
 
 console.log("==========================================")
