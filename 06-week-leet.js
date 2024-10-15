@@ -12786,6 +12786,13 @@ Input: s = "0111"
 Output: 0
 Explanation: All the black balls are already grouped to the right.
 
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var minimumSteps = function(s) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
