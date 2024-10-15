@@ -12789,25 +12789,25 @@ console.log("==========================================")
 // @param {string} s
 // @return {number}
 
-var minimumSteps = function(s) {
-    let blackCount = 0;  // Count the total number of '1's
-    let steps = 0;       // Store the total number of swaps needed
-    let whiteSeen = 0;   // Keep track of how many '0's we've passed
-    
-    // Traverse the string and calculate swaps
-    for (let i = 0; i < s.length; i++) {
+function minimumSteps(s) {
+    const stringLength = s.length;          // Get the length of the input string.
+    let steps = 0;                          // Initialize the steps counter to zero.
+    let countOfOnes = 0;                    // Initialize a counter to keep track of the number of '1's encountered.
+
+    // Iterate over the string in reverse order.
+    for (let i = stringLength - 1; i >= 0; --i) {
         if (s[i] === '1') {
-            // If a '1' is encountered, it needs to be moved past all '0's seen so far
-            steps += whiteSeen;
-        } else {
-            // If a '0' is encountered, increment the whiteSeen counter
-            whiteSeen++;
+            // If the current character is '1', increment the count of '1's.
+            ++countOfOnes;
+            // Accumulate the necessary steps to bring the '1' to the end of the string,
+            // taking into account the count of '1's encountered so far.
+            steps += stringLength - i - countOfOnes;
         }
     }
-    
-    return steps;
-};
 
+    // Return the total number of steps required to move all '1's to the end of the string.
+    return steps;
+}
 
 console.log("==========================================")
 // console.log("==========================================")
