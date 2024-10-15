@@ -12789,8 +12789,20 @@ console.log("==========================================")
 // @param {string} s
 // @return {number}
 
-var minimumSteps = function(s) {
-    
+let whiteCount = 0;  // Keeps track of how many '0's we've seen so far
+let swaps = 0;       // Tracks the number of swaps required
+
+// Loop through the string to calculate minimum swaps
+for (let i = 0; i < s.length; i++) {
+    if (s[i] === '0') {
+        whiteCount++;  // Increment white ball count when '0' is encountered
+    } else {
+        // If '1' is encountered, add the number of preceding '0's to swaps
+        swaps += whiteCount;
+    }
+}
+
+return swaps;
 };
 
 console.log("==========================================")
