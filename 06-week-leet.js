@@ -12839,9 +12839,52 @@ console.log("==========================================")
 // @return {string}
 
 var longestDiverseString = function(a, b, c) {
-    
-};
+    // Initialize a result array to build the string
+    let result = [];
 
+    // Create an array of characters with their counts
+    let maxHeap = [
+        { count: a, char: 'a' },
+        { count: b, char: 'b' },
+        { count: c, char: 'c' }
+    ];
+
+    // Sort by count in descending order (greedy approach)
+    maxHeap.sort((x, y) => y.count - x.count);
+
+    while (true) {
+        // Sort each time by current counts
+        maxHeap.sort((x, y) => y.count - x.count);
+        
+        let hasAppended = false;
+        
+        // Try to add the most frequent character
+        for (let i = 0; i < 3; i++) {
+            if (maxHeap[i].count === 0) {
+                continue; // No more of this character to add
+            }
+            // Check the last two characters of the result to avoid 3 consecutive characters
+            const length = result.length;
+            if (length >= 2 && result[length - 1] === maxHeap[i].char && result[length - 2] === maxHeap[i].char) {
+                continue; // Skip this character as it would violate the rule
+            }
+            
+            // Append the character
+            result.push(maxHeap[i].char);
+            maxHeap[i].count--; // Decrement the count
+            hasAppended = true; // We added a character successfully
+            break; // Exit after adding a character
+        }
+        
+        // If we couldn't append any character, break the loop
+        if (!hasAppended) {
+            break;
+        }
+    }
+    
+    // Return the result array as a string
+    return result.join('');
+};
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
