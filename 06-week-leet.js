@@ -12840,6 +12840,15 @@ Input: a = 7, b = 1, c = 0
 Output: "aabaa"
 Explanation: It is the only correct answer in this case.
 
+/**
+ * @param {number} a
+ * @param {number} b
+ * @param {number} c
+ * @return {string}
+ */
+var longestDiverseString = function(a, b, c) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
