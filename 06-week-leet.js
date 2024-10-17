@@ -12910,7 +12910,32 @@ console.log("==========================================")
 // @return {number}
 
 var maximumSwap = function(num) {
+    // Convert number to string array to easily access and swap digits
+    let numArr = num.toString().split('');
     
+    // Create an array to track the rightmost index of each digit (0-9)
+    let last = new Array(10).fill(-1);
+    
+    // Fill the 'last' array with the last index of each digit in numArr
+    for (let i = 0; i < numArr.length; i++) {
+        last[+numArr[i]] = i;
+    }
+    
+    // Traverse the number from left to right
+    for (let i = 0; i < numArr.length; i++) {
+        // Check digits larger than the current one
+        for (let d = 9; d > +numArr[i]; d--) {
+            if (last[d] > i) {
+                // Swap the current digit with the largest possible later digit
+                [numArr[i], numArr[last[d]]] = [numArr[last[d]], numArr[i]];
+                // Return the result as a number
+                return +numArr.join('');
+            }
+        }
+    }
+    
+    // If no swap is made, return the original number
+    return num;
 };
 
 console.log("==========================================")
