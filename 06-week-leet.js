@@ -12910,6 +12910,13 @@ Input: num = 9973
 Output: 9973
 Explanation: No swap.
 
+/**
+ * @param {number} num
+ * @return {number}
+ */
+var maximumSwap = function(num) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
