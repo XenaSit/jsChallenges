@@ -12977,7 +12977,13 @@ Explanation: The maximum possible bitwise OR of a subset is 7. There are 6 subse
 - [2,5]
 - [2,1,5]
 
-
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var countMaxOrSubsets = function(nums) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
