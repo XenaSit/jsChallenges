@@ -12975,7 +12975,32 @@ console.log("==========================================")
 // @return {number}
 
 var countMaxOrSubsets = function(nums) {
+    let maxOr = 0;
+    // Calculate the maximum possible OR by OR-ing all elements
+    for (let num of nums) {
+        maxOr |= num;
+    }
     
+    let count = 0;
+
+    // Recursive function to calculate subsets and their OR values
+    function dfs(index, currentOr) {
+        if (index === nums.length) {
+            if (currentOr === maxOr) {
+                count++;
+            }
+            return;
+        }
+        // Include the current element in the subset
+        dfs(index + 1, currentOr | nums[index]);
+        // Exclude the current element from the subset
+        dfs(index + 1, currentOr);
+    }
+
+    // Start recursion from index 0 with an initial OR of 0
+    dfs(0, 0);
+    
+    return count;
 };
 
 console.log("==========================================")
