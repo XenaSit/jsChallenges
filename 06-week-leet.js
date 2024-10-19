@@ -13032,7 +13032,14 @@ Output: "1"
 Explanation: S4 is "011100110110001".
 The 11th bit is "1".
 
-
+/**
+ * @param {number} n
+ * @param {number} k
+ * @return {character}
+ */
+var findKthBit = function(n, k) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
