@@ -13037,7 +13037,31 @@ console.log("==========================================")
 // @return {character}
 
 var findKthBit = function(n, k) {
+    // Base case: if n is 1, the string is "0"
+    if (n == 1) {
+        return '0';
+    }
     
+    // Length of S_n is 2^n - 1
+    let length = (1 << n) - 1; // This is 2^n - 1
+    
+    // Middle index of the current string
+    let mid = Math.floor(length / 2) + 1;
+    
+    // If k is the middle element, it is '1'
+    if (k == mid) {
+        return '1';
+    }
+    
+    if (k < mid) {
+        // If k is in the first half, recurse on S_(n-1)
+        return findKthBit(n - 1, k);
+    } else {
+        // If k is in the second half, it corresponds to the mirrored position in S_(n-1)
+        // The mirrored position is: length - k + 1
+        // The bit is also inverted
+        return findKthBit(n - 1, length - k + 1) === '0' ? '1' : '0';
+    }
 };
 
 console.log("==========================================")
