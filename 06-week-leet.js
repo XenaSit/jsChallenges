@@ -13066,45 +13066,79 @@ var findKthBit = function(n, k) {
 
 console.log("==========================================")
 
-1106. Parsing A Boolean Expression
-Hard
-A boolean expression is an expression that evaluates to either true or false. It can be in one of the following shapes:
-'t' that evaluates to true.
-'f' that evaluates to false.
-'!(subExpr)' that evaluates to the logical NOT of the inner expression subExpr.
-'&(subExpr1, subExpr2, ..., subExprn)' that evaluates to the logical AND of the inner expressions subExpr1, 
-subExpr2, ..., subExprn where n >= 1.
-'|(subExpr1, subExpr2, ..., subExprn)' that evaluates to the logical OR of the inner expressions subExpr1, 
-subExpr2, ..., subExprn where n >= 1.
-Given a string expression that represents a boolean expression, return the evaluation of that expression.
-It is guaranteed that the given expression is valid and follows the given rules.
+// 1106. Parsing A Boolean Expression
+// Hard
+// A boolean expression is an expression that evaluates to either true or false. It can be in one of the following shapes:
+// 't' that evaluates to true.
+// 'f' that evaluates to false.
+// '!(subExpr)' that evaluates to the logical NOT of the inner expression subExpr.
+// '&(subExpr1, subExpr2, ..., subExprn)' that evaluates to the logical AND of the inner expressions subExpr1, 
+// subExpr2, ..., subExprn where n >= 1.
+// '|(subExpr1, subExpr2, ..., subExprn)' that evaluates to the logical OR of the inner expressions subExpr1, 
+// subExpr2, ..., subExprn where n >= 1.
+// Given a string expression that represents a boolean expression, return the evaluation of that expression.
+// It is guaranteed that the given expression is valid and follows the given rules.
 
-Example 1:
-Input: expression = "&(|(f))"
-Output: false
-Explanation: 
-First, evaluate |(f) --> f. The expression is now "&(f)".
-Then, evaluate &(f) --> f. The expression is now "f".
-Finally, return false.
+// Example 1:
+// Input: expression = "&(|(f))"
+// Output: false
+// Explanation: 
+// First, evaluate |(f) --> f. The expression is now "&(f)".
+// Then, evaluate &(f) --> f. The expression is now "f".
+// Finally, return false.
 
-Example 2:
-Input: expression = "|(f,f,f,t)"
-Output: true
-Explanation: The evaluation of (false OR false OR false OR true) is true.
+// Example 2:
+// Input: expression = "|(f,f,f,t)"
+// Output: true
+// Explanation: The evaluation of (false OR false OR false OR true) is true.
 
-Example 3:
-Input: expression = "!(&(f,t))"
-Output: true
-Explanation: 
-First, evaluate &(f,t) --> (false AND true) --> false --> f. The expression is now "!(f)".
-Then, evaluate !(f) --> NOT false --> true. We return true.
+// Example 3:
+// Input: expression = "!(&(f,t))"
+// Output: true
+// Explanation: 
+// First, evaluate &(f,t) --> (false AND true) --> false --> f. The expression is now "!(f)".
+// Then, evaluate !(f) --> NOT false --> true. We return true.
 
-/**
- * @param {string} expression
- * @return {boolean}
- */
+// @param {string} expression
+// @return {boolean}
+
 var parseBoolExpr = function(expression) {
+    const stack = [];
     
+    for (let ch of expression) {
+        if (ch === ',' || ch === '(') {
+            // Ignore commas and opening parentheses
+            continue;
+        } else if (ch === 't' || ch === 'f' || ch === '!' || ch === '&' || ch === '|') {
+            // Push boolean values and operators to the stack
+            stack.push(ch);
+        } else if (ch === ')') {
+            // Evaluate the expression within the parentheses
+            let values = [];
+            while (stack.length && stack[stack.length - 1] !== '!' && stack[stack.length - 1] !== '&' && stack[stack.length - 1] !== '|') {
+                values.push(stack.pop());
+            }
+            const operator = stack.pop();
+            let result;
+            
+            if (operator === '!') {
+                // For NOT, negate the single value
+                result = values[0] === 't' ? 'f' : 't';
+            } else if (operator === '&') {
+                // For AND, all values must be 't' (true)
+                result = values.every(v => v === 't') ? 't' : 'f';
+            } else if (operator === '|') {
+                // For OR, at least one value must be 't' (true)
+                result = values.some(v => v === 't') ? 't' : 'f';
+            }
+            
+            // Push the result back to the stack
+            stack.push(result);
+        }
+    }
+    
+    // The final result will be the only item left on the stack
+    return stack[0] === 't';
 };
 
 console.log("==========================================")
