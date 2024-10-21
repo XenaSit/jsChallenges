@@ -13170,7 +13170,34 @@ console.log("==========================================")
 // @return {number}
 
 var maxUniqueSplit = function(s) {
-    
+    // Helper function to do backtracking
+    const backtrack = (index, used) => {
+        // If we've reached the end of the string, return 0 (no more splits possible)
+        if (index === s.length) {
+            return 0;
+        }
+
+        let maxSplits = 0;
+
+        // Try every possible substring starting from the current index
+        for (let i = index + 1; i <= s.length; i++) {
+            let substring = s.slice(index, i);
+            // If the substring is unique (not in the set), we can use it
+            if (!used.has(substring)) {
+                // Add the substring to the set
+                used.add(substring);
+                // Recur for the remaining part of the string and update maxSplits
+                maxSplits = Math.max(maxSplits, 1 + backtrack(i, used));
+                // Backtrack by removing the substring from the set
+                used.delete(substring);
+            }
+        }
+
+        return maxSplits;
+    };
+
+    // Start backtracking with an empty set of used substrings
+    return backtrack(0, new Set());
 };
 
 console.log("==========================================")
