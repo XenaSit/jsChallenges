@@ -13172,6 +13172,14 @@ Input: s = "aa"
 Output: 1
 Explanation: It is impossible to split the string any further.
 
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var maxUniqueSplit = function(s) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
