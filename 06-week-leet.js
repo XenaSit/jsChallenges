@@ -13236,7 +13236,36 @@ console.log("==========================================")
 // @return {number}
 
 var kthLargestLevelSum = function(root, k) {
+    if (!root) return -1;
     
+    const levelSums = [];
+    const queue = [root]; // Queue for BFS
+    
+    // Perform BFS to calculate level sums
+    while (queue.length > 0) {
+        let levelSize = queue.length;
+        let levelSum = 0;
+        
+        for (let i = 0; i < levelSize; i++) {
+            let currentNode = queue.shift();
+            levelSum += currentNode.val;
+            
+            if (currentNode.left) queue.push(currentNode.left);
+            if (currentNode.right) queue.push(currentNode.right);
+        }
+        
+        // Push the sum of the current level to the array
+        levelSums.push(levelSum);
+    }
+    
+    // Sort the level sums in descending order
+    levelSums.sort((a, b) => b - a);
+    
+    // Check if we have at least 'k' levels
+    if (k > levelSums.length) return -1;
+    
+    // Return the kth largest level sum
+    return levelSums[k - 1];
 };
 
 console.log("==========================================")
