@@ -13307,7 +13307,42 @@ console.log("==========================================")
 // @return {TreeNode}
 
 var replaceValueInTree = function(root) {
+    if (!root) return root;
     
+    // Use BFS to traverse level by level
+    const queue = [root];
+    root.val = 0; // root has no cousins
+
+    while (queue.length > 0) {
+        let levelSize = queue.length;
+        let levelSum = 0;
+        const levelNodes = [];
+
+        // First pass: gather all nodes in the current level and compute the total sum of values
+        for (let i = 0; i < levelSize; i++) {
+            const node = queue.shift();
+            levelNodes.push(node);
+            if (node.left) {
+                levelSum += node.left.val;
+                queue.push(node.left);
+            }
+            if (node.right) {
+                levelSum += node.right.val;
+                queue.push(node.right);
+            }
+        }
+
+        // Second pass: replace each node's value with the sum of all cousins
+        for (const node of levelNodes) {
+            let siblingSum = 0;
+            if (node.left) siblingSum += node.left.val;
+            if (node.right) siblingSum += node.right.val;
+            if (node.left) node.left.val = levelSum - siblingSum;
+            if (node.right) node.right.val = levelSum - siblingSum;
+        }
+    }
+
+    return root;
 };
 
 console.log("==========================================")
