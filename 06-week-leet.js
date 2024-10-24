@@ -13379,7 +13379,19 @@ console.log("==========================================")
 // @return {boolean}
 
 var flipEquiv = function(root1, root2) {
+    // Base case: if both nodes are null, they are equivalent
+    if (root1 === null && root2 === null) return true;
+    // If one of them is null or their values don't match, they are not equivalent
+    if (root1 === null || root2 === null || root1.val !== root2.val) return false;
     
+    // Check if the trees are equivalent without flipping
+    let noFlip = flipEquiv(root1.left, root2.left) && flipEquiv(root1.right, root2.right);
+    
+    // Check if the trees are equivalent with flipping (left with right and vice versa)
+    let flip = flipEquiv(root1.left, root2.right) && flipEquiv(root1.right, root2.left);
+    
+    // Return true if either no flip or flip works
+    return noFlip || flip;
 };
 
 console.log("==========================================")
