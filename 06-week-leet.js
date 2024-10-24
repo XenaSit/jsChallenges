@@ -13367,6 +13367,22 @@ Example 3:
 Input: root1 = [], root2 = [1]
 Output: false
 
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root1
+ * @param {TreeNode} root2
+ * @return {boolean}
+ */
+var flipEquiv = function(root1, root2) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
