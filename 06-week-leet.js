@@ -13425,7 +13425,13 @@ Example 3:
 Input: folder = ["/a/b/c","/a/b/ca","/a/b/d"]
 Output: ["/a/b/c","/a/b/ca","/a/b/d"]
 
-
+/**
+ * @param {string[]} folder
+ * @return {string[]}
+ */
+var removeSubfolders = function(folder) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
