@@ -13422,7 +13422,17 @@ console.log("==========================================")
 // @return {string[]}
 
 var removeSubfolders = function(folder) {
+    folder.sort(); // Sort folders lexicographically
+    let result = [];
     
+    for (let i = 0; i < folder.length; i++) {
+        // Only add if the folder is not a sub-folder of the last item in result
+        if (result.length === 0 || !folder[i].startsWith(result[result.length - 1] + '/')) {
+            result.push(folder[i]);
+        }
+    }
+    
+    return result;
 };
 
 console.log("==========================================")
