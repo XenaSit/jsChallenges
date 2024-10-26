@@ -13476,10 +13476,49 @@ console.log("==========================================")
 // @param {number[]} queries
 // @return {number[]}
 
+function TreeNode(val, left = null, right = null) {
+    this.val = val;
+    this.left = left;
+    this.right = right;
+}
 var treeQueries = function(root, queries) {
-    
-};
+    // Helper function to calculate the depth of the tree
+    const calculateDepth = (node) => {
+        if (node === null) {
+            return 0;
+        }
+        // Recursively find the depth of the left and right subtrees
+        let leftDepth = calculateDepth(node.left);
+        let rightDepth = calculateDepth(node.right);
+        // Store the depth of the current node
+        depthDict.set(node, 1 + Math.max(leftDepth, rightDepth));
+        return depthDict.get(node);
+    };
 
+    // Perform a Depth-First Search to find the highest visible value from each node
+    const dfs = (node, currentDepth, maxVisibleValue) => {
+        if (node === null) {
+            return;
+        }
+        currentDepth += 1;
+        // Record the maximum visible value for the current node
+        results[node.val] = maxVisibleValue;
+        // Explore the left and right subtrees
+        dfs(node.left, currentDepth, Math.max(maxVisibleValue, currentDepth + (depthDict.get(node.right) || 0)));
+        dfs(node.right, currentDepth, Math.max(maxVisibleValue, currentDepth + (depthDict.get(node.left) || 0)));
+    };
+
+    // Map to hold the depth of each node (replacing defaultdict from Python)
+    let depthDict = new Map();
+    // Calculate the depth of each node in the tree
+    calculateDepth(root);
+    // Initialize the results array with zeros for each value up to the number of nodes
+    let results = new Array(depthDict.size + 1).fill(0);
+    // Start the DFS from the root node
+    dfs(root, -1, 0);
+    // Create the list of results for each query
+    return queries.map((value) => results[value]);
+};
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
