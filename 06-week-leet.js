@@ -13473,6 +13473,22 @@ Explanation: We have the following queries:
 - Removing the subtree rooted at node with value 4. The height of the tree becomes 3 (The path 5 -> 8 -> 2 -> 6).
 - Removing the subtree rooted at node with value 8. The height of the tree becomes 2 (The path 5 -> 9 -> 3).
 
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @param {number[]} queries
+ * @return {number[]}
+ */
+var treeQueries = function(root, queries) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
