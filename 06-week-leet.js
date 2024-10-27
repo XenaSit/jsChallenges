@@ -13558,6 +13558,13 @@ There are 6 squares of side 1.
 There is 1 square of side 2. 
 Total number of squares = 6 + 1 = 7.
 
+/**
+ * @param {number[][]} matrix
+ * @return {number}
+ */
+var countSquares = function(matrix) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
