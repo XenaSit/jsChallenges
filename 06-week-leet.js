@@ -13598,6 +13598,14 @@ Input: nums = [2,3,5,6,7]
 Output: -1
 Explanation: There is no square streak in nums so return -1.
 
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var longestSquareStreak = function(nums) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
