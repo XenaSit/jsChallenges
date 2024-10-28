@@ -13602,7 +13602,30 @@ console.log("==========================================")
 // @return {number}
 
 var longestSquareStreak = function(nums) {
-    
+    // Remove duplicates and sort the array
+    nums = [...new Set(nums)].sort((a, b) => a - b);
+
+    const numSet = new Set(nums);
+    let maxStreak = -1;
+
+    // Loop through each number in the sorted array
+    for (let i = 0; i < nums.length; i++) {
+        let current = nums[i];
+        let streakLength = 1;
+
+        // Check if there exists a square of the current number in the set
+        while (numSet.has(current * current)) {
+            current = current * current;
+            streakLength++;
+        }
+
+        // Only consider streaks of at least length 2
+        if (streakLength > 1) {
+            maxStreak = Math.max(maxStreak, streakLength);
+        }
+    }
+
+    return maxStreak;
 };
 
 console.log("==========================================")
