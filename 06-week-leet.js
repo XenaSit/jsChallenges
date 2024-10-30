@@ -13716,7 +13716,38 @@ console.log("==========================================")
 // @return {number}
 
 var minimumMountainRemovals = function(nums) {
+    const n = nums.length;
     
+    // Step 1: Calculate the LIS up to each index
+    const lis = Array(n).fill(1);
+    for (let i = 1; i < n; i++) {
+        for (let j = 0; j < i; j++) {
+            if (nums[i] > nums[j]) {
+                lis[i] = Math.max(lis[i], lis[j] + 1);
+            }
+        }
+    }
+    
+    // Step 2: Calculate the LDS starting from each index
+    const lds = Array(n).fill(1);
+    for (let i = n - 2; i >= 0; i--) {
+        for (let j = n - 1; j > i; j--) {
+            if (nums[i] > nums[j]) {
+                lds[i] = Math.max(lds[i], lds[j] + 1);
+            }
+        }
+    }
+    
+    // Step 3: Find the maximum length of a mountain array
+    let maxMountainLength = 0;
+    for (let i = 1; i < n - 1; i++) {
+        if (lis[i] > 1 && lds[i] > 1) {
+            maxMountainLength = Math.max(maxMountainLength, lis[i] + lds[i] - 1);
+        }
+    }
+    
+    // Step 4: Calculate the minimum removals required
+    return n - maxMountainLength;
 };
 
 console.log("==========================================")
