@@ -13712,6 +13712,14 @@ Input: nums = [2,1,1,5,6,2,3,1]
 Output: 3
 Explanation: One solution is to remove the elements at indices 0, 1, and 5, making the array nums = [1,5,6,3,1].
 
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var minimumMountainRemovals = function(nums) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
