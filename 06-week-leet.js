@@ -13795,9 +13795,33 @@ console.log("==========================================")
 // @return {number}
 
 var minimumTotalDistance = function(robot, factory) {
-    
-};
+    // Sort robots and factories by their positions
+    robot.sort((a, b) => a - b);
+    factory.sort((a, b) => a[0] - b[0]);
 
+    const m = robot.length;
+    const n = factory.length;
+
+    // dp[i][j] will store the minimum distance for first i robots with first j factories
+    const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(Infinity));
+    dp[0][0] = 0;
+
+    for (let j = 1; j <= n; j++) {
+        dp[0][j] = 0; // No distance needed if no robots
+        for (let i = 1; i <= m; i++) {
+            // Calculate total distance if robot[i-1] assigned to factory[j-1]
+            let totalDistance = 0;
+            for (let k = 0; k <= Math.min(factory[j - 1][1], i); k++) {
+                if (k > 0) {
+                    totalDistance += Math.abs(factory[j - 1][0] - robot[i - k]);
+                }
+                dp[i][j] = Math.min(dp[i][j], dp[i - k][j - 1] + totalDistance);
+            }
+        }
+    }
+
+    return dp[m][n];
+};
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
