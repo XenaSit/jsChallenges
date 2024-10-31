@@ -13800,6 +13800,15 @@ The limit of the first factory is 1, and it fixed 1 robot.
 The limit of the second factory is 1, and it fixed 1 robot.
 The total distance is |2 - 1| + |(-2) - (-1)| = 2. It can be shown that we cannot achieve a better total distance than 2.
 
+/**
+ * @param {number[]} robot
+ * @param {number[][]} factory
+ * @return {number}
+ */
+var minimumTotalDistance = function(robot, factory) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
