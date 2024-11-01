@@ -13854,7 +13854,28 @@ console.log("==========================================")
 // @return {string}
 
 var makeFancyString = function(s) {
+    let result = "";
+    let count = 1;
+
+    // Start by adding the first character to the result
+    result += s[0];
     
+    for (let i = 1; i < s.length; i++) {
+        if (s[i] === s[i - 1]) {
+            // Increase the count if the current character is the same as the previous
+            count++;
+        } else {
+            // Reset the count if the current character is different
+            count = 1;
+        }
+        
+        // Only add the character if there are less than 3 in a row
+        if (count < 3) {
+            result += s[i];
+        }
+    }
+    
+    return result;
 };
 
 console.log("==========================================")
