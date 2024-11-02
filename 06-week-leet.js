@@ -13921,7 +13921,24 @@ console.log("==========================================")
  * @return {boolean}
  */
 var isCircularSentence = function(sentence) {
-    
+    // Step 1: Split the sentence into words
+    let words = sentence.split(' ');
+
+    // Step 2: Loop through each word and check the circular condition
+    for (let i = 0; i < words.length; i++) {
+        // Get the current word's last character
+        let currentWordLastChar = words[i][words[i].length - 1];
+        // Get the next word's first character (or wrap to first word)
+        let nextWordFirstChar = words[(i + 1) % words.length][0];
+        
+        // If they don't match, it's not circular
+        if (currentWordLastChar !== nextWordFirstChar) {
+            return false;
+        }
+    }
+
+    // If all checks pass, it's circular
+    return true;
 };
 
 console.log("==========================================")
