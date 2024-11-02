@@ -13916,10 +13916,9 @@ console.log("==========================================")
 // - Leetcode's last character is not equal to is's first character.
 // The sentence is not circular.
 
-/**
- * @param {string} sentence
- * @return {boolean}
- */
+// @param {string} sentence
+// @return {boolean}
+
 var isCircularSentence = function(sentence) {
     // Step 1: Split the sentence into words
     let words = sentence.split(' ');
