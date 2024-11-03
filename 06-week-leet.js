@@ -13961,7 +13961,11 @@ console.log("==========================================")
 // @return {boolean}
 
 var rotateString = function(s, goal) {
+    // Check if lengths are equal, otherwise `s` can't be rotated to match `goal`
+    if (s.length !== goal.length) return false;
     
+    // Check if goal is a substring of s concatenated with itself
+    return (s + s).includes(goal);
 };
 
 console.log("==========================================")
