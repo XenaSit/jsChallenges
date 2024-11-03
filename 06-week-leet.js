@@ -13962,7 +13962,14 @@ Example 2:
 Input: s = "abcde", goal = "abced"
 Output: false
 
-
+/**
+ * @param {string} s
+ * @param {string} goal
+ * @return {boolean}
+ */
+var rotateString = function(s, goal) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
