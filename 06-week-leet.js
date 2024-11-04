@@ -14010,7 +14010,13 @@ For prefix "aaaaaaaaa", append "9" followed by "a" to comp.
 For prefix "aaaaa", append "5" followed by "a" to comp.
 For prefix "bb", append "2" followed by "b" to comp.
 
-
+/**
+ * @param {string} word
+ * @return {string}
+ */
+var compressedString = function(word) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
