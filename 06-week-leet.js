@@ -13998,7 +13998,26 @@ console.log("==========================================")
 // @return {string}
 
 var compressedString = function(word) {
+    let comp = "";
+    let i = 0;
     
+    while (i < word.length) {
+        // Initialize count for the current character
+        let count = 1;
+        
+        // Count the maximum length of the current character segment
+        while (i + count < word.length && word[i + count] === word[i] && count < 9) {
+            count++;
+        }
+        
+        // Append the compressed part (count and character) to comp
+        comp += count.toString() + word[i];
+        
+        // Move index forward by count to skip the processed segment
+        i += count;
+    }
+    
+    return comp;
 };
 
 console.log("==========================================")
