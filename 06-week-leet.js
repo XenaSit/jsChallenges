@@ -14053,9 +14053,22 @@ console.log("==========================================")
 // @param {string} s
 // @return {number}
 
-var minChanges = function(s) {
-    
-};
+function minChanges(s) {
+    // Initialize a variable to track the number of changes needed.
+    let changesNeeded = 0;
+  
+    // Iterate through the string, checking every second character starting from the second one.
+    for (let i = 1; i < s.length; i += 2) {
+        // Check if the current character is different from the previous one.
+        // If they are the same, increment the changes needed.
+        if (s[i] !== s[i - 1]) {
+            changesNeeded++;
+        }
+    }
+  
+    // Return the total number of changes needed.
+    return changesNeeded;
+}
 
 console.log("==========================================")
 // console.log("==========================================")
