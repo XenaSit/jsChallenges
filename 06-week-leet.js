@@ -14106,37 +14106,49 @@ console.log("==========================================")
 // @param {number[]} nums
 // @return {boolean}
 
-var canSortArray = function(nums) {
-    // Helper function to calculate the number of set bits in a number
-    const countSetBits = (num) => num.toString(2).split('0').join('').length;
-
-    // Group numbers by their set bits count
-    const groups = {};
-    for (const num of nums) {
-        const bits = countSetBits(num);
-        if (!groups[bits]) groups[bits] = [];
-        groups[bits].push(num);
+function canSortArray(nums) {
+    let previousMax = -300; // Initiate the previous maximum to a value lower than any element in nums
+    const length = nums.length;
+  
+    // Iterate over the array
+    for (let i = 0; i < length; ) {
+        let j = i + 1; // Start from the next element
+        const bitCountOfCurrent = bitCount(nums[i]); // Get the bit count of the current element
+      
+        // Find min and max element within the same bit count group
+        let minElement = nums[i];
+        let maxElement = nums[i];
+      
+        // Keep updating min/max in the group where the bit count is the same
+        while (j < length && bitCount(nums[j]) === bitCountOfCurrent) {
+            minElement = Math.min(minElement, nums[j]);
+            maxElement = Math.max(maxElement, nums[j]);
+            j++;
+        }
+      
+        // If the max of the previous group is greater than the min of the current group, return false
+        if (previousMax > minElement) {
+            return false;
+        }
+      
+        // Update the previousMax to the max of the current group
+        previousMax = maxElement;
+        i = j; // Move to the next group
     }
-
-    // Sort each group independently
-    for (const key in groups) {
-        groups[key].sort((a, b) => a - b);
-    }
-
-    // Collect the sorted numbers in the order of their appearance in `nums`
-    let sortedNums = [];
-    for (const num of nums) {
-        const bits = countSetBits(num);
-        sortedNums.push(groups[bits].shift()); // Pop from the sorted group
-    }
-
-    // Check if the resultant sorted array is non-decreasing
-    for (let i = 1; i < sortedNums.length; i++) {
-        if (sortedNums[i] < sortedNums[i - 1]) return false;
-    }
-
+  
+    // If the entire array can be separated into groups with incremental mins, return true
     return true;
-};
+}
+
+function bitCount(i) {
+    // Apply bit manipulation tricks to count the bits set to 1
+    i = i - ((i >>> 1) & 0x55555555);
+    i = (i & 0x33333333) + ((i >>> 2) & 0x33333333);
+    i = (i + (i >>> 4)) & 0x0f0f0f0f;
+    i = i + (i >>> 8);
+    i = i + (i >>> 16);
+    return i & 0x3f; // Return the count of bits set to 1
+}
 
 console.log("==========================================")
 // console.log("==========================================")
