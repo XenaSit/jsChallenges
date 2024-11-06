@@ -14103,6 +14103,13 @@ Input: nums = [3,16,8,4,2]
 Output: false
 Explanation: It can be shown that it is not possible to sort the input array using any number of operations.
 
+@param {number[]} nums
+@return {boolean}
+
+var canSortArray = function(nums) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
