@@ -14107,7 +14107,35 @@ console.log("==========================================")
 // @return {boolean}
 
 var canSortArray = function(nums) {
-    
+    // Helper function to calculate the number of set bits in a number
+    const countSetBits = (num) => num.toString(2).split('0').join('').length;
+
+    // Group numbers by their set bits count
+    const groups = {};
+    for (const num of nums) {
+        const bits = countSetBits(num);
+        if (!groups[bits]) groups[bits] = [];
+        groups[bits].push(num);
+    }
+
+    // Sort each group independently
+    for (const key in groups) {
+        groups[key].sort((a, b) => a - b);
+    }
+
+    // Collect the sorted numbers in the order of their appearance in `nums`
+    let sortedNums = [];
+    for (const num of nums) {
+        const bits = countSetBits(num);
+        sortedNums.push(groups[bits].shift()); // Pop from the sorted group
+    }
+
+    // Check if the resultant sorted array is non-decreasing
+    for (let i = 1; i < sortedNums.length; i++) {
+        if (sortedNums[i] < sortedNums[i - 1]) return false;
+    }
+
+    return true;
 };
 
 console.log("==========================================")
