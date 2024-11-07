@@ -14176,10 +14176,9 @@ Output: 2
 Explanation: The largest combination [8,8] has a bitwise AND of 8 & 8 = 8 > 0.
 The size of the combination is 2, so we return 2.
 
-/**
- * @param {number[]} candidates
- * @return {number}
- */
+@param {number[]} candidates
+@return {number}
+
 var largestCombination = function(candidates) {
     
 };
