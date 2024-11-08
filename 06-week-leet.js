@@ -14237,7 +14237,25 @@ console.log("==========================================")
 // @return {number[]}
 
 var getMaximumXor = function(nums, maximumBit) {
+    const maxVal = (1 << maximumBit) - 1; // This is 2^maximumBit - 1
+    const result = [];
     
+    // Compute the cumulative XOR of the entire array
+    let xor_all = 0;
+    for (let num of nums) {
+        xor_all ^= num;
+    }
+
+    // Process each query
+    for (let i = nums.length - 1; i >= 0; i--) {
+        // The best k is maxVal XOR xor_all
+        result.push(maxVal ^ xor_all);
+        
+        // Update xor_all by removing the last element of nums
+        xor_all ^= nums[i];
+    }
+    
+    return result;
 };
 
 console.log("==========================================")
