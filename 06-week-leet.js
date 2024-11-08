@@ -14227,12 +14227,19 @@ Explanation: The queries are answered as follows:
 2nd query: nums = [2,3,4], k = 2 since 2 XOR 3 XOR 4 XOR 2 = 7.
 3rd query: nums = [2,3], k = 6 since 2 XOR 3 XOR 6 = 7.
 4th query: nums = [2], k = 5 since 2 XOR 5 = 7.
-Example 3:
 
+Example 3:
 Input: nums = [0,1,2,2,5,7], maximumBit = 3
 Output: [4,3,6,4,6,7]
  
-
+/**
+ * @param {number[]} nums
+ * @param {number} maximumBit
+ * @return {number[]}
+ */
+var getMaximumXor = function(nums, maximumBit) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
