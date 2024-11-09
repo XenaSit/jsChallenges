@@ -14284,7 +14284,23 @@ console.log("==========================================")
 // @return {number}
 
 var minEnd = function(n, x) {
+    // Start with the array where the first element is x.
+    let nums = [x];
     
+    // Build the array by adding numbers just above the previous one.
+    let current = x;
+    for (let i = 1; i < n; i++) {
+        // Find the next integer greater than 'current' that keeps AND result as x.
+        do {
+            current++;
+        } while ((current & x) !== x);
+        
+        // Add it to nums.
+        nums.push(current);
+    }
+    
+    // Return the last element of the array as required.
+    return nums[n - 1];
 };
 
 console.log("==========================================")
