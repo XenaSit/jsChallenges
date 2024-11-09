@@ -14283,25 +14283,24 @@ console.log("==========================================")
 // @param {number} x
 // @return {number}
 
-var minEnd = function(n, x) {
-    // Start with the array where the first element is x.
-    let nums = [x];
-    
-    // Build the array by adding numbers just above the previous one.
-    let current = x;
-    for (let i = 1; i < n; i++) {
-        // Find the next integer greater than 'current' that keeps AND result as x.
-        do {
-            current++;
-        } while ((current & x) !== x);
-        
-        // Add it to nums.
-        nums.push(current);
+function minEnd(n, x) {
+    let j = 0;
+    let res = BigInt(x);
+    let t = ~BigInt(x);
+
+    n -= 1;
+
+    while (n >> j) {
+        let bit = BigInt(n >> j & 1);
+        let lb = t & -t;
+
+        res |= (lb * bit);
+        j++;
+        t ^= lb;
     }
-    
-    // Return the last element of the array as required.
-    return nums[n - 1];
-};
+
+    return Number(res);
+}
 
 console.log("==========================================")
 // console.log("==========================================")
