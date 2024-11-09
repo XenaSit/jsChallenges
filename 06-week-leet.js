@@ -14279,7 +14279,13 @@ Output: 15
 Explanation:
 nums can be [7,15] and its last element is 15.
 
+@param {number} n
+@param {number} x
+@return {number}
 
+var minEnd = function(n, x) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
