@@ -14328,7 +14328,13 @@ Output: 1
 Explanation:
 The subarray [1] has OR value of 1. Hence, we return 1.
 
+@param {number[]} nums
+@param {number} k
+@return {number}
 
+var minimumSubarrayLength = function(nums, k) {
+    
+};
 
 
 
