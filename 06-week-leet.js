@@ -14332,25 +14332,33 @@ console.log("==========================================")
 // @param {number} k
 // @return {number}
 
-var minimumSubarrayLength = function(nums, k) {
-    let n = nums.length;
-    let minLength = Infinity;
+function minimumSubarrayLength(nums, k) {
+    const n = nums.length;
+    let ans = n + 1;
+    const cnt = new Array(32).fill(0);
     
-    for (let left = 0; left < n; left++) {
-        let current_or = 0;
+    for (let i = 0, j = 0, s = 0; j < n; ++j) {
+        s |= nums[j];
         
-        for (let right = left; right < n; right++) {
-            current_or |= nums[right];
-            
-            if (current_or >= k) {
-                minLength = Math.min(minLength, right - left + 1);
-                break;  // No need to extend this window further
+        for (let h = 0; h < 32; ++h) {
+            if (((nums[j] >> h) & 1) === 1) {
+                ++cnt[h];
             }
+        }
+        
+        while (s >= k && i <= j) {
+            ans = Math.min(ans, j - i + 1);
+            for (let h = 0; h < 32; ++h) {
+                if (((nums[i] >> h) & 1) === 1 && --cnt[h] === 0) {
+                    s ^= 1 << h;
+                }
+            }
+            ++i;
         }
     }
     
-    return minLength === Infinity ? -1 : minLength;
-};
+    return ans === n + 1 ? -1 : ans;
+}
 
 
 
