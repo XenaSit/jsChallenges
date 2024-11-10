@@ -14333,7 +14333,23 @@ console.log("==========================================")
 // @return {number}
 
 var minimumSubarrayLength = function(nums, k) {
+    let n = nums.length;
+    let minLength = Infinity;
     
+    for (let left = 0; left < n; left++) {
+        let current_or = 0;
+        
+        for (let right = left; right < n; right++) {
+            current_or |= nums[right];
+            
+            if (current_or >= k) {
+                minLength = Math.min(minLength, right - left + 1);
+                break;  // No need to extend this window further
+            }
+        }
+    }
+    
+    return minLength === Infinity ? -1 : minLength;
 };
 
 
