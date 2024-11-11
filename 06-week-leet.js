@@ -14393,10 +14393,66 @@ console.log("==========================================")
 // @param {number[]} nums
 // @return {boolean}
 
-var primeSubOperation = function(nums) {
-    
-};
+// A function to determine whether a series of subtraction operations can make the array strictly increasing
+// by subtracting a prime number from an element if necessary.
+function primeSubOperation(nums) {
 
+    // Store prime numbers in an array
+    const primes = [];
+  
+    // Generate prime numbers up to 1000 and store them in the primes array
+    for (let i = 2; i <= 1000; ++i) {
+        let isPrime = true;
+        for (const prime of primes) {
+            if (i % prime === 0) {
+                isPrime = false;
+                break;
+            }
+        }
+        if (isPrime) {
+            primes.push(i);
+        }
+    }
+
+    // Binary search to find the index of the smallest prime number 
+    // which is greater than the given number x
+    const searchPrimeIndex = (x) => {
+        let left = 0;
+        let right = primes.length;
+        while (left < right) {
+            const mid = (left + right) >> 1;
+            if (primes[mid] > x) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return left;
+    };
+
+    // Iterate through the numbers array, starting from the second to last element, moving backwards
+    const count = nums.length;
+    for (let i = count - 2; i >= 0; --i) {
+        // Continue to the next if the current number is less than the next number (strictly increasing)
+        if (nums[i] < nums[i + 1]) {
+            continue;
+        }
+
+        // Find the index of the smallest prime number that is greater than the difference needed
+        const primeIndex = searchPrimeIndex(nums[i] - nums[i + 1]);
+
+        // If we cannot find a suitable prime number to make the sequence increasing, return false
+        if (primeIndex === primes.length || primes[primeIndex] >= nums[i]) {
+            return false;
+        }
+
+        // Perform the subtraction to make the sequence strictly increasing
+        nums[i] -= primes[primeIndex];
+    }
+
+    // If all values are checked and the array can be made strictly increasing, return true
+    return true;
+}
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
