@@ -14489,6 +14489,13 @@ Explanation:
 No item has a price less than or equal to 5, so no item can be chosen.
 Hence, the answer to the query is 0.
 
+@param {number[][]} items
+@param {number[]} queries
+@return {number[]}
+
+var maximumBeauty = function(items, queries) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
