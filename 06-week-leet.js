@@ -14494,7 +14494,33 @@ console.log("==========================================")
 // @return {number[]}
 
 var maximumBeauty = function(items, queries) {
+    // Sort items by price in ascending order
+    items.sort((a, b) => a[0] - b[0]);
+
+    // Prepare queries along with their original indices
+    const queriesWithIndex = queries.map((value, index) => [value, index]);
+    queriesWithIndex.sort((a, b) => a[0] - b[0]);
+
+    // Result array for answers, initialized with 0s
+    const answer = new Array(queries.length).fill(0);
     
+    // Track max beauty as we process items up to each price
+    let maxBeauty = 0;
+    let itemIndex = 0;
+    
+    // Process each query in sorted order
+    for (const [queryPrice, queryIndex] of queriesWithIndex) {
+        // Update maxBeauty for all items with price <= queryPrice
+        while (itemIndex < items.length && items[itemIndex][0] <= queryPrice) {
+            maxBeauty = Math.max(maxBeauty, items[itemIndex][1]);
+            itemIndex++;
+        }
+        
+        // Set the answer for this query's original index
+        answer[queryIndex] = maxBeauty;
+    }
+    
+    return answer;
 };
 
 console.log("==========================================")
