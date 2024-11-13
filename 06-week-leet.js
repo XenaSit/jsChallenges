@@ -14548,7 +14548,45 @@ console.log("==========================================")
 // @return {number}
 
 var countFairPairs = function(nums, lower, upper) {
-    
+    nums.sort((a, b) => a - b); // Step 1: Sort the array
+    let count = 0;
+    const n = nums.length;
+
+    for (let i = 0; i < n - 1; i++) {
+        let left = i + 1;
+        let right = n - 1;
+
+        // Find the smallest j such that nums[i] + nums[j] >= lower
+        while (left <= right) {
+            const mid = Math.floor((left + right) / 2);
+            if (nums[i] + nums[mid] >= lower) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        const start = left;
+
+        // Find the largest j such that nums[i] + nums[j] <= upper
+        left = i + 1;
+        right = n - 1;
+        while (left <= right) {
+            const mid = Math.floor((left + right) / 2);
+            if (nums[i] + nums[mid] <= upper) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        const end = right;
+
+        // Count valid pairs
+        if (start <= end) {
+            count += end - start + 1;
+        }
+    }
+
+    return count;
 };
 
 console.log("==========================================")
