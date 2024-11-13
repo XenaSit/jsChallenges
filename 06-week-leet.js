@@ -14549,6 +14549,15 @@ Input: nums = [1,7,9,2,5], lower = 11, upper = 11
 Output: 1
 Explanation: There is a single fair pair: (2,3).
 
+/**
+ * @param {number[]} nums
+ * @param {number} lower
+ * @param {number} upper
+ * @return {number}
+ */
+var countFairPairs = function(nums, lower, upper) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
