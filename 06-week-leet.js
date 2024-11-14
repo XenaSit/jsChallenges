@@ -14632,7 +14632,30 @@ console.log("==========================================")
 // @return {number}
 
 var minimizedMaximum = function(n, quantities) {
+    // Helper function to check if we can distribute with max 'maxProducts' per store
+    function canDistribute(maxProducts) {
+        let requiredStores = 0;
+        for (let qty of quantities) {
+            // Calculate stores needed for current product type at max maxProducts per store
+            requiredStores += Math.ceil(qty / maxProducts);
+            // Early exit if stores required exceeds available stores
+            if (requiredStores > n) return false;
+        }
+        return requiredStores <= n;
+    }
     
+    // Binary search on the possible values for minimized maximum x
+    let low = 1, high = Math.max(...quantities);
+    while (low < high) {
+        const mid = Math.floor((low + high) / 2);
+        if (canDistribute(mid)) {
+            high = mid;  // Try a smaller max if possible
+        } else {
+            low = mid + 1;  // Increase min if not enough stores
+        }
+    }
+    
+    return low;
 };
 
 console.log("==========================================")
