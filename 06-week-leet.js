@@ -14688,7 +14688,40 @@ console.log("==========================================")
 // @return {number}
 
 var findLengthOfShortestSubarray = function(arr) {
-    
+    const n = arr.length;
+    let left = 0;
+    let right = n - 1;
+
+    // Find the longest prefix that is non-decreasing
+    while (left + 1 < n && arr[left] <= arr[left + 1]) {
+        left++;
+    }
+
+    // If the whole array is sorted, no removal is needed
+    if (left === n - 1) {
+        return 0;
+    }
+
+    // Find the longest suffix that is non-decreasing
+    while (right > 0 && arr[right - 1] <= arr[right]) {
+        right--;
+    }
+
+    // Calculate the minimum length of the subarray to remove
+    let minToRemove = Math.min(n - left - 1, right); // Remove one of the segments
+
+    // Try to merge prefix and suffix
+    let i = 0, j = right;
+    while (i <= left && j < n) {
+        if (arr[i] <= arr[j]) {
+            minToRemove = Math.min(minToRemove, j - i - 1);
+            i++;
+        } else {
+            j++;
+        }
+    }
+
+    return minToRemove;
 };
 
 console.log("==========================================")
