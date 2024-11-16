@@ -14759,7 +14759,24 @@ console.log("==========================================")
 // @return {number[]}
 
 var resultsArray = function(nums, k) {
-    
+    const results = [];
+    for (let i = 0; i <= nums.length - k; i++) {
+        // Extract the subarray of size k
+        const subarray = nums.slice(i, i + k);
+        
+        // Check if the subarray is sorted in ascending order and consecutive
+        const isSortedConsecutive = subarray.every((val, index) => {
+            return index === 0 || val === subarray[index - 1] + 1;
+        });
+        
+        // If it is sorted and consecutive, push the maximum element; otherwise, push -1
+        if (isSortedConsecutive) {
+            results.push(Math.max(...subarray));
+        } else {
+            results.push(-1);
+        }
+    }
+    return results;
 };
 
 console.log("==========================================")
