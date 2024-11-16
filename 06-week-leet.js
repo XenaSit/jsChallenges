@@ -14754,7 +14754,13 @@ Example 3:
 Input: nums = [3,2,3,2,3,2], k = 2
 Output: [-1,3,-1,3,-1]
 
+@param {number[]} nums
+@param {number} k
+@return {number[]}
 
+var resultsArray = function(nums, k) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
