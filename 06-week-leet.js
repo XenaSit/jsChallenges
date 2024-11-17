@@ -14804,7 +14804,33 @@ console.log("==========================================")
 // @return {number}
 
 var shortestSubarray = function(nums, k) {
-    
+    const n = nums.length;
+    const prefixSum = new Array(n + 1).fill(0);
+
+    // Compute the prefix sum
+    for (let i = 0; i < n; i++) {
+        prefixSum[i + 1] = prefixSum[i] + nums[i];
+    }
+
+    let minLength = Infinity;
+    const deque = []; // Monotonic queue for indices
+
+    for (let i = 0; i <= n; i++) {
+        // Remove indices from the deque that are no longer valid
+        while (deque.length > 0 && prefixSum[i] - prefixSum[deque[0]] >= k) {
+            minLength = Math.min(minLength, i - deque.shift());
+        }
+
+        // Maintain monotonicity by removing indices with larger prefix sums
+        while (deque.length > 0 && prefixSum[i] <= prefixSum[deque[deque.length - 1]]) {
+            deque.pop();
+        }
+
+        // Add the current index to the deque
+        deque.push(i);
+    }
+
+    return minLength === Infinity ? -1 : minLength;
 };
 
 // console.log("==========================================")
