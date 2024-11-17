@@ -14799,7 +14799,13 @@ Example 3:
 Input: nums = [2,-1,2], k = 3
 Output: 3
  
+@param {number[]} nums
+@param {number} k
+@return {number}
 
+var shortestSubarray = function(nums, k) {
+    
+};
 
 // console.log("==========================================")
 // console.log("==========================================")
