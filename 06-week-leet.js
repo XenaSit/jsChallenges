@@ -14862,7 +14862,13 @@ Output: [12,5,6,13]
 Explanation: The decrypted code is [3+9, 2+3, 4+2, 9+4]. 
 Notice that the numbers wrap around again. If k is negative, the sum is of the previous numbers.
 
+@param {number[]} code
+@param {number} k
+@return {number[]}
 
+var decrypt = function(code, k) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
