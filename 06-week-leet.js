@@ -14867,7 +14867,26 @@ console.log("==========================================")
 // @return {number[]}
 
 var decrypt = function(code, k) {
-    
+    const n = code.length;
+    const result = new Array(n).fill(0);
+
+    if (k === 0) {
+        return result;
+    }
+
+    // Determine direction and range based on k
+    const start = k > 0 ? 1 : k;
+    const end = k > 0 ? k : -1;
+
+    for (let i = 0; i < n; i++) {
+        let sum = 0;
+        for (let j = start; j <= end; j++) {
+            sum += code[(i + j + n) % n]; // Wrap around with modulo
+        }
+        result[i] = sum;
+    }
+
+    return result;
 };
 
 console.log("==========================================")
