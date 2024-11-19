@@ -14918,6 +14918,14 @@ Explanation: The subarrays of nums with length 3 are:
 - [4,4,4] which does not meet the requirements because the element 4 is repeated.
 We return 0 because no subarrays meet the conditions.
 
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var maximumSubarraySum = function(nums, k) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
