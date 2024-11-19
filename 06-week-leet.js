@@ -14923,7 +14923,31 @@ console.log("==========================================")
 // @return {number}
 
 var maximumSubarraySum = function(nums, k) {
-    
+    let start = 0, sum = 0, maxSum = 0;
+    const freqMap = new Map();
+
+    for (let end = 0; end < nums.length; end++) {
+        // Add the current number to the frequency map and sum
+        let num = nums[end];
+        sum += num;
+        freqMap.set(num, (freqMap.get(num) || 0) + 1);
+
+        // Shrink the window if it's larger than k
+        if (end - start + 1 > k) {
+            let startNum = nums[start];
+            sum -= startNum;
+            freqMap.set(startNum, freqMap.get(startNum) - 1);
+            if (freqMap.get(startNum) === 0) freqMap.delete(startNum);
+            start++;
+        }
+
+        // If window size equals k and all elements are distinct
+        if (end - start + 1 === k && freqMap.size === k) {
+            maxSum = Math.max(maxSum, sum);
+        }
+    }
+
+    return maxSum;
 };
 
 console.log("==========================================")
