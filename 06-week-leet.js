@@ -14978,7 +14978,44 @@ console.log("==========================================")
 // @return {number}
 
 var takeCharacters = function(s, k) {
-    
+    const n = s.length;
+
+    // Count occurrences of 'a', 'b', 'c' in the string
+    const count = { 'a': 0, 'b': 0, 'c': 0 };
+    for (const char of s) {
+        count[char]++;
+    }
+
+    // If any character count is less than k, return -1
+    if (count['a'] < k || count['b'] < k || count['c'] < k) {
+        return -1;
+    }
+
+    // Sliding window to find the maximum valid substring
+    let left = 0;
+    let maxValidLength = 0;
+    const required = { ...count };
+
+    // Reduce the required count by k for each character
+    required['a'] -= k;
+    required['b'] -= k;
+    required['c'] -= k;
+
+    for (let right = 0; right < n; right++) {
+        required[s[right]]--;
+        
+        // Ensure the window is valid by shrinking it if necessary
+        while (required['a'] < 0 || required['b'] < 0 || required['c'] < 0) {
+            required[s[left]]++;
+            left++;
+        }
+        
+        // Update the maximum valid length of the substring
+        maxValidLength = Math.max(maxValidLength, right - left + 1);
+    }
+
+    // Calculate the minimal time needed
+    return n - maxValidLength;
 };
 
 console.log("==========================================")
