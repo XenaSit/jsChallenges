@@ -14973,6 +14973,14 @@ Input: s = "a", k = 1
 Output: -1
 Explanation: It is not possible to take one 'b' or 'c' so return -1.
 
+/**
+ * @param {string} s
+ * @param {number} k
+ * @return {number}
+ */
+var takeCharacters = function(s, k) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
