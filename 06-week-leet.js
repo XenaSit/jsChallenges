@@ -15042,6 +15042,15 @@ Output: 4
 Explanation: The unguarded cells are shown in green in the above diagram.
 There are a total of 4 unguarded cells, so we return 4.
 
+@param {number} m
+@param {number} n
+@param {number[][]} guards
+@param {number[][]} walls
+@return {number}
+
+var countUnguarded = function(m, n, guards, walls) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
