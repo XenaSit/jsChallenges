@@ -15049,7 +15049,37 @@ console.log("==========================================")
 // @return {number}
 
 var countUnguarded = function(m, n, guards, walls) {
+    // Step 1: Initialize the grid
+    const grid = Array.from({ length: m }, () => Array(n).fill(0));
     
+    // Mark walls and guards on the grid
+    for (const [r, c] of walls) grid[r][c] = -1; // Walls marked as -1
+    for (const [r, c] of guards) grid[r][c] = -2; // Guards marked as -2
+
+    // Step 2: Simulate guard visibility
+    const directions = [[0, 1], [1, 0], [0, -1], [-1, 0]]; // right, down, left, up
+    for (const [r, c] of guards) {
+        for (const [dr, dc] of directions) {
+            let nr = r + dr, nc = c + dc;
+            while (nr >= 0 && nr < m && nc >= 0 && nc < n && grid[nr][nc] === 0) {
+                grid[nr][nc] = 1; // Mark as guarded
+                nr += dr;
+                nc += dc;
+            }
+        }
+    }
+
+    // Step 3: Count unguarded and unoccupied cells
+    let unguardedCount = 0;
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            if (grid[i][j] === 0) {
+                unguardedCount++;
+            }
+        }
+    }
+
+    return unguardedCount;
 };
 
 console.log("==========================================")
