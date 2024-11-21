@@ -15061,10 +15061,11 @@ var countUnguarded = function(m, n, guards, walls) {
     for (const [r, c] of guards) {
         for (const [dr, dc] of directions) {
             let nr = r + dr, nc = c + dc;
-            while (nr >= 0 && nr < m && nc >= 0 && nc < n && grid[nr][nc] === 0) {
-                grid[nr][nc] = 1; // Mark as guarded
-                nr += dr;
-                nc += dc;
+            while (nr >= 0 && nr < m && nc >= 0 && nc < n ) {
+                if (grid[nr][nc] === -1 || grid [nr][nc] === -2) break;
+                if (grid[nr][nc] === 0) grid[nr][nc] = 1;
+                nr +=dr;
+                nc +=dc;
             }
         }
     }
