@@ -15107,7 +15107,14 @@ Input: matrix = [[0,0,0],[0,0,1],[1,1,0]]
 Output: 2
 Explanation: After flipping values in the first two columns, the last two rows have equal values.
 
+/**
+ * @param {number[][]} matrix
+ * @return {number}
+ */
 
+var maxEqualRowsAfterFlips = function(matrix) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
