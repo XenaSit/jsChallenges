@@ -15112,7 +15112,22 @@ console.log("==========================================")
 
 
 var maxEqualRowsAfterFlips = function(matrix) {
-    
+    const patternCount = new Map();
+
+    for (const row of matrix) {
+        // Create a normalized pattern where the first element is always 0.
+        const pattern = row.map(value => value === row[0] ? 1 : 0).join('');
+        // Count this pattern in the map.
+        patternCount.set(pattern, (patternCount.get(pattern) || 0) + 1);
+    }
+
+    // Find the maximum count of any pattern.
+    let maxRows = 0;
+    for (const count of patternCount.values()) {
+        maxRows = Math.max(maxRows, count);
+    }
+
+    return maxRows;
 };
 
 console.log("==========================================")
