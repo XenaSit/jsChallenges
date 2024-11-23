@@ -15173,9 +15173,35 @@ console.log("==========================================")
 // @return {character[][]}
 
 var rotateTheBox = function(box) {
-    
-};
+    const m = box.length;
+    const n = box[0].length;
 
+    // Step 1: Simulate gravity for stones in each row
+    for (let i = 0; i < m; i++) {
+        let emptyPos = n - 1; // Position of the next empty cell to the right
+        for (let j = n - 1; j >= 0; j--) {
+            if (box[i][j] === '#') {
+                // Move stone to the farthest empty position
+                box[i][j] = '.';
+                box[i][emptyPos] = '#';
+                emptyPos--;
+            } else if (box[i][j] === '*') {
+                // Reset emptyPos to just before the obstacle
+                emptyPos = j - 1;
+            }
+        }
+    }
+
+    // Step 2: Rotate the box 90 degrees clockwise
+    const rotatedBox = Array.from({ length: n }, () => Array(m).fill('.'));
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            rotatedBox[j][m - 1 - i] = box[i][j];
+        }
+    }
+
+    return rotatedBox;
+};
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
