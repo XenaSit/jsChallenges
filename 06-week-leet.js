@@ -15228,7 +15228,24 @@ console.log("==========================================")
 // @return {number}
 
 var maxMatrixSum = function(matrix) {
-    
+    let totalSum = 0;
+    let minAbsValue = Infinity;
+    let negativeCount = 0;
+
+    for (let row of matrix) {
+        for (let val of row) {
+            totalSum += Math.abs(val);
+            minAbsValue = Math.min(minAbsValue, Math.abs(val));
+            if (val < 0) negativeCount++;
+        }
+    }
+
+    // If odd number of negatives, subtract twice the smallest absolute value
+    if (negativeCount % 2 !== 0) {
+        totalSum -= 2 * minAbsValue;
+    }
+
+    return totalSum;
 };
 
 console.log("==========================================")
