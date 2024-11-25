@@ -15280,7 +15280,13 @@ After move 3: [[1,0,2],[4,5,3]]
 After move 4: [[1,2,0],[4,5,3]]
 After move 5: [[1,2,3],[4,5,0]]
 
-
+/**
+ * @param {number[][]} board
+ * @return {number}
+ */
+var slidingPuzzle = function(board) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
