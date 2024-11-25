@@ -15284,7 +15284,52 @@ console.log("==========================================")
 // @return {number}
 
 var slidingPuzzle = function(board) {
+    // Target state of the board represented as a string
+    const target = "123450";
     
+    // Convert the initial board state to a string for easier manipulation
+    const start = board.flat().join("");
+    
+    // All possible moves for the blank space (0) based on its position
+    const neighbors = {
+        0: [1, 3],   // Neighbors of index 0
+        1: [0, 2, 4],
+        2: [1, 5],
+        3: [0, 4],
+        4: [1, 3, 5],
+        5: [2, 4]
+    };
+    
+    // Initialize the queue for BFS with the starting state
+    const queue = [[start, start.indexOf("0"), 0]]; // [state, index of 0, moves]
+    const visited = new Set(); // Keep track of visited states
+    visited.add(start);
+    
+    while (queue.length > 0) {
+        const [currentState, zeroIndex, moves] = queue.shift();
+        
+        // Check if we have reached the target state
+        if (currentState === target) {
+            return moves;
+        }
+        
+        // Explore all possible moves for the blank space
+        for (const neighbor of neighbors[zeroIndex]) {
+            // Swap the 0 with the neighboring value
+            const newState = currentState.split("");
+            [newState[zeroIndex], newState[neighbor]] = [newState[neighbor], newState[zeroIndex]];
+            const newStateStr = newState.join("");
+            
+            // If the new state hasn't been visited, add it to the queue
+            if (!visited.has(newStateStr)) {
+                visited.add(newStateStr);
+                queue.push([newStateStr, neighbor, moves + 1]);
+            }
+        }
+    }
+    
+    // If no solution is found, return -1
+    return -1;
 };
 
 console.log("==========================================")
