@@ -15363,7 +15363,38 @@ console.log("==========================================")
 // @return {number}
 
 var findChampion = function(n, edges) {
-    
+    // Step 1: Calculate in-degree for each node
+    const inDegree = Array(n).fill(0);
+    const adjList = Array.from({ length: n }, () => []);
+
+    for (const [u, v] of edges) {
+        inDegree[v]++;
+        adjList[u].push(v); // Build adjacency list
+    }
+
+    // Step 2: Find candidate champion (node with in-degree 0)
+    let candidate = -1;
+    for (let i = 0; i < n; i++) {
+        if (inDegree[i] === 0) {
+            if (candidate !== -1) return -1; // More than one node with in-degree 0
+            candidate = i;
+        }
+    }
+    if (candidate === -1) return -1; // No node with in-degree 0
+
+    // Step 3: Verify all nodes are reachable from the candidate
+    const visited = new Set();
+
+    const dfs = (node) => {
+        visited.add(node);
+        for (const neighbor of adjList[node]) {
+            if (!visited.has(neighbor)) dfs(neighbor);
+        }
+    };
+
+    dfs(candidate);
+
+    return visited.size === n ? candidate : -1; // Check if all nodes are reachable
 };
 
 console.log("==========================================")
