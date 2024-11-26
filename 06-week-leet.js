@@ -15358,6 +15358,15 @@ Input: n = 4, edges = [[0,2],[1,3],[1,2]]
 Output: -1
 Explanation: Team 2 is weaker than team 0 and team 1. Team 3 is weaker than team 1. But team 1 and team 0 are not weaker than any other teams. So the answer is -1.
 
+/**
+ * @param {number} n
+ * @param {number[][]} edges
+ * @return {number}
+ */
+var findChampion = function(n, edges) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
