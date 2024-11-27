@@ -15426,7 +15426,45 @@ console.log("==========================================")
 // @return {number[]}
 
 var shortestDistanceAfterQueries = function(n, queries) {
-    
+    // Initialize the graph
+    const graph = Array.from({ length: n }, () => []);
+    for (let i = 0; i < n - 1; i++) {
+        graph[i].push([i + 1, 1]); // Unidirectional roads with weight 1
+    }
+
+    const dijkstra = (start, end) => {
+        const distances = Array(n).fill(Infinity);
+        distances[start] = 0;
+        const pq = [[start, 0]]; // Priority queue: [node, distance]
+
+        while (pq.length > 0) {
+            const [current, dist] = pq.shift();
+            if (dist > distances[current]) continue;
+
+            for (const [neighbor, weight] of graph[current]) {
+                const newDist = dist + weight;
+                if (newDist < distances[neighbor]) {
+                    distances[neighbor] = newDist;
+                    pq.push([neighbor, newDist]);
+                    pq.sort((a, b) => a[1] - b[1]); // Sort by distance
+                }
+            }
+        }
+
+        return distances[end];
+    };
+
+    const answer = [];
+    for (const [u, v] of queries) {
+        // Add the new road to the graph
+        graph[u].push([v, 1]);
+
+        // Compute the shortest path from 0 to n - 1
+        const shortestPath = dijkstra(0, n - 1);
+        answer.push(shortestPath);
+    }
+
+    return answer;
 };
 
 console.log("==========================================")
