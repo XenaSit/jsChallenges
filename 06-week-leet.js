@@ -15421,6 +15421,13 @@ Explanation:
 After the addition of the road from 0 to 3, the length of the shortest path from 0 to 3 is 1.
 After the addition of the road from 0 to 2, the length of the shortest path remains 1.
 
+@param {number} n
+@param {number[][]} queries
+@return {number[]}
+
+var shortestDistanceAfterQueries = function(n, queries) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
