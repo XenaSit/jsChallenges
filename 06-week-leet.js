@@ -15493,7 +15493,42 @@ console.log("==========================================")
 // @return {number}
 
 var minimumObstacles = function(grid) {
-    
+    const m = grid.length;
+    const n = grid[0].length;
+    const directions = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+    const deque = [[0, 0, 0]]; // [x, y, obstacles_removed]
+    const visited = Array.from({ length: m }, () => Array(n).fill(false));
+
+    while (deque.length > 0) {
+        const [x, y, obstacles] = deque.shift();
+
+        // If we reach the bottom-right corner, return the number of obstacles removed
+        if (x === m - 1 && y === n - 1) {
+            return obstacles;
+        }
+
+        // Skip if already visited
+        if (visited[x][y]) continue;
+        visited[x][y] = true;
+
+        for (const [dx, dy] of directions) {
+            const nx = x + dx;
+            const ny = y + dy;
+
+            // Check bounds
+            if (nx >= 0 && ny >= 0 && nx < m && ny < n && !visited[nx][ny]) {
+                if (grid[nx][ny] === 0) {
+                    // If the cell is empty, add it to the front of the deque
+                    deque.unshift([nx, ny, obstacles]);
+                } else {
+                    // If the cell has an obstacle, add it to the back of the deque
+                    deque.push([nx, ny, obstacles + 1]);
+                }
+            }
+        }
+    }
+
+    return -1; // If no path is found (edge case)
 };
 
 console.log("==========================================")
