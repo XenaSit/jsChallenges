@@ -15493,42 +15493,56 @@ console.log("==========================================")
 // @return {number}
 
 var minimumObstacles = function(grid) {
-    const m = grid.length;
-    const n = grid[0].length;
-    const directions = [[0, 1], [1, 0], [0, -1], [-1, 0]];
-    const deque = [[0, 0, 0]]; // [x, y, obstacles_removed]
-    const visited = Array.from({ length: m }, () => Array(n).fill(false));
+    // Get grid dimensions
+    const rows = grid.length;
+    const cols = grid[0].length;
 
-    while (deque.length > 0) {
-        const [x, y, obstacles] = deque.shift();
+    // Define possible movement directions
+    const directions = [[0, 1], [0, -1], [1, 0], [-1, 0]];
 
-        // If we reach the bottom-right corner, return the number of obstacles removed
-        if (x === m - 1 && y === n - 1) {
-            return obstacles;
+    // Initialize min-heap to track paths with least obstacles
+    const minHeap = new MinPriorityQueue({ priority: (x) => x[2] });
+    
+    // Start from top-left corner with initial obstacle count
+    minHeap.enqueue([0, 0, grid[0][0]]); 
+
+   // Create 2D array to store minimum obstacles for each cell
+    const obstacleCount = Array.from({ length: rows }, () => new Array(cols).fill(Infinity));
+    obstacleCount[0][0] = grid[0][0];
+
+   // Process paths using min-heap
+    while (!minHeap.isEmpty()) {
+        // Get current cell and obstacle count
+        const [currentX, currentY, currentCost] = minHeap.dequeue().element;
+
+        // Check if reached bottom-right corner
+        if (currentX === rows - 1 && currentY === cols - 1) {
+            return currentCost;
         }
 
-        // Skip if already visited
-        if (visited[x][y]) continue;
-        visited[x][y] = true;
-
+        // Explore adjacent cells
         for (const [dx, dy] of directions) {
-            const nx = x + dx;
-            const ny = y + dy;
+            const nextX = currentX + dx;
+            const nextY = currentY + dy;
 
-            // Check bounds
-            if (nx >= 0 && ny >= 0 && nx < m && ny < n && !visited[nx][ny]) {
-                if (grid[nx][ny] === 0) {
-                    // If the cell is empty, add it to the front of the deque
-                    deque.unshift([nx, ny, obstacles]);
-                } else {
-                    // If the cell has an obstacle, add it to the back of the deque
-                    deque.push([nx, ny, obstacles + 1]);
-                }
+            // Skip out-of-bounds cells
+            if (nextX < 0 || nextX >= rows || nextY < 0 || nextY >= cols) {
+                continue;
+            }
+
+            // Calculate cost of moving to next cell
+            const nextCost = currentCost + grid[nextX][nextY];
+
+            // Update if new path has fewer obstacles
+            if (nextCost < obstacleCount[nextX][nextY]) {
+                obstacleCount[nextX][nextY] = nextCost;
+                minHeap.enqueue([nextX, nextY, nextCost]);
             }
         }
     }
 
-    return -1; // If no path is found (edge case)
+    // Return minimum obstacles to reach bottom-right corner
+    return obstacleCount[rows - 1][cols - 1];
 };
 
 console.log("==========================================")
