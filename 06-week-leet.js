@@ -15578,7 +15578,57 @@ console.log("==========================================")
 // @return {number}
 
 var minimumTime = function(grid) {
+    // Early exit if initial movement is impossible
+    if (grid[0][1] > 1 && grid[1][0] > 1) {
+        return -1;
+    }
     
+    const m = grid.length;
+    const n = grid[0].length;
+    
+    // Initialize distance matrix with infinity
+    const dist = Array.from({ length: m }, () => Array(n).fill(Infinity));
+    dist[0][0] = 0;
+    
+    // Priority queue to process cells in order of minimum time
+    const priorityQueue = new MinPriorityQueue({ priority: (item) => item[0] });
+    priorityQueue.enqueue([0, 0, 0]);
+    
+    // Directional movements
+    const directions = [-1, 0, 1, 0, -1];
+    
+    while (!priorityQueue.isEmpty()) {
+        const [time, i, j] = priorityQueue.dequeue().element;
+        
+        // Reached bottom-right cell
+        if (i === m - 1 && j === n - 1) {
+            return time;
+        }
+        
+        // Explore four adjacent directions
+        for (let k = 0; k < 4; k++) {
+            const nextX = i + directions[k];
+            const nextY = j + directions[k + 1];
+            
+            // Validate next cell is within grid
+            if (nextX >= 0 && nextX < m && nextY >= 0 && nextY < n) {
+                let nextTime = time + 1;
+                
+                // Adjust time if arriving before cell's minimum time
+                if (nextTime < grid[nextX][nextY]) {
+                    nextTime = grid[nextX][nextY] + (grid[nextX][nextY] - nextTime) % 2;
+                }
+                
+                // Update if new path is faster
+                if (nextTime < dist[nextX][nextY]) {
+                    dist[nextX][nextY] = nextTime;
+                    priorityQueue.enqueue([nextTime, nextX, nextY]);
+                }
+            }
+        }
+    }
+    
+    return -1;
 };
 
 console.log("==========================================")
