@@ -15574,6 +15574,13 @@ Input: grid = [[0,2,4],[3,2,1],[1,0,4]]
 Output: -1
 Explanation: There is no path from the top left to the bottom-right cell.
 
+@param {number[][]} grid
+@return {number}
+
+var minimumTime = function(grid) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
