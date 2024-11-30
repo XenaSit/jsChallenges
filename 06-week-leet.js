@@ -15665,6 +15665,13 @@ This is a valid arrangement since endi-1 always equals starti.
 end0 = 2 == 2 = start1
 end1 = 1 == 1 = start2
 
+@param {number[][]} pairs
+@return {number[][]}
+
+var validArrangement = function(pairs) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
