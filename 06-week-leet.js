@@ -15669,9 +15669,49 @@ console.log("==========================================")
 // @return {number[][]}
 
 var validArrangement = function(pairs) {
+    // Step 1: Build the graph and calculate in-degrees and out-degrees
+    const graph = new Map();
+    const inDegree = new Map();
+    const outDegree = new Map();
     
+    for (const [start, end] of pairs) {
+        if (!graph.has(start)) graph.set(start, []);
+        graph.get(start).push(end);
+        outDegree.set(start, (outDegree.get(start) || 0) + 1);
+        inDegree.set(end, (inDegree.get(end) || 0) + 1);
+    }
+    
+    // Step 2: Find the start vertex
+    let start = pairs[0][0]; // Default start vertex
+    for (const [node] of graph) {
+        if ((outDegree.get(node) || 0) - (inDegree.get(node) || 0) === 1) {
+            start = node;
+            break;
+        }
+    }
+    
+    // Step 3: Perform Hierholzer’s algorithm to find the Eulerian path
+    const stack = [start];
+    const result = [];
+    
+    while (stack.length > 0) {
+        const node = stack[stack.length - 1];
+        if (graph.has(node) && graph.get(node).length > 0) {
+            stack.push(graph.get(node).pop());
+        } else {
+            result.push(stack.pop());
+        }
+    }
+    
+    // Step 4: Build the output by reversing the path
+    result.reverse();
+    const output = [];
+    for (let i = 0; i < result.length - 1; i++) {
+        output.push([result[i], result[i + 1]]);
+    }
+    
+    return output;
 };
-
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
