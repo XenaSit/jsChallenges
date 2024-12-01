@@ -15735,7 +15735,18 @@ console.log("==========================================")
 // @return {boolean}
 
 var checkIfExist = function(arr) {
+    const seen = new Set();
     
+    for (let num of arr) {
+        // Check if the double or half of the current number exists in the set
+        if (seen.has(num * 2) || (num % 2 === 0 && seen.has(num / 2))) {
+            return true;
+        }
+        // Add the current number to the set
+        seen.add(num);
+    }
+    
+    return false;
 };
 
 console.log("==========================================")
