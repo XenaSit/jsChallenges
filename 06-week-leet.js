@@ -15773,6 +15773,15 @@ Input: sentence = "i am tired", searchWord = "you"
 Output: -1
 Explanation: "you" is not a prefix of any word in the sentence.
 
+/**
+ * @param {string} sentence
+ * @param {string} searchWord
+ * @return {number}
+ */
+var isPrefixOfWord = function(sentence, searchWord) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
