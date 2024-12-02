@@ -15778,7 +15778,13 @@ console.log("==========================================")
 // @return {number}
 
 var isPrefixOfWord = function(sentence, searchWord) {
-    
+    const words = sentence.split(' '); // Split the sentence into words
+    for (let i = 0; i < words.length; i++) {
+        if (words[i].startsWith(searchWord)) {
+            return i + 1; // Return 1-based index
+        }
+    }
+    return -1; // Return -1 if no match is found
 };
 
 console.log("==========================================")
