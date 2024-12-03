@@ -15822,7 +15822,20 @@ console.log("==========================================")
 // @return {string}
 
 var addSpaces = function(s, spaces) {
-    
+    let result = ""; // Result string
+    let spaceIndex = 0; // Pointer for the `spaces` array
+    let n = spaces.length; // Number of spaces to be added
+
+    for (let i = 0; i < s.length; i++) {
+        // Check if the current index is in the `spaces` array
+        if (spaceIndex < n && i === spaces[spaceIndex]) {
+            result += " "; // Add a space
+            spaceIndex++; // Move the pointer to the next space index
+        }
+        result += s[i]; // Add the current character
+    }
+
+    return result; // Return the final modified string
 };
 
 console.log("==========================================")
