@@ -15817,7 +15817,13 @@ Output: " s p a c i n g"
 Explanation:
 We are also able to place spaces before the first character of the string.
 
+@param {string} s
+@param {number[]} spaces
+@return {string}
 
+var addSpaces = function(s, spaces) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
