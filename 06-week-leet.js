@@ -15875,7 +15875,19 @@ console.log("==========================================")
 // @return {boolean}
 
 var canMakeSubsequence = function(str1, str2) {
+    let i = 0; // Pointer for str2
     
+    for (let j = 0; j < str1.length; j++) {
+        // Check if we can match the current character in str2
+        if (i < str2.length && 
+           (str1[j] === str2[i] || 
+            String.fromCharCode((str1[j].charCodeAt(0) - 'a'.charCodeAt(0) + 1) % 26 + 'a'.charCodeAt(0)) === str2[i])) {
+            i++; // Move to the next character in str2
+        }
+    }
+    
+    // If we matched all characters in str2, return true
+    return i === str2.length;
 };
 
 console.log("==========================================")
