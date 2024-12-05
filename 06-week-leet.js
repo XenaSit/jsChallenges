@@ -15926,7 +15926,35 @@ console.log("==========================================")
 // @return {boolean}
 
 var canChange = function(start, target) {
-    
+    // Remove '_' and compare the sequences of 'L' and 'R'
+    const filteredStart = start.replace(/_/g, '');
+    const filteredTarget = target.replace(/_/g, '');
+    if (filteredStart !== filteredTarget) return false;
+
+    let startIndex = 0, targetIndex = 0;
+
+    // Traverse the strings to ensure valid movement
+    while (startIndex < start.length && targetIndex < target.length) {
+        // Skip blanks in start and target
+        while (startIndex < start.length && start[startIndex] === '_') startIndex++;
+        while (targetIndex < target.length && target[targetIndex] === '_') targetIndex++;
+
+        // If we reach the end of either string, we're done checking
+        if (startIndex === start.length || targetIndex === target.length) break;
+
+        // Compare the characters
+        if (start[startIndex] !== target[targetIndex]) return false;
+
+        // Check movement rules
+        if (start[startIndex] === 'L' && startIndex < targetIndex) return false;
+        if (start[startIndex] === 'R' && startIndex > targetIndex) return false;
+
+        // Move to the next character
+        startIndex++;
+        targetIndex++;
+    }
+
+    return true;
 };
 
 console.log("==========================================")
