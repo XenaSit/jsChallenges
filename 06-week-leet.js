@@ -15992,7 +15992,25 @@ console.log("==========================================")
 // @return {number}
 
 var maxCount = function(banned, n, maxSum) {
-    
+    // Convert banned array to a Set for quick lookup
+    const bannedSet = new Set(banned);
+
+    let sum = 0; // To keep track of the current sum
+    let count = 0; // To count the numbers chosen
+
+    for (let i = 1; i <= n; i++) {
+        // Skip if the number is in the banned set
+        if (bannedSet.has(i)) continue;
+
+        // Check if adding this number exceeds maxSum
+        if (sum + i > maxSum) break;
+
+        // Add the number to the sum and increment the count
+        sum += i;
+        count++;
+    }
+
+    return count;
 };
 
 console.log("==========================================")
