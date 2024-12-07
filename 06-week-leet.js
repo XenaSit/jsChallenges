@@ -16042,7 +16042,13 @@ Explanation:
 - Divide the bag with 4 balls into two bags of sizes 2 and 2. [2,2,2,2,2,4,2] -> [2,2,2,2,2,2,2,2].
 The bag with the most number of balls has 2 balls, so your penalty is 2, and you should return 2.
 
+@param {number[]} nums
+@param {number} maxOperations
+@return {number}
 
+var minimumSize = function(nums, maxOperations) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
