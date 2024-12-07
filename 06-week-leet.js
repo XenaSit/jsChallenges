@@ -16047,7 +16047,29 @@ console.log("==========================================")
 // @return {number}
 
 var minimumSize = function(nums, maxOperations) {
-    
+    // Helper function to check if a given penalty is possible
+    const canDivide = (penalty) => {
+        let operations = 0;
+        for (let num of nums) {
+            operations += Math.floor((num - 1) / penalty); // Calculate operations needed for this bag
+            if (operations > maxOperations) return false; // If exceeds maxOperations, return false early
+        }
+        return true;
+    };
+
+    let left = 1; // Minimum possible penalty
+    let right = Math.max(...nums); // Maximum possible penalty
+
+    while (left < right) {
+        let mid = Math.floor((left + right) / 2);
+        if (canDivide(mid)) {
+            right = mid; // Try a smaller penalty
+        } else {
+            left = mid + 1; // Increase penalty
+        }
+    }
+
+    return left; // The smallest feasible penalty
 };
 
 console.log("==========================================")
