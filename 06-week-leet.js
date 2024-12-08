@@ -16106,9 +16106,41 @@ console.log("==========================================")
 // @return {number}
 
 var maxTwoEvents = function(events) {
-    
-};
+    // Step 1: Sort events by their end times
+    events.sort((a, b) => a[1] - b[1]);
 
+    let result = 0; // Tracks the final result
+    let maxSingleEvent = 0; // Tracks the maximum value of a single event encountered so far
+    let endValues = []; // Keeps track of [end time, max value up to that end time]
+
+    // Step 2: Traverse events
+    for (const [startTime, endTime, value] of events) {
+        // Binary search to find the max value of a non-overlapping event
+        let left = 0, right = endValues.length - 1, maxNonOverlap = 0;
+        while (left <= right) {
+            const mid = Math.floor((left + right) / 2);
+            if (endValues[mid][0] < startTime) {
+                maxNonOverlap = Math.max(maxNonOverlap, endValues[mid][1]);
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        // Calculate the maximum sum with this event
+        result = Math.max(result, value + maxNonOverlap);
+
+        // Update the maximum value of a single event
+        maxSingleEvent = Math.max(maxSingleEvent, value);
+
+        // Store the max value up to this end time
+        if (endValues.length === 0 || endValues[endValues.length - 1][0] < endTime) {
+            endValues.push([endTime, maxSingleEvent]);
+        }
+    }
+
+    return result;
+};
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
