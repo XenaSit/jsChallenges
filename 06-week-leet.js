@@ -16102,7 +16102,12 @@ Input: events = [[1,5,3],[1,5,1],[6,6,5]]
 Output: 8
 Explanation: Choose events 0 and 2 for a sum of 3 + 5 = 8.
 
+@param {number[][]} events
+@return {number}
 
+var maxTwoEvents = function(events) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
