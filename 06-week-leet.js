@@ -16160,6 +16160,14 @@ Explanation:
 The subarray is [4,3,1]. 3 and 1 are both odd. So the answer to this query is false.
 The subarray is [1,6]. There is only one pair: (1,6) and it contains numbers with different parity. So the answer to this query is true.
 
+@param {number[]} nums
+@param {number[][]} queries
+@return {boolean[]}
+
+var isArraySpecial = function(nums, queries) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
