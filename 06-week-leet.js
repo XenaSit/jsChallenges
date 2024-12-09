@@ -16165,7 +16165,29 @@ console.log("==========================================")
 // @return {boolean[]}
 
 var isArraySpecial = function(nums, queries) {
-    
+    const n = nums.length;
+    const sameParity = new Array(n - 1).fill(false);
+
+    // Precompute the sameParity array
+    for (let i = 0; i < n - 1; i++) {
+        sameParity[i] = (nums[i] % 2) === (nums[i + 1] % 2);
+    }
+
+    // Compute prefix sums for the sameParity array
+    const prefixSum = new Array(n).fill(0);
+    for (let i = 1; i < n; i++) {
+        prefixSum[i] = prefixSum[i - 1] + (sameParity[i - 1] ? 1 : 0);
+    }
+
+    const result = [];
+
+    // Process each query
+    for (const [from, to] of queries) {
+        const countSameParity = prefixSum[to] - prefixSum[from];
+        result.push(countSameParity === 0);
+    }
+
+    return result;
 };
 
 console.log("==========================================")
