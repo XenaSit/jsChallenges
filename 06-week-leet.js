@@ -16221,7 +16221,34 @@ console.log("==========================================")
 // @return {number}
 
 var maximumLength = function(s) {
-    
+    const n = s.length;
+
+    // Helper function to check if there's a special substring of length `len` occurring at least thrice
+    const hasSpecialSubstring = (len) => {
+        const countMap = new Map();
+        
+        for (let i = 0; i <= n - len; i++) {
+            const substring = s.slice(i, i + len);
+
+            // Check if substring is special (all characters are the same)
+            if (new Set(substring).size === 1) {
+                countMap.set(substring, (countMap.get(substring) || 0) + 1);
+                if (countMap.get(substring) >= 3) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    };
+
+    // Iterate over lengths from n to 1
+    for (let len = n; len >= 1; len--) {
+        if (hasSpecialSubstring(len)) {
+            return len;
+        }
+    }
+
+    return -1; // No valid substring found
 };
 
 console.log("==========================================")
