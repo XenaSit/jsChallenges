@@ -16217,6 +16217,12 @@ Output: 1
 Explanation: The longest special substring which occurs thrice is "a": substrings "abcaba", "abcaba", and "abcaba".
 It can be shown that the maximum length achievable is 1.
 
+@param {string} s
+@return {number}
+
+var maximumLength = function(s) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
