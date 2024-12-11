@@ -16285,7 +16285,23 @@ console.log("==========================================")
 // @return {number}
 
 var maximumBeauty = function(nums, k) {
-    
+    // Sort the array to process elements in order
+    nums.sort((a, b) => a - b);
+
+    let maxBeauty = 0;
+    let left = 0; // Left pointer of the sliding window
+
+    for (let right = 0; right < nums.length; right++) {
+        // Ensure the range condition is satisfied for the sliding window
+        while (nums[right] - nums[left] > 2 * k) {
+            left++;
+        }
+
+        // Calculate the current window size and update maxBeauty
+        maxBeauty = Math.max(maxBeauty, right - left + 1);
+    }
+
+    return maxBeauty;
 };
 
 console.log("==========================================")
