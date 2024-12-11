@@ -16280,6 +16280,13 @@ Output: 4
 Explanation: In this example we don't have to apply any operations.
 The beauty of the array nums is 4 (whole array).
 
+@param {number[]} nums
+@param {number} k
+@return {number}
+
+var maximumBeauty = function(nums, k) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
