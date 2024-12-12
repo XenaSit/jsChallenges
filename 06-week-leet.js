@@ -16338,8 +16338,82 @@ console.log("==========================================")
 // @return {number}
 
 var pickGifts = function(gifts, k) {
-    
+    // Use a max heap to efficiently get the maximum pile
+    const maxHeap = new MaxHeap(gifts);
+
+    for (let i = 0; i < k; i++) {
+        // Get the largest pile
+        const maxGifts = maxHeap.pop();
+        
+        // Calculate the remaining gifts and push it back to the heap
+        const remainingGifts = Math.floor(Math.sqrt(maxGifts));
+        maxHeap.push(remainingGifts);
+    }
+
+    // Sum the remaining gifts in the heap
+    return maxHeap.sum();
 };
+
+// Helper class to implement a Max Heap
+class MaxHeap {
+    constructor(arr) {
+        this.heap = [];
+        for (const num of arr) {
+            this.push(num);
+        }
+    }
+
+    push(val) {
+        this.heap.push(val);
+        this._siftUp(this.heap.length - 1);
+    }
+
+    pop() {
+        if (this.heap.length === 1) return this.heap.pop();
+
+        const top = this.heap[0];
+        this.heap[0] = this.heap.pop();
+        this._siftDown(0);
+
+        return top;
+    }
+
+    sum() {
+        return this.heap.reduce((acc, num) => acc + num, 0);
+    }
+
+    _siftUp(idx) {
+        let parentIdx = Math.floor((idx - 1) / 2);
+        while (idx > 0 && this.heap[idx] > this.heap[parentIdx]) {
+            [this.heap[idx], this.heap[parentIdx]] = [this.heap[parentIdx], this.heap[idx]];
+            idx = parentIdx;
+            parentIdx = Math.floor((idx - 1) / 2);
+        }
+    }
+
+    _siftDown(idx) {
+        const n = this.heap.length;
+        while (true) {
+            let leftIdx = 2 * idx + 1;
+            let rightIdx = 2 * idx + 2;
+            let largest = idx;
+
+            if (leftIdx < n && this.heap[leftIdx] > this.heap[largest]) {
+                largest = leftIdx;
+            }
+
+            if (rightIdx < n && this.heap[rightIdx] > this.heap[largest]) {
+                largest = rightIdx;
+            }
+
+            if (largest === idx) break;
+
+            [this.heap[idx], this.heap[largest]] = [this.heap[largest], this.heap[idx]];
+            idx = largest;
+        }
+    }
+}
+
 
 console.log("==========================================")
 // console.log("==========================================")
