@@ -16449,7 +16449,35 @@ console.log("==========================================")
 // @return {number}
 
 var findScore = function(nums) {
-    
+    // Priority Queue implementation using Min-Heap
+    const minHeap = new MinPriorityQueue({
+        compare: (a, b) => a[0] === b[0] ? a[1] - b[1] : a[0] - b[0]
+    });
+
+    // Add all elements with their indices to the heap
+    for (let i = 0; i < nums.length; i++) {
+        minHeap.enqueue([nums[i], i]);
+    }
+
+    let marked = Array(nums.length).fill(false);
+    let score = 0;
+
+    while (!minHeap.isEmpty()) {
+        const [value, index] = minHeap.dequeue(); // Efficiently extract the smallest element
+
+        // Skip if the element is already marked
+        if (marked[index]) continue;
+
+        // Add the value to the score
+        score += value;
+
+        // Mark the current element and its adjacent elements
+        marked[index] = true;
+        if (index > 0) marked[index - 1] = true;
+        if (index < nums.length - 1) marked[index + 1] = true;
+    }
+
+    return score;
 };
 
 console.log("==========================================")
