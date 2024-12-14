@@ -16513,8 +16513,39 @@ console.log("==========================================")
 // @return {number}
 
 var continuousSubarrays = function(nums) {
-    
+    let totalSubarrays = 0;
+    let left = 0; // Start of the sliding window
+    let minQueue = []; // Monotonic queue to track the minimum element in the window
+    let maxQueue = []; // Monotonic queue to track the maximum element in the window
+
+    for (let right = 0; right < nums.length; right++) {
+        // Update the minQueue to maintain its properties
+        while (minQueue.length > 0 && nums[minQueue[minQueue.length - 1]] > nums[right]) {
+            minQueue.pop();
+        }
+        minQueue.push(right);
+
+        // Update the maxQueue to maintain its properties
+        while (maxQueue.length > 0 && nums[maxQueue[maxQueue.length - 1]] < nums[right]) {
+            maxQueue.pop();
+        }
+        maxQueue.push(right);
+
+        // Ensure the subarray condition is satisfied
+        while (nums[maxQueue[0]] - nums[minQueue[0]] > 2) {
+            left++;
+            // Remove indices outside the current window from the queues
+            if (minQueue[0] < left) minQueue.shift();
+            if (maxQueue[0] < left) maxQueue.shift();
+        }
+
+        // Count all subarrays ending at 'right'
+        totalSubarrays += (right - left + 1);
+    }
+
+    return totalSubarrays;
 };
+
 
 
 console.log("==========================================")
