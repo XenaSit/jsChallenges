@@ -16509,7 +16509,12 @@ Continuous subarray of size 2: [1,2], [2,3].
 Continuous subarray of size 3: [1,2,3].
 Total continuous subarrays = 3 + 2 + 1 = 6.
  
+@param {number[]} nums
+@return {number}
 
+var continuousSubarrays = function(nums) {
+    
+};
 
 
 console.log("==========================================")
