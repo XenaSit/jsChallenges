@@ -16579,7 +16579,100 @@ console.log("==========================================")
 // @return {number}
 
 var maxAverageRatio = function(classes, extraStudents) {
+    const heap = new MaxHeap();
     
+    // Populate the heap with the initial gain for each class
+    for (let [passi, totali] of classes) {
+        const gain = (passi + 1) / (totali + 1) - passi / totali;
+        heap.insert([-gain, passi, totali]);
+    }
+    
+    // Distribute the extra students
+    while (extraStudents > 0) {
+        let [negativeGain, passi, totali] = heap.extractMax();
+        passi++;
+        totali++;
+        const newGain = (passi + 1) / (totali + 1) - passi / totali;
+        heap.insert([-newGain, passi, totali]);
+        extraStudents--;
+    }
+    
+    // Compute the final average pass ratio
+    let totalRatio = 0;
+    for (const [_, passi, totali] of heap.getAll()) {
+        totalRatio += passi / totali;
+    }
+    return totalRatio / classes.length;
+};
+
+class MaxHeap {
+    constructor() {
+        this.heap = [];
+    }
+    
+    insert(item) {
+        this.heap.push(item);
+        this._bubbleUp();
+    }
+    
+    extractMax() {
+        const max = this.heap[0];
+        const end = this.heap.pop();
+        if (this.heap.length > 0) {
+            this.heap[0] = end;
+            this._sinkDown();
+        }
+        return max;
+    }
+    
+    getAll() {
+        return this.heap;
+    }
+    
+    _bubbleUp() {
+        let idx = this.heap.length - 1;
+        const element = this.heap[idx];
+        while (idx > 0) {
+            let parentIdx = Math.floor((idx - 1) / 2);
+            let parent = this.heap[parentIdx];
+            if (element[0] >= parent[0]) break;
+            this.heap[idx] = parent;
+            this.heap[parentIdx] = element;
+            idx = parentIdx;
+        }
+    }
+    
+    _sinkDown() {
+        let idx = 0;
+        const length = this.heap.length;
+        const element = this.heap[0];
+        while (true) {
+            let leftChildIdx = 2 * idx + 1;
+            let rightChildIdx = 2 * idx + 2;
+            let leftChild, rightChild;
+            let swap = null;
+            
+            if (leftChildIdx < length) {
+                leftChild = this.heap[leftChildIdx];
+                if (leftChild[0] < element[0]) {
+                    swap = leftChildIdx;
+                }
+            }
+            if (rightChildIdx < length) {
+                rightChild = this.heap[rightChildIdx];
+                if (
+                    (swap === null && rightChild[0] < element[0]) ||
+                    (swap !== null && rightChild[0] < leftChild[0])
+                ) {
+                    swap = rightChildIdx;
+                }
+            }
+            if (swap === null) break;
+            this.heap[idx] = this.heap[swap];
+            this.heap[swap] = element;
+            idx = swap;
+        }
+    }
 };
 
 console.log("==========================================")
