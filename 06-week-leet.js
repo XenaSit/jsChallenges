@@ -16574,7 +16574,13 @@ Example 2:
 Input: classes = [[2,4],[3,9],[4,5],[2,10]], extraStudents = 4
 Output: 0.53485
 
+@param {number[][]} classes
+@param {number} extraStudents
+@return {number}
 
+var maxAverageRatio = function(classes, extraStudents) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
