@@ -16711,7 +16711,20 @@ console.log("==========================================")
 // @return {number[]}
 
 var getFinalState = function(nums, k, multiplier) {
-    
+    for (let i = 0; i < k; i++) {
+        // Find the index of the first occurrence of the minimum value
+        let minIndex = 0;
+        for (let j = 1; j < nums.length; j++) {
+            if (nums[j] < nums[minIndex]) {
+                minIndex = j;
+            }
+        }
+
+        // Replace the minimum value with its product with the multiplier
+        nums[minIndex] *= multiplier;
+    }
+
+    return nums;
 };
 
 console.log("==========================================")
