@@ -16767,7 +16767,45 @@ console.log("==========================================")
 // @return {string}
 
 var repeatLimitedString = function(s, repeatLimit) {
+    // Count character frequencies
+    const freq = {};
+    for (const char of s) {
+        freq[char] = (freq[char] || 0) + 1;
+    }
     
+    // Sort characters in descending lexicographical order
+    const sortedChars = Object.keys(freq).sort((a, b) => b.localeCompare(a));
+    
+    let result = [];
+    
+    while (sortedChars.length > 0) {
+        const char = sortedChars[0]; // The largest remaining character
+        const count = Math.min(freq[char], repeatLimit);
+        
+        // Append up to repeatLimit times
+        result.push(...Array(count).fill(char));
+        freq[char] -= count;
+        
+        if (freq[char] === 0) {
+            // Remove the character from the list if used up
+            sortedChars.shift();
+        } else {
+            // Find the next lexicographically smaller character
+            if (sortedChars.length > 1) {
+                const nextChar = sortedChars[1];
+                result.push(nextChar);
+                freq[nextChar]--;
+                if (freq[nextChar] === 0) {
+                    sortedChars.splice(1, 1);
+                }
+            } else {
+                // No alternative character available, break
+                break;
+            }
+        }
+    }
+    
+    return result.join('');
 };
 
 console.log("==========================================")
