@@ -16762,7 +16762,13 @@ Hence, no letter appears more than repeatLimit times in a row and the string is 
 The string is the lexicographically largest repeatLimitedString possible so we return "bbabaa".
 Note that the string "bbabaaa" is lexicographically larger but the letter 'a' appears more than 2 times in a row, so it is not a valid repeatLimitedString.
 
+@param {string} s
+@param {number} repeatLimit
+@return {string}
 
+var repeatLimitedString = function(s, repeatLimit) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
