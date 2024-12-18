@@ -16836,7 +16836,12 @@ Example 3:
 Input: prices = [10,1,1,6]
 Output: [9,0,1,6]
 
+@param {number[]} prices
+@return {number[]}
 
+var finalPrices = function(prices) {
+    
+};
 
 
 console.log("==========================================")
