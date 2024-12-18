@@ -16840,7 +16840,20 @@ console.log("==========================================")
 // @return {number[]}
 
 var finalPrices = function(prices) {
-    
+    const stack = [];
+    const result = [...prices]; // Initialize result array as a copy of prices
+
+    for (let i = 0; i < prices.length; i++) {
+        // Check the top of the stack and apply discount if condition is met
+        while (stack.length > 0 && prices[stack[stack.length - 1]] >= prices[i]) {
+            const index = stack.pop();
+            result[index] -= prices[i];
+        }
+        // Push current index to the stack
+        stack.push(i);
+    }
+
+    return result;
 };
 
 
