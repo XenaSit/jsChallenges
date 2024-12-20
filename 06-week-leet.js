@@ -16928,6 +16928,19 @@ The odd levels have non-zero values.
 The nodes at level 1 were 1, 2, and are 2, 1 after the reversal.
 The nodes at level 3 were 1, 1, 1, 1, 2, 2, 2, 2, and are 2, 2, 2, 2, 1, 1, 1, 1 after the reversal.
 
+Definition for a binary tree node.
+function TreeNode(val, left, right) {
+    this.val = (val===undefined ? 0 : val)
+    this.left = (left===undefined ? null : left)
+    this.right = (right===undefined ? null : right)
+}
+
+@param {TreeNode} root
+@return {TreeNode}
+
+var reverseOddLevels = function(root) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
