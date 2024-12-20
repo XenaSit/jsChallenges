@@ -16939,7 +16939,45 @@ console.log("==========================================")
 // @return {TreeNode}
 
 var reverseOddLevels = function(root) {
-    
+    if (!root) return root;
+
+    // Queue for BFS
+    let queue = [root];
+    let level = 0; // Start from level 0 (even level)
+
+    while (queue.length > 0) {
+        let levelSize = queue.length; // Number of nodes at the current level
+        let currentLevelValues = []; // To store values of the current level's nodes
+
+        // Collect all nodes at this level
+        for (let i = 0; i < levelSize; i++) {
+            let node = queue.shift();
+
+            // If we are on an odd level, save the node for swapping later
+            if (level % 2 !== 0) currentLevelValues.push(node);
+
+            // Add child nodes to the queue for the next level
+            if (node.left) queue.push(node.left);
+            if (node.right) queue.push(node.right);
+        }
+
+        // Reverse node values for odd levels
+        if (level % 2 !== 0) {
+            let i = 0, j = currentLevelValues.length - 1;
+            while (i < j) {
+                let temp = currentLevelValues[i].val;
+                currentLevelValues[i].val = currentLevelValues[j].val;
+                currentLevelValues[j].val = temp;
+                i++;
+                j--;
+            }
+        }
+
+        // Move to the next level
+        level++;
+    }
+
+    return root;
 };
 
 console.log("==========================================")
