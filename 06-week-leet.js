@@ -17021,7 +17021,38 @@ console.log("==========================================")
 // @return {number}
 
 var maxKDivisibleComponents = function(n, edges, values, k) {
-    
+    // Build adjacency list
+    const graph = Array.from({ length: n }, () => []);
+    for (const [u, v] of edges) {
+        graph[u].push(v);
+        graph[v].push(u);
+    }
+
+    let componentCount = 0;
+
+    // DFS to compute subtree sums and count k-divisible components
+    const dfs = (node, parent) => {
+        let subtreeSum = values[node];
+
+        for (const neighbor of graph[node]) {
+            if (neighbor !== parent) {
+                subtreeSum += dfs(neighbor, node);
+            }
+        }
+
+        // If the subtree sum is divisible by k, increment the component count
+        if (subtreeSum % k === 0) {
+            componentCount++;
+            return 0; // Reset sum for this component
+        }
+
+        // Return the remainder to the parent node
+        return subtreeSum % k;
+    };
+
+    dfs(0, -1); // Start DFS from node 0 with no parent
+
+    return componentCount;
 };
 
 
