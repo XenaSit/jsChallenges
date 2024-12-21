@@ -17014,7 +17014,15 @@ Explanation: We remove the edge connecting node 0 with 2, and the edge connectin
 - The value of the component containing nodes 1, 3, and 4 is values[1] + values[3] + values[4] = 6.
 It can be shown that no other valid split has more than 3 connected components.
 
+@param {number} n
+@param {number[][]} edges
+@param {number[]} values
+@param {number} k
+@return {number}
 
+var maxKDivisibleComponents = function(n, edges, values, k) {
+    
+};
 
 
 console.log("==========================================")
