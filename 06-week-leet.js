@@ -17092,9 +17092,53 @@ console.log("==========================================")
 // @param {number[][]} queries
 // @return {number[]}
 
-var leftmostBuildingQueries = function(heights, queries) {
-    
-};
+function leftmostBuildingQueries(heights, queries) {
+    const ans = Array(queries.length).fill(-1);
+    const stack = [];
+
+    // Attach indices to queries and sort them by the maximum index in descending order
+    const indexedQueries = queries.map(([a, b], i) => ({ i, a: Math.min(a, b), b: Math.max(a, b) }))
+        .sort((q1, q2) => q2.b - q1.b);
+
+    let heightsIndex = heights.length - 1;
+
+    for (const { i: queryIndex, a, b } of indexedQueries) {
+        if (a === b || heights[a] < heights[b]) {
+            ans[queryIndex] = b;
+        } else {
+            // Process heights greater than `b` and update the stack
+            while (heightsIndex > b) {
+                while (stack.length && heights[stack[stack.length - 1]] <= heights[heightsIndex]) {
+                    stack.pop();
+                }
+                stack.push(heightsIndex--);
+            }
+
+            // Find the leftmost index greater than `a` that satisfies conditions
+            const j = findLastGreater(stack, a, heights);
+            if (j !== -1) {
+                ans[queryIndex] = stack[j];
+            }
+        }
+    }
+
+    return ans;
+}
+
+function findLastGreater(stack, target, heights) {
+    let left = -1, right = stack.length - 1;
+
+    while (left < right) {
+        const mid = Math.floor((left + right + 1) / 2);
+        if (heights[stack[mid]] > heights[target]) {
+            left = mid;
+        } else {
+            right = mid - 1;
+        }
+    }
+
+    return left !== -1 ? left : -1;
+}
 
 
 
