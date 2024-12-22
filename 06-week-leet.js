@@ -17088,7 +17088,13 @@ In the fifth query, Alice can directly move to Bob's building since heights[1] <
 For ans[i] != -1, It can be shown that ans[i] is the leftmost building where Alice and Bob can meet.
 For ans[i] == -1, It can be shown that there is no building where Alice and Bob can meet.
 
+@param {number[]} heights
+@param {number[][]} queries
+@return {number[]}
 
+var leftmostBuildingQueries = function(heights, queries) {
+    
+};
 
 
 
