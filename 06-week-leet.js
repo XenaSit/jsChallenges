@@ -17187,8 +17187,59 @@ console.log("==========================================")
 // @return {number}
 
 var minimumOperations = function(root) {
+    if (!root) return 0;
     
+    let queue = [root];
+    let totalSwaps = 0;
+    
+    while (queue.length > 0) {
+        let levelSize = queue.length;
+        let levelValues = [];
+        let nextQueue = [];
+        
+        for (let i = 0; i < levelSize; i++) {
+            let node = queue[i];
+            levelValues.push(node.val);
+            if (node.left) nextQueue.push(node.left);
+            if (node.right) nextQueue.push(node.right);
+        }
+        
+        totalSwaps += countMinimumSwaps(levelValues);
+        queue = nextQueue;
+    }
+    
+    return totalSwaps;
 };
+
+function countMinimumSwaps(arr) {
+    let n = arr.length;
+    let sorted = [...arr].sort((a, b) => a - b);
+    let indexMap = new Map();
+    
+    for (let i = 0; i < n; i++) {
+        indexMap.set(sorted[i], i);
+    }
+    
+    let visited = new Array(n).fill(false);
+    let swaps = 0;
+    
+    for (let i = 0; i < n; i++) {
+        if (visited[i] || indexMap.get(arr[i]) === i) continue;
+        
+        let cycleSize = 0;
+        let current = i;
+        
+        while (!visited[current]) {
+            visited[current] = true;
+            current = indexMap.get(arr[current]);
+            cycleSize++;
+        }
+        
+        if (cycleSize > 1) swaps += (cycleSize - 1);
+    }
+    
+    return swaps;
+}
 
 console.log("==========================================")
 // console.log("==========================================")
