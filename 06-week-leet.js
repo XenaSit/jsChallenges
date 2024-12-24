@@ -17268,7 +17268,13 @@ Output: 5
 Explanation:
 We can obtain a tree of diameter 5 by connecting node 0 from the first tree with node 0 from the second tree.
 
- 
+@param {number[][]} edges1
+@param {number[][]} edges2
+@return {number}
+
+var minimumDiameterAfterMerge = function(edges1, edges2) {
+    
+};
 
 
 console.log("==========================================")
