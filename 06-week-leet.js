@@ -17347,7 +17347,29 @@ console.log("==========================================")
 // @return {number[]}
 
 var largestValues = function(root) {
-    
+    if (!root) return []; // If the root is null, return an empty array.
+
+    const result = [];
+    const queue = [root]; // Initialize the queue with the root node.
+
+    while (queue.length > 0) {
+        let levelSize = queue.length;
+        let max = -Infinity; // Initialize the maximum value for this level.
+
+        for (let i = 0; i < levelSize; i++) {
+            const node = queue.shift(); // Get the next node in the queue.
+
+            max = Math.max(max, node.val); // Update the maximum value for this level.
+
+            // Add the left and right children to the queue, if they exist.
+            if (node.left) queue.push(node.left);
+            if (node.right) queue.push(node.right);
+        }
+
+        result.push(max); // Store the largest value of this level.
+    }
+
+    return result; // Return the result containing the largest values per level.
 };
 
 console.log("==========================================")
