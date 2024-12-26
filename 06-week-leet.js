@@ -17400,7 +17400,24 @@ console.log("==========================================")
 // @return {number}
 
 var findTargetSumWays = function(nums, target) {
-    
+    const totalSum = nums.reduce((sum, num) => sum + num, 0);
+
+    // If the target is impossible to reach, return 0
+    if ((totalSum - target) % 2 !== 0 || totalSum < target) return 0;
+
+    const subsetSum = (totalSum - target) / 2;
+
+    // Initialize dp array
+    const dp = new Array(subsetSum + 1).fill(0);
+    dp[0] = 1; // Base case: one way to get sum 0 (no elements)
+
+    for (const num of nums) {
+        for (let sum = subsetSum; sum >= num; sum--) {
+            dp[sum] += dp[sum - num];
+        }
+    }
+
+    return dp[subsetSum];
 };
 
 
