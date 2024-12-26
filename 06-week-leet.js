@@ -17395,7 +17395,13 @@ Example 2:
 Input: nums = [1], target = 1
 Output: 1
  
+@param {number[]} nums
+@param {number} target
+@return {number}
 
+var findTargetSumWays = function(nums, target) {
+    
+};
 
 
 console.log("==========================================")
