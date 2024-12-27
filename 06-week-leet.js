@@ -17440,6 +17440,12 @@ Example 2:
 Input: values = [1,2]
 Output: 2
 
+@param {number[]} values
+@return {number}
+
+var maxScoreSightseeingPair = function(values) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
