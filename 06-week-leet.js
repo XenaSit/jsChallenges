@@ -17444,7 +17444,17 @@ console.log("==========================================")
 // @return {number}
 
 var maxScoreSightseeingPair = function(values) {
+    let maxScore = 0;
+    let maxI = values[0]; // Represents the maximum value of (values[i] + i) seen so far
     
+    for (let j = 1; j < values.length; j++) {
+        // Calculate the score for the current pair (i, j)
+        maxScore = Math.max(maxScore, maxI + values[j] - j);
+        // Update maxI to include the current value
+        maxI = Math.max(maxI, values[j] + j);
+    }
+    
+    return maxScore;
 };
 
 console.log("==========================================")
