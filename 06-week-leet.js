@@ -17480,7 +17480,58 @@ console.log("==========================================")
 // @return {number[]}
 
 var maxSumOfThreeSubarrays = function(nums, k) {
-    
+    const n = nums.length;
+    const prefixSum = Array(n + 1).fill(0);
+
+    // Compute prefix sums
+    for (let i = 0; i < n; i++) {
+        prefixSum[i + 1] = prefixSum[i] + nums[i];
+    }
+
+    // Arrays to store the best indices for left and right max sums
+    const left = Array(n).fill(0);
+    const right = Array(n).fill(0);
+
+    // Compute the best left subarray indices
+    let maxSum = prefixSum[k] - prefixSum[0];
+    for (let i = k; i < n; i++) {
+        if (prefixSum[i + 1] - prefixSum[i + 1 - k] > maxSum) {
+            maxSum = prefixSum[i + 1] - prefixSum[i + 1 - k];
+            left[i] = i + 1 - k;
+        } else {
+            left[i] = left[i - 1];
+        }
+    }
+
+    // Compute the best right subarray indices
+    maxSum = prefixSum[n] - prefixSum[n - k];
+    right[n - k] = n - k;
+    for (let i = n - k - 1; i >= 0; i--) {
+        if (prefixSum[i + k] - prefixSum[i] >= maxSum) {
+            maxSum = prefixSum[i + k] - prefixSum[i];
+            right[i] = i;
+        } else {
+            right[i] = right[i + 1];
+        }
+    }
+
+    // Find the best combination of left, middle, and right
+    let result = [-1, -1, -1];
+    maxSum = 0;
+    for (let mid = k; mid <= n - 2 * k; mid++) {
+        const l = left[mid - 1];
+        const r = right[mid + k];
+        const total = (prefixSum[l + k] - prefixSum[l]) +
+                      (prefixSum[mid + k] - prefixSum[mid]) +
+                      (prefixSum[r + k] - prefixSum[r]);
+
+        if (total > maxSum) {
+            maxSum = total;
+            result = [l, mid, r];
+        }
+    }
+
+    return result;
 };
 
 console.log("==========================================")
