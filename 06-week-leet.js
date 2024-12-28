@@ -17475,6 +17475,13 @@ Example 2:
 Input: nums = [1,2,1,2,1,2,1,2,1], k = 2
 Output: [0,2,4]
 
+@param {number[]} nums
+@param {number} k
+@return {number[]}
+
+var maxSumOfThreeSubarrays = function(nums, k) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
