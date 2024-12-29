@@ -17569,7 +17569,13 @@ Explanation: There are 4 ways to form target.
 "bab" -> index 0 ("baab"), index 2 ("baab"), index 3 ("baab")
 "bab" -> index 1 ("abba"), index 2 ("baab"), index 3 ("baab")
 
+@param {string[]} words
+@param {string} target
+@return {number}
 
+var numWays = function(words, target) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
