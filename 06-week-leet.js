@@ -17574,7 +17574,43 @@ console.log("==========================================")
 // @return {number}
 
 var numWays = function(words, target) {
+    const MOD = 1e9 + 7;
+    const m = words[0].length; // Number of columns
+    const n = target.length; // Length of target
     
+    // Precompute character frequencies for each column
+    const freq = Array.from({ length: m }, () => Array(26).fill(0));
+    for (const word of words) {
+        for (let j = 0; j < m; j++) {
+            freq[j][word[j].charCodeAt(0) - 'a'.charCodeAt(0)]++;
+        }
+    }
+    
+    // DP table: dp[i][j] means ways to form target[0...i] using first j columns
+    const dp = Array.from({ length: n + 1 }, () => Array(m + 1).fill(0));
+    
+    // Base case: dp[0][j] = 1 (1 way to form empty string)
+    for (let j = 0; j <= m; j++) {
+        dp[0][j] = 1;
+    }
+    
+    // Fill the DP table
+    for (let i = 1; i <= n; i++) {
+        for (let j = 1; j <= m; j++) {
+            // Don't use the j-th column
+            dp[i][j] = dp[i][j - 1];
+            
+            // Use the j-th column if possible
+            const charIndex = target[i - 1].charCodeAt(0) - 'a'.charCodeAt(0);
+            if (freq[j - 1][charIndex] > 0) {
+                dp[i][j] += dp[i - 1][j - 1] * freq[j - 1][charIndex];
+                dp[i][j] %= MOD;
+            }
+        }
+    }
+    
+    // Result is the number of ways to form target[0...n] using all columns
+    return dp[n][m];
 };
 
 console.log("==========================================")
