@@ -17649,7 +17649,27 @@ console.log("==========================================")
 // @return {number}
 
 var countGoodStrings = function(low, high, zero, one) {
-    
+    const MOD = 1e9 + 7;
+    const dp = Array(high + 1).fill(0);
+    dp[0] = 1; // Base case: one way to create an empty string
+
+    for (let length = 0; length <= high; length++) {
+        if (dp[length] > 0) { // If there's a way to build this length
+            if (length + zero <= high) {
+                dp[length + zero] = (dp[length + zero] + dp[length]) % MOD;
+            }
+            if (length + one <= high) {
+                dp[length + one] = (dp[length + one] + dp[length]) % MOD;
+            }
+        }
+    }
+
+    let result = 0;
+    for (let length = low; length <= high; length++) {
+        result = (result + dp[length]) % MOD;
+    }
+
+    return result;
 };
 
 console.log("==========================================")
