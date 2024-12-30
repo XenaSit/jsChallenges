@@ -17642,6 +17642,16 @@ Input: low = 2, high = 3, zero = 1, one = 2
 Output: 5
 Explanation: The good strings are "00", "11", "000", "110", and "011".
 
+@param {number} low
+@param {number} high
+@param {number} zero
+@param {number} one
+@return {number}
+
+var countGoodStrings = function(low, high, zero, one) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
