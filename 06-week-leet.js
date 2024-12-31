@@ -17711,7 +17711,26 @@ console.log("==========================================")
 // @return {number}
 
 var mincostTickets = function(days, costs) {
-    
+    const n = days.length;
+    const dp = new Array(366).fill(0); // Array to store the minimum cost up to each day
+    const travelDays = new Set(days); // Use a set for quick lookup of travel days
+
+    for (let i = 1; i <= 365; i++) {
+        if (!travelDays.has(i)) {
+            // If not a travel day, cost is same as previous day
+            dp[i] = dp[i - 1];
+        } else {
+            // Calculate minimum cost by considering 1-day, 7-day, and 30-day passes
+            dp[i] = Math.min(
+                dp[Math.max(0, i - 1)] + costs[0], // 1-day pass
+                dp[Math.max(0, i - 7)] + costs[1], // 7-day pass
+                dp[Math.max(0, i - 30)] + costs[2] // 30-day pass
+            );
+        }
+    }
+
+    // Return the cost on the last travel day
+    return dp[days[n - 1]];
 };
 
 console.log("==========================================")
