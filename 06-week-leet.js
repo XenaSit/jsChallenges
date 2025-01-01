@@ -17765,7 +17765,25 @@ console.log("==========================================")
 // @return {number}
 
 var maxScore = function(s) {
-    
+    let totalOnes = 0; // Count total number of 1s in the string
+    for (let char of s) {
+        if (char === '1') totalOnes++;
+    }
+
+    let maxScore = 0;
+    let leftZeros = 0; // Count zeros in the left substring
+    let rightOnes = totalOnes; // Initial right ones is all the ones in the string
+
+    for (let i = 0; i < s.length - 1; i++) {
+        if (s[i] === '0') {
+            leftZeros++;
+        } else {
+            rightOnes--;
+        }
+        maxScore = Math.max(maxScore, leftZeros + rightOnes);
+    }
+
+    return maxScore;
 };
 
 
