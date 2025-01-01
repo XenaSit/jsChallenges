@@ -17761,7 +17761,12 @@ Example 3:
 Input: s = "1111"
 Output: 3
  
+@param {string} s
+@return {number}
 
+var maxScore = function(s) {
+    
+};
 
 
 console.log("==========================================")
