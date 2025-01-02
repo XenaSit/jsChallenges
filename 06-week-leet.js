@@ -17810,7 +17810,13 @@ Input: words = ["a","e","i"], queries = [[0,2],[0,1],[2,2]]
 Output: [3,2,1]
 Explanation: Every string satisfies the conditions, so we return [3,2,1].
 
+@param {string[]} words
+@param {number[][]} queries
+@return {number[]}
 
+var vowelStrings = function(words, queries) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
