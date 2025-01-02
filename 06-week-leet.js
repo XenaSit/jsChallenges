@@ -17815,7 +17815,28 @@ console.log("==========================================")
 // @return {number[]}
 
 var vowelStrings = function(words, queries) {
+    const vowels = new Set(['a', 'e', 'i', 'o', 'u']);
     
+    // Helper function to check if a string starts and ends with a vowel
+    const isVowelString = (str) => {
+        const firstChar = str[0];
+        const lastChar = str[str.length - 1];
+        return vowels.has(firstChar) && vowels.has(lastChar);
+    };
+    
+    // Precompute the prefix sum for vowel strings
+    const prefixSum = new Array(words.length + 1).fill(0);
+    for (let i = 0; i < words.length; i++) {
+        prefixSum[i + 1] = prefixSum[i] + (isVowelString(words[i]) ? 1 : 0);
+    }
+
+    // Process each query and calculate the result
+    const result = [];
+    for (const [li, ri] of queries) {
+        result.push(prefixSum[ri + 1] - prefixSum[li]);
+    }
+
+    return result;
 };
 
 console.log("==========================================")
