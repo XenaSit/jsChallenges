@@ -17871,7 +17871,20 @@ console.log("==========================================")
 // @return {number}
 
 var waysToSplitArray = function(nums) {
-    
+    let totalSum = nums.reduce((a, b) => a + b, 0); // Calculate total sum of array
+    let leftSum = 0; // Initialize left sum
+    let count = 0; // Initialize count of valid splits
+
+    for (let i = 0; i < nums.length - 1; i++) { // Iterate up to n - 1
+        leftSum += nums[i]; // Update left sum
+        let rightSum = totalSum - leftSum; // Calculate right sum
+
+        if (leftSum >= rightSum) { // Check the condition for a valid split
+            count++; // Increment the count
+        }
+    }
+
+    return count; // Return the total number of valid splits
 };
 
 console.log("==========================================")
