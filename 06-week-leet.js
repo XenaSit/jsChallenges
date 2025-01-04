@@ -17920,7 +17920,12 @@ Explanation: The 4 palindromic subsequences of length 3 are:
 - "bab" (subsequence of "bbcbaba")
 - "aba" (subsequence of "bbcbaba")
 
+@param {string} s
+@return {number}
 
+var countPalindromicSubsequence = function(s) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
