@@ -17924,7 +17924,22 @@ console.log("==========================================")
 // @return {number}
 
 var countPalindromicSubsequence = function(s) {
-    
+    let result = 0;
+
+    // Iterate through each unique character in the string
+    for (let char of new Set(s)) {
+        let first = s.indexOf(char);
+        let last = s.lastIndexOf(char);
+
+        // Ensure there's a gap between the first and last occurrence
+        if (last - first > 1) {
+            // Create a set of middle characters
+            let middleChars = new Set(s.slice(first + 1, last));
+            result += middleChars.size; // Each unique middle char forms a new palindrome
+        }
+    }
+
+    return result;
 };
 
 console.log("==========================================")
