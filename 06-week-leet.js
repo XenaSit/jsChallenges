@@ -17968,7 +17968,13 @@ Output: "catz"
 Explanation: Firstly, shift the characters from index 0 to index 0 backward. Now s = "cztz".
 Finally, shift the characters from index 1 to index 1 forward. Now s = "catz".
 
+@param {string} s
+@param {number[][]} shifts
+@return {string}
 
+var shiftingLetters = function(s, shifts) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
