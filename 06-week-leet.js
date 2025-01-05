@@ -17973,9 +17973,27 @@ console.log("==========================================")
 // @return {string}
 
 var shiftingLetters = function(s, shifts) {
-    
-};
+    const n = s.length;
+    const shiftEffect = Array(n + 1).fill(0);
 
+    // Apply the shifts using a difference array
+    for (const [start, end, direction] of shifts) {
+        const effect = direction === 1 ? 1 : -1;
+        shiftEffect[start] += effect;
+        shiftEffect[end + 1] -= effect;
+    }
+
+    // Calculate the cumulative shift effect
+    let cumulativeShift = 0;
+    const result = Array(n);
+    for (let i = 0; i < n; i++) {
+        cumulativeShift += shiftEffect[i];
+        const newCharCode = (s.charCodeAt(i) - 97 + cumulativeShift) % 26;
+        result[i] = String.fromCharCode(((newCharCode + 26) % 26) + 97); // Ensure positive wrapping
+    }
+
+    return result.join('');
+};
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
