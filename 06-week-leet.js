@@ -18021,9 +18021,31 @@ console.log("==========================================")
 // @return {number[]}
 
 var minOperations = function(boxes) {
+    const n = boxes.length;
+    const result = new Array(n).fill(0);
     
+    let count = 0;  // Number of balls to the left
+    let operations = 0;  // Total operations to move balls to the current box
+    
+    // Left-to-right pass
+    for (let i = 0; i < n; i++) {
+        result[i] += operations;
+        count += boxes[i] === '1' ? 1 : 0;
+        operations += count;
+    }
+    
+    count = 0;  // Reset count for the right pass
+    operations = 0;  // Reset operations for the right pass
+    
+    // Right-to-left pass
+    for (let i = n - 1; i >= 0; i--) {
+        result[i] += operations;
+        count += boxes[i] === '1' ? 1 : 0;
+        operations += count;
+    }
+    
+    return result;
 };
-
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
