@@ -18017,6 +18017,12 @@ Example 2:
 Input: boxes = "001011"
 Output: [11,8,5,4,3,4]
 
+@param {string} boxes
+@return {number[]}
+
+var minOperations = function(boxes) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
