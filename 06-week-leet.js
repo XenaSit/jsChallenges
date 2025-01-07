@@ -18069,6 +18069,12 @@ Input: words = ["blue","green","bu"]
 Output: []
 Explanation: No string of words is substring of another string.
 
+@param {string[]} words
+@return {string[]}
+
+var stringMatching = function(words) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
