@@ -18121,7 +18121,12 @@ Output: 0
 Explanation: In this example, the only valid index pair is i = 0 and j = 1, and isPrefixAndSuffix("abab", "ab") is false.
 Therefore, the answer is 0.
 
+@param {string[]} words
+@return {number}
 
+var countPrefixSuffixPairs = function(words) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
