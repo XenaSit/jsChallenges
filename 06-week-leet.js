@@ -18195,7 +18195,13 @@ Example 2:
 Input: words1 = ["amazon","apple","facebook","google","leetcode"], words2 = ["l","e"]
 Output: ["apple","google","leetcode"]
  
+@param {string[]} words1
+@param {string[]} words2
+@return {string[]}
 
+var wordSubsets = function(words1, words2) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
