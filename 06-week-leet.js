@@ -18200,7 +18200,38 @@ console.log("==========================================")
 // @return {string[]}
 
 var wordSubsets = function(words1, words2) {
+    // Helper function to calculate character frequency in a word
+    const getCharFrequency = (word) => {
+        const freq = new Array(26).fill(0);
+        for (let char of word) {
+            freq[char.charCodeAt(0) - 'a'.charCodeAt(0)]++;
+        }
+        return freq;
+    };
     
+    // Get the maximum frequency requirement for all words in words2
+    const maxFreq = new Array(26).fill(0);
+    for (let word of words2) {
+        const freq = getCharFrequency(word);
+        for (let i = 0; i < 26; i++) {
+            maxFreq[i] = Math.max(maxFreq[i], freq[i]);
+        }
+    }
+    
+    const result = [];
+    for (let word of words1) {
+        const freq = getCharFrequency(word);
+        let isUniversal = true;
+        for (let i = 0; i < 26; i++) {
+            if (freq[i] < maxFreq[i]) {
+                isUniversal = false;
+                break;
+            }
+        }
+        if (isUniversal) result.push(word);
+    }
+    
+    return result;
 };
 
 console.log("==========================================")
