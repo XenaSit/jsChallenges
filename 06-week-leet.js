@@ -18256,7 +18256,13 @@ Input: s = "true", k = 4
 Output: true
 Explanation: The only possible solution is to put each character in a separate string.
 
+@param {string} s
+@param {number} k
+@return {boolean}
 
+var canConstruct = function(s, k) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
