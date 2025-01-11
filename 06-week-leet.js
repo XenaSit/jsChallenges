@@ -18261,7 +18261,23 @@ console.log("==========================================")
 // @return {boolean}
 
 var canConstruct = function(s, k) {
-    
+    // If k is greater than the length of the string, it's impossible
+    if (k > s.length) return false;
+
+    // Count the frequency of each character
+    const charCount = {};
+    for (const char of s) {
+        charCount[char] = (charCount[char] || 0) + 1;
+    }
+
+    // Count the number of characters with odd frequencies
+    let oddCount = 0;
+    for (const count of Object.values(charCount)) {
+        if (count % 2 !== 0) oddCount++;
+    }
+
+    // Check if we can create k palindromes
+    return oddCount <= k;
 };
 
 console.log("==========================================")
