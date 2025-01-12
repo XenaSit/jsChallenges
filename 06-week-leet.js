@@ -18317,9 +18317,35 @@ console.log("==========================================")
 // @return {boolean}
 
 var canBeValid = function(s, locked) {
-    
-};
+    if (s.length % 2 !== 0) return false; // Length must be even
 
+    // First pass: Left to Right
+    let open = 0, flexible = 0;
+    for (let i = 0; i < s.length; i++) {
+        if (locked[i] === '1') {
+            if (s[i] === '(') open++;
+            else open--;
+        } else {
+            flexible++;
+        }
+        if (open + flexible < 0) return false; // Too many close parentheses
+    }
+
+    // Second pass: Right to Left
+    let close = 0;
+    flexible = 0;
+    for (let i = s.length - 1; i >= 0; i--) {
+        if (locked[i] === '1') {
+            if (s[i] === ')') close++;
+            else close--;
+        } else {
+            flexible++;
+        }
+        if (close + flexible < 0) return false; // Too many open parentheses
+    }
+
+    return true;
+};
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
