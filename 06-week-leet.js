@@ -18375,9 +18375,23 @@ console.log("==========================================")
 // @param {string} s
 // @return {number}
 
-var minimumLength = function(s) {
-    
-};
+function minimumLength(s) {
+    const cnt = Array(26).fill(0); // Create an array of size 26 for 'a' to 'z'
+
+    // Count occurrences of each character
+    for (const c of s) {
+        cnt[c.charCodeAt(0) - 'a'.charCodeAt(0)]++;
+    }
+
+    let ans = 0;
+    for (const x of cnt) {
+        if (x > 0) {
+            ans += (x & 1) === 1 ? 1 : 2; // Add 1 if odd, 2 if even
+        }
+    }
+
+    return ans;
+}
 
 console.log("==========================================")
 // console.log("==========================================")
