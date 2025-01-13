@@ -18372,6 +18372,12 @@ Output: 2
 Explanation:
 We cannot perform any operations, so we return the length of the original string.
 
+@param {string} s
+@return {number}
+
+var minimumLength = function(s) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
