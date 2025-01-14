@@ -18422,7 +18422,28 @@ console.log("==========================================")
 // @return {number[]}
 
 var findThePrefixCommonArray = function(A, B) {
-    
+    const n = A.length;
+    const seen = new Set();
+    const result = [];
+    let count = 0;
+
+    for (let i = 0; i < n; i++) {
+        // Add the current elements of A and B to the set and check if they've been seen before
+        if (seen.has(A[i])) {
+            count++;
+        } else {
+            seen.add(A[i]);
+        }
+        if (seen.has(B[i])) {
+            count++;
+        } else {
+            seen.add(B[i]);
+        }
+        // Update the result for the current index
+        result.push(count);
+    }
+
+    return result;
 };
 
 console.log("==========================================")
