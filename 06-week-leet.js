@@ -18417,7 +18417,13 @@ Explanation: At i = 0: no number is common, so C[0] = 0.
 At i = 1: only 3 is common in A and B, so C[1] = 1.
 At i = 2: 1, 2, and 3 are common in A and B, so C[2] = 3.
 
+@param {number[]} A
+@param {number[]} B
+@return {number[]}
 
+var findThePrefixCommonArray = function(A, B) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
