@@ -18476,7 +18476,29 @@ console.log("==========================================")
 // @return {number}
 
 var minimizeXor = function(num1, num2) {
-    
+    const countSetBits = (n) => n.toString(2).split('0').join('').length;
+    const num2SetBits = countSetBits(num2);
+
+    let x = 0;
+    let remainingSetBits = num2SetBits;
+
+    // Fill bits in x using bits from num1
+    for (let i = 31; i >= 0 && remainingSetBits > 0; i--) {
+        if ((num1 & (1 << i)) !== 0) {
+            x |= (1 << i);
+            remainingSetBits--;
+        }
+    }
+
+    // Fill remaining bits in x starting from LSB
+    for (let i = 0; i <= 31 && remainingSetBits > 0; i++) {
+        if ((x & (1 << i)) === 0) {
+            x |= (1 << i);
+            remainingSetBits--;
+        }
+    }
+
+    return x;
 };
 
 console.log("==========================================")
