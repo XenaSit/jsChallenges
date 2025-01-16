@@ -18504,7 +18504,7 @@ var minimizeXor = function(num1, num2) {
 console.log("==========================================")
 
 2425. Bitwise XOR of All Pairings
-◻ 
+Medium
 You are given two 0-indexed arrays, nums1 and nums2, consisting of non-negative integers. 
 There exists another array, nums3, which contains the bitwise XOR of all pairings of integers between nums1 and nums2 
 (every integer in nums1 is paired with every integer in nums2 exactly once).
@@ -18526,6 +18526,13 @@ and nums1[1] ^ nums2[1].
 Thus, one possible nums3 array is [2,5,1,6].
 2 ^ 5 ^ 1 ^ 6 = 0, so we return 0.
 
+@param {number[]} nums1
+@param {number[]} nums2
+@return {number}
+
+var xorAllNums = function(nums1, nums2) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
