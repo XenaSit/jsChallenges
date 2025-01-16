@@ -18531,7 +18531,31 @@ console.log("==========================================")
 // @return {number}
 
 var xorAllNums = function(nums1, nums2) {
+    let xor1 = 0, xor2 = 0;
     
+    // XOR of all elements in nums1
+    for (let num of nums1) {
+        xor1 ^= num;
+    }
+    
+    // XOR of all elements in nums2
+    for (let num of nums2) {
+        xor2 ^= num;
+    }
+    
+    let result = 0;
+    
+    // If nums2.length is odd, all elements in nums1 contribute
+    if (nums2.length % 2 === 1) {
+        result ^= xor1;
+    }
+    
+    // If nums1.length is odd, all elements in nums2 contribute
+    if (nums1.length % 2 === 1) {
+        result ^= xor2;
+    }
+    
+    return result;
 };
 
 console.log("==========================================")
