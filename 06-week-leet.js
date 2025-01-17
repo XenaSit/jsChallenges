@@ -18594,7 +18594,24 @@ console.log("==========================================")
 // @return {boolean}
 
 var doesValidArrayExist = function(derived) {
-    
+    const n = derived.length;
+
+    // Helper to check validity given the starting point
+    const isValid = (start) => {
+        let original = Array(n);
+        original[0] = start;
+        
+        // Reconstruct the original array
+        for (let i = 1; i < n; i++) {
+            original[i] = original[i - 1] ^ derived[i - 1];
+        }
+
+        // Check cyclic condition
+        return (original[0] === (original[n - 1] ^ derived[n - 1]));
+    };
+
+    // Try starting with 0 and 1
+    return isValid(0) || isValid(1);
 };
 
 console.log("==========================================")
