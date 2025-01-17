@@ -18590,6 +18590,13 @@ Input: derived = [1,0]
 Output: false
 Explanation: There is no valid original array that gives derived.
 
+@param {number[]} derived
+@return {boolean}
+
+var doesValidArrayExist = function(derived) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
