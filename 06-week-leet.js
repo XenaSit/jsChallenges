@@ -18652,7 +18652,48 @@ console.log("==========================================")
 // @return {number}
 
 var minCost = function(grid) {
-    
+    const m = grid.length;
+    const n = grid[0].length;
+    const directions = [
+        [0, 1],  // right
+        [0, -1], // left
+        [1, 0],  // down
+        [-1, 0]  // up
+    ];
+
+    const isValid = (x, y) => x >= 0 && x < m && y >= 0 && y < n;
+
+    const deque = [];
+    deque.push([0, 0, 0]); // [cost, x, y]
+    const visited = Array.from({ length: m }, () => Array(n).fill(false));
+
+    while (deque.length > 0) {
+        const [cost, x, y] = deque.shift();
+
+        if (visited[x][y]) continue;
+        visited[x][y] = true;
+
+        // If we reach the bottom-right corner, return the cost
+        if (x === m - 1 && y === n - 1) {
+            return cost;
+        }
+
+        for (let d = 0; d < 4; d++) {
+            const nx = x + directions[d][0];
+            const ny = y + directions[d][1];
+
+            if (isValid(nx, ny) && !visited[nx][ny]) {
+                // Check if the current arrow matches the direction
+                if (grid[x][y] === d + 1) {
+                    deque.unshift([cost, nx, ny]); // Add to the front (cost = 0)
+                } else {
+                    deque.push([cost + 1, nx, ny]); // Add to the back (cost = 1)
+                }
+            }
+        }
+    }
+
+    return -1; // Should never happen for a valid grid
 };
 
 console.log("==========================================")
