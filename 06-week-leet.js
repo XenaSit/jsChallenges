@@ -18648,6 +18648,12 @@ Example 3:
 Input: grid = [[1,2],[4,3]]
 Output: 1
 
+@param {number[][]} grid
+@return {number}
+
+var minCost = function(grid) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
