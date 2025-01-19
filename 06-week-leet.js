@@ -18714,7 +18714,12 @@ Example 2:
 Input: heightMap = [[3,3,3,3,3],[3,2,2,2,3],[3,2,1,2,3],[3,2,2,2,3],[3,3,3,3,3]]
 Output: 10
 
+@param {number[][]} heightMap
+@return {number}
 
+var trapRainWater = function(heightMap) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
