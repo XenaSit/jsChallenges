@@ -18718,7 +18718,57 @@ console.log("==========================================")
 // @return {number}
 
 var trapRainWater = function(heightMap) {
-    
+    if (!heightMap || heightMap.length === 0 || heightMap[0].length === 0) return 0;
+
+    const rows = heightMap.length;
+    const cols = heightMap[0].length;
+    const visited = Array.from({ length: rows }, () => Array(cols).fill(false));
+    const heap = new MinPriorityQueue({ priority: (cell) => cell[2] }); // [row, col, height]
+
+    // Push all boundary cells into the heap
+    for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+            if (r === 0 || r === rows - 1 || c === 0 || c === cols - 1) {
+                heap.enqueue([r, c, heightMap[r][c]]);
+                visited[r][c] = true;
+            }
+        }
+    }
+
+    const directions = [
+        [0, 1], [0, -1], [1, 0], [-1, 0], // right, left, down, up
+    ];
+    let waterTrapped = 0;
+
+    // Process the heap
+    while (!heap.isEmpty()) {
+        const [row, col, height] = heap.dequeue().element;
+
+        for (const [dr, dc] of directions) {
+            const newRow = row + dr;
+            const newCol = col + dc;
+
+            if (
+                newRow >= 0 &&
+                newRow < rows &&
+                newCol >= 0 &&
+                newCol < cols &&
+                !visited[newRow][newCol]
+            ) {
+                visited[newRow][newCol] = true;
+                // Calculate trapped water
+                waterTrapped += Math.max(0, height - heightMap[newRow][newCol]);
+                // Push the new cell into the heap with updated height
+                heap.enqueue([
+                    newRow,
+                    newCol,
+                    Math.max(height, heightMap[newRow][newCol]),
+                ]);
+            }
+        }
+    }
+
+    return waterTrapped;
 };
 
 console.log("==========================================")
