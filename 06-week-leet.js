@@ -18791,6 +18791,13 @@ Input: arr = [2,8,7,4,1,3,5,6,9], mat = [[3,2,5],[1,4,6],[8,7,9]]
 Output: 3
 Explanation: The second column becomes fully painted at arr[3].
 
+@param {number[]} arr
+@param {number[][]} mat
+@return {number}
+
+var firstCompleteIndex = function(arr, mat) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
