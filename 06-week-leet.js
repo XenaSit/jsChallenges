@@ -18796,7 +18796,33 @@ console.log("==========================================")
 // @return {number}
 
 var firstCompleteIndex = function(arr, mat) {
+    const m = mat.length, n = mat[0].length;
+    const rows = new Array(m).fill(0);
+    const cols = new Array(n).fill(0);
     
+    // Map each number in mat to its (row, col) position
+    const positionMap = new Map();
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            positionMap.set(mat[i][j], [i, j]);
+        }
+    }
+    
+    // Iterate through arr and paint the cells
+    for (let i = 0; i < arr.length; i++) {
+        const [row, col] = positionMap.get(arr[i]);
+        
+        // Increment counters for the respective row and column
+        rows[row]++;
+        cols[col]++;
+        
+        // Check if any row or column is fully painted
+        if (rows[row] === n || cols[col] === m) {
+            return i;
+        }
+    }
+    
+    return -1; // This case won't happen as per the problem constraints
 };
 
 console.log("==========================================")
