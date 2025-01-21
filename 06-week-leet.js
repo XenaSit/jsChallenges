@@ -18864,7 +18864,36 @@ console.log("==========================================")
 // @return {number}
 
 var gridGame = function(grid) {
-    
+    let n = grid[0].length;
+
+    // Compute prefix sums for the top and bottom rows
+    let prefixTop = new Array(n).fill(0);
+    let prefixBottom = new Array(n).fill(0);
+
+    prefixTop[0] = grid[0][0];
+    prefixBottom[0] = grid[1][0];
+
+    for (let i = 1; i < n; i++) {
+        prefixTop[i] = prefixTop[i - 1] + grid[0][i];
+        prefixBottom[i] = prefixBottom[i - 1] + grid[1][i];
+    }
+
+    let result = Infinity;
+
+    // Iterate through each column to determine the split point
+    for (let i = 0; i < n; i++) {
+        // Calculate remaining points for the second robot if the first robot turns down at column i
+        let topRemaining = prefixTop[n - 1] - prefixTop[i];
+        let bottomRemaining = i > 0 ? prefixBottom[i - 1] : 0;
+
+        // Maximize the second robot's score (its path's maximum points)
+        let secondRobotScore = Math.max(topRemaining, bottomRemaining);
+
+        // Minimize the second robot's maximum score
+        result = Math.min(result, secondRobotScore);
+    }
+
+    return result;
 };
 
 console.log("==========================================")
