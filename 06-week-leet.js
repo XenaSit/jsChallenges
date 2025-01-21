@@ -18860,6 +18860,12 @@ Explanation: The optimal path taken by the first robot is shown in red, and the 
 The cells visited by the first robot are set to 0.
 The second robot will collect 0 + 1 + 3 + 3 + 0 = 7 points.
 
+@param {number[][]} grid
+@return {number}
+
+var gridGame = function(grid) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
