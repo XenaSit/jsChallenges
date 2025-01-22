@@ -18924,7 +18924,12 @@ Output: [[1,1,0],[0,1,1],[1,2,2]]
 Explanation: A height of 2 is the maximum possible height of any assignment.
 Any height assignment that has a maximum height of 2 while still meeting the rules will also be accepted.
  
+@param {number[][]} isWater
+@return {number[][]}
 
+var highestPeak = function(isWater) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
