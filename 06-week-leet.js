@@ -18988,6 +18988,12 @@ Explanation: The two servers in the first row can communicate with each other.
 The two servers in the third column can communicate with each other. 
 The server at right bottom corner can't communicate with any other server.
 
+@param {number[][]} grid
+@return {number}
+
+var countServers = function(grid) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
