@@ -18992,7 +18992,34 @@ console.log("==========================================")
 // @return {number}
 
 var countServers = function(grid) {
-    
+    let rows = grid.length;
+    let cols = grid[0].length;
+
+    // Arrays to count the number of servers in each row and column
+    let rowCount = new Array(rows).fill(0);
+    let colCount = new Array(cols).fill(0);
+
+    // Count servers in each row and column
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+            if (grid[i][j] === 1) {
+                rowCount[i]++;
+                colCount[j]++;
+            }
+        }
+    }
+
+    // Count servers that can communicate
+    let count = 0;
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+            if (grid[i][j] === 1 && (rowCount[i] > 1 || colCount[j] > 1)) {
+                count++;
+            }
+        }
+    }
+
+    return count;
 };
 
 console.log("==========================================")
