@@ -19049,6 +19049,12 @@ Output: [4]
 Explanation:
 Only node 4 is a terminal node, and every path starting at node 4 leads to node 4.
 
+@param {number[][]} graph
+@return {number[]}
+
+var eventualSafeNodes = function(graph) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
