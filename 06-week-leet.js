@@ -19128,9 +19128,35 @@ console.log("==========================================")
 // @param {number} limit
 // @return {number[]}
 
-var lexicographicallySmallestArray = function(nums, limit) {
-    
-};
+function lexicographicallySmallestArray(nums, limit) {
+    // Get the length of the `nums` array
+    const length = nums.length;
+    // Create an array of indices for the `nums` array
+    const indices = nums.map((_, index) => index);
+    // Sort the indices by comparing the values in `nums` they refer to
+    indices.sort((i, j) => nums[i] - nums[j]);
+    // Initialize the answer array with zeros
+    const answer = new Array(length).fill(0);
+
+    // Iterate over the sorted indices
+    for (let i = 0; i < length; ) {
+        // Find a contiguous group of indices within the `limit`
+        let j = i + 1;
+        while (j < length && nums[indices[j]] - nums[indices[j - 1]] <= limit) {
+            j++;
+        }
+        // Sort the slice of `indices` by their values (not by the values they refer to in `nums`)
+        const sortedIndicesSlice = indices.slice(i, j).sort((a, b) => a - b);
+        // Assign the values from `nums` to the `answer` array based on the sorted slice of indices
+        for (let k = i; k < j; k++) {
+            answer[sortedIndicesSlice[k - i]] = nums[indices[k]];
+        }
+        // Move to the next group of indices
+        i = j;
+    }
+    // Return the lexicographically smallest array
+    return answer;
+}
 
 console.log("==========================================")
 // console.log("==========================================")
