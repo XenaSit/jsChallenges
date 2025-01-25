@@ -19124,7 +19124,13 @@ Input: nums = [1,7,28,19,10], limit = 3
 Output: [1,7,28,19,10]
 Explanation: [1,7,28,19,10] is the lexicographically smallest array we can obtain because we cannot apply the operation on any two indices.
 
+@param {number[]} nums
+@param {number} limit
+@return {number[]}
 
+var lexicographicallySmallestArray = function(nums, limit) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
