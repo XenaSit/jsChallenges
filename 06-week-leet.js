@@ -19199,6 +19199,12 @@ Employee 2 cannot be invited because the two spots next to their favorite employ
 So the company leaves them out of the meeting.
 The maximum number of employees that can be invited to the meeting is 4.
 
+@param {number[]} favorite
+@return {number}
+
+var maximumInvitations = function(favorite) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
