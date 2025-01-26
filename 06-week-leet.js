@@ -19203,9 +19203,61 @@ console.log("==========================================")
 // @return {number}
 
 var maximumInvitations = function(favorite) {
-    
-};
+    const n = favorite.length;
+    const visited = Array(n).fill(false);
+    const stackIndex = Array(n).fill(-1);
+    let maxCycle = 0;
+    let chainSum = 0;
 
+    // Detect cycles and calculate their lengths
+    for (let i = 0; i < n; i++) {
+        if (visited[i]) continue;
+
+        let current = i;
+        let index = 0;
+        const path = [];
+        while (!visited[current]) {
+            visited[current] = true;
+            stackIndex[current] = index++;
+            path.push(current);
+            current = favorite[current];
+        }
+
+        // Check if a cycle is formed
+        if (stackIndex[current] !== -1) {
+            const cycleLength = index - stackIndex[current];
+            maxCycle = Math.max(maxCycle, cycleLength);
+        }
+
+        // Mark all nodes in the current path as visited
+        for (let node of path) stackIndex[node] = -1;
+    }
+
+    // Calculate chains ending at mutual favorite pairs
+    const indegree = Array(n).fill(0);
+    for (let f of favorite) indegree[f]++;
+    
+    const chainLengths = Array(n).fill(0);
+    const queue = [];
+    for (let i = 0; i < n; i++) {
+        if (indegree[i] === 0) queue.push(i);
+    }
+
+    while (queue.length) {
+        const node = queue.shift();
+        const fav = favorite[node];
+        chainLengths[fav] = Math.max(chainLengths[fav], chainLengths[node] + 1);
+        if (--indegree[fav] === 0) queue.push(fav);
+    }
+
+    for (let i = 0; i < n; i++) {
+        if (favorite[favorite[i]] === i && i < favorite[i]) {
+            chainSum += 2 + chainLengths[i] + chainLengths[favorite[i]];
+        }
+    }
+
+    return Math.max(maxCycle, chainSum);
+};
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
