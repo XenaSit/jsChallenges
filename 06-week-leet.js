@@ -19257,7 +19257,8 @@ var maximumInvitations = function(favorite) {
     }
 
     return Math.max(maxCycle, chainSum);
-// };
+};
+
 // console.log("==========================================")
 
 // 1462. Course Schedule IV
@@ -19331,4 +19332,4 @@ console.log("==========================================")
 // git commit -m "LEET, branch:leet, the 30 days of JS challenge: Timout Cancellation: EASY"
 
 
-document.querySelector('textarea').value = 'your code here';
+// document.querySelector('textarea').value = 'your code here';
