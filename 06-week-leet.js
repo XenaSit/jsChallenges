@@ -19289,7 +19289,14 @@ Example 3:
 Input: numCourses = 3, prerequisites = [[1,2],[1,0],[2,0]], queries = [[1,0],[1,2]]
 Output: [true,true]
 
+@param {number} numCourses
+@param {number[][]} prerequisites
+@param {number[][]} queries
+@return {boolean[]}
 
+var checkIfPrerequisite = function(numCourses, prerequisites, queries) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
