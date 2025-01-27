@@ -19295,7 +19295,27 @@ var maximumInvitations = function(favorite) {
 // @return {boolean[]}
 
 var checkIfPrerequisite = function(numCourses, prerequisites, queries) {
+    // Step 1: Initialize a matrix to store the transitive closure
+    const graph = Array.from({ length: numCourses }, () => Array(numCourses).fill(false));
     
+    // Step 2: Fill the graph with direct prerequisites
+    for (const [a, b] of prerequisites) {
+        graph[a][b] = true;
+    }
+    
+    // Step 3: Compute transitive closure using Floyd-Warshall algorithm
+    for (let k = 0; k < numCourses; k++) {
+        for (let i = 0; i < numCourses; i++) {
+            for (let j = 0; j < numCourses; j++) {
+                if (graph[i][k] && graph[k][j]) {
+                    graph[i][j] = true;
+                }
+            }
+        }
+    }
+    
+    // Step 4: Answer the queries
+    return queries.map(([u, v]) => graph[u][v]);
 };
 
 console.log("==========================================")
