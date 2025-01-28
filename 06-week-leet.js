@@ -19346,7 +19346,31 @@ console.log("==========================================")
 // @return {number}
 
 var findMaxFish = function(grid) {
-    
+    const m = grid.length; // Number of rows
+    const n = grid[0].length; // Number of columns
+    let maxFish = 0; // To store the maximum fish caught
+
+    // Helper function to perform DFS
+    const dfs = (r, c) => {
+        if (r < 0 || c < 0 || r >= m || c >= n || grid[r][c] === 0) {
+            return 0; // Out of bounds or land cell
+        }
+        const fish = grid[r][c]; // Collect fish at this cell
+        grid[r][c] = 0; // Mark as visited by setting to 0
+        // Explore all adjacent cells
+        return fish + dfs(r + 1, c) + dfs(r - 1, c) + dfs(r, c + 1) + dfs(r, c - 1);
+    };
+
+    // Iterate over every cell in the grid
+    for (let r = 0; r < m; r++) {
+        for (let c = 0; c < n; c++) {
+            if (grid[r][c] > 0) { // If it's a water cell
+                maxFish = Math.max(maxFish, dfs(r, c)); // Start DFS and update maxFish
+            }
+        }
+    }
+
+    return maxFish;
 };
 
 console.log("==========================================")
