@@ -19342,7 +19342,12 @@ Input: grid = [[1,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,1]]
 Output: 1
 Explanation: The fisher can start at cells (0,0) or (3,3) and collect a single fish. 
 
+@param {number[][]} grid
+@return {number}
 
+var findMaxFish = function(grid) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
