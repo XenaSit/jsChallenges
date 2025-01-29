@@ -19396,7 +19396,40 @@ console.log("==========================================")
 // @return {number[]}
 
 var findRedundantConnection = function(edges) {
-    
+    let parent = new Array(edges.length + 1).fill(0).map((_, index) => index);
+    let rank = new Array(edges.length + 1).fill(1);
+
+    function find(node) {
+        if (parent[node] !== node) {
+            parent[node] = find(parent[node]); // Path compression
+        }
+        return parent[node];
+    }
+
+    function union(node1, node2) {
+        let root1 = find(node1);
+        let root2 = find(node2);
+
+        if (root1 === root2) return false; // Cycle detected
+
+        if (rank[root1] > rank[root2]) {
+            parent[root2] = root1;
+        } else if (rank[root1] < rank[root2]) {
+            parent[root1] = root2;
+        } else {
+            parent[root2] = root1;
+            rank[root1] += 1;
+        }
+        return true;
+    }
+
+    for (let [u, v] of edges) {
+        if (!union(u, v)) {
+            return [u, v]; // The edge that creates a cycle
+        }
+    }
+
+    return [];
 };
 
 console.log("==========================================")
