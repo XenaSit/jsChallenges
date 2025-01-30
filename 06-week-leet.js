@@ -19468,7 +19468,90 @@ console.log("==========================================")
 // @return {number}
 
 var magnificentSets = function(n, edges) {
-    
+    // Step 1: Build adjacency list
+    const graph = new Array(n + 1).fill(0).map(() => []);
+    for (const [u, v] of edges) {
+        graph[u].push(v);
+        graph[v].push(u);
+    }
+
+    // Step 2: Check if the graph is bipartite using BFS
+    const color = new Array(n + 1).fill(0); // 0: unvisited, 1: color A, -1: color B
+
+    const isBipartite = (start) => {
+        let queue = [start];
+        color[start] = 1;
+        while (queue.length > 0) {
+            let node = queue.shift();
+            for (let neighbor of graph[node]) {
+                if (color[neighbor] === 0) {
+                    color[neighbor] = -color[node]; // Assign opposite color
+                    queue.push(neighbor);
+                } else if (color[neighbor] === color[node]) {
+                    return false; // Odd cycle detected, not bipartite
+                }
+            }
+        }
+        return true;
+    };
+
+    for (let i = 1; i <= n; i++) {
+        if (color[i] === 0 && !isBipartite(i)) return -1;
+    }
+
+    // Step 3: Find the longest path in each connected component
+    const bfsMaxDepth = (start) => {
+        let queue = [start];
+        let visited = new Set([start]);
+        let depth = 0;
+
+        while (queue.length > 0) {
+            let nextQueue = [];
+            for (let node of queue) {
+                for (let neighbor of graph[node]) {
+                    if (!visited.has(neighbor)) {
+                        visited.add(neighbor);
+                        nextQueue.push(neighbor);
+                    }
+                }
+            }
+            queue = nextQueue;
+            if (queue.length > 0) depth++;
+        }
+        return depth;
+    };
+
+    let visitedComponents = new Set();
+    let maxGroups = 0;
+
+    for (let i = 1; i <= n; i++) {
+        if (!visitedComponents.has(i)) {
+            let component = [];
+            let queue = [i];
+            visitedComponents.add(i);
+
+            // Collect all nodes in the current connected component
+            while (queue.length > 0) {
+                let node = queue.shift();
+                component.push(node);
+                for (let neighbor of graph[node]) {
+                    if (!visitedComponents.has(neighbor)) {
+                        visitedComponents.add(neighbor);
+                        queue.push(neighbor);
+                    }
+                }
+            }
+
+            // Find the maximum possible depth using BFS from any node
+            let maxDepth = 0;
+            for (let node of component) {
+                maxDepth = Math.max(maxDepth, bfsMaxDepth(node));
+            }
+            maxGroups += maxDepth + 1;
+        }
+    }
+
+    return maxGroups;
 };
 
 console.log("==========================================")
