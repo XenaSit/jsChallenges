@@ -19463,7 +19463,13 @@ Output: -1
 Explanation: If we add node 1 to the first group, node 2 to the second group, and node 3 to the third group to satisfy the first two edges, we can see that the third edge will not be satisfied.
 It can be shown that no grouping is possible.
 
+@param {number} n
+@param {number[][]} edges
+@return {number}
 
+var magnificentSets = function(n, edges) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
