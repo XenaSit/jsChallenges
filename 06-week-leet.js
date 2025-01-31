@@ -19581,8 +19581,61 @@ console.log("==========================================")
 // @return {number}
 
 var largestIsland = function(grid) {
+    const n = grid.length;
+    const directions = [[0,1], [1,0], [0,-1], [-1,0]];
+    let islandId = 2;  // Start from 2 to differentiate from 1s
+    let islandSize = new Map();
+    islandSize.set(0, 0); // Ensure 0s map to 0 size
+
+    // DFS to find island size and mark with islandId
+    function dfs(r, c, id) {
+        if (r < 0 || c < 0 || r >= n || c >= n || grid[r][c] !== 1) return 0;
+        grid[r][c] = id;
+        let size = 1;
+        for (let [dr, dc] of directions) {
+            size += dfs(r + dr, c + dc, id);
+        }
+        return size;
+    }
+
+    // First pass: Identify islands and store sizes
+    for (let r = 0; r < n; r++) {
+        for (let c = 0; c < n; c++) {
+            if (grid[r][c] === 1) {
+                let size = dfs(r, c, islandId);
+                islandSize.set(islandId, size);
+                islandId++;
+            }
+        }
+    }
+
+    let maxIsland = Math.max(...islandSize.values());
+
+    // Second pass: Try flipping a 0 to 1
+    for (let r = 0; r < n; r++) {
+        for (let c = 0; c < n; c++) {
+            if (grid[r][c] === 0) {
+                let seenIslands = new Set();
+                let newSize = 1; // Include the flipped cell
+                
+                for (let [dr, dc] of directions) {
+                    let nr = r + dr, nc = c + dc;
+                    if (nr >= 0 && nc >= 0 && nr < n && nc < n) {
+                        let id = grid[nr][nc];
+                        if (id > 1 && !seenIslands.has(id)) {
+                            seenIslands.add(id);
+                            newSize += islandSize.get(id);
+                        }
+                    }
+                }
+                maxIsland = Math.max(maxIsland, newSize);
+            }
+        }
+    }
     
+    return maxIsland;
 };
+
 
 
 console.log("==========================================")
