@@ -19663,7 +19663,12 @@ Output: false
 Explanation:
 nums[1] and nums[2] are both odd. So the answer is false.
 
+@param {number[]} nums
+@return {boolean}
 
+var isArraySpecial = function(nums) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
