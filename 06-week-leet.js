@@ -19702,7 +19702,12 @@ Output: true
 Explanation: [1,2,3] is the original sorted array.
 You can rotate the array by x = 0 positions (i.e. no rotation) to make nums.
  
+@param {number[]} nums
+@return {boolean}
 
+var check = function(nums) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
