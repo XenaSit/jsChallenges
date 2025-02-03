@@ -19751,6 +19751,12 @@ The strictly increasing subarrays of nums are [3], [2], and [1].
 The strictly decreasing subarrays of nums are [3], [2], [1], [3,2], [2,1], and [3,2,1].
 Hence, we return 3.
 
+@param {number[]} nums
+@return {number}
+
+var longestMonotonicSubarray = function(nums) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
