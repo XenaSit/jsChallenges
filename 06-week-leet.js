@@ -19807,9 +19807,23 @@ console.log("==========================================")
 // @return {number}
 
 var maxAscendingSum = function(nums) {
+    let maxSum = nums[0]; // Initialize maxSum with the first element
+    let currentSum = nums[0]; // Track the sum of the current ascending subarray
     
+    for (let i = 1; i < nums.length; i++) {
+        if (nums[i] > nums[i - 1]) {
+            // If ascending, add to current subarray sum
+            currentSum += nums[i];
+        } else {
+            // If not ascending, reset current subarray sum
+            maxSum = Math.max(maxSum, currentSum);
+            currentSum = nums[i];
+        }
+    }
+    
+    // Compare one last time in case the longest sequence is at the end
+    return Math.max(maxSum, currentSum);
 };
-
 
 console.log("==========================================")
 // console.log("==========================================")
