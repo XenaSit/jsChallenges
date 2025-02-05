@@ -19848,6 +19848,14 @@ Input: s1 = "kelb", s2 = "kelb"
 Output: true
 Explanation: The two strings are already equal, so no string swap operation is required.
 
+@param {string} s1
+@param {string} s2
+@return {boolean}
+
+var areAlmostEqual = function(s1, s2) {
+    
+};
+
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
