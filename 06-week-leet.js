@@ -19853,7 +19853,24 @@ console.log("==========================================")
 // @return {boolean}
 
 var areAlmostEqual = function(s1, s2) {
+    if (s1 === s2) return true; // If both strings are already equal
+
+    let diff = [];
     
+    // Find indices where characters differ
+    for (let i = 0; i < s1.length; i++) {
+        if (s1[i] !== s2[i]) {
+            diff.push(i);
+        }
+    }
+
+    // There should be exactly two differences for a valid swap
+    if (diff.length !== 2) return false;
+
+    let [i, j] = diff;
+    
+    // Check if swapping the differing characters in s2 makes s1 and s2 equal
+    return s1[i] === s2[j] && s1[j] === s2[i];
 };
 
 console.log("==========================================")
