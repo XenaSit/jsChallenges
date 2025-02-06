@@ -19896,7 +19896,12 @@ Explanation: There are 16 valid tuples:
 (2,10,4,5) , (2,10,5,4) , (10,2,4,5) , (10,2,5,4)
 (4,5,2,10) , (4,5,10,2) , (5,4,2,10) , (5,4,10,2)
  
+@param {number[]} nums
+@return {number}
 
+var tupleSameProduct = function(nums) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
