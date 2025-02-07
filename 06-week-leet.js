@@ -19951,7 +19951,13 @@ After query 2, ball 0 has color 1, and balls 1 and 2 have color 2.
 After query 3, ball 0 has color 1, balls 1 and 2 have color 2, and ball 3 has color 4.
 After query 4, ball 0 has color 1, balls 1 and 2 have color 2, ball 3 has color 4, and ball 4 has color 5.
 
+@param {number} limit
+@param {number[][]} queries
+@return {number[]}
 
+var queryResults = function(limit, queries) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
