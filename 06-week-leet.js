@@ -19956,7 +19956,34 @@ console.log("==========================================")
 // @return {number[]}
 
 var queryResults = function(limit, queries) {
-    
+    let ballColors = new Map();  // Maps ball -> color
+    let colorFreq = new Map();   // Maps color -> frequency
+    let distinctColors = 0;      // Number of distinct colors
+    let result = [];
+
+    for (let [ball, color] of queries) {
+        let prevColor = ballColors.get(ball); // Get previous color if exists
+
+        if (prevColor !== undefined) {
+            // Reduce count of previous color
+            colorFreq.set(prevColor, colorFreq.get(prevColor) - 1);
+            if (colorFreq.get(prevColor) === 0) {
+                colorFreq.delete(prevColor);
+                distinctColors--; // Remove from distinct count
+            }
+        }
+
+        // Assign new color
+        ballColors.set(ball, color);
+        if (!colorFreq.has(color)) {
+            distinctColors++; // New unique color
+        }
+        colorFreq.set(color, (colorFreq.get(color) || 0) + 1);
+
+        result.push(distinctColors);
+    }
+
+    return result;
 };
 
 console.log("==========================================")
