@@ -20016,6 +20016,33 @@ nc.change(1, 20); // Your container at index 1 will be filled with number 20. No
 nc.find(10); // Number 10 is at the indices 2, 3, and 5. The smallest index that is filled with 10 is 2. Therefore, we return 2.
 
 
+var NumberContainers = function() {
+    
+};
+
+/** 
+ * @param {number} index 
+ * @param {number} number
+ * @return {void}
+ */
+NumberContainers.prototype.change = function(index, number) {
+    
+};
+
+/** 
+ * @param {number} number
+ * @return {number}
+ */
+NumberContainers.prototype.find = function(number) {
+    
+};
+
+/** 
+ * Your NumberContainers object will be instantiated and called as such:
+ * var obj = new NumberContainers()
+ * obj.change(index,number)
+ * var param_2 = obj.find(number)
+ */
 
 console.log("==========================================")
 // console.log("==========================================")
