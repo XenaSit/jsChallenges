@@ -20040,6 +20040,109 @@ NumberContainers.prototype.find = function(number) {
 // obj.change(index,number)
 // var param_2 = obj.find(number)
 
+class MinHeap {
+    constructor() {
+        this.heap = [];
+    }
+
+    push(val) {
+        this.heap.push(val);
+        this._heapifyUp();
+    }
+
+    pop() {
+        if (this.heap.length === 1) return this.heap.pop();
+        const min = this.heap[0];
+        this.heap[0] = this.heap.pop();
+        this._heapifyDown();
+        return min;
+    }
+
+    peek() {
+        return this.heap.length > 0 ? this.heap[0] : null;
+    }
+
+    remove(val) {
+        let index = this.heap.indexOf(val);
+        if (index === -1) return;
+        this.heap.splice(index, 1);
+        this._heapifyDown(index);
+    }
+
+    size() {
+        return this.heap.length;
+    }
+
+    _heapifyUp() {
+        let index = this.heap.length - 1;
+        while (index > 0) {
+            let parentIndex = Math.floor((index - 1) / 2);
+            if (this.heap[parentIndex] <= this.heap[index]) break;
+            [this.heap[parentIndex], this.heap[index]] = [this.heap[index], this.heap[parentIndex]];
+            index = parentIndex;
+        }
+    }
+
+    _heapifyDown(index = 0) {
+        let leftChild, rightChild, smallest;
+        while (true) {
+            leftChild = 2 * index + 1;
+            rightChild = 2 * index + 2;
+            smallest = index;
+
+            if (leftChild < this.heap.length && this.heap[leftChild] < this.heap[smallest]) {
+                smallest = leftChild;
+            }
+            if (rightChild < this.heap.length && this.heap[rightChild] < this.heap[smallest]) {
+                smallest = rightChild;
+            }
+            if (smallest === index) break;
+            [this.heap[smallest], this.heap[index]] = [this.heap[index], this.heap[smallest]];
+            index = smallest;
+        }
+    }
+}
+
+class NumberContainers {
+    constructor() {
+        this.indexMap = new Map(); // Maps index -> number
+        this.numberMap = new Map(); // Maps number -> MinHeap of indices
+    }
+
+    change(index, number) {
+        if (this.indexMap.has(index)) {
+            let oldNumber = this.indexMap.get(index);
+            if (oldNumber !== number) {
+                this.numberMap.get(oldNumber)?.remove(index);
+            }
+        }
+
+        this.indexMap.set(index, number);
+
+        if (!this.numberMap.has(number)) {
+            this.numberMap.set(number, new MinHeap());
+        }
+        this.numberMap.get(number).push(index);
+    }
+
+    find(number) {
+        if (!this.numberMap.has(number) || this.numberMap.get(number).size() === 0) {
+            return -1;
+        }
+
+        // Ensure we return a valid index (some indices might have been removed)
+        while (this.numberMap.get(number).size() > 0) {
+            let minIndex = this.numberMap.get(number).peek();
+            if (this.indexMap.get(minIndex) === number) {
+                return minIndex;
+            } else {
+                this.numberMap.get(number).pop(); // Remove invalid index
+            }
+        }
+
+        return -1;
+    }
+}
 
 console.log("==========================================")
 // console.log("==========================================")
