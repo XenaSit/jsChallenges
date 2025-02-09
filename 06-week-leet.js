@@ -20166,7 +20166,12 @@ Input: nums = [1,2,3,4,5]
 Output: 0
 Explanation: There are no bad pairs.
 
+@param {number[]} nums
+@return {number}
 
+var countBadPairs = function(nums) {
+    
+};
 
 
 
