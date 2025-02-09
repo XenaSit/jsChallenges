@@ -20170,7 +20170,22 @@ console.log("==========================================")
 // @return {number}
 
 var countBadPairs = function(nums) {
-    
+    let n = nums.length;
+    let totalPairs = (n * (n - 1)) / 2;
+    let goodPairs = 0;
+    let countMap = new Map();
+
+    for (let i = 0; i < n; i++) {
+        let key = nums[i] - i;
+        if (countMap.has(key)) {
+            goodPairs += countMap.get(key);
+            countMap.set(key, countMap.get(key) + 1);
+        } else {
+            countMap.set(key, 1);
+        }
+    }
+
+    return totalPairs - goodPairs;
 };
 
 
