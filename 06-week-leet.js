@@ -20214,8 +20214,25 @@ console.log("==========================================")
 // @return {string}
 
 var clearDigits = function(s) {
+    let stack = [];
     
+    for (let char of s) {
+        if (/\d/.test(char)) {
+            // Remove the closest non-digit character to its left (if exists)
+            while (stack.length && /\d/.test(stack[stack.length - 1])) {
+                stack.pop();
+            }
+            if (stack.length) {
+                stack.pop();
+            }
+        } else {
+            stack.push(char);
+        }
+    }
+    
+    return stack.join('');
 };
+
 
 console.log("==========================================")
 // console.log("==========================================")
