@@ -20210,7 +20210,12 @@ Explanation:
 First, we apply the operation on s[2], and s becomes "c4".
 Then we apply the operation on s[1], and s becomes "".
 
+@param {string} s
+@return {string}
 
+var clearDigits = function(s) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
