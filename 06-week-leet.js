@@ -20294,7 +20294,12 @@ Input: nums = [10,12,19,14]
 Output: -1
 Explanation: There are no two numbers that satisfy the conditions, so we return -1.
 
+@param {number[]} nums
+@return {number}
 
+var maximumSum = function(nums) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
