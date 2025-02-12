@@ -20298,7 +20298,24 @@ console.log("==========================================")
 // @return {number}
 
 var maximumSum = function(nums) {
+    let map = new Map(); // To store max values for each digit sum
+    let maxSum = -1;
     
+    function getDigitSum(num) {
+        return num.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);
+    }
+    
+    for (let num of nums) {
+        let digitSum = getDigitSum(num);
+        if (map.has(digitSum)) {
+            maxSum = Math.max(maxSum, num + map.get(digitSum));
+            map.set(digitSum, Math.max(map.get(digitSum), num));
+        } else {
+            map.set(digitSum, num);
+        }
+    }
+    
+    return maxSum;
 };
 
 console.log("==========================================")
