@@ -20348,7 +20348,13 @@ After four operations, nums becomes equal to [33].
 At this stage, all the elements of nums are greater than 20 so we can stop.
 It can be shown that 4 is the minimum number of operations needed so that all elements of the array are greater than or equal to 20.
 
+@param {number[]} nums
+@param {number} k
+@return {number}
 
+var minOperations = function(nums, k) {
+    
+};
 
 
 console.log("==========================================")
