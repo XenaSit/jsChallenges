@@ -20352,8 +20352,88 @@ console.log("==========================================")
 // @param {number} k
 // @return {number}
 
+class MinHeap {
+    constructor() {
+        this.heap = [];
+    }
+
+    // Swap helper function
+    swap(i, j) {
+        [this.heap[i], this.heap[j]] = [this.heap[j], this.heap[i]];
+    }
+
+    // Insert element into heap
+    push(val) {
+        this.heap.push(val);
+        this.heapifyUp();
+    }
+
+    // Remove and return the smallest element
+    pop() {
+        if (this.heap.length === 1) return this.heap.pop();
+        const min = this.heap[0];
+        this.heap[0] = this.heap.pop();
+        this.heapifyDown();
+        return min;
+    }
+
+    // Get the smallest element without removing it
+    peek() {
+        return this.heap.length > 0 ? this.heap[0] : null;
+    }
+
+    // Maintain heap property after insertion
+    heapifyUp() {
+        let index = this.heap.length - 1;
+        while (index > 0) {
+            let parent = Math.floor((index - 1) / 2);
+            if (this.heap[parent] <= this.heap[index]) break;
+            this.swap(parent, index);
+            index = parent;
+        }
+    }
+
+    // Maintain heap property after deletion
+    heapifyDown() {
+        let index = 0;
+        while (2 * index + 1 < this.heap.length) {
+            let left = 2 * index + 1;
+            let right = 2 * index + 2;
+            let smallest = left;
+            if (right < this.heap.length && this.heap[right] < this.heap[left]) {
+                smallest = right;
+            }
+            if (this.heap[index] <= this.heap[smallest]) break;
+            this.swap(index, smallest);
+            index = smallest;
+        }
+    }
+
+    // Get heap size
+    size() {
+        return this.heap.length;
+    }
+}
+
 var minOperations = function(nums, k) {
+    let minHeap = new MinHeap();
     
+    // Add all elements to the MinHeap
+    for (let num of nums) {
+        minHeap.push(num);
+    }
+
+    let operations = 0;
+
+    while (minHeap.size() > 1 && minHeap.peek() < k) {
+        let x = minHeap.pop();
+        let y = minHeap.pop();
+        let newElement = x * 2 + y; // Equivalent to min(x, y) * 2 + max(x, y)
+        minHeap.push(newElement);
+        operations++;
+    }
+
+    return operations;
 };
 
 
