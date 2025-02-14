@@ -20468,6 +20468,29 @@ productOfNumbers.add(8);        // [3,0,2,5,4,8]
 productOfNumbers.getProduct(2); // return 32. The product of the last 2 numbers is 4 * 8 = 32 
  
 
+var ProductOfNumbers = function() {
+    
+};
+
+@param {number} num
+@return {void}
+
+ProductOfNumbers.prototype.add = function(num) {
+    
+};
+
+@param {number} k
+@return {number}
+
+ProductOfNumbers.prototype.getProduct = function(k) {
+    
+};
+
+Your ProductOfNumbers object will be instantiated and called as such:
+var obj = new ProductOfNumbers()
+obj.add(num)
+var param_2 = obj.getProduct(k)
+
 
 
 console.log("==========================================")
