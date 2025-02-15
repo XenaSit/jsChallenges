@@ -20529,6 +20529,12 @@ Explanation: There are exactly 4 integers i in the range [1, 37] that satisfy th
 - 36 since 36 * 36 = 1296 and 1296 can be partitioned into 1 + 29 + 6.
 Hence, the punishment number of 37 is 1 + 81 + 100 + 1296 = 1478
 
+@param {number} n
+@return {number}
+
+var punishmentNumber = function(n) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
