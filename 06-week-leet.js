@@ -20533,7 +20533,29 @@ console.log("==========================================")
 // @return {number}
 
 var punishmentNumber = function(n) {
+    function canPartition(num, square, index, currentSum) {
+        if (index === square.length) {
+            return currentSum === num;
+        }
+        
+        let sum = 0;
+        for (let i = index; i < square.length; i++) {
+            sum = sum * 10 + parseInt(square[i]);
+            if (canPartition(num, square, i + 1, currentSum + sum)) {
+                return true;
+            }
+        }
+        return false;
+    }
     
+    let total = 0;
+    for (let i = 1; i <= n; i++) {
+        let squareStr = (i * i).toString();
+        if (canPartition(i, squareStr, 0, 0)) {
+            total += i * i;
+        }
+    }
+    return total;
 };
 
 console.log("==========================================")
