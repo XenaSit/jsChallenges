@@ -20585,7 +20585,41 @@ console.log("==========================================")
 // @return {number[]}
 
 var constructDistancedSequence = function(n) {
+    let size = 2 * n - 1;
+    let result = new Array(size).fill(0);
+    let used = new Array(n + 1).fill(false);
     
+    const backtrack = (index) => {
+        if (index === size) return true;
+        if (result[index] !== 0) return backtrack(index + 1);
+        
+        for (let num = n; num >= 1; num--) {
+            if (used[num]) continue;
+            
+            if (num === 1) {
+                result[index] = 1;
+                used[1] = true;
+                if (backtrack(index + 1)) return true;
+                result[index] = 0;
+                used[1] = false;
+            } else if (index + num < size && result[index + num] === 0) {
+                result[index] = num;
+                result[index + num] = num;
+                used[num] = true;
+                
+                if (backtrack(index + 1)) return true;
+                
+                result[index] = 0;
+                result[index + num] = 0;
+                used[num] = false;
+            }
+        }
+        
+        return false;
+    };
+    
+    backtrack(0);
+    return result;
 };
 
 console.log("==========================================")
