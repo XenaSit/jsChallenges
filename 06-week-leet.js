@@ -20581,6 +20581,12 @@ Example 2:
 Input: n = 5
 Output: [5,3,1,4,3,5,2,4,2]
 
+@param {number} n
+@return {number[]}
+
+var constructDistancedSequence = function(n) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
