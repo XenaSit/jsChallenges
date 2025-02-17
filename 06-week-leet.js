@@ -20642,6 +20642,12 @@ Example 3:
 Input: tiles = "V"
 Output: 1
 
+@param {string} tiles
+@return {number}
+
+var numTilePossibilities = function(tiles) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
