@@ -20646,8 +20646,28 @@ console.log("==========================================")
 // @return {number}
 
 var numTilePossibilities = function(tiles) {
+    let result = new Set();
+    let visited = new Array(tiles.length).fill(false);
+    tiles = tiles.split('').sort().join('');
     
+    const backtrack = (path) => {
+        if (path.length > 0) {
+            result.add(path);
+        }
+        for (let i = 0; i < tiles.length; i++) {
+            if (visited[i] || (i > 0 && tiles[i] === tiles[i - 1] && !visited[i - 1])) {
+                continue;
+            }
+            visited[i] = true;
+            backtrack(path + tiles[i]);
+            visited[i] = false;
+        }
+    };
+    
+    backtrack('');
+    return result.size;
 };
+
 
 console.log("==========================================")
 // console.log("==========================================")
