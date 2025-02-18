@@ -20697,7 +20697,12 @@ Explanation:
 Some possible values of num are "9876", "7321", and "8742".
 It can be proven that "4321" is the smallest possible num that meets the conditions.
 
+@param {string} pattern
+@return {string}
 
+var smallestNumber = function(pattern) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
