@@ -20750,7 +20750,24 @@ console.log("==========================================")
 // @return {string}
 
 var getHappyString = function(n, k) {
-    
+    let result = [];
+    const chars = ['a', 'b', 'c'];
+
+    function backtrack(current) {
+        if (current.length === n) {
+            result.push(current);
+            return;
+        }
+        for (let ch of chars) {
+            if (current.length === 0 || current[current.length - 1] !== ch) {
+                backtrack(current + ch);
+            }
+        }
+    }
+
+    backtrack("");
+
+    return result.length >= k ? result[k - 1] : "";
 };
 
 
