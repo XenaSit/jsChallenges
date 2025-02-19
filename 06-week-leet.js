@@ -20745,7 +20745,13 @@ Output: "cab"
 Explanation: There are 12 different happy string of length 3 
 ["aba", "abc", "aca", "acb", "bab", "bac", "bca", "bcb", "cab", "cac", "cba", "cbc"]. You will find the 9th string = "cab"
 
+@param {number} n
+@param {number} k
+@return {string}
 
+var getHappyString = function(n, k) {
+    
+};
 
 
 console.log("==========================================")
