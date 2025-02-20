@@ -20797,9 +20797,16 @@ console.log("==========================================")
 // @return {string}
 
 var findDifferentBinaryString = function(nums) {
-    
-};
+    let n = nums.length;
+    let result = "";
 
+    for (let i = 0; i < n; i++) {
+        // Flip the i-th bit of the i-th string (0 -> 1, 1 -> 0)
+        result += nums[i][i] === "0" ? "1" : "0";
+    }
+
+    return result;
+};
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
