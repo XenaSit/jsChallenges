@@ -20793,7 +20793,12 @@ Input: nums = ["111","011","001"]
 Output: "101"
 Explanation: "101" does not appear in nums. "000", "010", "100", and "110" would also be correct.
  
+@param {string[]} nums
+@return {string}
 
+var findDifferentBinaryString = function(nums) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
