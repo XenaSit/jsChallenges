@@ -20915,7 +20915,19 @@ Example 3:
 Input: traversal = "1-401--349---90--88"
 Output: [1,401,null,349,88,90]
 
+Definition for a binary tree node.
+function TreeNode(val, left, right) {
+    this.val = (val===undefined ? 0 : val)
+    this.left = (left===undefined ? null : left)
+    this.right = (right===undefined ? null : right)
+}
 
+@param {string} traversal
+@return {TreeNode}
+
+var recoverFromPreorder = function(traversal) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
