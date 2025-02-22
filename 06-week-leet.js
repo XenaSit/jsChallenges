@@ -20926,8 +20926,39 @@ console.log("==========================================")
 // @return {TreeNode}
 
 var recoverFromPreorder = function(traversal) {
+    let i = 0;
+    let stack = [];
     
+    while (i < traversal.length) {
+        let depth = 0;
+        while (traversal[i] === '-') {
+            depth++;
+            i++;
+        }
+        
+        let numStart = i;
+        while (i < traversal.length && traversal[i] >= '0' && traversal[i] <= '9') {
+            i++;
+        }
+        
+        let val = parseInt(traversal.slice(numStart, i));
+        let node = new TreeNode(val);
+        
+        if (depth === stack.length) {
+            if (stack.length > 0) {
+                stack[stack.length - 1].left = node;
+            }
+        } else {
+            stack = stack.slice(0, depth);
+            stack[stack.length - 1].right = node;
+        }
+        
+        stack.push(node);
+    }
+    
+    return stack[0];
 };
+
 
 console.log("==========================================")
 // console.log("==========================================")
