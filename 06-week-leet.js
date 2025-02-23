@@ -20988,7 +20988,18 @@ console.log("==========================================")
 // @return {TreeNode}
 
 var constructFromPrePost = function(preorder, postorder) {
-    
+    if (!preorder.length || !postorder.length) return null;
+
+    let root = new TreeNode(preorder[0]);
+    if (preorder.length === 1) return root;
+
+    let leftSubtreeRoot = preorder[1];
+    let leftSubtreeSize = postorder.indexOf(leftSubtreeRoot) + 1;
+
+    root.left = constructFromPrePost(preorder.slice(1, leftSubtreeSize + 1), postorder.slice(0, leftSubtreeSize));
+    root.right = constructFromPrePost(preorder.slice(leftSubtreeSize + 1), postorder.slice(leftSubtreeSize, -1));
+
+    return root;
 };
 
 console.log("==========================================")
