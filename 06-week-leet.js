@@ -21050,6 +21050,15 @@ Explanation:
 Alice follows the path 0->1 whereas Bob follows the path 1->0.
 Thus, Alice opens the gate at node 0 only. Hence, her net income is -7280. 
 
+/**
+ * @param {number[][]} edges
+ * @param {number} bob
+ * @param {number[]} amount
+ * @return {number}
+ */
+var mostProfitablePath = function(edges, bob, amount) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
