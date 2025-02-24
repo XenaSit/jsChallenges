@@ -21056,8 +21056,65 @@ console.log("==========================================")
 // @return {number}
 
 var mostProfitablePath = function(edges, bob, amount) {
+    const n = amount.length;
+    const graph = Array.from({ length: n }, () => []);
     
+    for (const [u, v] of edges) {
+        graph[u].push(v);
+        graph[v].push(u);
+    }
+    
+    // Find Bob's path to the root (0)
+    let bobPath = new Map();
+    function dfsBob(node, parent, depth) {
+        if (node === 0) {
+            bobPath.set(node, depth);
+            return true;
+        }
+        for (let neighbor of graph[node]) {
+            if (neighbor === parent) continue;
+            if (dfsBob(neighbor, node, depth + 1)) {
+                bobPath.set(node, depth);
+                return true;
+            }
+        }
+        return false;
+    }
+    dfsBob(bob, -1, 0);
+    
+    // DFS to find max profit path for Alice
+    let maxProfit = -Infinity;
+    function dfsAlice(node, parent, depth, profit) {
+        let isLeaf = true;
+        
+        // Adjust the amount based on Bob's presence
+        if (bobPath.has(node)) {
+            if (bobPath.get(node) > depth) {
+                // Bob arrives later, Alice takes full amount
+                profit += amount[node];
+            } else if (bobPath.get(node) === depth) {
+                // Bob arrives at the same time, they split
+                profit += amount[node] / 2;
+            }
+        } else {
+            profit += amount[node];
+        }
+        
+        for (let neighbor of graph[node]) {
+            if (neighbor === parent) continue;
+            isLeaf = false;
+            dfsAlice(neighbor, node, depth + 1, profit);
+        }
+        
+        if (isLeaf) {
+            maxProfit = Math.max(maxProfit, profit);
+        }
+    }
+    
+    dfsAlice(0, -1, 0, 0);
+    return maxProfit;
 };
+
 
 console.log("==========================================")
 // console.log("==========================================")
