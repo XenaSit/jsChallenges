@@ -21142,7 +21142,12 @@ Example 3:
 Input: arr = [1,2,3,4,5,6,7]
 Output: 16
 
+@param {number[]} arr
+@return {number}
 
+var numOfSubarrays = function(arr) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
