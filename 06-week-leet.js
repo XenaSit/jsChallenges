@@ -21146,7 +21146,21 @@ console.log("==========================================")
 // @return {number}
 
 var numOfSubarrays = function(arr) {
+    const MOD = 1e9 + 7;
+    let oddCount = 0, evenCount = 1, sum = 0, result = 0;
     
+    for (let num of arr) {
+        sum += num;
+        if (sum % 2 === 0) {
+            result = (result + oddCount) % MOD;
+            evenCount++;
+        } else {
+            result = (result + evenCount) % MOD;
+            oddCount++;
+        }
+    }
+    
+    return result;
 };
 
 console.log("==========================================")
