@@ -21229,7 +21229,28 @@ console.log("==========================================")
 // @return {number}
 
 var lenLongestFibSubseq = function(arr) {
-    
+    const indexMap = new Map(); // Stores the index of each number in arr
+    const dp = new Map(); // Stores pairs (i, j) and their Fib sequence lengths
+    let maxLen = 0;
+
+    // Populate indexMap with indices of numbers in arr
+    for (let i = 0; i < arr.length; i++) {
+        indexMap.set(arr[i], i);
+    }
+
+    for (let k = 0; k < arr.length; k++) {
+        for (let j = 0; j < k; j++) {
+            let iVal = arr[k] - arr[j]; // The value that should be before arr[j]
+            if (iVal < arr[j] && indexMap.has(iVal)) { // Ensure it's a valid Fibonacci sequence
+                let i = indexMap.get(iVal);
+                let length = dp.get(i * arr.length + j) || 2; // Default to 2 if not found
+                dp.set(j * arr.length + k, length + 1);
+                maxLen = Math.max(maxLen, length + 1);
+            }
+        }
+    }
+
+    return maxLen >= 3 ? maxLen : 0;
 };
 
 
