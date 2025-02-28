@@ -21280,7 +21280,36 @@ console.log("==========================================")
 // @return {string}
 
 var shortestCommonSupersequence = function(str1, str2) {
+    let m = str1.length, n = str2.length;
     
+    // Step 1: Compute LCS using DP
+    let dp = Array(m + 1).fill(null).map(() => Array(n + 1).fill(""));
+    
+    for (let i = 1; i <= m; i++) {
+        for (let j = 1; j <= n; j++) {
+            if (str1[i - 1] === str2[j - 1]) {
+                dp[i][j] = dp[i - 1][j - 1] + str1[i - 1];
+            } else {
+                dp[i][j] = dp[i - 1][j].length > dp[i][j - 1].length ? dp[i - 1][j] : dp[i][j - 1];
+            }
+        }
+    }
+
+    // Step 2: Build the SCS using the LCS
+    let i = 0, j = 0;
+    let lcs = dp[m][n], result = "";
+
+    for (let c of lcs) {
+        while (i < m && str1[i] !== c) result += str1[i++];
+        while (j < n && str2[j] !== c) result += str2[j++];
+        result += c;
+        i++; j++;
+    }
+    
+    // Add remaining characters
+    result += str1.slice(i) + str2.slice(j);
+    
+    return result;
 };
 
 console.log("==========================================")
