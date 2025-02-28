@@ -21275,7 +21275,13 @@ Example 2:
 Input: str1 = "aaaaaaaa", str2 = "aaaaaaaa"
 Output: "aaaaaaaa"
 
+@param {string} str1
+@param {string} str2
+@return {string}
 
+var shortestCommonSupersequence = function(str1, str2) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
