@@ -21340,6 +21340,12 @@ Input: nums = [0,1]
 Output: [1,0]
 Explanation: No operation can be applied, we just shift the 0 to the end.
 
+@param {number[]} nums
+@return {number[]}
+
+var applyOperations = function(nums) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
