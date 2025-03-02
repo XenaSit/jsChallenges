@@ -21405,7 +21405,17 @@ console.log("==========================================")
 // @return {number[][]}
 
 var mergeArrays = function(nums1, nums2) {
-    
+    let map = new Map();
+
+    for (let [id, val] of nums1) {
+        map.set(id, (map.get(id) || 0) + val);
+    }
+
+    for (let [id, val] of nums2) {
+        map.set(id, (map.get(id) || 0) + val);
+    }
+
+    return Array.from(map).sort((a, b) => a[0] - b[0]);
 };
 
 console.log("==========================================")
