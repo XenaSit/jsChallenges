@@ -21400,8 +21400,15 @@ Input: nums1 = [[2,4],[3,6],[5,5]], nums2 = [[1,3],[4,3]]
 Output: [[1,3],[2,4],[3,6],[4,3],[5,5]]
 Explanation: There are no common ids, so we just include each id with its value in the resulting list.
 
+@param {number[][]} nums1
+@param {number[][]} nums2
+@return {number[][]}
 
-// console.log("==========================================")
+var mergeArrays = function(nums1, nums2) {
+    
+};
+
+console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
