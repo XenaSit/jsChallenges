@@ -21447,6 +21447,13 @@ The element -3 is less than the pivot so it is on the left side of the array.
 The elements 4 and 3 are greater than the pivot so they are on the right side of the array.
 The relative ordering of the elements less than and greater than pivot is also maintained. [-3] and [4, 3] are the respective orderings.
 
+@param {number[]} nums
+@param {number} pivot
+@return {number[]}
+
+var pivotArray = function(nums, pivot) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
