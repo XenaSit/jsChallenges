@@ -21488,7 +21488,12 @@ Example 3:
 Input: n = 21
 Output: false
 
+@param {number} n
+@return {boolean}
 
+var checkPowersOfThree = function(n) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
