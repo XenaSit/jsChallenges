@@ -21522,7 +21522,13 @@ Example 2:
 Input: n = 2
 Output: 5
 Explanation: After 2 minutes, there are 4 colored cells on the boundary and 1 in the center, so we return 5. 
- 
+
+@param {number} n
+@return {number}
+
+var coloredCells = function(n) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
