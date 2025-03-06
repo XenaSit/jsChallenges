@@ -21552,8 +21552,31 @@ console.log("==========================================")
 // @return {number[]}
 
 var findMissingAndRepeatedValues = function(grid) {
+    let n = grid.length;
+    let numCount = new Map();
+    let repeated, missing;
     
+    // Count occurrences of each number
+    for (let row of grid) {
+        for (let num of row) {
+            numCount.set(num, (numCount.get(num) || 0) + 1);
+        }
+    }
+    
+    // Identify the repeated and missing numbers
+    for (let i = 1; i <= n * n; i++) {
+        if (numCount.has(i)) {
+            if (numCount.get(i) === 2) {
+                repeated = i;
+            }
+        } else {
+            missing = i;
+        }
+    }
+    
+    return [repeated, missing];
 };
+
 
 console.log("==========================================")
 // console.log("==========================================")
