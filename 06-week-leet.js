@@ -21577,7 +21577,6 @@ var findMissingAndRepeatedValues = function(grid) {
     return [repeated, missing];
 };
 
-
 console.log("==========================================")
 // console.log("==========================================")
 // console.log("==========================================")
