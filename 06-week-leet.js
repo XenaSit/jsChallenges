@@ -21601,7 +21601,13 @@ Input: left = 4, right = 6
 Output: [-1,-1]
 Explanation: There exists only one prime number in the given range, so the conditions cannot be satisfied.
 
+@param {number} left
+@param {number} right
+@return {number[]}
 
+var closestPrimes = function(left, right) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
