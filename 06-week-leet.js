@@ -21670,7 +21670,25 @@ console.log("==========================================")
 // @return {number}
 
 var minimumRecolors = function(blocks, k) {
+    let minRecolors = Infinity;
+    let whiteCount = 0;
     
+    // Count 'W' in the first window of size k
+    for (let i = 0; i < k; i++) {
+        if (blocks[i] === 'W') whiteCount++;
+    }
+    
+    minRecolors = whiteCount;
+    
+    // Slide the window across the string
+    for (let i = k; i < blocks.length; i++) {
+        if (blocks[i - k] === 'W') whiteCount--; // Remove leftmost element from window
+        if (blocks[i] === 'W') whiteCount++; // Add new rightmost element to window
+        
+        minRecolors = Math.min(minRecolors, whiteCount);
+    }
+    
+    return minRecolors;
 };
 
 console.log("==========================================")
