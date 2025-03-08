@@ -21665,7 +21665,13 @@ Explanation:
 No changes need to be made, since 2 consecutive black blocks already exist.
 Therefore, we return 0.
 
+@param {string} blocks
+@param {number} k
+@return {number}
 
+var minimumRecolors = function(blocks, k) {
+    
+};
 
 console.log("==========================================")
 // console.log("==========================================")
