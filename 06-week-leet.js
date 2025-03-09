@@ -21708,8 +21708,22 @@ console.log("==========================================")
 // @param {number} k
 // @return {number}
 
-var numberOfAlternatingGroups = function(colors, k) {
-    
+const numberOfAlternatingGroups = (colors, k) => {
+    const n = colors.length;
+    let count = 0;
+    let alternatingGroups = 0;
+
+    for (let i = 0; i < 2 * n; i++) {
+        if (i > 0 && colors[i % n] === colors[(i - 1) % n]) {
+            count = 1;
+        } else {
+            count++;
+        }
+        if (i >= n && count >= k) {
+            alternatingGroups++;
+        }
+    }
+    return alternatingGroups;
 };
 
 
