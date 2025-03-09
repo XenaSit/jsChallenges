@@ -21704,7 +21704,13 @@ An alternating group is every k contiguous tiles in the circle with alternating 
 Return the number of alternating groups.
 Note that since colors represents a circle, the first and the last tiles are considered to be next to each other.
 
- 
+@param {number[]} colors
+@param {number} k
+@return {number}
+
+var numberOfAlternatingGroups = function(colors, k) {
+    
+};
 
 
 console.log("==========================================")
