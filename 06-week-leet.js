@@ -21755,7 +21755,13 @@ word[0..5], which is "ieaouq".
 word[6..11], which is "qieaou".
 word[7..12], which is "ieaouq".
 
+@param {string} word
+@param {number} k
+@return {number}
 
+var countOfSubstrings = function(word, k) {
+    
+};
 
 // console.log("==========================================")
 // console.log("==========================================")
