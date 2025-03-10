@@ -21759,8 +21759,57 @@ console.log("==========================================")
 // @param {number} k
 // @return {number}
 
-var countOfSubstrings = function(word, k) {
+var countOfSubstrings = function (word, k) {
+    // Helper function to check if a character is a vowel
+    function isVowel(c) {
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+    }
     
+    // Helper function to count substrings with all vowels and at least k consonants
+    function atLeastK(word, k) {
+        let numValidSubstrings = 0, start = 0, end = 0;
+        let vowelCount = new Map(); // Track each vowel and its count
+        let consonantCount = 0;     // Track total consonants
+        
+        while (end < word.length) {
+            const newLetter = word[end];
+            
+            // Update our counts as we expand the window
+            if (isVowel(newLetter)) {
+                vowelCount.set(newLetter, (vowelCount.get(newLetter) ?? 0) + 1);
+            } else {
+                consonantCount++;
+            }
+            
+            // When we have all 5 vowels and at least k consonants
+            while (vowelCount.size == 5 && consonantCount >= k) {
+                // All extensions of this window to the right are valid
+                numValidSubstrings += word.length - end;
+                
+                // Shrink window from the left and update counts
+                const startLetter = word.charAt(start);
+                if (isVowel(startLetter)) {
+                    vowelCount.set(
+                        startLetter,
+                        vowelCount.get(startLetter) - 1
+                    );
+                    
+                    // Remove vowel from map if count reaches zero
+                    if (vowelCount.get(startLetter) == 0) {
+                        vowelCount.delete(startLetter);
+                    }
+                } else {
+                    consonantCount--;
+                }
+                start++;
+            }
+            end++;
+        }
+        return numValidSubstrings;
+    }
+    
+    // Subtracting counts gives us exactly k consonants
+    return atLeastK(word, k) - atLeastK(word, k + 1);
 };
 
 // console.log("==========================================")
